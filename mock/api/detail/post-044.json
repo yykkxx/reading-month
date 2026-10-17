@@ -1,0 +1,120 @@
+{
+  "code": 0,
+  "data": {
+    "id": "post-044",
+    "title": "《红楼梦》里的春天，藏着所有人的少年时代",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230F3D5C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322C1C3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%B7%B1%E6%B5%B7%20%C2%B7%20POST-044%3C%2Ftext%3E%3C%2Fsvg%3E",
+    "excerpt": "读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。",
+    "author": {
+      "name": "灯塔与船",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B1B3A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF6FB5%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%98%9F%E6%B2%B3%20%C2%B7%20A43%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "college": "新闻传播学院"
+    },
+    "time": "2026-04-18 20:36",
+    "timestamp": 1776515760000,
+    "likes": 271,
+    "commentCount": 9,
+    "views": 3489,
+    "liked": false,
+    "category": "历史",
+    "tags": [
+      "经典重读",
+      "金句摘抄"
+    ],
+    "comments": [
+      {
+        "id": "post-044-c1",
+        "user": "一只热爱排版的猫",
+        "avatarText": "青",
+        "content": "图书馆三楼有这本，借阅码 3-215。",
+        "time": "2026-04-19 07:17",
+        "likes": 73
+      },
+      {
+        "id": "post-044-c2",
+        "user": "读不完的卡尔维诺",
+        "avatarText": "三",
+        "content": "写得真好，收藏了！",
+        "time": "2026-04-20 04:07",
+        "likes": 31
+      },
+      {
+        "id": "post-044-c3",
+        "user": "折角爱好者",
+        "avatarText": "图",
+        "content": "第一次看到有人这样解读，学到了。",
+        "time": "2026-04-21 08:08",
+        "likes": 81
+      },
+      {
+        "id": "post-044-c4",
+        "user": "晚风翻书",
+        "avatarText": "晚",
+        "content": "写得真好，收藏了！",
+        "time": "2026-04-19 19:39",
+        "likes": 37
+      },
+      {
+        "id": "post-044-c5",
+        "user": "南山有木",
+        "avatarText": "青",
+        "content": "“文字像灯”这个比喻太喜欢了。",
+        "time": "2026-04-21 04:33",
+        "likes": 45
+      },
+      {
+        "id": "post-044-c6",
+        "user": "理科生的文学梦",
+        "avatarText": "青",
+        "content": "请问这个版本是哪个译者的？",
+        "time": "2026-04-20 19:59",
+        "likes": 55
+      },
+      {
+        "id": "post-044-c7",
+        "user": "自习室 305",
+        "avatarText": "自",
+        "content": "点赞，希望多写点读书笔记。",
+        "time": "2026-04-19 18:29",
+        "likes": 95
+      },
+      {
+        "id": "post-044-c8",
+        "user": "墨鱼丸子",
+        "avatarText": "图",
+        "content": "被标题吸引进来，果然没让我失望。",
+        "time": "2026-04-19 06:19",
+        "likes": 30
+      },
+      {
+        "id": "post-044-c9",
+        "user": "自习室 305",
+        "avatarText": "青",
+        "content": "已经在图书馆预约了，谢谢推荐📚",
+        "time": "2026-04-19 15:44",
+        "likes": 67
+      }
+    ],
+    "book": {
+      "name": "苏东坡传",
+      "author": "林语堂",
+      "publisher": "湖南文艺出版社",
+      "isbn": "978-2748019218"
+    },
+    "contentHtml": "<p>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</p><h2>为什么读它</h2><p>选这本书其实是偶然。最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。</p><h2>我记住的三句话</h2><ul><li>读完之后我绕着操场走了三圈。有些书就是这样，读完你不想说话，只想走一走。</li><li>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</li><li>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</li></ul><p>书里那句话被我抄在了笔记本第一页：“人的一生，是自己一次次选择的总和。”如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "related": [
+      {
+        "id": "post-043",
+        "title": "《你当像鸟飞往你的山》：教育是一场自我救赎",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20POST-043%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-20 06:54"
+      },
+      {
+        "id": "post-042",
+        "title": "《围城》里的比喻，值一整本摘抄本",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20POST-042%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-21 18:26"
+      }
+    ]
+  }
+}

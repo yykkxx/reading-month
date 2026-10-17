@@ -1,0 +1,104 @@
+{
+  "code": 0,
+  "data": {
+    "id": "post-014",
+    "title": "《苏东坡传》：把苦难活成诗的人",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B7A4B%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%239BE15D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E9%9B%A8%E6%9E%97%20%C2%B7%20POST-014%3C%2Ftext%3E%3C%2Fsvg%3E",
+    "excerpt": "本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。",
+    "author": {
+      "name": "理科生的文学梦",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%236C5CE7%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300C2A8%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E4%B9%A6%E9%A1%B5%20%C2%B7%20A13%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "college": "法学院"
+    },
+    "time": "2026-04-21 15:55",
+    "timestamp": 1776758100000,
+    "likes": 438,
+    "commentCount": 7,
+    "views": 1796,
+    "liked": false,
+    "category": "历史",
+    "tags": [
+      "读书笔记",
+      "金句摘抄"
+    ],
+    "comments": [
+      {
+        "id": "post-014-c1",
+        "user": "借书卡收藏家",
+        "avatarText": "墨",
+        "content": "刚读完这本，我们的感受几乎一模一样。",
+        "time": "2026-04-23 11:18",
+        "likes": 51
+      },
+      {
+        "id": "post-014-c2",
+        "user": "三行批注",
+        "avatarText": "沉",
+        "content": "读书月我也要开始打卡了，一起加油！",
+        "time": "2026-04-24 01:13",
+        "likes": 66
+      },
+      {
+        "id": "post-014-c3",
+        "user": "三行批注",
+        "avatarText": "南",
+        "content": "请问这个版本是哪个译者的？",
+        "time": "2026-04-23 19:40",
+        "likes": 48
+      },
+      {
+        "id": "post-014-c4",
+        "user": "墨鱼丸子",
+        "avatarText": "借",
+        "content": "已经在图书馆预约了，谢谢推荐📚",
+        "time": "2026-04-22 09:34",
+        "likes": 8
+      },
+      {
+        "id": "post-014-c5",
+        "user": "南山有木",
+        "avatarText": "凌",
+        "content": "请问这个版本是哪个译者的？",
+        "time": "2026-04-24 07:05",
+        "likes": 44
+      },
+      {
+        "id": "post-014-c6",
+        "user": "灯塔与船",
+        "avatarText": "橘",
+        "content": "读书月我也要开始打卡了，一起加油！",
+        "time": "2026-04-24 03:50",
+        "likes": 46
+      },
+      {
+        "id": "post-014-c7",
+        "user": "耳机里的诗",
+        "avatarText": "三",
+        "content": "已经在图书馆预约了，谢谢推荐📚",
+        "time": "2026-04-22 11:47",
+        "likes": 30
+      }
+    ],
+    "book": {
+      "name": "苏东坡传",
+      "author": "林语堂",
+      "publisher": "湖南文艺出版社",
+      "isbn": "978-4931039094"
+    },
+    "contentHtml": "<p>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</p><h2>为什么读它</h2><p>选这本书其实是偶然。读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。</p><h2>我记住的三句话</h2><ul><li>最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。</li><li>通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</li><li>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</li></ul><p>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "related": [
+      {
+        "id": "post-013",
+        "title": "《边城》：所有等待，最后都成了风景",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237A4E2D%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E0A96D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E7%BA%B8%E5%A2%A8%20%C2%B7%20POST-013%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-22 18:36"
+      },
+      {
+        "id": "post-012",
+        "title": "《红楼梦》里的春天，藏着所有人的少年时代",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230F3D5C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322C1C3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%B7%B1%E6%B5%B7%20%C2%B7%20POST-012%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-22 08:42"
+      }
+    ]
+  }
+}

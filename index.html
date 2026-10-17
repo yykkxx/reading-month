@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141333">
+<meta name="description" content="2026 校园读书月 · 读一本书，遇见一个世界。全校共读计划、读书感受墙、投稿通道。">
+<meta name="format-detection" content="telephone=no">
+<title>2026 校园读书月 · 阅见世界</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+</head>
+<body class="page-home">
+
+<!-- 顶部滚动进度条 -->
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ========== 吸顶导航（下滑后出现） ========== -->
+<header class="topbar" id="topbar">
+  <a class="topbar__brand" href="#intro">
+    <span class="topbar__logo">📖</span>
+    <span class="topbar__name">读书月</span>
+  </a>
+  <nav class="topbar__nav" aria-label="页面导航">
+    <a href="#feed" class="topbar__link">感受墙</a>
+    <a href="#intro" class="topbar__link">活动介绍</a>
+  </nav>
+</header>
+
+<!-- ========== 一、读书月介绍页（首屏） ========== -->
+<section class="hero" id="intro">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+    <span class="hero__grid"></span>
+    <span class="hero__noise"></span>
+  </div>
+
+  <div class="hero__inner">
+    <p class="hero__badge reveal" style="--d:.05s">
+      <span class="dot"></span> 2026 校园读书月 · 第 12 届
+    </p>
+
+    <h1 class="hero__title reveal" style="--d:.15s">
+      读一本书<br>
+      遇见<span class="grad">一个世界</span>
+    </h1>
+
+    <p class="hero__sub reveal" style="--d:.25s">
+      4 月 23 日 — 5 月 23 日 · 全校共读计划<br>
+      <em>你读过的每一页，都有人正在读。</em>
+    </p>
+
+    <!-- 倒计时 -->
+    <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动剩余时间">
+      <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
+      <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
+      <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
+      <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
+    </div>
+
+    <!-- 数据统计 -->
+    <ul class="stats reveal" style="--d:.45s">
+      <li><b data-count="128">0</b><i>场活动</i></li>
+      <li><b data-count="12480">0</b><i>同学参与</i></li>
+      <li><b data-count="96">0</b><i>篇读书感受</i></li>
+    </ul>
+
+    <div class="hero__actions reveal" style="--d:.55s">
+      <a class="btn btn--primary" href="#feed" id="ctaStart">
+        进入感受墙
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--ghost" href="#intro" id="ctaRule">活动规则</a>
+    </div>
+  </div>
+
+  <button class="scroll-hint" id="scrollHint" aria-label="下滑进入主界面">
+    <span>下滑进入主界面</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6"/></svg>
+  </button>
+</section>
+
+<!-- ========== 二、主界面：读书感受信息流 ========== -->
+<main class="feed" id="feed">
+  <div class="shell">
+
+    <header class="feed__head reveal-in">
+      <p class="feed__eyebrow">Reading Feelings Wall</p>
+      <h2 class="feed__title">读书感受墙</h2>
+      <p class="feed__desc">来自全校同学的阅读笔记 · 内容由外部内容 API 提供</p>
+
+      <!-- 搜索 -->
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <svg class="search__ico" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
+        </svg>
+        <input class="search__input" id="searchInput" type="search" placeholder="搜索书名、标题、感受或作者…"
+               enterkeyhint="search" aria-label="搜索读书感受">
+        <button class="search__clear" id="searchClear" type="button" aria-label="清空搜索" hidden>×</button>
+        <button class="search__btn" type="submit">搜索</button>
+      </form>
+
+      <!-- 排序 -->
+      <div class="sorts" id="sorts" role="tablist" aria-label="排序方式">
+        <button class="chip is-on" data-sort="new" role="tab" aria-selected="true">🆕 最新</button>
+        <button class="chip" data-sort="hot" role="tab" aria-selected="false">🔥 最热</button>
+        <button class="chip" data-sort="comments" role="tab" aria-selected="false">💬 评论最多</button>
+      </div>
+
+      <!-- 分类 -->
+      <div class="chips" id="chips" role="tablist" aria-label="按分类筛选">
+        <!-- 由 JS 渲染 -->
+      </div>
+
+      <!-- 标签 -->
+      <div class="chips chips--tag" id="tags" role="tablist" aria-label="按标签筛选">
+        <!-- 由 JS 渲染 -->
+      </div>
+
+      <!-- 当前筛选条件摘要 -->
+      <p class="filter-summary" id="filterSummary" hidden></p>
+    </header>
+
+    <div class="feed__list" id="feedList" aria-live="polite" aria-busy="true"></div>
+
+    <!-- 无限滚动哨兵：接近底部 600px 内自动加载下一页 -->
+    <div id="feedSentinel" style="height:1px" aria-hidden="true"></div>
+
+    <div class="feed__status" id="feedStatus">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>正在加载更多感受…</span>
+    </div>
+
+    <p class="feed__api" id="apiHint"></p>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg>
+  </button>
+</main>
+
+<!-- ========== 右下角：提交投稿 ========== -->
+<a class="fab" id="fabSubmit" href="https://www.baidu.com" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 20h16M14.5 4.5l3 3L9 16H6v-3l8.5-8.5z"/>
+  </svg>
+  <span>提交投稿</span>
+</a>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

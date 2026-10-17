@@ -1,0 +1,95 @@
+{
+  "code": 0,
+  "data": {
+    "id": "post-079",
+    "title": "《尘埃落定》：傻子比聪明人看得更远",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B1B3A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF6FB5%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%98%9F%E6%B2%B3%20%C2%B7%20POST-079%3C%2Ftext%3E%3C%2Fsvg%3E",
+    "excerpt": "最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。",
+    "author": {
+      "name": "借书卡收藏家",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20A78%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "college": "数学学院"
+    },
+    "time": "2026-04-13 17:54",
+    "timestamp": 1776074040000,
+    "likes": 523,
+    "commentCount": 6,
+    "views": 5060,
+    "liked": false,
+    "category": "教育",
+    "tags": [
+      "深夜读书"
+    ],
+    "comments": [
+      {
+        "id": "post-079-c1",
+        "user": "自习室 305",
+        "avatarText": "半",
+        "content": "读书月我也要开始打卡了，一起加油！",
+        "time": "2026-04-14 10:57",
+        "likes": 2
+      },
+      {
+        "id": "post-079-c2",
+        "user": "南山有木",
+        "avatarText": "理",
+        "content": "看完你的感受，我决定今晚就翻第一章。",
+        "time": "2026-04-16 06:42",
+        "likes": 78
+      },
+      {
+        "id": "post-079-c3",
+        "user": "一只热爱排版的猫",
+        "avatarText": "半",
+        "content": "这段话我抄在本子上了。",
+        "time": "2026-04-13 18:35",
+        "likes": 23
+      },
+      {
+        "id": "post-079-c4",
+        "user": "折角爱好者",
+        "avatarText": "理",
+        "content": "“文字像灯”这个比喻太喜欢了。",
+        "time": "2026-04-13 20:41",
+        "likes": 12
+      },
+      {
+        "id": "post-079-c5",
+        "user": "三行批注",
+        "avatarText": "南",
+        "content": "刚读完这本，我们的感受几乎一模一样。",
+        "time": "2026-04-15 01:16",
+        "likes": 23
+      },
+      {
+        "id": "post-079-c6",
+        "user": "一只热爱排版的猫",
+        "avatarText": "折",
+        "content": "刚读完这本，我们的感受几乎一模一样。",
+        "time": "2026-04-16 15:29",
+        "likes": 46
+      }
+    ],
+    "book": {
+      "name": "昆虫记",
+      "author": "法布尔",
+      "publisher": "商务印书馆",
+      "isbn": "978-9347006559"
+    },
+    "contentHtml": "<p>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</p><h2>为什么读它</h2><p>选这本书其实是偶然。读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</p><h2>我记住的三句话</h2><ul><li>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</li><li>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</li><li>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</li></ul><p>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "related": [
+      {
+        "id": "post-078",
+        "title": "《苏东坡传》：把苦难活成诗的人",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B7A4B%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%239BE15D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E9%9B%A8%E6%9E%97%20%C2%B7%20POST-078%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-20 16:00"
+      },
+      {
+        "id": "post-077",
+        "title": "《边城》：所有等待，最后都成了风景",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237A4E2D%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E0A96D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E7%BA%B8%E5%A2%A8%20%C2%B7%20POST-077%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "time": "2026-04-14 17:52"
+      }
+    ]
+  }
+}
