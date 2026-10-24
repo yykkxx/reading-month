@@ -73,6 +73,14 @@
 
     /* 正文淡入（交给 CSS，避免内联样式满天飞） */
     requestAnimationFrame(() => document.body.classList.add('is-ready'))
+
+    /* 从评论卡跳来时定位到留言区 */
+    if (location.hash === '#comments') {
+      setTimeout(() => {
+        const box = document.getElementById('comments')
+        if (box) box.scrollIntoView({ block: 'start' })
+      }, 120)
+    }
   }
 
   function renderError(err) {

@@ -53,7 +53,6 @@
 
     const act = CFG.ACTIVITY || { startMonth: 4, startDay: 23, endMonth: 5, endDay: 23 }
     const cd = { d: $('#cdDay'), h: $('#cdHour'), m: $('#cdMin'), s: $('#cdSec') }
-    const label = $('#cdLabel')
     const pad = (n) => String(n).padStart(2, '0')
 
     const rangeOf = (year) => ({
@@ -70,9 +69,6 @@
     }
 
     const beforeStart = Date.now() < range.start.getTime()
-    if (label) {
-      label.textContent = beforeStart ? '距下一届读书月开始' : '距本届读书月结束'
-    }
 
     function render() {
       const target = beforeStart ? range.start.getTime() : range.end.getTime()
@@ -304,7 +300,7 @@
       const fresh = (res.list || []).filter((p) => !feed.ids.has(p.id))
       fresh.forEach((p) => feed.ids.add(p.id))
 
-      const html = fresh.map((p, i) => UI.cardHTML(p, i, feed.query.q)).join('')
+      const html = fresh.map((p, i) => UI.feedItemHTML(p, i, feed.query.q)).join('')
       if (first) elList.innerHTML = html
       else if (html) elList.insertAdjacentHTML('beforeend', html)
 
@@ -350,7 +346,7 @@
     const fallback = API.fallbackList || []
 
     if (!feed.shown && fallback.length) {
-      elList.innerHTML = fallback.map((p, i) => UI.cardHTML(p, i, '')).join('')
+      elList.innerHTML = fallback.map((p, i) => UI.feedItemHTML(p, i, '')).join('')
       if (FX.developImages) FX.developImages(elList)
       feed.shown = fallback.length
       feed.ended = true
@@ -497,6 +493,13 @@
    * 启动
    * ====================================================================== */
   function boot() {
+    /* 支持从作者主页等处带条件进入：?tag= / ?cat= / ?q= */
+    const params = new URLSearchParams(location.search)
+    if (params.get('tag')) feed.query.tag = params.get('tag')
+    if (params.get('cat')) feed.query.cat = params.get('cat')
+    if (params.get('q')) feed.query.q = params.get('q')
+    if (elSearchInput && feed.query.q) elSearchInput.value = feed.query.q
+
     initCountdown()
     initScrollUI()
     initCounters()

@@ -134,6 +134,33 @@ const NICKNAMES = [
   '三行批注', '理科生的文学梦', '耳机里的诗',
 ]
 
+/* 作者池：稳定 id、头像、学院与简介，供「作者主页」使用 */
+const AUTHOR_POOL = [
+  { id: 'u01', name: '青柠不加冰', college: '文学院', joined: '2023-09', bio: '偏爱散文和旧书，常待在图书馆四楼靠窗的位置。' },
+  { id: 'u02', name: '晚八点读书人', college: '新闻传播学院', joined: '2022-09', bio: '每晚八点读十页，一年下来也能读完三十本。' },
+  { id: 'u03', name: '图书馆常驻居民', college: '历史学院', joined: '2023-02', bio: '闭馆音乐响起才肯走的人，书架上永远有本没读完的。' },
+  { id: 'u04', name: '半页纸', college: '外国语学院', joined: '2024-09', bio: '读得慢，但每本都写批注。相信好句子值得抄一遍。' },
+  { id: 'u05', name: '南山有木', college: '数学学院', joined: '2022-02', bio: '理科生，喜欢在公式之外找一点浪漫。' },
+  { id: 'u06', name: '墨鱼丸子', college: '艺术学院', joined: '2023-09', bio: '读书时会在页边画小画，笔记本比书还厚。' },
+  { id: 'u07', name: '凌晨四点的书页', college: '医学院', joined: '2021-09', bio: '夜班之后读几页，是一天里最安静的时刻。' },
+  { id: 'u08', name: '一只热爱排版的猫', college: '法学院', joined: '2024-02', bio: '在意一本书的行距、字号和纸张手感。' },
+  { id: 'u09', name: '折角爱好者', college: '计算机学院', joined: '2023-09', bio: '不折书角，只贴便签；但便签已经贴满了整本书。' },
+  { id: 'u10', name: '读不完的卡尔维诺', college: '文学院', joined: '2022-09', bio: '每次重读都能读到新的东西，所以总也读不完。' },
+  { id: 'u11', name: '灯塔与船', college: '外国语学院', joined: '2023-02', bio: '喜欢翻译腔的句子，和雨天的图书馆。' },
+  { id: 'u12', name: '自习室 305', college: '数学学院', joined: '2024-09', bio: '固定座位，固定阅读时间，偶尔换一本新的书。' },
+  { id: 'u13', name: '橘子汽水', college: '新闻传播学院', joined: '2023-09', bio: '读轻松的书，也读让人难过但值得的书。' },
+  { id: 'u14', name: '晚风翻书', college: '艺术学院', joined: '2022-02', bio: '傍晚在操场边读，风会替你翻页。' },
+  { id: 'u15', name: '青苔与旧书', college: '历史学院', joined: '2021-09', bio: '二手书市常客，书里有上一位读者的铅笔字。' },
+  { id: 'u16', name: '借书卡收藏家', college: '法学院', joined: '2023-02', bio: '收集旧书里夹着的借书卡，那是别人读过的证据。' },
+  { id: 'u17', name: '沉默的读者', college: '医学院', joined: '2024-09', bio: '很少留言，但每篇感受都会看完。' },
+  { id: 'u18', name: '三行批注', college: '计算机学院', joined: '2023-09', bio: '每页最多写三行，克制是一种阅读方式。' },
+  { id: 'u19', name: '理科生的文学梦', college: '数学学院', joined: '2022-09', bio: '在实验室和诗集之间来回切换。' },
+  { id: 'u20', name: '耳机里的诗', college: '外国语学院', joined: '2024-02', bio: '边听歌边读诗，觉得两者是同一件事。' },
+]
+
+/* 每位作者一张固定头像（同一人在列表、详情、主页保持一致） */
+AUTHOR_POOL.forEach((a, i) => { a.avatar = coverSvg(i * 7 + 2, a.name[0]) })
+
 const CATEGORIES = ['文学', '小说', '科幻', '历史', '社科', '成长', '心理', '自然', '教育', '传记']
 const TAGS = ['深夜读书', '一周一书', '读书笔记', '我的书架', '金句摘抄', '读完就写', '通勤阅读', '经典重读']
 
@@ -179,15 +206,20 @@ for (let i = 0; i < TOTAL; i++) {
   cursor -= int(35, 260) * 60 * 1000
   const ts = cursor
   const commentCount = int(3, 9)
-  const comments = Array.from({ length: commentCount }, (_, k) => ({
-    id: `${id}-c${k + 1}`,
-    user: pick(NICKNAMES),
-    avatarText: pick(NICKNAMES).slice(0, 1),
-    content: pick(COMMENTS),
-    time: fmtTime(ts + int(5, 5000) * 60 * 1000),
-    likes: int(0, 96),
-  }))
+  const comments = Array.from({ length: commentCount }, (_, k) => {
+    const cts = ts + int(5, 5000) * 60 * 1000
+    return {
+      id: `${id}-c${k + 1}`,
+      user: pick(NICKNAMES),
+      avatarText: pick(NICKNAMES).slice(0, 1),
+      content: pick(COMMENTS),
+      time: fmtTime(cts),
+      timestamp: cts,
+      likes: int(0, 96),
+    }
+  })
 
+  const author = AUTHOR_POOL[i % AUTHOR_POOL.length]
   const title = TITLES[i % TITLES.length]
   const post = {
     id,
@@ -196,9 +228,10 @@ for (let i = 0; i < TOTAL; i++) {
     excerpt: EXCERPTS[i % EXCERPTS.length],
     // 列表 API 常见结构：作者 + 时间 + 统计
     author: {
-      name: pick(NICKNAMES),
-      avatar: coverSvg(i + 3, 'a' + i),
-      college: pick(['文学院', '计算机学院', '外国语学院', '新闻传播学院', '医学院', '数学学院', '法学院', '艺术学院']),
+      id: author.id,
+      name: author.name,
+      avatar: author.avatar,
+      college: author.college,
     },
     time: fmtTime(ts),
     timestamp: ts,
@@ -210,6 +243,7 @@ for (let i = 0; i < TOTAL; i++) {
     tags: [pick(TAGS), pick(TAGS)].filter((v, k, a) => a.indexOf(v) === k),
     comments: comments.slice(0, 2), // 列表里只带 2 条热评（真实 API 常见）
   }
+  post._fullComments = comments
   posts.push(post)
 
   const detail = {
@@ -239,18 +273,84 @@ for (let i = 0; i < TOTAL; i++) {
   await writeFile(join(ROOT, 'api/detail', `${id}.json`), JSON.stringify(detail, null, 2))
 }
 
+/* ---------- 把评论也做成信息流条目（与书评同流，但样式不同） ---------- */
+const NAME_TO_AUTHOR = new Map(AUTHOR_POOL.map((a) => [a.name, a]))
+const commentEntries = []
+let ci = 0
+posts.forEach((p, idx) => {
+  if (idx % 4 !== 0) return
+  const pool = p._fullComments || []
+  if (!pool.length) return
+  const c = pool[(idx + ci) % pool.length]
+  const author = NAME_TO_AUTHOR.get(c.user) || AUTHOR_POOL[(ci * 7 + idx) % AUTHOR_POOL.length]
+  ci += 1
+  /* 评论时间紧接原书评之后（1~20 分钟内），保证与书评自然交错，不扎堆 */
+  const cts = p.timestamp + int(1, 20) * 60 * 1000
+  commentEntries.push({
+    type: 'comment',
+    id: 'cf-' + String(ci).padStart(3, '0'),
+    content: c.content,
+    author: { id: author.id, name: author.name, avatar: author.avatar, college: author.college },
+    time: fmtTime(cts),
+    timestamp: cts,
+    likes: c.likes,
+    liked: false,
+    category: p.category,
+    tags: (p.tags || []).slice(0, 1),
+    target: { id: p.id, title: p.title, cover: p.cover, time: p.time },
+    comments: [],
+    commentCount: 0,
+    views: 0,
+  })
+})
+
+/* 书评 + 评论按时间混排成一条流 */
+const feedItems = posts.concat(commentEntries).sort((a, b) => b.timestamp - a.timestamp)
+
+// 作者主页数据
+await mkdir(join(ROOT, 'api/users'), { recursive: true })
+const users = AUTHOR_POOL.map((a, idx) => {
+  const mine = feedItems.filter((p) => p.author.id === a.id)
+  const minePosts = mine.filter((p) => p.type !== 'comment')
+  const mineComments = mine.filter((p) => p.type === 'comment')
+  const payload = {
+    code: 0,
+    data: {
+      ...a,
+      avatar: a.avatar || coverSvg(idx * 7 + 2, a.name[0]),
+      stats: {
+        posts: minePosts.length,
+        comments: mineComments.length,
+        likes: mine.reduce((n, p) => n + p.likes, 0),
+        views: minePosts.reduce((n, p) => n + (p.views || 0), 0),
+      },
+      tags: Array.from(new Set(minePosts.flatMap((p) => p.tags))).slice(0, 4),
+      latest: mine.slice(0, 3).map((p) => ({ id: p.id, type: p.type, title: p.type === 'comment' ? '评论：《' + p.target.title.replace(/^《|》.*$/g, '') + '》' : p.title })),
+    },
+  }
+  return payload.data
+})
+
+for (const u of users) {
+  await writeFile(join(ROOT, 'api/users', `${u.id}.json`), JSON.stringify({ code: 0, data: u }, null, 2))
+}
+await writeFile(join(ROOT, 'api/users.json'), JSON.stringify({ code: 0, data: users.map((u) => ({ id: u.id, name: u.name, avatar: u.avatar, college: u.college })) }, null, 2))
+
 // 信息流分页
-const totalPages = Math.ceil(TOTAL / PAGE_SIZE)
+const totalPages = Math.ceil(feedItems.length / PAGE_SIZE)
 for (let p = 1; p <= totalPages; p++) {
-  const slice = posts.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE)
+  const slice = feedItems.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE)
   await writeFile(
     join(ROOT, 'api/posts', `page-${p}.json`),
-    JSON.stringify({ code: 0, data: { page: p, pageSize: PAGE_SIZE, total: TOTAL, hasMore: p < totalPages, list: slice } }, null, 2),
+    JSON.stringify({ code: 0, data: { page: p, pageSize: PAGE_SIZE, total: feedItems.length, hasMore: p < totalPages, list: slice } }, null, 2),
   )
 }
 
 // 索引（方便调试）
-await writeFile(join(ROOT, 'api/index.json'), JSON.stringify({ total: TOTAL, pageSize: PAGE_SIZE, totalPages, ids: posts.map((p) => p.id) }, null, 2))
+await writeFile(join(ROOT, 'api/index.json'), JSON.stringify({
+  total: feedItems.length, posts: posts.length, comments: commentEntries.length,
+  pageSize: PAGE_SIZE, totalPages, ids: feedItems.map((p) => p.id),
+}, null, 2))
 await writeFile(join(ROOT, 'api/comments.json'), JSON.stringify(COMMENTS, null, 2))
 
-console.log(`✅ 生成完成：${TOTAL} 条内容 / ${totalPages} 页列表 / ${TOTAL} 份详情`)
+console.log(`✅ 生成完成：${feedItems.length} 条信息流（${posts.length} 篇书评 + ${commentEntries.length} 条评论）/ ${totalPages} 页 / ${posts.length} 份详情`)

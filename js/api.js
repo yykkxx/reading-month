@@ -92,6 +92,7 @@
       cover: raw.cover || raw.image || raw.thumbnail || svgCover(220, raw.title),
       excerpt: raw.excerpt || raw.summary || raw.digest || '',
       author: {
+        id: (raw.author && raw.author.id) || raw.authorId || '',
         name: (raw.author && raw.author.name) || raw.author || raw.username || '匿名读者',
         avatar: (raw.author && raw.author.avatar) || raw.avatar || '',
         college: (raw.author && raw.author.college) || raw.college || '',
@@ -106,6 +107,43 @@
       tags: raw.tags || [],
       comments: raw.comments || [],
     }
+  }
+
+  /* 评论流条目：指向某篇书评 */
+  function normalizeComment(raw) {
+    const a = raw.author || {}
+    const t = raw.target || {}
+    return {
+      type: 'comment',
+      id: raw.id,
+      content: raw.content || raw.text || '',
+      author: {
+        id: a.id || '',
+        name: a.name || a.user || '匿名读者',
+        avatar: a.avatar || '',
+        college: a.college || '',
+      },
+      time: raw.time || '',
+      timestamp: raw.timestamp || 0,
+      likes: raw.likes || 0,
+      liked: !!raw.liked,
+      category: raw.category || '全部',
+      tags: raw.tags || [],
+      target: {
+        id: t.id || '',
+        title: t.title || '',
+        cover: t.cover || '',
+        time: t.time || '',
+      },
+      comments: [],
+      commentCount: 0,
+      views: 0,
+    }
+  }
+
+  /* 统一的「流条目」归一化：书评 or 评论 */
+  function normalizeItem(raw) {
+    return raw && raw.type === 'comment' ? normalizeComment(raw) : normalizePost(raw)
   }
 
   const FALLBACK = buildFallback()
@@ -133,7 +171,7 @@
         const dd = r.data || r
         pages.push(dd.list || dd.posts || [])
       })
-      ALL_CACHE = pages.flat().map(normalizePost)
+      ALL_CACHE = pages.flat().map(normalizeItem)
       return ALL_CACHE
     })()
     try { return await ALL_LOADING } finally { ALL_LOADING = null }
@@ -150,8 +188,11 @@
     const kw = (q.q || '').trim().toLowerCase()
     if (kw) {
       out = out.filter((p) => {
-        const hay = [p.title, p.excerpt, p.author && p.author.name, p.category, (p.tags || []).join(' ')]
-          .join(' ').toLowerCase()
+        const hay = [
+          p.title, p.excerpt, p.content,
+          p.author && p.author.name, p.category, (p.tags || []).join(' '),
+          p.target && p.target.title,
+        ].join(' ').toLowerCase()
         return hay.indexOf(kw) > -1
       })
     }
@@ -173,7 +214,7 @@
       const res = await request(fill(CFG.MOCK.feed, { page: 1 }))
       const d = res.data || res
       /* 与全量缓存使用同一排序口径，避免首屏与后续分页边界错位 */
-      const list = (d.list || d.posts || []).map(normalizePost)
+      const list = (d.list || d.posts || []).map(normalizeItem)
         .sort((a, b) => b.timestamp - a.timestamp)
       return { list, hasMore: (d.hasMore ?? list.length > 0), total: d.total ?? list.length }
     }
@@ -202,6 +243,25 @@
     }
   }
 
+  async function mockUser(id) {
+    const res = await request(fill(CFG.MOCK.user, { id }))
+    const d = res.data || res
+    return {
+      ...d,
+      stats: d.stats || { posts: 0, likes: 0, views: 0 },
+      tags: d.tags || [],
+    }
+  }
+
+  async function mockUserPosts(id, page) {
+    const all = await loadAllMock()
+    const mine = all.filter((p) => p.author && p.author.id === id)
+      .sort((a, b) => b.timestamp - a.timestamp)
+    const size = CFG.PAGE_SIZE
+    const list = mine.slice((page - 1) * size, page * size)
+    return { list, hasMore: page * size < mine.length, total: mine.length }
+  }
+
   async function mockDetail(id) {
     if (id.startsWith('fb-')) {
       const p = FALLBACK.find((x) => x.id === id)
@@ -224,7 +284,7 @@
       q: query.q || '', tag: query.tag || '', sort: query.sort || 'new',
     }))
     const d = res.data || res
-    const posts = (d.list || d.posts || d.items || d.data || []).map(normalizePost)
+    const posts = (d.list || d.posts || d.items || d.data || []).map(normalizeItem)
     /* 若第三方接口不支持筛选，这里再兜一层本地过滤，保证交互始终有效 */
     const filtered = applyQuery(posts, query)
     return {
@@ -232,6 +292,19 @@
       hasMore: d.hasMore ?? (d.has_more ?? posts.length >= CFG.PAGE_SIZE),
       total: d.total ?? filtered.length,
     }
+  }
+
+  async function remoteUser(id) {
+    const res = await request(fill(CFG.REMOTE.user, { id }))
+    const d = res.data || res
+    return { ...d, stats: d.stats || { posts: 0, likes: 0, views: 0 }, tags: d.tags || [] }
+  }
+
+  async function remoteUserPosts(id, page) {
+    const res = await request(fill(CFG.REMOTE.userPosts, { id, page, size: CFG.PAGE_SIZE }))
+    const d = res.data || res
+    const list = (d.list || d.posts || d.items || []).map(normalizeItem)
+    return { list, hasMore: d.hasMore ?? list.length >= CFG.PAGE_SIZE, total: d.total ?? list.length }
   }
 
   async function remoteDetail(id) {
@@ -287,6 +360,22 @@
     return mockFeed(page, query)
   }
 
+  async function getUser(id) {
+    if (!id) throw new Error('缺少作者 id')
+    if (CFG.SOURCE === 'remote') {
+      try { return await remoteUser(id) } catch (e) { console.warn('[api] remote user 失败，回退本地：', e.message) }
+    }
+    if (location.protocol === 'file:') throw new Error('file:// 下无法读取作者数据')
+    return mockUser(id)
+  }
+
+  async function getUserPosts(id, page) {
+    if (CFG.SOURCE === 'remote') {
+      try { return await remoteUserPosts(id, page) } catch (e) { /* 回退本地 */ }
+    }
+    return mockUserPosts(id, page)
+  }
+
   async function getDetail(id) {
     if (CFG.SOURCE === 'remote') {
       try { return await remoteDetail(id) } catch (e) { console.warn('[api] remote detail 失败，回退本地：', e.message) }
@@ -319,5 +408,9 @@
     return ['全部', ...set]
   }
 
-  window.API = { getFeed, getDetail, facets, reportLike, reportComment, categoriesOf, fallbackList: FALLBACK, fmtTime }
+  window.API = {
+    getFeed, getDetail, getUser, getUserPosts,
+    facets, reportLike, reportComment, categoriesOf,
+    fallbackList: FALLBACK, fmtTime,
+  }
 })()

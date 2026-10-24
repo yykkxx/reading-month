@@ -1191,11 +1191,14 @@ body.is-ready .article { opacity: 1; transform: none; }
   display: block; pointer-events: none;
 }
 
-/* 倒计时小标题 */
-.countdown__label {
-  margin: 22px 0 -8px;
-  font-family: var(--serif); font-size: 12px;
-  letter-spacing: 0.2em; color: var(--ink-500);
+/* 首屏活动介绍 */
+.hero__intro {
+  margin: 20px 0 -4px;
+  max-width: 34em;
+  font-family: var(--serif);
+  font-size: 14px; line-height: 1.95;
+  color: var(--ink-700);
+  text-wrap: pretty;
 }
 
 /* 页与页之间的花饰 */
@@ -1435,3 +1438,375 @@ html[data-theme="night"] .article__hero img { filter: sepia(0.08) saturate(0.88)
 
 /* 详情页底部有操作条，主题开关上移，避免遮住输入框 */
 body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }
+
+/* ==========================================================================
+   13. 桌面端适配：多列信息流 + 首屏左右分栏 + 详情页限宽
+   ========================================================================== */
+
+/* ---------- 平板：两列信息流 ---------- */
+@media (min-width: 760px) {
+  :root { --pad: 26px; }
+
+  .shell { max-width: 900px; }
+  .hero__inner { max-width: 900px; }
+  .hero__lead { max-width: 640px; margin: 0 auto; }
+  .hero__title { font-size: clamp(46px, 6.2vw, 62px); }
+  .countdown, .stats { max-width: 560px; }
+
+  .feed { padding-top: 78px; }
+  .feed__head { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+  .feed__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+
+  /* 大屏下卡片可轻微抬起 */
+  .card { transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease); }
+
+  /* 详情页限宽，像摊开的一页 */
+  .article { max-width: 760px; margin-left: auto; margin-right: auto; margin-top: 0; }
+  .article__hero {
+    margin: 66px 18px 0;
+    border-radius: 12px;
+    aspect-ratio: 16 / 8;
+    max-height: 420px;
+  }
+  .article__hero::after {
+    background: linear-gradient(180deg, rgba(60, 45, 30, 0.16) 0%, transparent 34%, rgba(246, 240, 227, 0.05) 62%, var(--paper) 100%);
+  }
+  .detail-top {
+    padding-left: max(20px, calc((100vw - 760px) / 2 + 20px));
+    padding-right: max(20px, calc((100vw - 760px) / 2 + 20px));
+  }
+  .detail-bar {
+    left: 50%; right: auto;
+    width: 100%; max-width: 740px;
+    transform: translateX(-50%);
+    border: 1px solid var(--ink-line);
+    border-bottom: 0;
+    border-radius: 14px 14px 0 0;
+  }
+  body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 86px); }
+}
+
+/* ---------- 桌面：首屏左右分栏 + 卷轴题诗 ---------- */
+@media (min-width: 1100px) {
+  .shell { max-width: 1080px; }
+
+  .hero__inner { max-width: 940px; }
+  .hero__lead { max-width: 700px; margin: 0 auto; }
+  .hero__title { font-size: clamp(54px, 4.6vw, 68px); }
+
+
+  .hero__book { right: -6vw; top: 5vh; width: 44vw; opacity: 0.28; }
+
+  .topbar {
+    padding-left: max(26px, calc((100vw - 1080px) / 2));
+    padding-right: max(26px, calc((100vw - 1080px) / 2));
+  }
+
+  /* 详情：评论与相关阅读双列 */
+  #cmtList { column-count: 2; column-gap: 18px; }
+  #cmtList .cmt { break-inside: avoid; }
+  #cmtList .empty { column-span: all; }
+
+  .related {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .related h3 { grid-column: 1 / -1; margin-bottom: 2px; }
+  .related__item + .related__item { margin-top: 0; }
+}
+
+/* ---------- 大桌面：三列信息流 ---------- */
+@media (min-width: 1360px) {
+  .shell { max-width: 1280px; }
+  .hero__inner { max-width: 1080px; }
+  .feed__head { max-width: 780px; }
+  .feed__list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .topbar {
+    padding-left: max(26px, calc((100vw - 1280px) / 2));
+    padding-right: max(26px, calc((100vw - 1280px) / 2));
+  }
+}
+
+/* ---------- 桌面悬停：纸片被掀起一角 ---------- */
+@media (hover: hover) and (pointer: fine) and (min-width: 760px) {
+  .card:hover {
+    transform: translateY(-4px) rotate(var(--tilt));
+    box-shadow: 0 6px 10px rgba(93, 71, 50, 0.1), 0 26px 46px -22px rgba(93, 71, 50, 0.5);
+  }
+}
+
+/* ---------- 夜读模式下的卷轴与桌面细节 ---------- */
+
+/* ---------- 桌面端悬浮控件贴齐内容边缘 ---------- */
+@media (min-width: 1100px) {
+  .fab { right: calc((100vw - 1080px) / 2 + 24px); }
+  .back-top { right: calc((100vw - 1080px) / 2 + 26px); }
+  .theme-toggle { left: calc((100vw - 1080px) / 2 + 24px); }
+}
+@media (min-width: 1360px) {
+  .fab { right: calc((100vw - 1280px) / 2 + 24px); }
+  .back-top { right: calc((100vw - 1280px) / 2 + 26px); }
+  .theme-toggle { left: calc((100vw - 1280px) / 2 + 24px); }
+}
+
+/* ==========================================================================
+   14. 作者主页 + 卡片里的作者入口
+   ========================================================================== */
+
+/* 卡片与详情页的作者可点击 */
+.card__author-link {
+  display: flex; align-items: center; gap: 7px;
+  min-width: 0; color: inherit;
+}
+.article__author-link {
+  display: flex; align-items: center; gap: 11px;
+  min-width: 0; flex: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card__author-link:hover b,
+  .article__author-link:hover b { color: var(--vermilion); }
+}
+
+/* ---------- 作者主页 ---------- */
+body.page-author { padding: calc(var(--safe-t) + 66px) 0 calc(var(--safe-b) + 52px); }
+
+.author-top {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; gap: 10px;
+  padding: calc(var(--safe-t) + 10px) var(--pad) 10px;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+.author-top.is-solid {
+  background: rgba(247, 242, 231, 0.95);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: var(--ink-line);
+}
+.author-top__title {
+  flex: 1; text-align: center;
+  font-family: var(--serif); font-size: 15px; font-weight: 700;
+  color: var(--ink-900);
+}
+
+.profile {
+  position: relative;
+  width: calc(100% - 2 * var(--pad));
+  max-width: 760px;
+  margin: 8px auto 0;
+  padding: 22px 20px 18px;
+  background: var(--paper-2);
+  border: 1px solid var(--ink-line);
+  border-radius: 16px;
+  box-shadow: var(--sh-2);
+  overflow: hidden;
+}
+.profile::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: repeating-linear-gradient(90deg, rgba(93, 71, 50, 0.16) 0 3px, transparent 3px 11px);
+  opacity: 0.6;
+}
+.profile--skeleton { display: flex; gap: 16px; align-items: center; }
+
+.profile__head { display: flex; align-items: center; gap: 16px; }
+.profile__avatar {
+  width: 76px; height: 76px; border-radius: 50%;
+  object-fit: cover; flex: 0 0 auto;
+  background: var(--paper-3);
+  border: 3px solid rgba(255, 253, 246, 0.92);
+  box-shadow: 0 0 0 1px var(--ink-line), var(--sh-1);
+  filter: sepia(0.08);
+}
+.profile__name {
+  font-family: var(--serif);
+  font-size: 24px; font-weight: 900; letter-spacing: 0.04em;
+  color: var(--ink-900);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.profile__sub { margin-top: 5px; font-size: 12.5px; color: var(--ink-500); }
+.profile__bio {
+  margin-top: 15px;
+  font-family: var(--serif);
+  font-size: 14px; line-height: 1.95;
+  color: var(--ink-700);
+}
+.profile__stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-top: 16px;
+}
+.profile__stats li {
+  padding: 10px 4px; text-align: center;
+  border-radius: 10px;
+  background: rgba(239, 231, 214, 0.55);
+  border: 1px dashed var(--ink-line);
+}
+.profile__stats b {
+  display: block; font-family: var(--serif);
+  font-size: 19px; color: var(--ink-900);
+  font-variant-numeric: tabular-nums;
+}
+.profile__stats i { font-size: 11.5px; color: var(--ink-500); font-style: normal; }
+
+.profile__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+.profile__tag {
+  font-family: var(--serif); font-size: 12px;
+  color: var(--tea); padding: 4px 11px; border-radius: 99px;
+  background: rgba(78, 110, 93, 0.1);
+  border: 1px solid rgba(78, 110, 93, 0.24);
+}
+
+.author__body { padding-top: 24px; max-width: 760px; }
+.author__sec {
+  display: flex; align-items: baseline; gap: 10px;
+  margin: 0 0 16px;
+  font-family: var(--serif); font-size: 20px; font-weight: 900;
+  color: var(--ink-900);
+}
+.author__sec span { font-family: var(--sans); font-size: 12.5px; font-weight: 400; color: var(--ink-500); }
+
+@media (min-width: 760px) {
+  .author-top {
+    padding-left: max(20px, calc((100vw - 760px) / 2 + 20px));
+    padding-right: max(20px, calc((100vw - 760px) / 2 + 20px));
+  }
+  .profile { margin-top: 10px; }
+}
+
+/* 夜读模式 */
+html[data-theme="night"] .author-top.is-solid { background: rgba(23, 19, 15, 0.95); }
+html[data-theme="night"] .profile__stats li { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .profile__avatar { border-color: rgba(33, 28, 22, 0.9); }
+
+/* ==========================================================================
+   15. 信息流里的「评论」卡片（与书评区分的小板块）
+   ========================================================================== */
+.card--comment {
+  background: linear-gradient(180deg, #fffdf6 0%, #fbf6ea 100%);
+  border-left: 3px solid rgba(78, 110, 93, 0.42);
+}
+.card--comment::before {
+  background: repeating-linear-gradient(90deg, rgba(78, 110, 93, 0.22) 0 2px, transparent 2px 12px);
+}
+
+.comment-card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px 16px 2px;
+}
+.comment-card__main { min-width: 0; }
+
+.comment-card__head {
+  display: flex; align-items: center; gap: 8px;
+  flex-wrap: wrap;
+}
+.comment-card__head img {
+  width: 28px; height: 28px; border-radius: 50%;
+  object-fit: cover; border: 1.5px solid rgba(93, 71, 50, 0.18);
+  filter: sepia(0.1);
+}
+.comment-card__avatar-text {
+  display: grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--tea); color: #f6ecd8;
+  font-family: var(--serif); font-size: 12px; font-weight: 700;
+}
+.comment-card__badge {
+  font-family: var(--serif); font-size: 11px;
+  color: var(--tea); padding: 1px 7px; border-radius: 4px;
+  border: 1px solid rgba(78, 110, 93, 0.35);
+  letter-spacing: 0.06em;
+}
+.comment-card__time {
+  margin-left: auto;
+  font-size: 11.5px; color: var(--ink-500);
+}
+
+.comment-card__text {
+  position: relative;
+  margin-top: 10px; padding-left: 16px;
+  font-family: var(--serif);
+  font-size: 15.5px; line-height: 1.95;
+  color: var(--ink-800);
+  text-wrap: pretty;
+}
+.comment-card__text::before {
+  content: "「"; position: absolute; left: 0; top: -3px;
+  font-size: 19px; line-height: 1; color: var(--tea); opacity: 0.7;
+}
+.comment-card__text::after {
+  content: "」"; color: var(--tea); opacity: 0.55;
+}
+
+/* 评论下方：原书评的缩略与跳转 */
+.comment-card__target {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 10px;
+  background: rgba(239, 231, 214, 0.55);
+  border: 1px dashed var(--ink-line);
+  transition: background 0.25s, border-color 0.25s;
+}
+.comment-card__target:hover {
+  background: rgba(239, 231, 214, 0.85);
+  border-color: rgba(180, 69, 47, 0.35);
+}
+.comment-card__thumb {
+  width: 58px; height: 42px; border-radius: 6px;
+  object-fit: cover; flex: 0 0 auto;
+  border: 1px solid rgba(93, 71, 50, 0.16);
+  filter: sepia(0.1);
+}
+.comment-card__target-meta {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.comment-card__target-meta i {
+  font-style: normal; font-size: 10.5px;
+  color: var(--ink-500); letter-spacing: 0.04em;
+}
+.comment-card__target-meta b {
+  font-family: var(--serif); font-size: 13px; font-weight: 700;
+  color: var(--ink-800);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.comment-card__target > svg {
+  width: 16px; height: 16px; flex: 0 0 auto;
+  color: var(--ink-500);
+  transition: transform 0.25s var(--ease);
+}
+.comment-card__target:hover > svg { transform: translateX(3px); color: var(--vermilion); }
+
+.comment-card__foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 0 16px 12px;
+}
+.comment-card__hint {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; color: var(--ink-500);
+}
+.comment-card__hint svg { width: 14px; height: 14px; }
+
+/* 平板以上：评论成为横向的「引文条」，与书评卡明显区分 */
+@media (min-width: 760px) {
+  .card--comment { grid-column: 1 / -1; }
+  .comment-card {
+    flex-direction: row; align-items: flex-start;
+    gap: 24px; padding: 18px 18px 4px;
+  }
+  .comment-card__main { flex: 1; }
+  .comment-card__text { font-size: 16px; margin-top: 12px; padding-left: 18px; }
+  .comment-card__target { width: 320px; flex: 0 0 auto; }
+  .comment-card__foot { margin: 0 18px 12px; }
+}
+
+/* 夜读模式 */
+html[data-theme="night"] .card--comment {
+  background: linear-gradient(180deg, #241f18 0%, #221d17 100%);
+}
+html[data-theme="night"] .comment-card__target { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .comment-card__target:hover { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] .comment-card__head img { border-color: rgba(238, 227, 206, 0.16); }

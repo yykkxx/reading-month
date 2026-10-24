@@ -98,7 +98,11 @@
     ${tags ? `<div class="card__tags">${tags}</div>` : ''}
     ${hot ? `<ul class="card__hot">${hot}</ul>` : ''}
     <footer class="card__foot">
-      <div class="card__author">${avatar}<b>${esc(p.author.name)}${p.author.college ? ' · ' + esc(p.author.college) : ''}</b></div>
+      <div class="card__author">
+        ${p.author.id
+          ? `<a class="card__author-link" href="author.html?id=${encodeURIComponent(p.author.id)}" aria-label="查看 ${esc(p.author.name)} 的主页">${avatar}<b>${esc(p.author.name)}${p.author.college ? ' · ' + esc(p.author.college) : ''}</b></a>`
+          : `<div class="card__author-link">${avatar}<b>${esc(p.author.name)}${p.author.college ? ' · ' + esc(p.author.college) : ''}</b></div>`}
+      </div>
       <div class="card__acts">
         <button class="act act--like${p.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!p.liked}">
           ${icons.heart}<span class="n">${abbr(p.likes)}</span>
@@ -109,6 +113,61 @@
     </footer>
   </div>
 </article>`
+  }
+
+  /* ---------- 信息流中的评论卡（风格区别于书评） ---------- */
+  function commentCardHTML(c, i, kw) {
+    const href = c.target && c.target.id
+      ? `detail.html?id=${encodeURIComponent(c.target.id)}#comments`
+      : 'index.html#feed'
+
+    const avatar = c.author.avatar
+      ? `<img src="${esc(c.author.avatar)}" alt="" loading="lazy" onerror="this.remove()">`
+      : `<span class="comment-card__avatar-text">${esc((c.author.name || '读')[0])}</span>`
+
+    const name = `${esc(c.author.name)}${c.author.college ? ' · ' + esc(c.author.college) : ''}`
+
+    return `
+<article class="card card--comment" data-id="${esc(c.id)}" data-href="${href}"
+         style="animation-delay:${Math.min(i, 6) * 70}ms">
+  <div class="comment-card">
+    <div class="comment-card__main">
+      <div class="comment-card__head">
+        ${c.author.id
+          ? `<a class="card__author-link" href="author.html?id=${encodeURIComponent(c.author.id)}">${avatar}<b>${name}</b></a>`
+          : `<span class="card__author-link">${avatar}<b>${name}</b></span>`}
+        <span class="comment-card__badge">评论</span>
+        <time class="comment-card__time">${esc(c.time)}</time>
+      </div>
+      <p class="comment-card__text">${hl(c.content, kw)}</p>
+    </div>
+
+    <a class="comment-card__target" href="${href}" aria-label="打开这篇书评：${esc(c.target ? c.target.title : '')}">
+      <img class="comment-card__thumb dev-pending" src="${esc(c.target ? c.target.cover : '')}" alt="" loading="lazy">
+      <span class="comment-card__target-meta">
+        <i>TA 评论了这篇书评</i>
+        <b>${esc(c.target ? c.target.title : '')}</b>
+      </span>
+      ${icons.arrow}
+    </a>
+  </div>
+
+  <footer class="card__foot comment-card__foot">
+    <span class="comment-card__hint">${icons.comment} 去书评下接着聊</span>
+    <div class="card__acts">
+      <button class="act act--like${c.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!c.liked}">
+        ${icons.heart}<span class="n">${abbr(c.likes)}</span>
+      </button>
+    </div>
+  </footer>
+</article>`
+  }
+
+  /* 信息流统一入口：书评 / 评论 */
+  function feedItemHTML(item, i, kw) {
+    return item && item.type === 'comment'
+      ? commentCardHTML(item, i, kw)
+      : cardHTML(item, i, kw)
   }
 
   /* ---------- 骨架屏 ---------- */
@@ -221,8 +280,15 @@
         <span>${icons.eye}${abbr(d.views)} 阅读</span>
       </div>
       <div class="article__author">
-        <img src="${esc(d.author.avatar || '')}" alt="" onerror="this.remove()">
-        <div><b>${esc(d.author.name)}</b><i>${esc(d.author.college || '校园读者')}</i></div>
+        ${d.author.id
+          ? `<a class="article__author-link" href="author.html?id=${encodeURIComponent(d.author.id)}" aria-label="查看 ${esc(d.author.name)} 的主页">
+               <img src="${esc(d.author.avatar || '')}" alt="" onerror="this.remove()">
+               <div><b>${esc(d.author.name)}</b><i>${esc(d.author.college || '校园读者')}</i></div>
+             </a>`
+          : `<div class="article__author-link">
+               <img src="${esc(d.author.avatar || '')}" alt="" onerror="this.remove()">
+               <div><b>${esc(d.author.name)}</b><i>${esc(d.author.college || '校园读者')}</i></div>
+             </div>`}
         <button class="follow" id="btnFollow" type="button">+ 关注</button>
       </div>
     </div>
@@ -265,8 +331,40 @@
 </div>`.trim()
   }
 
+  /* ---------- 作者主页资料卡 ---------- */
+  function profileHTML(u) {
+    const st = u.stats || {}
+    const tags = (u.tags || []).slice(0, 5)
+      .map((t) => `<a class="profile__tag" href="index.html?tag=${encodeURIComponent(t)}#feed" data-tag="${esc(t)}"># ${esc(t)}</a>`).join('')
+
+    return `
+<header class="author-top is-solid" id="authorTop">
+  <button class="icon-btn" id="backBtn" type="button" aria-label="返回">${icons.back}</button>
+  <span class="author-top__title">作者主页</span>
+  <button class="icon-btn" id="shareBtn" type="button" aria-label="分享">${icons.share}</button>
+</header>
+
+<section class="profile">
+  <div class="profile__head">
+    <img class="profile__avatar" src="${esc(u.avatar || '')}" alt="${esc(u.name)} 的头像" onerror="this.remove()">
+    <div class="profile__id">
+      <h1 class="profile__name">${esc(u.name)}</h1>
+      <p class="profile__sub">${esc(u.college || '校园读者')}${u.joined ? ' · ' + esc(u.joined) + ' 加入' : ''}</p>
+    </div>
+  </div>
+  ${u.bio ? `<p class="profile__bio">${esc(u.bio)}</p>` : ''}
+  <ul class="profile__stats">
+    <li><b>${abbr(st.posts)}</b><i>篇感受</i></li>
+    <li><b>${abbr(st.comments)}</b><i>条评论</i></li>
+    <li><b>${abbr(st.likes)}</b><i>获赞</i></li>
+  </ul>
+  ${tags ? `<div class="profile__tags">${tags}</div>` : ''}
+</section>`
+  }
+
   window.UI = {
     esc, abbr, hl, timeAgo, icons,
-    cardHTML, skeletonHTML, emptyHTML, cmtHTML, detailHTML, detailSkeleton, bindLike,
+    cardHTML, commentCardHTML, feedItemHTML, skeletonHTML, emptyHTML, cmtHTML,
+    detailHTML, detailSkeleton, profileHTML, bindLike,
   }
 })()

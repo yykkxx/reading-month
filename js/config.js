@@ -18,6 +18,10 @@ window.READING_MONTH = {
     feed: 'https://api.example.com/v1/reading/posts?page={page}&size={size}&cat={cat}',
     // 详情：{id} 会被自动替换
     detail: 'https://api.example.com/v1/reading/posts/{id}',
+    // 作者主页：{id} 会被自动替换
+    user: 'https://api.example.com/v1/reading/users/{id}',
+    // 作者的作品列表
+    userPosts: 'https://api.example.com/v1/reading/users/{id}/posts?page={page}&size={size}',
     // 点赞上报（可选，留空则只做本地乐观更新）
     like: '',
     // 评论提交（可选）
@@ -31,6 +35,7 @@ window.READING_MONTH = {
   MOCK: {
     feed: 'mock/api/posts/page-{page}.json',
     detail: 'mock/api/detail/{id}.json',
+    user: 'mock/api/users/{id}.json',
   },
 
   /* 右下角「提交投稿」跳转的地址 */

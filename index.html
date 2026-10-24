@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261025">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23a63a2b'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%23f6ecd8' font-family='serif'%3E书%3C/text%3E%3C/svg%3E">
 </head>
 <body class="page-home">
@@ -69,47 +69,53 @@
   </div>
 
   <div class="hero__inner">
-    <p class="hero__badge reveal" style="--d:.05s">
-      <span class="seal-seal" aria-hidden="true">读书月</span>
-      <span class="badge-text">2026 校园读书月 · 第 12 届</span>
-    </p>
+    <div class="hero__lead">
+      <p class="hero__badge reveal" style="--d:.05s">
+        <span class="seal-seal" aria-hidden="true">读书月</span>
+        <span class="badge-text">2026 校园读书月 · 第 12 届</span>
+      </p>
 
-    <h1 class="hero__title reveal" style="--d:.15s">
-      <span class="line">读一本书</span>
-      <span class="line">遇见<span class="brush">一个世界</span></span>
-      <svg class="title-brush" viewBox="0 0 220 16" aria-hidden="true" preserveAspectRatio="none">
-        <path d="M4 10 C60 4 160 4 216 8" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" opacity=".55"/>
-      </svg>
-    </h1>
+      <h1 class="hero__title reveal" style="--d:.15s">
+        <span class="line">读一本书</span>
+        <span class="line">遇见<span class="brush">一个世界</span></span>
+        <svg class="title-brush" viewBox="0 0 220 16" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M4 10 C60 4 160 4 216 8" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" opacity=".55"/>
+        </svg>
+      </h1>
 
-    <p class="hero__sub reveal" style="--d:.25s">
-      4 月 23 日 — 5 月 23 日 · 全校共读计划<br>
-      <em>你读过的每一页，都有人正在读。</em>
-    </p>
+      <p class="hero__sub reveal" style="--d:.25s">
+        4 月 23 日 — 5 月 23 日 · 全校共读计划<br>
+        <em>你读过的每一页，都有人正在读。</em>
+      </p>
 
-    <p class="countdown__label reveal" style="--d:.3s" id="cdLabel">距本届读书月结束</p>
+      <p class="hero__intro reveal" style="--d:.3s">
+        读书月为期一个月：名家讲座、班级共读、深夜朗读会与书评征集同步进行。
+        选一本书读完，把心里的话贴到这面墙上——你写下的那一页，也会被另一个人读到。
+      </p>
 
-    <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动倒计时">
-      <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
-      <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
-      <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
-      <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
+      <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动倒计时">
+        <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
+        <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
+        <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
+        <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
+      </div>
+
+      <ul class="stats reveal" style="--d:.45s">
+        <li class="stat-note"><b data-count="128">0</b><i>场活动</i><span class="fold"></span></li>
+        <li class="stat-note stat-note--r"><b data-count="12480">0</b><i>同学参与</i><span class="fold"></span></li>
+        <li class="stat-note"><b data-count="96">0</b><i>篇读书感受</i><span class="fold"></span></li>
+      </ul>
+
+      <div class="hero__actions reveal" style="--d:.55s">
+        <a class="btn btn--primary" href="#feed" id="ctaStart">
+          <span class="btn__seal" aria-hidden="true">阅</span>
+          进入感受墙
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#intro" id="ctaRule">活动规则</a>
+      </div>
     </div>
 
-    <ul class="stats reveal" style="--d:.45s">
-      <li class="stat-note"><b data-count="128">0</b><i>场活动</i><span class="fold"></span></li>
-      <li class="stat-note stat-note--r"><b data-count="12480">0</b><i>同学参与</i><span class="fold"></span></li>
-      <li class="stat-note"><b data-count="96">0</b><i>篇读书感受</i><span class="fold"></span></li>
-    </ul>
-
-    <div class="hero__actions reveal" style="--d:.55s">
-      <a class="btn btn--primary" href="#feed" id="ctaStart">
-        <span class="btn__seal" aria-hidden="true">阅</span>
-        进入感受墙
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="btn btn--ghost" href="#intro" id="ctaRule">活动规则</a>
-    </div>
   </div>
 
   <button class="scroll-hint" id="scrollHint" type="button" aria-label="下滑进入主界面">
@@ -210,11 +216,11 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/theme.js"></script>
-<script src="js/config.js"></script>
-<script src="js/api.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/effects.js"></script>
-<script src="js/app.js"></script>
+<script src="js/theme.js?v=20261025"></script>
+<script src="js/config.js?v=20261025"></script>
+<script src="js/api.js?v=20261025"></script>
+<script src="js/ui.js?v=20261025"></script>
+<script src="js/effects.js?v=20261025"></script>
+<script src="js/app.js?v=20261025"></script>
 </body>
 </html>

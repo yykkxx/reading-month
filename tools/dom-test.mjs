@@ -16,7 +16,7 @@ try {
   console.log('\n⚠️  未安装 jsdom，跳过 DOM 测试。安装后再跑：\n   npm i -D jsdom\n')
   process.exit(0)
 }
-const JS = ['js/theme.js', 'js/config.js', 'js/api.js', 'js/ui.js', 'js/effects.js', 'js/app.js', 'js/detail.js']
+const JS = ['js/theme.js', 'js/config.js', 'js/api.js', 'js/ui.js', 'js/effects.js', 'js/app.js', 'js/detail.js', 'js/author.js']
 
 let failures = 0
 function check(cond, label, extra = '') {
@@ -92,7 +92,11 @@ await wait(4500)
 const { document } = home.window
 const cards = document.querySelectorAll('#feedList .card')
 check(cards.length > 0, '信息流渲染出卡片', cards.length + ' 张')
-check(document.querySelectorAll('#feedList .card__title').length === cards.length, '每张卡片都有标题')
+check(document.querySelectorAll('#feedList .card:not(.card--comment) .card__title').length === document.querySelectorAll('#feedList .card:not(.card--comment)').length, '每篇书评都有标题')
+check(document.querySelectorAll('#feedList .card--comment').length > 0, '信息流里混有评论卡', document.querySelectorAll('#feedList .card--comment').length + ' 条')
+check(!!document.querySelector('#feedList .comment-card__target[href*="detail.html?id="]'), '评论卡带书评跳转链接')
+check(!!document.querySelector('#feedList .comment-card__thumb'), '评论卡带书评缩略图')
+check(!!document.querySelector('#feedList .card__author-link[href*="author.html?id="]'), '卡片作者可点进主页')
 check(document.querySelectorAll('#feedList img.dev-pending').length === 0, '封面显影类已移除')
 check(/^\d{2,3}$/.test(document.querySelector('#cdDay').textContent), '倒计时天数正常', document.querySelector('#cdDay').textContent)
 check(document.querySelectorAll('#chips .chip').length >= 10, '分类筛选已渲染', document.querySelectorAll('#chips .chip').length + ' 个')
@@ -175,6 +179,22 @@ dd.querySelector('#btnSend').dispatchEvent(new detail.window.MouseEvent('click',
 check(dd.querySelectorAll('#cmtList .cmt').length >= 4, '新评论已插入')
 
 check(detail.errors.length === 0, '详情页无运行时错误', detail.errors.slice(0, 2).join(' | '))
+
+/* ======================================================================
+ * 作者主页
+ * ==================================================================== */
+console.log('\n【作者主页】')
+const authorDom = makeDom('author.html', 'http://127.0.0.1:4173/author.html?id=u03')
+loadScripts(authorDom.window, JS.filter((f) => !f.endsWith('app.js') && !f.endsWith('detail.js')))
+await wait(1200)
+
+const ad = authorDom.window.document
+check(!!ad.querySelector('.profile__name'), '作者昵称已渲染', ad.querySelector('.profile__name')?.textContent)
+check(ad.querySelectorAll('.profile__stats li').length === 3, '资料卡三项统计')
+check(ad.querySelectorAll('#authorPosts .card').length > 0, '作者作品已渲染', ad.querySelectorAll('#authorPosts .card').length + ' 篇')
+check(!!ad.querySelector('#backBtn'), '有返回按钮')
+check(ad.title.includes('读书月'), '页面标题已更新')
+check(authorDom.errors.length === 0, '作者页无运行时错误', authorDom.errors.slice(0, 2).join(' | '))
 
 console.log(failures === 0 ? '\n✅ DOM 测试全部通过\n' : `\n❌ ${failures} 项失败\n`)
 process.exit(failures === 0 ? 0 : 1)
