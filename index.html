@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#f6f1e6">
 <meta name="description" content="2026 校园读书月 · 读一本书，遇见一个世界。全校共读计划、读书感受墙、投稿通道。">
 <meta name="format-detection" content="telephone=no">
+<script>try{if(localStorage.getItem('rm-theme')==='night')document.documentElement.dataset.theme='night'}catch(e){}</script>
 <title>2026 校园读书月 · 阅见世界</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,8 +136,14 @@
         读书感受墙 · 共读笔记
         <svg class="eyebrow-rule eyebrow-rule--r" viewBox="0 0 48 2" aria-hidden="true"><path d="M0 1h48" stroke="currentColor" stroke-width="2"/></svg>
       </p>
-      <h2 class="feed__title">读书感受墙</h2>
+      <h2 class="feed__title">读书感受墙
+        <svg class="feed__rule" viewBox="0 0 200 10" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M3 6 C48 2 96 2 128 5 C158 8 180 7 197 4" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".55"/>
+        </svg>
+      </h2>
       <p class="feed__desc">来自全校同学的阅读笔记 · 内容由外部内容 API 提供</p>
+
+      <p class="feed__quote">「读书，是在别人的思想里，搭一间自己的屋子。」</p>
 
       <!-- 搜索 -->
       <form class="search" id="searchForm" role="search" autocomplete="off">
@@ -196,8 +203,14 @@
   <span class="fab__txt">提交投稿</span>
 </a>
 
+<!-- 夜读模式切换 -->
+<button class="theme-toggle" type="button" aria-label="切换到夜读模式" aria-pressed="false" title="夜读模式">
+  <span class="theme-toggle__ico" aria-hidden="true">☾</span>
+</button>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="js/theme.js"></script>
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/ui.js"></script>

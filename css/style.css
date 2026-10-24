@@ -1270,3 +1270,168 @@ img.dev-pending {
     to   { transform: scale(1) translateY(0); }
   }
 }
+
+/* ==========================================================================
+   12. 夜读模式 + 主题开关 + 书卷细节
+   ========================================================================== */
+
+/* ---------- 主题开关（左下角，拇指可达） ---------- */
+.theme-toggle {
+  position: fixed; z-index: 56;
+  left: 14px; bottom: calc(var(--safe-b) + 18px);
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--ink-700);
+  background: var(--paper-2);
+  border: 1px solid var(--ink-line);
+  box-shadow: var(--sh-2);
+  transition: transform 0.22s var(--ease), color 0.25s, background 0.3s;
+}
+.theme-toggle__ico { font-size: 18px; line-height: 1; }
+.theme-toggle:active { transform: scale(0.9); }
+.theme-toggle:hover { color: var(--vermilion-2); }
+html[data-theme="night"] .theme-toggle { color: var(--amber); }
+
+/* ---------- 夜读配色 ---------- */
+html[data-theme="night"] {
+  color-scheme: dark;
+  --paper: #17130f;
+  --paper-2: #211c16;
+  --paper-3: #2a241c;
+  --paper-edge: rgba(235, 224, 204, 0.14);
+
+  --ink-900: #f2e8d7;
+  --ink-800: #ded2bd;
+  --ink-700: #c8bba6;
+  --ink-600: #ac9f89;
+  --ink-500: #9a8d77;
+  --ink-line: rgba(238, 227, 206, 0.16);
+
+  --vermilion: #e07a5f;
+  --vermilion-2: #b04a33;
+  --tea: #86ab93;
+  --amber: #dca862;
+  --like: #e8795f;
+
+  --sh-1: 0 1px 2px rgba(0, 0, 0, 0.45), 0 6px 16px -10px rgba(0, 0, 0, 0.7);
+  --sh-2: 0 2px 4px rgba(0, 0, 0, 0.5), 0 16px 32px -16px rgba(0, 0, 0, 0.8);
+}
+
+html[data-theme="night"] body { background: var(--paper); }
+
+html[data-theme="night"] body::before {
+  background:
+    radial-gradient(900px 460px at 88% -8%, rgba(201, 138, 45, 0.1), transparent 62%),
+    radial-gradient(760px 520px at -12% 32%, rgba(78, 110, 93, 0.12), transparent 60%),
+    radial-gradient(680px 480px at 104% 82%, rgba(166, 58, 43, 0.1), transparent 58%),
+    linear-gradient(180deg, #1a1611 0%, #16120e 58%, #120f0c 100%);
+}
+html[data-theme="night"] body::after { opacity: 0.32; }
+
+html[data-theme="night"] .topbar { background: rgba(23, 19, 15, 0.92); }
+html[data-theme="night"] .feed {
+  background: linear-gradient(180deg, rgba(30, 25, 19, 0.96), rgba(25, 20, 16, 0.96) 30%, rgba(28, 23, 18, 0.8));
+  box-shadow: 0 -1px 0 rgba(238, 227, 206, 0.1), 0 -20px 40px -28px rgba(0, 0, 0, 0.8);
+}
+html[data-theme="night"] .hero__book { color: rgba(226, 210, 180, 0.4); }
+html[data-theme="night"] .hero__hill--f {
+  background: linear-gradient(180deg, rgba(134, 171, 147, 0.14), rgba(78, 110, 93, 0.1) 68%, transparent);
+}
+html[data-theme="night"] .hero__hill--b {
+  background: linear-gradient(180deg, rgba(220, 168, 98, 0.12), transparent 74%);
+}
+html[data-theme="night"] .page-divider { color: rgba(238, 227, 206, 0.22); }
+html[data-theme="night"] .page-divider__rule {
+  background: linear-gradient(90deg, transparent, rgba(238, 227, 206, 0.2), transparent);
+}
+html[data-theme="night"] .stat-note { background: linear-gradient(180deg, #262019, #1f1a14); }
+html[data-theme="night"] .stat-note::after {
+  background: linear-gradient(135deg, transparent 50%, rgba(238, 227, 206, 0.16) 50%);
+}
+html[data-theme="night"] .countdown__item::before { background: rgba(238, 227, 206, 0.2); }
+html[data-theme="night"] .chip { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .filter-summary { background: #221c16; }
+html[data-theme="night"] .search__clear { background: rgba(238, 227, 206, 0.12); }
+html[data-theme="night"] .card__media { border-color: rgba(238, 227, 206, 0.12); }
+html[data-theme="night"] .card__hot { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .card__hot li,
+html[data-theme="night"] .card__excerpt { color: var(--ink-700); }
+html[data-theme="night"] .card__author img { border-color: rgba(238, 227, 206, 0.16); }
+html[data-theme="night"] .card__foot { border-top-color: rgba(238, 227, 206, 0.16); }
+html[data-theme="night"] .act:active { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] .feed__api code { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] .sk {
+  background: linear-gradient(90deg, rgba(238, 227, 206, 0.05) 25%, rgba(238, 227, 206, 0.12) 37%, rgba(238, 227, 206, 0.05) 63%);
+  background-size: 400% 100%;
+}
+html[data-theme="night"] .empty__art { color: rgba(226, 210, 180, 0.5); }
+html[data-theme="night"] .icon-btn { background: rgba(33, 28, 22, 0.92); }
+html[data-theme="night"] .article__hero {
+  box-shadow: 0 0 0 1px rgba(238, 227, 206, 0.12), 0 18px 34px -20px rgba(0, 0, 0, 0.9);
+}
+html[data-theme="night"] .prose blockquote { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .cmt { background: #241e17; border-color: rgba(238, 227, 206, 0.14); }
+html[data-theme="night"] .cmt:nth-child(4n+2) { background: #1e2119; }
+html[data-theme="night"] .cmt:nth-child(4n+3) { background: #241c17; }
+html[data-theme="night"] .cmt:nth-child(4n+4) { background: #221d20; }
+html[data-theme="night"] .detail-top.is-solid { background: rgba(23, 19, 15, 0.95); }
+html[data-theme="night"] .detail-bar { background: rgba(23, 19, 15, 0.96); }
+html[data-theme="night"] .toast { background: rgba(32, 26, 20, 0.97); }
+html[data-theme="night"] .filter-summary b,
+html[data-theme="night"] .card__hot b,
+html[data-theme="night"] .topbar__link.is-active { color: var(--vermilion); }
+html[data-theme="night"] .hero__badge { background: rgba(238, 227, 206, 0.07); }
+html[data-theme="night"] .btn--primary {
+  background: linear-gradient(140deg, #b04a33 0%, #9d3f2b 62%, #8f3626 100%);
+}
+html[data-theme="night"] .feed::before { background: rgba(238, 227, 206, 0.28); }
+html[data-theme="night"] .article__hero img { filter: sepia(0.08) saturate(0.88) brightness(0.92); }
+
+/* ---------- 书卷细节 ---------- */
+
+/* 页眉题记 */
+.feed__quote {
+  margin: 14px auto 0;
+  max-width: 30em;
+  font-family: var(--serif);
+  font-size: 13px; letter-spacing: 0.04em;
+  color: var(--ink-500);
+  text-align: center; line-height: 1.9;
+}
+
+/* 标题下的手绘横线：随滚动入场画出来 */
+.feed__title { position: relative; }
+.feed__rule {
+  display: block;
+  width: 132px; height: 10px;
+  margin: 8px auto 0;
+  color: var(--vermilion);
+  opacity: 0.75;
+}
+.feed__rule path {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  transition: stroke-dashoffset 1.2s var(--ease) 0.15s;
+}
+.feed__head.is-visible .feed__rule path { stroke-dashoffset: 0; }
+
+/* 印章落款：轻轻按下去 */
+.seal-seal { animation: stampIn 0.7s var(--ease) 0.35s both; }
+@keyframes stampIn {
+  0%   { transform: scale(1.55) rotate(-7deg); opacity: 0; }
+  55%  { transform: scale(0.97) rotate(1deg); opacity: 1; }
+  75%  { transform: scale(1.02) rotate(-0.5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* 中文正文首行缩进（首段有首字下沉，不缩进） */
+.prose p { text-indent: 2em; }
+.prose p:first-of-type { text-indent: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .feed__rule path { stroke-dashoffset: 0 !important; transition: none !important; }
+  .seal-seal { animation: none !important; }
+}
+
+/* 详情页底部有操作条，主题开关上移，避免遮住输入框 */
+body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }

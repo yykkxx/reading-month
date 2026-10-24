@@ -16,7 +16,7 @@ try {
   console.log('\n⚠️  未安装 jsdom，跳过 DOM 测试。安装后再跑：\n   npm i -D jsdom\n')
   process.exit(0)
 }
-const JS = ['js/config.js', 'js/api.js', 'js/ui.js', 'js/effects.js', 'js/app.js', 'js/detail.js']
+const JS = ['js/theme.js', 'js/config.js', 'js/api.js', 'js/ui.js', 'js/effects.js', 'js/app.js', 'js/detail.js']
 
 let failures = 0
 function check(cond, label, extra = '') {
@@ -86,7 +86,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms))
  * ==================================================================== */
 console.log('\n【首页】')
 const home = makeDom('index.html', 'http://127.0.0.1:4173/index.html')
-loadScripts(home.window, JS.slice(0, 5))
+loadScripts(home.window, JS.slice(0, 6))
 await wait(4500)
 
 const { document } = home.window
@@ -99,6 +99,20 @@ check(document.querySelectorAll('#chips .chip').length >= 10, '分类筛选已�
 check(document.querySelectorAll('#tags .chip').length >= 8, '标签筛选已渲染')
 check(document.querySelector('#filterSummary').hidden === true, '默认不显示筛选摘要')
 check(document.querySelector('#feedStatus').className.includes('end') || document.querySelector('#feedStatus').hidden, '加载状态正常（已到底或隐藏）', document.querySelector('#feedStatus').className)
+
+/* 页眉题记与手绘横线 */
+check(!!document.querySelector('.feed__quote'), '页眉题记存在')
+check(!!document.querySelector('.feed__rule path'), '标题手绘横线存在')
+check(document.querySelector('.feed__head').classList.contains('is-visible'), '页眉入场已触发')
+
+/* 夜读模式 */
+const toggle = document.querySelector('.theme-toggle')
+toggle.dispatchEvent(new home.window.MouseEvent('click', { bubbles: true }))
+check(document.documentElement.getAttribute('data-theme') === 'night', '夜读模式可开启')
+check(home.window.localStorage.getItem('rm-theme') === 'night', '主题偏好已记住')
+check(toggle.getAttribute('aria-pressed') === 'true', '开关 aria 状态同步')
+toggle.dispatchEvent(new home.window.MouseEvent('click', { bubbles: true }))
+check(!document.documentElement.hasAttribute('data-theme'), '可切回日间模式')
 
 /* 点赞 */
 const likeBtn = document.querySelector('#feedList .act--like')
@@ -149,6 +163,7 @@ check(!!dd.querySelector('#prose p'), '正文已渲染')
 check(dd.querySelectorAll('#cmtList .cmt').length >= 3, '评论便签已渲染', dd.querySelectorAll('#cmtList .cmt').length + ' 张')
 check(!!dd.querySelector('#readProgress'), '阅读进度条存在')
 check(!!dd.querySelector('#barLike') && !!dd.querySelector('#btnSend'), '底部操作条完整')
+check(!!dd.querySelector('.theme-toggle'), '详情页也有主题开关')
 check(dd.body.classList.contains('is-ready'), '正文淡入状态已激活')
 check(!!dd.querySelector('.article__meta')?.textContent.match(/分钟读完/), '显示阅读时长')
 check(detail.window.document.title.includes('读书月'), '页面标题已更新')
