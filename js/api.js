@@ -172,7 +172,9 @@
       loadAllMock().catch(() => {}) // 后台预热，不阻塞首屏
       const res = await request(fill(CFG.MOCK.feed, { page: 1 }))
       const d = res.data || res
+      /* 与全量缓存使用同一排序口径，避免首屏与后续分页边界错位 */
       const list = (d.list || d.posts || []).map(normalizePost)
+        .sort((a, b) => b.timestamp - a.timestamp)
       return { list, hasMore: (d.hasMore ?? list.length > 0), total: d.total ?? list.length }
     }
     const filtered = applyQuery(await loadAllMock(), query)

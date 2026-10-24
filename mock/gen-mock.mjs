@@ -171,10 +171,13 @@ function fmtTime(ts) {
 }
 
 const posts = []
+let cursor = BASE
 for (let i = 0; i < TOTAL; i++) {
   const id = 'post-' + String(i + 1).padStart(3, '0')
   const book = BOOKS[i % BOOKS.length]
-  const ts = BASE - i * int(35, 260) * 60 * 1000
+  /* 时间游标逐步回退：保证列表严格按时间倒序，分页边界稳定 */
+  cursor -= int(35, 260) * 60 * 1000
+  const ts = cursor
   const commentCount = int(3, 9)
   const comments = Array.from({ length: commentCount }, (_, k) => ({
     id: `${id}-c${k + 1}`,

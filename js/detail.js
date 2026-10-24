@@ -145,7 +145,7 @@
       list.insertAdjacentHTML('afterbegin', UI.cmtHTML(c))
       list.firstElementChild.classList.add('cmt')
       API.reportComment(pid, text)
-      toast('评论已发布（当前为本地测试）')
+      toast('评论已贴上留言墙（当前为本地测试）')
     }
     $('#btnSend').addEventListener('click', () => {
       const v = input.value.trim()
@@ -215,7 +215,7 @@
     ensure('og:description').setAttribute('content', desc)
 
     const tc = document.querySelector('meta[name="theme-color"]')
-    if (tc) tc.setAttribute('content', CFG.SOURCE === 'remote' ? '#141333' : '#0b0a1c')
+    if (tc) tc.setAttribute('content', '#f6f1e6')
   }
 
   boot()

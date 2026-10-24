@@ -42,11 +42,11 @@
 
   /* ---------- 数据源标签 ---------- */
   const srcLabel = CFG.SOURCE === 'remote' ? '远程 API' : '本地 Mock API'
-  elApiHint.innerHTML = `数据来源：${srcLabel} · <code>mock/api/posts/page-N.json</code> · 免后端，可在 <code>config.js</code> 切换远程接口`
+  elApiHint.innerHTML = `数据来源：${srcLabel} · <code>mock/api/posts/page-N.json</code> · 纯静态，可在 <code>config.js</code> 切换远程接口`
 
   /* 空态 */
   const emptyHTML = `
-<div class="empty"><b>🔍</b>没有找到符合条件的读书感受<br><small style="font-size:12px">换个关键词，或放宽筛选条件试试</small><br><button class="chip" id="chipReset" style="margin-top:12px">重置全部筛选</button></div>`
+<div class="empty"><b>📚</b>书架上没有找到符合条件的读书感受<br><small style="font-size:12px">换个关键词，或放宽筛选条件试试</small><br><button class="chip" id="chipReset" style="margin-top:12px">重置全部筛选</button></div>`
 
   /* =========================================================
    * 一、倒计时 + 数字滚动
@@ -171,11 +171,11 @@
   function setStatus(mode) {
     if (mode === 'loading') {
       elStatus.className = 'feed__status'
-      elStatus.innerHTML = `<span class="spinner" aria-hidden="true"></span><span>正在加载更多感受…</span>`
+      elStatus.innerHTML = `<span class="spinner" aria-hidden="true"></span><span>正在翻下一页…</span>`
       elStatus.hidden = false
     } else if (mode === 'end') {
       elStatus.className = 'feed__status is-end'
-      elStatus.innerHTML = `<span>🌙 到底啦 · 共 ${state.shown} 篇感受，欢迎提交你的投稿</span>`
+      elStatus.innerHTML = `<span>❦ 这一册翻完了 · 共 ${state.shown} 篇感受</span>`
       elStatus.hidden = false
     } else {
       elStatus.hidden = true
