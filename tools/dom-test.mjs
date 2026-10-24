@@ -1,0 +1,165 @@
+/**
+ * 真实 DOM 冒烟测试（依赖 jsdom，可选）：
+ *   npm i -D jsdom && node tools/dom-test.mjs
+ * 覆盖：首页渲染、显影、倒计时、分类/标签、排序、搜索、空态、点赞、详情页、发评论
+ */
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+
+let JSDOM, VirtualConsole
+try {
+  ({ JSDOM, VirtualConsole } = await import('jsdom'))
+} catch (e) {
+  console.log('\n⚠️  未安装 jsdom，跳过 DOM 测试。安装后再跑：\n   npm i -D jsdom\n')
+  process.exit(0)
+}
+const JS = ['js/config.js', 'js/api.js', 'js/ui.js', 'js/effects.js', 'js/app.js', 'js/detail.js']
+
+let failures = 0
+function check(cond, label, extra = '') {
+  if (cond) console.log('  ✓ ' + label)
+  else { failures++; console.error('  ✗ ' + label + (extra ? ' → ' + extra : '')) }
+}
+
+function makeDom(htmlFile, url) {
+  const html = fs.readFileSync(path.join(ROOT, htmlFile), 'utf8')
+    .replace(/<script[^>]*><\/script>/g, '')           // 不自动执行，手动按顺序 eval
+    .replace(/<link[^>]*fonts\.googleapis[^>]*>/g, '') // 跳过外网字体
+
+  const errors = []
+  const vc = new VirtualConsole()
+  vc.on('jsdomError', (e) => {
+    const msg = String(e && e.message || e)
+    if (/Could not load|Not implemented|navigation/i.test(msg)) return
+    errors.push(msg)
+  })
+  vc.on('error', (m) => errors.push('console.error: ' + m))
+
+  const dom = new JSDOM(html, {
+    url,
+    pretendToBeVisual: true,
+    runScripts: 'outside-only',
+    virtualConsole: vc,
+  })
+  const { window } = dom
+
+  // fetch → 本地文件
+  window.fetch = async (input) => {
+    const u = new URL(String(input), window.location.href)
+    const fp = path.join(ROOT, decodeURIComponent(u.pathname))
+    if (!fs.existsSync(fp)) return new Response('not found', { status: 404 })
+    return new Response(fs.readFileSync(fp), { status: 200, headers: { 'content-type': 'application/json' } })
+  }
+  window.AbortController = AbortController
+  window.Response = Response
+
+  // canvas 2D 上下文桩
+  window.HTMLCanvasElement.prototype.getContext = function () {
+    return {
+      setTransform() {}, clearRect() {}, save() {}, restore() {},
+      translate() {}, rotate() {}, scale() {}, beginPath() {}, arc() {},
+      fill() {}, set fillStyle(v) {}, get fillStyle() { return '' },
+    }
+  }
+
+  // jsdom 缺失的滚动 API
+  window.scrollTo = () => {}
+  window.HTMLElement.prototype.scrollIntoView = () => {}
+
+  return { dom, window, errors }
+}
+
+function loadScripts(window, files) {
+  for (const f of files) {
+    const code = fs.readFileSync(path.join(ROOT, f), 'utf8')
+    window.eval(code + '\n//# sourceURL=' + f)
+  }
+}
+
+const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+
+/* ======================================================================
+ * 首页
+ * ==================================================================== */
+console.log('\n【首页】')
+const home = makeDom('index.html', 'http://127.0.0.1:4173/index.html')
+loadScripts(home.window, JS.slice(0, 5))
+await wait(4500)
+
+const { document } = home.window
+const cards = document.querySelectorAll('#feedList .card')
+check(cards.length > 0, '信息流渲染出卡片', cards.length + ' 张')
+check(document.querySelectorAll('#feedList .card__title').length === cards.length, '每张卡片都有标题')
+check(document.querySelectorAll('#feedList img.dev-pending').length === 0, '封面显影类已移除')
+check(/^\d{2,3}$/.test(document.querySelector('#cdDay').textContent), '倒计时天数正常', document.querySelector('#cdDay').textContent)
+check(document.querySelectorAll('#chips .chip').length >= 10, '分类筛选已渲染', document.querySelectorAll('#chips .chip').length + ' 个')
+check(document.querySelectorAll('#tags .chip').length >= 8, '标签筛选已渲染')
+check(document.querySelector('#filterSummary').hidden === true, '默认不显示筛选摘要')
+check(document.querySelector('#feedStatus').className.includes('end') || document.querySelector('#feedStatus').hidden, '加载状态正常（已到底或隐藏）', document.querySelector('#feedStatus').className)
+
+/* 点赞 */
+const likeBtn = document.querySelector('#feedList .act--like')
+const before = likeBtn.querySelector('.n').textContent
+likeBtn.dispatchEvent(new home.window.MouseEvent('click', { bubbles: true, cancelable: true }))
+const after = likeBtn.querySelector('.n').textContent
+check(likeBtn.classList.contains('is-liked'), '点赞状态切换')
+check(before !== after, '点赞数变化', before + ' → ' + after)
+
+/* 排序 */
+const hotChip = document.querySelector('#sorts .chip[data-sort="hot"]')
+hotChip.dispatchEvent(new home.window.MouseEvent('click', { bubbles: true }))
+await wait(900)
+check(hotChip.classList.contains('is-on'), '排序按钮选中')
+check(!document.querySelector('#filterSummary').hidden, '排序后显示筛选摘要')
+const titlesAfterSort = [...document.querySelectorAll('#feedList .card__title')].map((n) => n.textContent)
+check(titlesAfterSort.length > 0, '排序后仍有内容', titlesAfterSort.length + ' 条')
+
+/* 搜索 */
+const input = document.querySelector('#searchInput')
+input.value = '三体'
+input.dispatchEvent(new home.window.Event('input', { bubbles: true }))
+await wait(1200)
+const searchTitles = [...document.querySelectorAll('#feedList .card__title')].map((n) => n.textContent)
+check(searchTitles.length > 0 && searchTitles.length < titlesAfterSort.length, '搜索结果收窄', searchTitles.length + ' 条')
+check(document.querySelectorAll('#feedList mark').length > 0, '关键词高亮存在')
+
+/* 搜索无结果 → 空态插画 */
+input.value = '绝不可能存在的关键词zzz'
+input.dispatchEvent(new home.window.Event('input', { bubbles: true }))
+await wait(1200)
+check(!!document.querySelector('#feedList .empty'), '无结果时显示空态')
+check(!!document.querySelector('#feedList .empty__art'), '空态带插画')
+
+check(home.errors.length === 0, '首页无运行时错误', home.errors.slice(0, 2).join(' | '))
+
+/* ======================================================================
+ * 详情页
+ * ==================================================================== */
+console.log('\n【详情页】')
+const detail = makeDom('detail.html', 'http://127.0.0.1:4173/detail.html?id=post-005')
+loadScripts(detail.window, JS.filter((f) => f !== 'js/app.js'))
+await wait(900)
+
+const dd = detail.window.document
+check(!!dd.querySelector('.article__title'), '标题已渲染', dd.querySelector('.article__title')?.textContent.slice(0, 18))
+check(!!dd.querySelector('#prose p'), '正文已渲染')
+check(dd.querySelectorAll('#cmtList .cmt').length >= 3, '评论便签已渲染', dd.querySelectorAll('#cmtList .cmt').length + ' 张')
+check(!!dd.querySelector('#readProgress'), '阅读进度条存在')
+check(!!dd.querySelector('#barLike') && !!dd.querySelector('#btnSend'), '底部操作条完整')
+check(dd.body.classList.contains('is-ready'), '正文淡入状态已激活')
+check(!!dd.querySelector('.article__meta')?.textContent.match(/分钟读完/), '显示阅读时长')
+check(detail.window.document.title.includes('读书月'), '页面标题已更新')
+
+/* 发评论 */
+const ci = dd.querySelector('#cmtInput')
+ci.value = '这本书我也在读，共鸣很深。'
+dd.querySelector('#btnSend').dispatchEvent(new detail.window.MouseEvent('click', { bubbles: true }))
+check(dd.querySelectorAll('#cmtList .cmt').length >= 4, '新评论已插入')
+
+check(detail.errors.length === 0, '详情页无运行时错误', detail.errors.slice(0, 2).join(' | '))
+
+console.log(failures === 0 ? '\n✅ DOM 测试全部通过\n' : `\n❌ ${failures} 项失败\n`)
+process.exit(failures === 0 ? 0 : 1)

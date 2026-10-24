@@ -16,10 +16,10 @@
 </head>
 <body class="page-home">
 
-<!-- 顶部滚动进度条：钢笔墨线 -->
+<!-- 顶部滚动进度条：一道朱砂墨线 -->
 <div class="progress" id="progress" aria-hidden="true"></div>
 
-<!-- 飞书装饰：仅桌面可见 -->
+<!-- 飞书装饰：仅较大屏幕显示 -->
 <div class="page-flock" aria-hidden="true">
   <svg class="flock" viewBox="0 0 400 160">
     <path d="M10 40 q14 -10 28 0 q14 -10 28 0" />
@@ -30,7 +30,7 @@
   </svg>
 </div>
 
-<!-- ========== 吸顶导航（下滑后出现） ========== -->
+<!-- ========== 吸顶导航 ========== -->
 <header class="topbar" id="topbar">
   <a class="topbar__brand" href="#intro">
     <span class="topbar__seal" aria-hidden="true">书</span>
@@ -42,7 +42,7 @@
   </nav>
 </header>
 
-<!-- ========== 一、读书月介绍页（首屏） ========== -->
+<!-- ========== 一、读书月介绍页 ========== -->
 <section class="hero" id="intro">
   <div class="hero__bg" aria-hidden="true">
     <svg class="hero__book" viewBox="0 0 300 190" fill="none">
@@ -56,9 +56,14 @@
       <path class="book-bird" d="M100 8 q7 -5 14 0 q7 -5 14 0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
       <path class="book-bird" d="M180 16 q6 -4 12 0 q6 -4 12 0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
+
     <span class="hero__sun"></span>
     <span class="hero__hill hero__hill--f"></span>
     <span class="hero__hill hero__hill--b"></span>
+
+    <!-- 飘浮墨点 / 纸屑 -->
+    <canvas class="hero__canvas" id="inkCanvas"></canvas>
+
     <span class="hero__papergrain"></span>
   </div>
 
@@ -69,8 +74,8 @@
     </p>
 
     <h1 class="hero__title reveal" style="--d:.15s">
-      读一本书<br>
-      遇见<span class="brush">一个世界</span>
+      <span class="line">读一本书</span>
+      <span class="line">遇见<span class="brush">一个世界</span></span>
       <svg class="title-brush" viewBox="0 0 220 16" aria-hidden="true" preserveAspectRatio="none">
         <path d="M4 10 C60 4 160 4 216 8" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" opacity=".55"/>
       </svg>
@@ -81,15 +86,15 @@
       <em>你读过的每一页，都有人正在读。</em>
     </p>
 
-    <!-- 倒计时：日历卡片 -->
-    <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动剩余时间">
+    <p class="countdown__label reveal" style="--d:.3s" id="cdLabel">距本届读书月结束</p>
+
+    <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动倒计时">
       <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
       <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
       <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
       <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
     </div>
 
-    <!-- 数据统计：小票便签 -->
     <ul class="stats reveal" style="--d:.45s">
       <li class="stat-note"><b data-count="128">0</b><i>场活动</i><span class="fold"></span></li>
       <li class="stat-note stat-note--r"><b data-count="12480">0</b><i>同学参与</i><span class="fold"></span></li>
@@ -106,17 +111,25 @@
     </div>
   </div>
 
-  <button class="scroll-hint" id="scrollHint" aria-label="下滑进入主界面">
+  <button class="scroll-hint" id="scrollHint" type="button" aria-label="下滑进入主界面">
     <span>把这一页轻轻翻开</span>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6"/></svg>
   </button>
 </section>
 
-<!-- ========== 二、主界面：读书感受信息流 ========== -->
+<!-- ========== 二、主界面：读书感受墙 ========== -->
 <main class="feed" id="feed">
   <div class="shell">
 
-    <header class="feed__head reveal-in">
+    <div class="page-divider" aria-hidden="true">
+      <span class="page-divider__rule"></span>
+      <svg class="page-divider__mark" viewBox="0 0 44 26" fill="none">
+        <path d="M22 6c-5-3-11-3-16-1v14c5-2 11-2 16 1M22 6c5-3 11-3 16-1v14c-5-2-11-2-16 1M22 6v14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="page-divider__rule"></span>
+    </div>
+
+    <header class="feed__head js-reveal">
       <p class="feed__eyebrow">
         <svg class="eyebrow-rule" viewBox="0 0 48 2" aria-hidden="true"><path d="M0 1h48" stroke="currentColor" stroke-width="2"/></svg>
         读书感受墙 · 共读笔记
@@ -138,9 +151,9 @@
 
       <!-- 排序 -->
       <div class="sorts" id="sorts" role="tablist" aria-label="排序方式">
-        <button class="chip is-on" data-sort="new" role="tab" aria-selected="true">刚出炉</button>
-        <button class="chip" data-sort="hot" role="tab" aria-selected="false">最多共鸣</button>
-        <button class="chip" data-sort="comments" role="tab" aria-selected="false">聊得热闹</button>
+        <button class="chip is-on" data-sort="new" role="tab" aria-selected="true" type="button">刚出炉</button>
+        <button class="chip" data-sort="hot" role="tab" aria-selected="false" type="button">最多共鸣</button>
+        <button class="chip" data-sort="comments" role="tab" aria-selected="false" type="button">聊得热闹</button>
       </div>
 
       <!-- 分类 -->
@@ -153,13 +166,13 @@
         <!-- 由 JS 渲染 -->
       </div>
 
-      <!-- 当前筛选条件摘要 -->
+      <!-- 筛选摘要 -->
       <p class="filter-summary" id="filterSummary" hidden></p>
     </header>
 
     <div class="feed__list" id="feedList" aria-live="polite" aria-busy="true"></div>
 
-    <!-- 无限滚动哨兵：接近底部 600px 内自动加载下一页 -->
+    <!-- 无限滚动哨兵：接近底部自动加载下一页 -->
     <div id="feedSentinel" style="height:1px" aria-hidden="true"></div>
 
     <div class="feed__status" id="feedStatus">
@@ -170,12 +183,12 @@
     <p class="feed__api" id="apiHint"></p>
   </div>
 
-  <button class="back-top" id="backTop" aria-label="回到顶部">
+  <button class="back-top" id="backTop" type="button" aria-label="回到顶部">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6"/></svg>
   </button>
 </main>
 
-<!-- ========== 右下角：提交投稿（书签丝带） ========== -->
+<!-- ========== 右下角：朱红书签丝带 ========== -->
 <a class="fab" id="fabSubmit" href="https://www.baidu.com" rel="noopener">
   <svg class="fab__ico" viewBox="0 0 24 24" aria-hidden="true">
     <path d="M6 3.5h12v17.5l-6-4.5-6 4.5z"/>
@@ -188,6 +201,7 @@
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/ui.js"></script>
+<script src="js/effects.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

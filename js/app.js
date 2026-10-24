@@ -1,410 +1,529 @@
 /* ==========================================================================
- * app.js —— 首页逻辑：介绍页引导 → 无限信息流 → 分类筛选 → 右下角投稿
+ * app.js —— 首页逻辑
+ *   一、倒计时        二、滚动进度 / 导航
+ *   三、首屏视效      四、信息流（分页 / 搜索 / 筛选 / 排序）
+ *   五、投稿入口
  * ========================================================================== */
 (function () {
   'use strict'
-  const CFG = window.READING_MONTH
+
+  const CFG = window.READING_MONTH || {}
   const API = window.API
   const UI = window.UI
+  const FX = window.FX || {}
 
-  const $ = (s, r) => (r || document).querySelector(s)
-  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s))
+  const $ = (sel, root) => (root || document).querySelector(sel)
+  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel))
 
-  const elList = $('#feedList')
-  const elStatus = $('#feedStatus')
+  /* ---------- 元素 ---------- */
   const elProgress = $('#progress')
   const elTopbar = $('#topbar')
-  const elBackTop = $('#backTop')
   const elHint = $('#scrollHint')
+  const elBackTop = $('#backTop')
+  const elFeed = $('#feed')
+  const elList = $('#feedList')
+  const elStatus = $('#feedStatus')
+  const elSentinel = $('#feedSentinel')
   const elChips = $('#chips')
-  const elApiHint = $('#apiHint')
-  const elToast = $('#toast')
-  const elSorts = $('#sorts')
   const elTags = $('#tags')
+  const elSorts = $('#sorts')
   const elSearchForm = $('#searchForm')
   const elSearchInput = $('#searchInput')
   const elSearchClear = $('#searchClear')
   const elSummary = $('#filterSummary')
-
-  const esc = (s) => UI.esc(s)
-
-  /* 点赞交互：整表委托一次，所有卡片（含之后插入的）都生效 */
-  UI.bindLike(elList)
+  const elApiHint = $('#apiHint')
+  const elToast = $('#toast')
 
   /* ---------- Toast ---------- */
-  let toastTimer
+  let toastTimer = 0
   function toast(text, long) {
+    if (!elToast) return
     elToast.textContent = text
     elToast.classList.add('is-in')
     clearTimeout(toastTimer)
-    toastTimer = setTimeout(() => elToast.classList.remove('is-in'), long ? 3800 : 2400)
+    toastTimer = setTimeout(() => elToast.classList.remove('is-in'), long ? 3600 : 2200)
   }
 
-  /* ---------- 数据源标签 ---------- */
-  const srcLabel = CFG.SOURCE === 'remote' ? '远程 API' : '本地 Mock API'
-  elApiHint.innerHTML = `数据来源：${srcLabel} · <code>mock/api/posts/page-N.json</code> · 纯静态，可在 <code>config.js</code> 切换远程接口`
+  /* ========================================================================
+   * 一、倒计时
+   * ====================================================================== */
+  function initCountdown() {
+    const box = $('#countdown')
+    if (!box) return
 
-  /* 空态 */
-  const emptyHTML = `
-<div class="empty"><b>📚</b>书架上没有找到符合条件的读书感受<br><small style="font-size:12px">换个关键词，或放宽筛选条件试试</small><br><button class="chip" id="chipReset" style="margin-top:12px">重置全部筛选</button></div>`
+    const act = CFG.ACTIVITY || { startMonth: 4, startDay: 23, endMonth: 5, endDay: 23 }
+    const cd = { d: $('#cdDay'), h: $('#cdHour'), m: $('#cdMin'), s: $('#cdSec') }
+    const label = $('#cdLabel')
+    const pad = (n) => String(n).padStart(2, '0')
 
-  /* =========================================================
-   * 一、倒计时 + 数字滚动
-   * ========================================================= */
-  function nextCycle() {
-    const y = new Date().getFullYear()
-    return {
-      start: new Date(y, CFG.ACTIVITY.startMonth - 1, CFG.ACTIVITY.startDay),
-      end: new Date(y, CFG.ACTIVITY.endMonth - 1, CFG.ACTIVITY.endDay, 23, 59, 59),
+    const rangeOf = (year) => ({
+      start: new Date(year, act.startMonth - 1, act.startDay, 0, 0, 0),
+      end: new Date(year, act.endMonth - 1, act.endDay, 23, 59, 59),
+    })
+
+    /* 本届已结束则滚到下一届，演示环境永远有倒计时 */
+    let year = new Date().getFullYear()
+    let range = rangeOf(year)
+    if (Date.now() > range.end.getTime()) {
+      year += 1
+      range = rangeOf(year)
     }
-  }
-  const { start, end } = nextCycle()
-  const cd = { d: $('#cdDay'), h: $('#cdHour'), m: $('#cdMin'), s: $('#cdSec') }
-  function tickCountdown() {
-    let ms = end - Date.now()
-    if (ms < 0) ms = 0 // 已结束显示 0
-    if (Date.now() < start) ms = end - start // 未开始也显示总时长
-    const d = Math.floor(ms / 86400000)
-    const h = Math.floor(ms % 86400000 / 3600000)
-    const m = Math.floor(ms % 3600000 / 60000)
-    const s = Math.floor(ms % 60000 / 1000)
-    cd.d.textContent = pad(d); cd.h.textContent = pad(h); cd.m.textContent = pad(m); cd.s.textContent = pad(s)
-  }
-  const pad = (n) => String(n).padStart(2, '0')
-  tickCountdown()
-  setInterval(tickCountdown, 1000)
 
-  /* 数据统计的数字滚动 */
-  const counters = $$('[data-count]')
-  const seen = new WeakSet()
-  function runCounter(elm) {
-    if (seen.has(elm)) return
-    seen.add(elm)
-    const target = Number(elm.dataset.count) || 0
-    const t0 = performance.now()
-    const dur = 1400
-    ;(function step(t) {
-      const k = Math.min(1, (t - t0) / dur)
-      elm.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))).toLocaleString()
-      if (k < 1) requestAnimationFrame(step)
-    })(t0)
+    const beforeStart = Date.now() < range.start.getTime()
+    if (label) {
+      label.textContent = beforeStart ? '距下一届读书月开始' : '距本届读书月结束'
+    }
+
+    function render() {
+      const target = beforeStart ? range.start.getTime() : range.end.getTime()
+      const ms = Math.max(0, target - Date.now())
+      if (cd.d) cd.d.textContent = pad(Math.floor(ms / 86400000))
+      if (cd.h) cd.h.textContent = pad(Math.floor((ms % 86400000) / 3600000))
+      if (cd.m) cd.m.textContent = pad(Math.floor((ms % 3600000) / 60000))
+      if (cd.s) cd.s.textContent = pad(Math.floor((ms % 60000) / 1000))
+    }
+
+    let timer = 0
+    const start = () => { clearInterval(timer); timer = setInterval(render, 1000) }
+
+    render()
+    start()
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer)
+      else { render(); start() }
+    })
   }
 
-  /* =========================================================
-   * 二、介绍页 → 主界面 的滚动引导
-   * ========================================================= */
-  const feedEl = $('#feed')
+  /* ========================================================================
+   * 二、滚动进度 / 导航 / 回顶
+   * ====================================================================== */
+  function initScrollUI() {
+    let ticking = false
+    let barShown = null
+    let topShown = null
 
-  /* 首次进入时给 URL 加锚点，下方使用 a[href="#feed"] 的跳转都可生效 */
-  if (!location.hash) history.replaceState(null, '', '#intro')
+    function apply() {
+      ticking = false
+      const y = window.scrollY || 0
+      const vh = window.innerHeight || 1
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
 
-  /* 顶部进度条（0~1）＋ 吸顶导航显隐 ＋ 回到顶部显隐 */
-  function onScrollUI() {
-    const y = window.scrollY
-    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight)
-    elProgress.style.width = Math.min(100, y / max * 100).toFixed(2) + '%'
-    elTopbar.classList.toggle('is-in', y > innerHeight * 0.6)
-    elBackTop.classList.toggle('is-in', y > innerHeight * 1.2)
-    if (feedEl && elHint) {
-      const feedTop = feedEl.getBoundingClientRect().top
-      if (feedTop < innerHeight * 0.2 && elHint && !elHint.classList.contains('is-hidden')) {
-        elHint.classList.add('is-hidden')
+      if (elProgress) elProgress.style.width = Math.min(100, (y / max) * 100).toFixed(2) + '%'
+
+      const showBar = y > vh * 0.55
+      if (showBar !== barShown) {
+        if (elTopbar) elTopbar.classList.toggle('is-in', showBar)
+        barShown = showBar
+      }
+
+      const showTop = y > vh * 1.1
+      if (showTop !== topShown) {
+        if (elBackTop) elBackTop.classList.toggle('is-in', showTop)
+        topShown = showTop
+      }
+
+      if (elHint && elFeed) {
+        elHint.classList.toggle('is-hidden', elFeed.getBoundingClientRect().top < vh * 0.35)
       }
     }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply) }
+    }, { passive: true })
+    window.addEventListener('resize', apply, { passive: true })
+    apply()
+
+    if (elBackTop) {
+      elBackTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
+    }
+
+    const gotoFeed = () => elFeed && elFeed.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (elHint) elHint.addEventListener('click', gotoFeed)
+    const ctaStart = $('#ctaStart')
+    if (ctaStart) ctaStart.addEventListener('click', (e) => { e.preventDefault(); gotoFeed() })
+
+    const ctaRule = $('#ctaRule')
+    if (ctaRule) {
+      ctaRule.addEventListener('click', (e) => {
+        e.preventDefault()
+        toast('活动规则：读书月期间每读完一本书，即可投稿一篇读书感受；优秀作品会在感受墙首页推荐。', true)
+      })
+    }
+
+    /* 导航高亮 */
+    const links = $$('.topbar__link')
+    if (links.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const hash = '#' + entry.target.id
+          links.forEach((l) => l.classList.toggle('is-active', l.getAttribute('href') === hash))
+        })
+      }, { threshold: 0.35 })
+      ;[elFeed, $('#intro')].forEach((el) => el && io.observe(el))
+    }
   }
-  addEventListener('scroll', onScrollUI, { passive: true })
-  onScrollUI()
 
-  /* 下滑提示按钮 → 平滑滚动到主界面 */
-  if (elHint) elHint.addEventListener('click', () => feedEl.scrollIntoView({ behavior: 'smooth' }))
+  /* ========================================================================
+   * 三、数字滚动 + 首屏视效
+   * ====================================================================== */
+  function initCounters() {
+    const nodes = $$('[data-count]')
+    if (!nodes.length) return
 
-  /* 点「活动规则」弹 toast（演示用；正式替换为规则页链接） */
-  const ctaRule = $('#ctaRule')
-  if (ctaRule) ctaRule.addEventListener('click', (e) => {
-    e.preventDefault()
-    toast('活动规则页建设中：读书月期间每读完 1 本书可投稿 1 篇感受，优秀作品将在感受墙展示。')
-  })
-
-  /* 「进入感受墙」很多场合会与 hash 加载冲突，这里改为 JS 控制 */
-  const ctaStart = $('#ctaStart')
-  if (ctaStart) ctaStart.addEventListener('click', (e) => {
-    e.preventDefault()
-    feedEl.scrollIntoView({ behavior: 'smooth' })
-  })
-
-  /* IntersectionObserver：进入 feed 后触发数字滚动；导航高亮 */
-  const ioHead = new IntersectionObserver((ents) => {
-    ents.forEach((en) => {
-      if (en.isIntersecting) {
-        en.target.classList.add('is-seen')
-        if (en.target === feedEl) counters.forEach(runCounter)
-        ioHead.unobserve(en.target)
+    const run = (el) => {
+      if (el.dataset.done) return
+      el.dataset.done = '1'
+      const target = Number(el.dataset.count) || 0
+      const t0 = performance.now()
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / 1300)
+        const eased = 1 - Math.pow(1 - k, 3)
+        el.textContent = Math.round(target * eased).toLocaleString('zh-CN')
+        if (k < 1) requestAnimationFrame(step)
       }
-    })
-  }, { threshold: 0.18 })
-  $$('.reveal-in').forEach((e) => ioHead.observe(e))
-  ioHead.observe(feedEl)
+      requestAnimationFrame(step)
+    }
 
-  /* 双向导航高亮 */
-  const links = $$('.topbar__link')
-  const ioNav = new IntersectionObserver((ents) => {
-    ents.forEach((en) => {
-      if (!en.isIntersecting) return
-      const id = en.target.id
-      links.forEach((l) => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id))
-    })
-  }, { threshold: 0.35 })
-  ;[feedEl, $('#intro')].forEach((e) => e && ioNav.observe(e))
+    if (!('IntersectionObserver' in window)) { nodes.forEach(run); return }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        run(entry.target)
+        io.unobserve(entry.target)
+      })
+    }, { threshold: 0.4 })
+    nodes.forEach((el) => io.observe(el))
+  }
 
-  /* =========================================================
-   * 三、无限滚动信息流 + 搜索 / 筛选
-   * ========================================================= */
-  const state = {
-    page: 0, loading: false, ended: false,
-    sentinel: null, listedIds: new Set(),
-    /* 查询条件：分类 cat、关键词 q、标签 tag、排序 sort */
-    query: { cat: '全部', q: '', tag: '', sort: 'new' },
-    /* 已渲染的总条数，用于筛选摘要 */
+  function initHeroEffects() {
+    if (FX.initInkCanvas) FX.initInkCanvas($('#inkCanvas'))
+    if (FX.initHeroParallax) FX.initHeroParallax($('#intro'))
+    if (FX.developImages) FX.developImages(document)
+  }
+
+  /* ========================================================================
+   * 四、信息流
+   * ====================================================================== */
+  const feed = {
+    page: 0,
+    loading: false,
+    ended: false,
+    token: 0,
+    ids: new Set(),
     shown: 0,
+    query: { cat: '全部', q: '', tag: '', sort: 'new' },
   }
+
+  const SORT_LABEL = { new: '刚出炉', hot: '最多共鸣', comments: '聊得热闹' }
 
   function setStatus(mode) {
+    if (!elStatus) return
     if (mode === 'loading') {
       elStatus.className = 'feed__status'
-      elStatus.innerHTML = `<span class="spinner" aria-hidden="true"></span><span>正在翻下一页…</span>`
       elStatus.hidden = false
+      elStatus.innerHTML = '<span class="spinner" aria-hidden="true"></span><span>正在翻下一页…</span>'
     } else if (mode === 'end') {
       elStatus.className = 'feed__status is-end'
-      elStatus.innerHTML = `<span>❦ 这一册翻完了 · 共 ${state.shown} 篇感受</span>`
       elStatus.hidden = false
+      elStatus.innerHTML = `<span>❦ 这一册翻完了 · 共 ${feed.shown} 篇感受</span>`
     } else {
       elStatus.hidden = true
     }
   }
 
-  /* 底部哨兵，接近底部自动翻页 */
-  const elSentinel = $('#feedSentinel')
-  function mountSentinel() {
-    if (state.sentinel) return // 只挂一次；后续页面复用同一哨兵
-    state.sentinel = new IntersectionObserver((ents) => {
-      ents.forEach((en) => { if (en.isIntersecting && !state.loading && !state.ended) loadNext() })
-    }, { rootMargin: '600px 0px' })
-    state.sentinel.observe(elSentinel)
-  }
-
-  async function loadNext() {
-    if (state.loading || state.ended) return
-    state.loading = true
-    elList.setAttribute('aria-busy', 'true')
-
-    /* 骨架屏只在真正空列表时出现，翻页保持当前内容不闪动 */
-    const first = state.page === 0
-    if (first) {
-      elList.innerHTML = Array.from({ length: 4 }, UI.skeletonHTML).join('')
-      setStatus('loading')
-    }
-
-    const page = state.page + 1
-    try {
-      const res = await API.getFeed(page, state.query)
-      const posts = res.list
-
-      const fresh = posts.filter((p) => !state.listedIds.has(p.id))
-      fresh.forEach((p) => state.listedIds.add(p.id))
-
-      const html = fresh.map((p, i) => UI.cardHTML(p, i, state.query.q)).join('')
-      if (first) elList.innerHTML = html || emptyHTML
-      else if (html) elList.insertAdjacentHTML('beforeend', html)
-
-      /* 结束判断：接口说没了 / 这一页空了 / 已渲染完全部 */
-      const exhausted = res.hasMore === false || posts.length === 0 ||
-        (typeof res.total === 'number' && state.listedIds.size >= res.total)
-
-      state.page = page
-      state.shown = state.listedIds.size
-      mountSentinel()
-      renderSummary()
-
-      if (exhausted) {
-        state.ended = true
-        /* 有内容但确实到底 → 显示到底提示；完全没内容 → 空态 */
-        if (state.listedIds.size === 0 && !html) elList.innerHTML = emptyHTML
-        setStatus(state.listedIds.size === 0 ? 'hidden' : 'end')
-      } else {
-        setStatus('loading')
-      }
-    } catch (err) {
-      if (state.listedIds.size === 0) {
-        /* file:// 或 mock 不可用：用内置静态兜底数据 */
-        const fb = API.fallbackList
-        if (fb.length) {
-          elList.innerHTML = fb.map((p, i) => UI.cardHTML(p, i)).join('')
-          renderChips(API.categoriesOf(fb))
-          state.shown = fb.length
-          state.ended = true
-          setStatus('end')
-          elApiHint.innerHTML = `⚠️ 静态兜底数据（<code>${location.protocol}</code> 下读不到 mock JSON）。建议用本地服务器访问，或在 <code>config.js</code> 接入远程 API`
-          toast('已启用静态兜底数据 · 建议用本地服务器访问')
-        } else {
-          elList.innerHTML = emptyHTML
-          setStatus('hidden')
-          elApiHint.textContent = '数据加载失败：' + (err.message || err)
-        }
-      } else {
-        state.ended = true
-        setStatus('end')
-        toast('内容加载失败，已停止自动加载')
-      }
-      console.warn('[feed] load error:', err)
-    } finally {
-      state.loading = false
-      elList.setAttribute('aria-busy', 'false')
-    }
-  }
-
-  /* ---------- 分类筛选 ---------- */
-  function renderChips(cats) {
-    elChips.innerHTML = cats.map((c) =>
-      `<button class="chip" role="tab" aria-selected="${c === state.query.cat}" data-cat="${UI.esc(c)}">${UI.esc(c)}</button>`).join('')
-    syncChips()
-  }
-  function syncChips() {
-    $$('.chip', elChips).forEach((c) => c.classList.toggle('is-on', c.dataset.cat === state.query.cat))
-    $$('.chip', elTags).forEach((c) => c.classList.toggle('is-on', c.dataset.tag === state.query.tag))
-    $$('.chip', elSorts).forEach((c) => c.classList.toggle('is-on', c.dataset.sort === state.query.sort))
-  }
-
-  /* 统一重置：任一筛选条件变化后重新从第 1 页加载 */
-  function resetFeed(patch) {
-    Object.assign(state.query, patch)
-    state.page = 0
-    state.ended = false
-    state.listedIds.clear()
-    state.shown = 0
-    elList.innerHTML = ''
-    setStatus('hidden')
-    syncChips()
-    renderSummary()
-    syncSearchClear()
-    loadNext()
-  }
-
-  /* 当前筛选条件摘要 */
   function renderSummary() {
-    const q = state.query
+    if (!elSummary) return
+    const q = feed.query
+    const active = !!q.q || !!q.tag || (q.cat && q.cat !== '全部') || (q.sort && q.sort !== 'new')
+
+    if (!active) {
+      elSummary.hidden = true
+      elSummary.innerHTML = ''
+      return
+    }
+
     const parts = []
     if (q.q) parts.push(`关键词「<b>${UI.esc(q.q)}</b>」`)
     if (q.cat && q.cat !== '全部') parts.push(`分类「<b>${UI.esc(q.cat)}</b>」`)
     if (q.tag) parts.push(`标签「<b>${UI.esc(q.tag)}</b>」`)
-    const sortName = { new: '最新', hot: '最热', comments: '评论最多' }[q.sort] || '最新'
-    parts.push(`排序「<b>${sortName}</b>」`)
+    parts.push(`排序「<b>${SORT_LABEL[q.sort] || '刚出炉'}</b>`)
+
     elSummary.hidden = false
     elSummary.innerHTML = parts.join(' · ') +
-      (state.shown ? ` · 已显示 ${state.shown} 篇` : '') +
-      ` <button class="reset" id="resetAll">重置</button>`
+      (feed.shown ? ` · 已显示 ${feed.shown} 篇` : '') +
+      ' <button class="reset" id="resetAll" type="button">重置</button>'
   }
 
-  elChips.addEventListener('click', (e) => {
-    const chip = e.target.closest('.chip')
-    if (!chip || chip.dataset.cat === state.query.cat) return
-    resetFeed({ cat: chip.dataset.cat })
-  })
+  function syncChips() {
+    const q = feed.query
+    $$('.chip', elChips).forEach((c) => c.classList.toggle('is-on', c.dataset.cat === q.cat))
+    $$('.chip', elTags).forEach((c) => c.classList.toggle('is-on', c.dataset.tag === q.tag))
+    $$('.chip', elSorts).forEach((c) => c.classList.toggle('is-on', c.dataset.sort === q.sort))
+  }
 
-  elTags.addEventListener('click', (e) => {
-    const chip = e.target.closest('.chip')
-    if (!chip) return
-    const tag = chip.dataset.tag === state.query.tag ? '' : chip.dataset.tag
-    resetFeed({ tag })
-  })
+  function syncSearchClear() {
+    if (elSearchClear && elSearchInput) elSearchClear.hidden = !elSearchInput.value
+  }
 
-  elSorts.addEventListener('click', (e) => {
-    const chip = e.target.closest('.chip')
-    if (!chip || chip.dataset.sort === state.query.sort) return
-    resetFeed({ sort: chip.dataset.sort })
-  })
-
-  elList.addEventListener('click', (e) => {
-    if (e.target.closest('#chipReset')) resetFeed({ q: '', cat: '全部', tag: '', sort: 'new' })
-    if (e.target.closest('#resetAll')) resetFeed({ q: '', cat: '全部', tag: '', sort: 'new' })
-  })
-
-  /* ---------- 搜索：输入防抖 + 提交 + 清空 ---------- */
-  let searchTimer
-  function syncSearchClear() { elSearchClear.hidden = !elSearchInput.value }
-
-  elSearchInput.addEventListener('input', () => {
+  /* 任一条件变化：清空列表，回到第 1 页 */
+  function resetFeed(patch) {
+    Object.assign(feed.query, patch || {})
+    feed.page = 0
+    feed.ended = false
+    feed.ids.clear()
+    feed.shown = 0
+    feed.token += 1
+    feed.loading = false
+    if (elList) elList.innerHTML = ''
+    setStatus('idle')
+    syncChips()
+    renderSummary()
     syncSearchClear()
-    clearTimeout(searchTimer)
-    searchTimer = setTimeout(() => {
-      const v = elSearchInput.value.trim()
-      if (v === state.query.q) return
-      resetFeed({ q: v })
-    }, 350)
-  })
+    loadMore()
+  }
 
-  elSearchForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    clearTimeout(searchTimer)
-    const v = elSearchInput.value.trim()
-    if (v === state.query.q) { if (v) toast(`正在查看「${v}」的搜索结果`); return }
-    resetFeed({ q: v })
-  })
+  async function loadMore() {
+    if (!elList || feed.loading || feed.ended) return
 
-  elSearchClear.addEventListener('click', () => {
-    clearTimeout(searchTimer)
-    elSearchInput.value = ''
-    syncSearchClear()
-    resetFeed({ q: '' })
-    elSearchInput.focus()
-  })
+    const token = ++feed.token
+    feed.loading = true
+    elList.setAttribute('aria-busy', 'true')
 
-  /* 卡片显示数据源 */
-  elList.addEventListener('feedlike', (e) => {
-    if (e.detail.liked) toast('感谢点赞 · 已同步到「我的点赞」')
-  })
+    const first = feed.page === 0
+    if (first) {
+      elList.innerHTML = Array.from({ length: 3 }, UI.skeletonHTML).join('')
+      setStatus('loading')
+    }
 
-  /* 卡片点击 → 详情页 */
-  elList.addEventListener('click', (e) => {
-    if (e.target.closest('.act--like')) return // 点赞不跳转
-    const card = e.target.closest('[data-id]')
-    if (!card) return
-    if (e.target.closest('a')) return
-    location.href = card.dataset.href || ('detail.html?id=' + encodeURIComponent(card.dataset.id))
-  })
+    try {
+      const res = await API.getFeed(feed.page + 1, feed.query)
+      if (token !== feed.token) return
 
-  /* =========================================================
-   * 四、右下角「提交投稿」
-   * ========================================================= */
-  const fab = $('#fabSubmit')
-  if (CFG.SUBMIT_URL && fab) fab.href = CFG.SUBMIT_URL
-  if (fab) {
-    fab.addEventListener('click', (e) => {
-      /* 保留跳转能力，同时留痕提示（正式投产时可移除 toast） */
-      if (CFG.SOURCE === 'mock') toast('正在前往投稿页（演示环境 → 百度）…', true)
+      const fresh = (res.list || []).filter((p) => !feed.ids.has(p.id))
+      fresh.forEach((p) => feed.ids.add(p.id))
+
+      const html = fresh.map((p, i) => UI.cardHTML(p, i, feed.query.q)).join('')
+      if (first) elList.innerHTML = html
+      else if (html) elList.insertAdjacentHTML('beforeend', html)
+
+      feed.page += 1
+      feed.shown = feed.ids.size
+
+      if (FX.developImages) FX.developImages(elList)
+
+      const exhausted = res.hasMore === false || (res.list || []).length === 0
+      if (exhausted) {
+        feed.ended = true
+        if (!feed.shown) elList.innerHTML = UI.emptyHTML()
+        setStatus(feed.shown ? 'end' : 'idle')
+      } else {
+        setStatus('loading')
+      }
+
+      renderSummary()
+    } catch (err) {
+      if (token !== feed.token) return
+      handleLoadError(err)
+    } finally {
+      if (token === feed.token) {
+        feed.loading = false
+        elList.setAttribute('aria-busy', 'false')
+      }
+    }
+
+    /* 放在 finally 之后：此时 loading 已复位，短页面才能继续补页 */
+    if (token === feed.token && !feed.ended) autoFill()
+  }
+
+  /* 结果太少（大屏 / 窄分类）时自动补页，避免底部留白 */
+  function autoFill() {
+    if (feed.loading || feed.ended || !elSentinel) return
+    if (elSentinel.getBoundingClientRect().top < window.innerHeight + 700) {
+      setTimeout(() => { if (!feed.loading && !feed.ended) loadMore() }, 160)
+    }
+  }
+
+  function handleLoadError(err) {
+    console.warn('[feed]', err)
+    const fallback = API.fallbackList || []
+
+    if (!feed.shown && fallback.length) {
+      elList.innerHTML = fallback.map((p, i) => UI.cardHTML(p, i, '')).join('')
+      if (FX.developImages) FX.developImages(elList)
+      feed.shown = fallback.length
+      feed.ended = true
+      setStatus('end')
+      if (elApiHint) {
+        elApiHint.innerHTML = `⚠️ 已启用静态兜底数据（<code>${location.protocol}</code> 下读不到 mock JSON）。建议用本地服务器访问，或在 <code>config.js</code> 接入远程 API`
+      }
+      toast('已启用静态兜底数据 · 建议用本地服务器访问')
+      return
+    }
+
+    if (!feed.shown) {
+      elList.innerHTML = UI.emptyHTML('内容加载失败', '请检查网络或数据接口后重试')
+      setStatus('idle')
+    } else {
+      feed.ended = true
+      setStatus('end')
+      toast('加载失败，已停止自动加载')
+    }
+  }
+
+  /* ---------- 筛选 / 搜索 ---------- */
+  function initFilters() {
+    if (elChips) {
+      elChips.addEventListener('click', (e) => {
+        const chip = e.target.closest('.chip')
+        if (!chip || chip.dataset.cat === feed.query.cat) return
+        resetFeed({ cat: chip.dataset.cat })
+      })
+    }
+
+    if (elTags) {
+      elTags.addEventListener('click', (e) => {
+        const chip = e.target.closest('.chip')
+        if (!chip) return
+        resetFeed({ tag: chip.dataset.tag === feed.query.tag ? '' : chip.dataset.tag })
+      })
+    }
+
+    if (elSorts) {
+      elSorts.addEventListener('click', (e) => {
+        const chip = e.target.closest('.chip')
+        if (!chip || chip.dataset.sort === feed.query.sort) return
+        resetFeed({ sort: chip.dataset.sort })
+      })
+    }
+
+    if (elList) {
+      elList.addEventListener('click', (e) => {
+        if (e.target.closest('#chipReset') || e.target.closest('#resetAll')) {
+          resetFeed({ q: '', cat: '全部', tag: '', sort: 'new' })
+          return
+        }
+        if (e.target.closest('.act--like')) return
+        const card = e.target.closest('[data-id]')
+        if (!card || e.target.closest('a')) return
+        location.href = card.dataset.href || ('detail.html?id=' + encodeURIComponent(card.dataset.id))
+      })
+
+      elList.addEventListener('feedlike', (e) => {
+        if (e.detail && e.detail.liked) toast('这一篇被你先喜欢了')
+      })
+    }
+
+    /* 搜索：输入防抖 + 表单提交 + 清空 */
+    let timer = 0
+    if (elSearchInput) {
+      elSearchInput.addEventListener('input', () => {
+        syncSearchClear()
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          const v = elSearchInput.value.trim()
+          if (v !== feed.query.q) resetFeed({ q: v })
+        }, 320)
+      })
+    }
+
+    if (elSearchForm) {
+      elSearchForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        clearTimeout(timer)
+        const v = elSearchInput ? elSearchInput.value.trim() : ''
+        if (v === feed.query.q) { if (v) toast(`正在查看「${v}」的搜索结果`); return }
+        resetFeed({ q: v })
+      })
+    }
+
+    if (elSearchClear) {
+      elSearchClear.addEventListener('click', () => {
+        if (!elSearchInput) return
+        clearTimeout(timer)
+        elSearchInput.value = ''
+        syncSearchClear()
+        resetFeed({ q: '' })
+        elSearchInput.focus()
+      })
+    }
+
+    /* 无限滚动哨兵 */
+    if (elSentinel && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) loadMore() })
+      }, { rootMargin: '700px 0px' })
+      io.observe(elSentinel)
+    }
+  }
+
+  async function initFacets() {
+    try {
+      const facets = await API.facets()
+
+      if (elChips && facets.categories && facets.categories.length) {
+        elChips.innerHTML = facets.categories.map((c) =>
+          `<button class="chip" type="button" role="tab" aria-selected="${c === feed.query.cat}" data-cat="${UI.esc(c)}">${UI.esc(c)}</button>`
+        ).join('')
+      }
+
+      if (elTags && facets.tags && facets.tags.length) {
+        elTags.innerHTML = '<span class="chips__label" aria-hidden="true">#</span>' +
+          facets.tags.slice(0, 10).map((t) =>
+            `<button class="chip" type="button" role="tab" aria-selected="false" data-tag="${UI.esc(t)}">${UI.esc(t)}</button>`
+          ).join('')
+      }
+
+      syncChips()
+    } catch (err) {
+      console.warn('[facets]', err)
+    }
+  }
+
+  /* ========================================================================
+   * 五、投稿入口
+   * ====================================================================== */
+  function initSubmit() {
+    const fab = $('#fabSubmit')
+    if (!fab) return
+    if (CFG.SUBMIT_URL) fab.href = CFG.SUBMIT_URL
+    fab.addEventListener('click', () => {
+      if (CFG.SOURCE === 'mock') toast('正在前往投稿页（演示环境 → 百度）', true)
     })
   }
 
-  /* =========================================================
-   * 五、回到顶部
-   * ========================================================= */
-  elBackTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
-
-  /* =========================================================
+  /* ========================================================================
    * 启动
-   * ========================================================= */
-  elList.setAttribute('aria-busy', 'false')
-  setStatus('hidden')
-  renderSummary()
-  loadNext()                                   // 首屏立即加载，不等筛选条件
-  API.facets().then((f) => {                   // 分类 / 标签独立获取（来自 API 全量数据）
-    if (f.categories && f.categories.length) renderChips(f.categories)
-    if (elTags && f.tags && f.tags.length) {
-      elTags.innerHTML = `<span class="chips__label">#</span>` + f.tags.slice(0, 10).map((t) =>
-        `<button class="chip" role="tab" aria-selected="false" data-tag="${UI.esc(t)}">${UI.esc(t)}</button>`).join('')
-      syncChips()
-    }
-  }).catch(() => {})
+   * ====================================================================== */
+  function boot() {
+    initCountdown()
+    initScrollUI()
+    initCounters()
+    initHeroEffects()
 
-  /* 错误兜底：全局异常提示 */
-  addEventListener('error', (e) => console.warn('[runtime]', e.message))
+    if (elApiHint) {
+      const src = CFG.SOURCE === 'remote' ? '远程 API' : '本地 Mock API'
+      elApiHint.innerHTML = `数据来源：${src} · <code>mock/api/posts/page-N.json</code> · 纯静态，可在 <code>config.js</code> 切换远程接口`
+    }
+
+    if (UI.bindLike) UI.bindLike(elList)
+    initFilters()
+    initSubmit()
+    syncChips()
+    renderSummary()
+    setStatus('idle')
+
+    loadMore()
+    initFacets()
+
+    if (FX.revealOnScroll) {
+      FX.revealOnScroll(document)
+    } else {
+      /* effects.js 未加载时的兜底，避免内容一直不可见 */
+      $$('.js-reveal').forEach((el) => el.classList.add('is-visible'))
+    }
+  }
+
+  boot()
 })()

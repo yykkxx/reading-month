@@ -185,6 +185,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   width: 72vw; max-width: 330px;
   color: rgba(125, 106, 80, 0.5);
   opacity: 0.5;
+  transform: translate3d(0, calc(var(--sp, 0) * 52px), 0);
+  will-change: transform;
 }
 .book-page { transform-origin: 150px 158px; }
 .book-page--l { animation: pageflip-l 7.5s ease-in-out infinite; }
@@ -231,6 +233,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .hero__hill--b {
   bottom: -32vw; left: 28vw; right: -16vw; height: 50vw;
   background: linear-gradient(180deg, rgba(163, 148, 127, 0.24), transparent 74%);
+  transform: translate3d(0, calc(var(--sp, 0) * -28px), 0);
+  will-change: transform;
 }
 
 /* 纸面颗粒 */
@@ -239,7 +243,13 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.5 0 0 0 0 0.4 0 0 0 0 0.28 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.hero__inner { position: relative; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+.hero__inner {
+  position: relative; width: 100%; max-width: var(--maxw);
+  margin: 0 auto; padding: 0 var(--pad);
+  transform: translate3d(0, calc(var(--sp, 0) * 36px), 0);
+  opacity: clamp(0, calc(1 - var(--sp, 0) * 1.02), 1);
+  will-change: transform, opacity;
+}
 
 /* 徽章：竖排朱砂小印 + 长题 */
 .hero__badge {
@@ -272,6 +282,20 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   letter-spacing: 0.02em;
   color: var(--ink-900);
   text-wrap: balance;
+}
+.hero__title .line {
+  display: block;
+  clip-path: inset(0 0 0 0);
+}
+.hero__title .line:nth-child(1) {
+  animation: inkWrite 1.05s var(--ease) 0.35s both;
+}
+.hero__title .line:nth-child(2) {
+  animation: inkWrite 1.05s var(--ease) 0.62s both;
+}
+@keyframes inkWrite {
+  from { clip-path: inset(0 100% 0 0); filter: blur(3px); }
+  to   { clip-path: inset(0 0 0 0); filter: blur(0); }
 }
 .hero__title .brush { color: var(--vermilion-2); padding: 0 2px; }
 .title-brush {
@@ -404,8 +428,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 /* ---------- 5. 信息流 ---------- */
 .feed {
   position: relative;
-  padding: 56px 0 calc(var(--safe-b) + 118px);
-  background: linear-gradient(180deg, rgba(246, 240, 227, 0.55), rgba(240, 232, 214, 0.92) 26%, rgba(246, 240, 227, 0.6));
+  padding: 64px 0 calc(var(--safe-b) + 118px);
+  margin-top: -26px;
+  border-radius: 26px 26px 0 0;
+  background: linear-gradient(180deg, rgba(249, 244, 233, 0.96), rgba(241, 233, 216, 0.95) 30%, rgba(246, 240, 227, 0.72));
+  box-shadow: 0 -1px 0 rgba(93, 71, 50, 0.12), 0 -20px 40px -28px rgba(93, 71, 50, 0.5);
 }
 .feed::before {
   content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
@@ -575,6 +602,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 
 .card__link { display: block; color: inherit; }
 .card__media {
+  display: block;
   position: relative; aspect-ratio: 16 / 9; overflow: hidden;
   margin: 10px 10px 0;
   border-radius: 8px;
@@ -726,10 +754,15 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 
 /* 空态 */
 .empty {
-  padding: 54px 16px; text-align: center;
+  padding: 48px 16px; text-align: center;
   color: var(--ink-600); font-family: var(--serif);
 }
-.empty b { display: block; font-size: 38px; margin-bottom: 10px; font-family: var(--sans); }
+.empty__art {
+  width: 132px; height: 92px; margin: 0 auto 16px;
+  color: rgba(125, 106, 80, 0.55);
+}
+.empty b { display: block; font-size: 16px; font-weight: 700; color: var(--ink-800); }
+.empty small { display: block; margin: 6px 0 14px; font-size: 12.5px; color: var(--ink-500); }
 
 /* 回到顶部 */
 .back-top {
@@ -801,11 +834,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .toast::before { content: "📮"; margin-right: 8px; }
 
 /* ---------- 8. 滚动出现 ---------- */
-.reveal-in {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+.js-reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
-.reveal-in.is-seen { opacity: 1; transform: none; }
+.js-reveal.is-visible { opacity: 1; transform: none; }
 
 /* ==========================================================================
    9. 内容详情页 detail.html —— 书页正文
@@ -860,7 +893,12 @@ body.page-detail { padding-bottom: calc(var(--safe-b) + 96px); }
   background: linear-gradient(180deg, rgba(60, 45, 30, 0.18) 0%, transparent 34%, rgba(246, 240, 227, 0.06) 60%, var(--paper) 100%);
 }
 
-.article { margin-top: -26px; position: relative; z-index: 2; }
+.article {
+  margin-top: -26px; position: relative; z-index: 2;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+body.is-ready .article { opacity: 1; transform: none; }
 .article__cat {
   display: inline-block; margin-bottom: 12px;
   padding: 5px 12px; border-radius: 5px;
@@ -991,6 +1029,7 @@ body.page-detail { padding-bottom: calc(var(--safe-b) + 96px); }
   border: 1px solid rgba(93, 71, 50, 0.16);
   box-shadow: 0 2px 6px -3px rgba(93, 71, 50, 0.3);
   animation: cardIn 0.5s var(--ease) both;
+  animation-delay: calc(var(--ci, 0) * 55ms);
 }
 .cmt::before { /* 胶带 */
   content: ""; position: absolute; top: -6px; left: 18px;
@@ -1135,7 +1174,99 @@ body.page-detail { padding-bottom: calc(var(--safe-b) + 96px); }
     transition-duration: 0.001ms !important;
   }
   html { scroll-behavior: auto; }
-  .reveal, .reveal-in { opacity: 1 !important; transform: none !important; }
+  .reveal, .js-reveal { opacity: 1 !important; transform: none !important; }
   .card { opacity: 1 !important; transform: none !important; }
   .cmt { opacity: 1 !important; transform: none !important; }
+}
+
+
+/* ==========================================================================
+   11. 视觉增强：墨点 / 页间花饰 / 显影 / 阅读进度 / 无障碍焦点
+   ========================================================================== */
+
+/* 首屏墨点画布 */
+.hero__canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block; pointer-events: none;
+}
+
+/* 倒计时小标题 */
+.countdown__label {
+  margin: 22px 0 -8px;
+  font-family: var(--serif); font-size: 12px;
+  letter-spacing: 0.2em; color: var(--ink-500);
+}
+
+/* 页与页之间的花饰 */
+.page-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: -6px 0 28px;
+  color: rgba(93, 71, 50, 0.32);
+}
+.page-divider__rule {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(93, 71, 50, 0.26), transparent);
+}
+.page-divider__mark {
+  width: 46px; height: 27px; flex: 0 0 auto;
+  color: var(--ink-500); opacity: 0.8;
+}
+
+/* 封面显影：先模糊褪色，加载完成后清晰 */
+img.dev-pending {
+  opacity: 0;
+  filter: blur(10px) saturate(0.6);
+  transform: scale(1.03);
+}
+.card__media img,
+.article__hero img,
+.related__item img {
+  transition: opacity 0.8s var(--ease), filter 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+/* 详情页阅读进度 */
+.detail-progress {
+  position: fixed; top: 0; left: 0; z-index: 60;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--vermilion-2), #c98a2d 62%, var(--tea));
+  box-shadow: 0 1px 2px rgba(93, 71, 50, 0.18);
+  transition: width 0.1s linear;
+}
+
+/* 键盘焦点：朱砂虚线框 */
+:focus-visible {
+  outline: 2px dashed var(--vermilion);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* 跨文档淡入淡出（支持的浏览器生效） */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vtOut 0.18s ease-out both; }
+::view-transition-new(root) { animation: vtIn 0.3s ease-out both; }
+@keyframes vtOut { to { opacity: 0; } }
+@keyframes vtIn { from { opacity: 0; } }
+
+/* 降低动效偏好：关掉视差、显影与书写动画 */
+@media (prefers-reduced-motion: reduce) {
+  .hero__inner { transform: none !important; opacity: 1 !important; }
+  .hero__book, .hero__hill--b { transform: none !important; }
+  .hero__title .line { animation: none !important; clip-path: none !important; }
+  .dev-pending { opacity: 1 !important; filter: none !important; transform: none !important; }
+  .js-reveal { opacity: 1 !important; transform: none !important; }
+  .article { opacity: 1 !important; transform: none !important; }
+}
+
+/* 详情封面：滚动时轻微推近（仅支持滚动驱动动画的浏览器） */
+@supports (animation-timeline: view()) {
+  .article__hero img {
+    animation: heroPan linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 55%;
+  }
+  @keyframes heroPan {
+    from { transform: scale(1.07) translateY(-1.5%); }
+    to   { transform: scale(1) translateY(0); }
+  }
 }
