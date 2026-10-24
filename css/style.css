@@ -1117,6 +1117,16 @@ body.page-detail { padding-bottom: calc(var(--safe-b) + 96px); }
   .hero__inner { max-width: 620px; }
 }
 
+/* 桌面端悬停：纸片被轻轻掀起 */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { box-shadow: 0 4px 6px rgba(93, 71, 50, 0.08), 0 22px 40px -20px rgba(93, 71, 50, 0.45); }
+  .card:hover .card__media img { transform: scale(1.03); }
+  .btn--ghost:hover, .chip:hover { border-color: rgba(180, 69, 47, 0.38); }
+  .related__item:hover { border-color: rgba(180, 69, 47, 0.32); background: #fffdf7; }
+  .icon-btn:hover, .back-top:hover { border-color: rgba(180, 69, 47, 0.35); color: var(--vermilion-2); }
+  .fab:hover { filter: brightness(1.06); }
+}
+
 /* 降低动效偏好 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
