@@ -316,6 +316,7 @@
       feed.shown = feed.ids.size
 
       if (FX.developImages) FX.developImages(elList)
+      if (UI.bindLike) UI.bindLike(elList)
 
       const exhausted = res.hasMore === false || (res.list || []).length === 0
       if (exhausted) {
@@ -356,6 +357,7 @@
     if (!feed.shown && fallback.length) {
       elList.innerHTML = fallback.map((p, i) => UI.feedItemHTML(p, i, '')).join('')
       if (FX.developImages) FX.developImages(elList)
+      if (UI.bindLike) UI.bindLike(elList)
       feed.shown = fallback.length
       feed.ended = true
       setStatus('end')

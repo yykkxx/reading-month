@@ -14,7 +14,7 @@
 
   const id = new URLSearchParams(location.search).get('id') || ''
 
-  const state = { page: 0, loading: false, hasMore: true, total: 0, user: null }
+  const state = { page: 0, loading: false, hasMore: true, total: 0, posts: 0, comments: 0, user: null }
 
   /* ---------- Toast ---------- */
   let toastTimer = 0
@@ -83,6 +83,11 @@
     bindShare(user)
     if (FX.developImages) FX.developImages(root)
 
+    /* 书评卡与评论卡都走同一套点赞委托，首页/详情共用 rm_liked_ids */
+    const posts = $('#authorPosts')
+    if (UI.bindLike) UI.bindLike(posts)
+    if (posts) posts.addEventListener('feedlike', (e) => { if (e.detail && e.detail.liked) toast('这一篇被你先喜欢了') })
+
     const io = 'IntersectionObserver' in window
       ? new IntersectionObserver((entries) => {
         entries.forEach((entry) => { if (entry.isIntersecting) loadPosts() })
@@ -127,10 +132,12 @@
       else if (list && html) list.insertAdjacentHTML('beforeend', html)
 
       if (FX.developImages) FX.developImages(list)
-      if (count && state.user) {
-        const st = state.user.stats || {}
-        count.textContent = `共 ${st.posts || 0} 篇书评 · ${st.comments || 0} 条评论`
-      }
+      if (UI.bindLike) UI.bindLike(list)
+
+      /* 标题与列表底部同一口径：按实际渲染条目数计算，未加载完时先用资料总数 */
+      res.list.forEach((p) => { if (p.type === 'comment') state.comments += 1; else state.posts += 1 })
+      const st = (state.user && state.user.stats) || {}
+      if (count) count.textContent = `共 ${state.hasMore ? st.posts || 0 : state.posts} 篇书评 · ${state.hasMore ? st.comments || 0 : state.comments} 条评论`
 
       if (!state.total && list) {
         list.innerHTML = UI.emptyHTML('TA 还没有发过感受', '等 TA 读完下一本书吧')
@@ -142,7 +149,7 @@
         } else {
           status.hidden = false
           status.className = 'feed__status is-end'
-          status.innerHTML = `<span>❦ 共 ${state.total} 篇 · 已经翻到底了</span>`
+          status.innerHTML = `<span>❦ 共 ${state.posts} 篇书评 · ${state.comments} 条评论 · 已经翻到底了</span>`
         }
       }
     } catch (err) {

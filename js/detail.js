@@ -36,14 +36,32 @@
   /* ---------- 本地记录 ---------- */
   const LSK = 'rm_liked_ids'
   const SSK = 'rm_star_ids'
+  const CSK = 'rm_cmt_liked'
+  const CMTK = 'rm_cmts'
   const readSet = (key) => {
     try { return new Set(JSON.parse(localStorage.getItem(key) || '[]')) } catch (e) { return new Set() }
   }
   const writeSet = (key, set) => {
     try { localStorage.setItem(key, JSON.stringify(Array.from(set))) } catch (e) { /* 隐私模式忽略 */ }
   }
+  function readLocalCmts() {
+    try { const arr = JSON.parse(localStorage.getItem(CMTK) || '[]'); return Array.isArray(arr) ? arr : [] } catch (e) { return [] }
+  }
+  function saveLocalCmt(c) {
+    /* 只留最近 50 条，超出丢最旧的 */
+    try { localStorage.setItem(CMTK, JSON.stringify(readLocalCmts().concat([c]).slice(-50))) } catch (e) { /* 隐私模式忽略 */ }
+  }
   const likedSet = readSet(LSK)
   const starSet = readSet(SSK)
+  const cmtLikedSet = readSet(CSK)
+
+  /* 统计数字以模板里的 data-base 为基准重算，持久化状态与数字始终同源 */
+  const statEl = (kind) => $('.detail-stats [data-stat="' + kind + '"]')
+  function paintLikeStat(liked) {
+    const el = statEl('like'); if (!el) return
+    const base = Number(el.dataset.base)
+    if (Number.isFinite(base)) el.textContent = UI.abbr(Math.max(0, base + (liked ? 1 : 0)))
+  }
 
   /* ========================================================================
    * 渲染
@@ -68,6 +86,7 @@
     if (FX.developImages) FX.developImages(root)
     if (FX.initReadingProgress) FX.initReadingProgress($('#readProgress'))
 
+    restoreLocalCmts() // 先回填本机留言，bind 里的点赞态恢复才能覆盖到它们
     bind(d)
     updateMeta(d)
 
@@ -80,6 +99,28 @@
         const box = document.getElementById('comments')
         if (box) box.scrollIntoView({ block: 'start' })
       }, 120)
+    }
+  }
+
+  /* 本机留言回填：刷新后仍在，计数按模板原值 + 本地条数重算（只加一次） */
+  function restoreLocalCmts() {
+    const list = $('#cmtList')
+    if (!list) return
+    const mine = readLocalCmts().filter((c) => c && c.postId === pid)
+    if (!mine.length) return
+    const empty = list.querySelector('.empty')
+    if (empty) empty.remove()
+    list.insertAdjacentHTML('afterbegin', mine.slice().reverse().map((c, i) => UI.cmtHTML(c, i)).join(''))
+
+    const head = $('#cmtCount')
+    if (head) {
+      const n = (Number(head.dataset.base) || 0) + mine.length
+      head.dataset.base = String(n); head.textContent = n + ' 条'
+    }
+    const stat = statEl('comment')
+    if (stat) {
+      const n = (Number(stat.dataset.base) || 0) + mine.length
+      stat.dataset.base = String(n); stat.textContent = UI.abbr(n)
     }
   }
 
@@ -146,11 +187,13 @@
     if (barLike) {
       if (d.liked) barLike.classList.add('is-liked')
       barLike.setAttribute('aria-pressed', String(!!d.liked))
+      paintLikeStat(!!d.liked)
       barLike.addEventListener('click', () => {
         const on = barLike.classList.toggle('is-liked')
         barLike.setAttribute('aria-pressed', String(on))
         if (on) likedSet.add(pid); else likedSet.delete(pid)
         writeSet(LSK, likedSet)
+        paintLikeStat(on)
         toast(on ? '已点赞 ❤' : '已取消点赞')
         API.reportLike(pid, on)
       })
@@ -178,18 +221,28 @@
       if (!text) { toast('先写点读书感受再发送吧～'); input.focus(); return }
 
       const c = {
+        postId: pid,
         id: 'c-' + Date.now(),
         user: '我',
         avatarText: '我',
         content: text,
         time: API.fmtTime ? API.fmtTime(Date.now()) : new Date().toLocaleString(),
         likes: 0,
+        local: true,
       }
 
       const empty = list.querySelector('.empty')
       if (empty) empty.remove()
 
       list.insertAdjacentHTML('afterbegin', UI.cmtHTML(c, 0))
+      saveLocalCmt(c)
+
+      /* 头部的「N 条」与统计区的评论数同步 +1 */
+      const head = $('#cmtCount')
+      if (head) { const n = (Number(head.dataset.base) || 0) + 1; head.dataset.base = String(n); head.textContent = n + ' 条' }
+      const stat = statEl('comment')
+      if (stat) { const n = (Number(stat.dataset.base) || 0) + 1; stat.dataset.base = String(n); stat.textContent = UI.abbr(n) }
+
       input.value = ''
       API.reportComment(pid, text)
       toast('留言已贴上')
@@ -204,12 +257,26 @@
     }
 
     /* 评论点赞 / 回复 */
+    const paintCmt = (btn, on) => {
+      btn.classList.toggle('is-liked', on); btn.style.color = on ? 'var(--like)' : ''
+      const n = btn.querySelector('.n'); const base = Number(btn.dataset.base)
+      if (n && Number.isFinite(base)) n.textContent = UI.abbr(Math.max(0, base + (on ? 1 : 0)))
+    }
+
     if (list) {
+      /* 刷新后恢复留言的点赞态与数字 */
+      list.querySelectorAll('.cmt').forEach((item) => {
+        const btn = item.querySelector('.cmt-like')
+        if (btn && item.dataset.cid && cmtLikedSet.has(item.dataset.cid)) paintCmt(btn, true)
+      })
       list.addEventListener('click', (e) => {
         const likeBtn = e.target.closest('.cmt-like')
         if (likeBtn) {
-          const on = likeBtn.classList.toggle('is-liked')
-          likeBtn.style.color = on ? 'var(--like)' : ''
+          const item = likeBtn.closest('.cmt')
+          const cid = item && item.dataset.cid
+          const on = !likeBtn.classList.contains('is-liked')
+          paintCmt(likeBtn, on)
+          if (cid) { if (on) cmtLikedSet.add(cid); else cmtLikedSet.delete(cid); writeSet(CSK, cmtLikedSet) }
           if (on) toast('已赞这条留言')
           return
         }

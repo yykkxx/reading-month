@@ -104,7 +104,7 @@
           : `<div class="card__author-link">${avatar}<b>${esc(p.author.name)}${p.author.college ? ' · ' + esc(p.author.college) : ''}</b></div>`}
       </div>
       <div class="card__acts">
-        <button class="act act--like${p.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!p.liked}">
+        <button class="act act--like${p.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!p.liked}" data-base="${Number(p.likes) || 0}">
           ${icons.heart}<span class="n">${abbr(p.likes)}</span>
         </button>
         <span class="act" aria-label="评论数">${icons.comment}<span class="n">${abbr(p.commentCount)}</span></span>
@@ -155,7 +155,7 @@
   <footer class="card__foot comment-card__foot">
     <span class="comment-card__hint">${icons.comment} 去书评下接着聊</span>
     <div class="card__acts">
-      <button class="act act--like${c.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!c.liked}">
+      <button class="act act--like${c.liked ? ' is-liked' : ''}" type="button" aria-label="点赞" aria-pressed="${!!c.liked}" data-base="${Number(c.likes) || 0}">
         ${icons.heart}<span class="n">${abbr(c.likes)}</span>
       </button>
     </div>
@@ -181,9 +181,30 @@
 </div>`
   }
 
-  /* ---------- 列表点赞：事件委托，只绑定一次 ---------- */
+  /* ---------- 列表点赞：本地持久化 + 事件委托（只绑定一次） ---------- */
+  const LIKED_KEY = 'rm_liked_ids'
+  const readLiked = () => { try { return new Set(JSON.parse(localStorage.getItem(LIKED_KEY) || '[]')) } catch (e) { return new Set() } }
+  const saveLiked = (set) => { try { localStorage.setItem(LIKED_KEY, JSON.stringify(Array.from(set))) } catch (e) { /* 隐私模式忽略 */ } }
+  /* 数字始终按 data-base 重算：刷新后「已赞」与「+1」不会脱节 */
+  function paintLike(btn, liked) {
+    const n = btn.querySelector('.n'); if (!n) return
+    let base = Number(btn.dataset.base)
+    if (!Number.isFinite(base)) { base = Number(n.textContent.replace(/[^0-9.]/g, '')) || 0; btn.dataset.base = String(base) }
+    n.textContent = abbr(Math.max(0, base + (liked ? 1 : 0)))
+  }
+  function syncLiked(root) {
+    const saved = readLiked()
+    root.querySelectorAll('.act--like').forEach((btn) => {
+      const card = btn.closest('[data-id]'); const id = card && card.dataset.id; if (!id) return
+      const liked = saved.has(id) || btn.classList.contains('is-liked')
+      btn.classList.toggle('is-liked', liked); btn.setAttribute('aria-pressed', String(liked))
+      paintLike(btn, liked)
+    })
+  }
   function bindLike(root) {
-    if (!root || root.dataset.likeBound) return
+    if (!root) return
+    syncLiked(root)
+    if (root.dataset.likeBound) return
     root.dataset.likeBound = '1'
 
     root.addEventListener('click', (ev) => {
@@ -196,13 +217,8 @@
       const id = card && card.dataset.id
       const on = btn.classList.toggle('is-liked')
       btn.setAttribute('aria-pressed', String(on))
-
-      const n = btn.querySelector('.n')
-      if (n) {
-        const base = Number(btn.dataset.base || n.textContent.replace(/[^0-9.]/g, '')) || 0
-        btn.dataset.base = base
-        n.textContent = abbr(Math.max(0, base + (on ? 1 : -1)))
-      }
+      paintLike(btn, on)
+      if (id) { const set = readLiked(); if (on) set.add(id); else set.delete(id); saveLiked(set) }
 
       root.dispatchEvent(new CustomEvent('feedlike', { bubbles: true, detail: { id, liked: on } }))
       if (window.API) API.reportLike(id, on)
@@ -237,7 +253,7 @@
     <div class="cmt__top"><b>${esc(c.user)}</b><time>${esc(c.time)}</time></div>
     <p class="cmt__text">${esc(c.content)}</p>
     <div class="cmt__acts">
-      <button class="cmt-like" type="button">${icons.heart}赞</button>
+      <button class="cmt-like" type="button" data-base="${Number(c.likes) || 0}">${icons.heart}赞<span class="n">${abbr(c.likes)}</span></button>
       <button class="cmt-reply" type="button">回复</button>
     </div>
   </div>
@@ -305,14 +321,14 @@
     </div>` : ''}
 
     <div class="detail-stats">
-      <div><b>${abbr(d.likes)}</b><i>点赞</i></div>
-      <div><b>${abbr(d.commentCount)}</b><i>评论</i></div>
+      <div><b data-stat="like" data-base="${Number(d.likes) || 0}">${abbr(d.likes)}</b><i>点赞</i></div>
+      <div><b data-stat="comment" data-base="${Number(d.commentCount) || 0}">${abbr(d.commentCount)}</b><i>评论</i></div>
       <div><b>${abbr(d.views)}</b><i>阅读</i></div>
     </div>
 
     <section class="comments" id="comments">
       <div class="comments__head">
-        <h3>读书伙伴的留言</h3><span>${comments.length} 条</span>
+        <h3>读书伙伴的留言</h3><span id="cmtCount" data-base="${comments.length}">${comments.length} 条</span>
       </div>
       <div id="cmtList">
         ${comments.map((c, i) => cmtHTML(c, i)).join('') || '<p class="empty"><b>还没有人留言</b><small>来贴上第一张便签吧</small></p>'}
