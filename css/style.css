@@ -122,9 +122,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   -webkit-backdrop-filter: blur(10px) saturate(120%);
   border-bottom: 1px solid var(--ink-line);
   transform: translateY(-102%);
-  transition: transform 0.45s var(--ease);
+  /* 未滚到阈值前不可见也不可聚焦；visibility 随滑出过渡收尾，避免闪一下 */
+  visibility: hidden;
+  transition: transform 0.45s var(--ease), visibility 0.45s var(--ease);
 }
-.topbar.is-in { transform: none; }
+.topbar.is-in { transform: none; visibility: visible; }
 
 .topbar__brand {
   display: flex; align-items: center; gap: 9px; flex: 0 0 auto; white-space: nowrap;
@@ -818,10 +820,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   border: 1px solid var(--ink-line);
   box-shadow: var(--sh-2);
   opacity: 0; transform: translateY(14px) scale(0.92); pointer-events: none;
+  visibility: hidden;
   transition: 0.35s var(--ease);
 }
 .back-top svg { width: 19px; height: 19px; }
-.back-top.is-in { opacity: 1; transform: none; pointer-events: auto; }
+.back-top.is-in { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
 .back-top:active { transform: scale(0.9); }
 
 /* ---------- 6. 右下角「提交投稿」：朱红书签丝带 ---------- */
@@ -1207,6 +1210,19 @@ body.is-ready .article { opacity: 1; transform: none; }
   .related__item:hover { border-color: rgba(180, 69, 47, 0.32); background: #fffdf7; }
   .icon-btn:hover, .back-top:hover { border-color: rgba(180, 69, 47, 0.35); color: var(--vermilion-2); }
   .fab:hover { filter: brightness(1.06); }
+
+  /* 七类控件补上统一悬停反馈（只改色/背景/亮度，保留 :active 的按压位移） */
+  .topbar__link:hover { color: var(--vermilion-2); background: rgba(180, 69, 47, 0.08); }
+  .search__btn:hover,
+  .detail-bar__send:hover,
+  .follow:hover { filter: brightness(1.06); }
+  .search__btn:hover { box-shadow: 0 8px 16px -7px rgba(166, 58, 43, 0.55); }
+  .detail-bar__send:hover,
+  .follow:hover { box-shadow: 0 6px 14px -6px rgba(166, 58, 43, 0.5); }
+  .search__clear:hover { color: var(--vermilion-2); background: rgba(93, 71, 50, 0.18); }
+  .act:hover { background: rgba(93, 71, 50, 0.08); }
+  .cmt-like:hover,
+  .cmt-reply:hover { color: var(--vermilion-2); }
 }
 
 /* 降低动效偏好 */
@@ -1286,6 +1302,20 @@ img.dev-pending {
   outline-offset: 3px;
   border-radius: 6px;
 }
+
+/* 跳过导航：键盘用户的第一站，平时收在屏幕外，聚焦时滑到左上角 */
+.skip-link {
+  position: fixed; top: calc(var(--safe-t) + 8px); left: 8px; z-index: 90;
+  padding: 9px 15px; border-radius: 8px;
+  font-family: var(--serif); font-size: 13px; font-weight: 700;
+  color: var(--vermilion-2); background: var(--paper-2);
+  border: 1px solid var(--ink-line);
+  box-shadow: var(--sh-2);
+  transform: translateY(calc(-100% - 16px));
+  transition: transform 0.24s var(--ease);
+}
+.skip-link:focus,
+.skip-link:focus-within { transform: none; }
 
 /* 跨文档淡入淡出（支持的浏览器生效） */
 @view-transition { navigation: auto; }
@@ -1435,6 +1465,19 @@ html[data-theme="night"] .btn--primary {
 }
 html[data-theme="night"] .feed::before { background: rgba(238, 227, 206, 0.28); }
 html[data-theme="night"] .article__hero img { filter: sepia(0.08) saturate(0.88) brightness(0.92); }
+
+/* 夜读：跳过链接、悬停反馈与相关阅读的深色纸面 */
+html[data-theme="night"] .skip-link { color: var(--vermilion); }
+html[data-theme="night"] .topbar__link:hover { color: var(--vermilion); background: rgba(238, 227, 206, 0.08); }
+html[data-theme="night"] .search__clear:hover { color: var(--vermilion); background: rgba(238, 227, 206, 0.2); }
+html[data-theme="night"] .act:hover { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] .cmt-like:hover,
+html[data-theme="night"] .cmt-reply:hover { color: var(--vermilion); }
+html[data-theme="night"] .related__item:hover {
+  background: rgba(238, 227, 206, 0.08);
+  border-color: rgba(238, 227, 206, 0.28);
+}
+html[data-theme="night"] .related__item:hover time { color: var(--ink-600); }
 
 /* ---------- 书卷细节 ---------- */
 
