@@ -52,17 +52,18 @@
 | 1 | 把百度占位投稿改成站内真实投稿信息区块，清除开发文案 → 预期 function/anti_ai 上升 | 74 | 70 | 67 | 71 | 62 | 60 | **68** | 保留（+2） | 假闭环一拆，可信度立刻回来；但内容重复与隐形状态仍是主要扣分项 |
 | 2 | 让筛选/搜索/空态的可见性与 ARIA 状态跟真实状态一致（[hidden]、重置委托、清空输入、aria-pressed）→ 预期 technical/function/a11y 上升 | 74 | 70 | 68 | 74 | 63 | 59 | **69** | 保留（+1） | 状态机修好只换来 1 分，说明分数瓶颈已从「能不能用」转到「像不像真的」 |
 | 3 | 内容真实性：96 篇文案/封面/头像去模板化 + related 排除自身 → 预期 originality/anti_ai 上升 | 76 | 78 | 71 | 68 | 62 | 66 | **71** | 保留（+2） | 内容一真，原创性 +8；但功能分因「数字口径不一致」掉了 6 分，下一轮必须先修计数闭环 |
+| 4 | 互动计数由同一份 localStorage 状态驱动，并统一作者页篇数口径 → 预期 function/technical 上升 | 79 | 80 | 75 | 74 | 62 | 67 | **74** | 保留（+3） | 数字对上点击，function +6；下一轮攻键盘可达性与悬停反馈（a11y 长期 62） |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：`e851ec0`（R3 保留版）
-- 当前最高分：**71**（design 76 / originality 78 / technical 71 / function 68 / perf 62 / anti_ai 66）
+- 当前保留版本：`47debb7`（R4 保留版）
+- 当前最高分：**74**（design 79 / originality 80 / technical 75 / function 74 / perf 62 / anti_ai 67）
 - 连续无提升轮数：0
-- 已用轮数：3 / 14
-- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac
-- 下一步（第 4 轮假设）：互动与数字口径一致性——详情点赞/留言计数不更新、首页点赞不持久化、作者页点赞无响应、作者页「共 7 篇」与列表 8 张冲突 → 统一由 localStorage + 单一状态驱动，预期 function 回升
+- 已用轮数：4 / 14
+- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526
+- 下一步（第 5 轮假设）：键盘可达性与悬停状态——顶栏隐藏仍可聚焦、隐藏回顶按钮可聚焦、无 skip link、详情/作者无 main、夜读 related:hover 白块、7 类控件无 hover → 预期 perf_a11y_seo 与 design 上升
 
 ## 6. 失败记录
 
