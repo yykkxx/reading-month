@@ -108,7 +108,7 @@
   <a class="card__link" href="detail.html?id=${encodeURIComponent(p.id)}" aria-label="阅读全文：${esc(p.title)}">
     <span class="card__media">
       <span class="card__cat">${esc(p.category)}</span>
-      <img class="is-loading" src="${esc(p.cover)}" alt="${esc(p.title)} 配图" loading="lazy" decoding="async">
+      <img class="is-cover-loading" src="${esc(p.cover)}" alt="${esc(p.title)} 配图" loading="lazy" decoding="async">
       <span class="card__time-on-img">${icons.clock}${esc(p.time)}</span>
     </span>
     <h3 class="card__title">${hl(p.title, kw)}</h3>
@@ -163,7 +163,7 @@
     </div>
 
     <a class="comment-card__target" href="${href}" aria-label="打开这篇书评：${esc(c.target ? c.target.title : '')}">
-      <img class="comment-card__thumb is-loading" src="${esc(c.target ? c.target.cover : '')}" alt="" aria-hidden="true" loading="lazy">
+      <img class="comment-card__thumb is-cover-loading" src="${esc(c.target ? c.target.cover : '')}" alt="" aria-hidden="true" loading="lazy">
       <span class="comment-card__target-meta">
         <i>TA 评论了这篇书评</i>
         <b>${esc(c.target ? c.target.title : '')}</b>
@@ -285,7 +285,7 @@
     const comments = d.comments || []
     const related = (d.related || []).map((r) => `
       <a class="related__item" href="detail.html?id=${encodeURIComponent(r.id)}">
-        <img class="is-loading" src="${esc(r.cover || '')}" alt="${esc(r.title || '相关内容')} 封面" loading="lazy">
+        <img class="is-cover-loading" src="${esc(r.cover || '')}" alt="${esc(r.title || '相关内容')} 封面" loading="lazy">
         <div><b>${esc(r.title || '')}</b><time>${esc((r.time || '').slice(0, 16))}</time></div>
       </a>`).join('')
 
@@ -303,7 +303,7 @@
 
 <article class="article">
   <div class="article__hero">
-    <img class="is-loading" src="${esc(d.cover)}" alt="${esc(d.title)} 封面">
+    <img class="is-cover-loading" src="${esc(d.cover)}" alt="${esc(d.title)} 封面">
   </div>
 
   <div class="shell">

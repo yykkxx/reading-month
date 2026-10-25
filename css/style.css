@@ -9,8 +9,8 @@
 /* ---------- 0. 自托管字体（按本站用字子集，移除第三方字体依赖） ---------- */
 @font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Black.woff") format("woff"); font-weight: 900; font-style: normal; font-display: swap; }
-/* serif 只自带 700/900：400 不再借用粗体，直接回退本机中文衬线 */
-@font-face { font-family: "Noto Serif SC"; src: local("Noto Serif SC"), local("Songti SC"), local("STSong"), local("SimSun"), local("Source Han Serif SC"); font-weight: 400; font-style: normal; font-display: swap; }
+/* serif 400 用同一子集的真实字面，避免正文落到系统衬线或假粗体 */
+@font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Noto Sans SC"; src: url("../fonts/noto-sans-sc-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
 
 /* ---------- 1. 设计变量 ---------- */
@@ -1340,7 +1340,7 @@ body.is-ready .article { opacity: 1; transform: none; }
 }
 
 /* 封面显影：先模糊褪色，加载完成后清晰 */
-img.is-loading {
+img.is-cover-loading {
   opacity: 0;
   filter: blur(10px) saturate(0.6);
   transform: scale(1.03);
@@ -1392,7 +1392,7 @@ img.is-loading {
   .hero__inner { transform: none !important; opacity: 1 !important; }
   .hero__book, .hero__hill--b { transform: none !important; }
   .hero__title .line { animation: none !important; clip-path: none !important; }
-  .is-loading { opacity: 1 !important; filter: none !important; transform: none !important; }
+  .is-cover-loading { opacity: 1 !important; filter: none !important; transform: none !important; }
   .js-reveal { opacity: 1 !important; transform: none !important; }
   .article { opacity: 1 !important; transform: none !important; }
 }
@@ -1974,3 +1974,37 @@ html[data-theme="night"] .card--comment {
 html[data-theme="night"] .comment-card__target { background: rgba(238, 227, 206, 0.06); }
 html[data-theme="night"] .comment-card__target:hover { background: rgba(238, 227, 206, 0.1); }
 html[data-theme="night"] .comment-card__head img { border-color: rgba(238, 227, 206, 0.16); }
+
+/* ==========================================================================
+   16. 站点页脚（三页共用：主办 / 入口 / 咨询）
+   ========================================================================== */
+.site-foot { margin-top: 30px; border-top: 1px solid var(--ink-line); background: var(--paper); }
+.site-foot__in { display: grid; gap: 15px; padding: 26px 0 calc(var(--safe-b) + 72px); color: var(--ink-600); font-size: 12.5px; line-height: 1.9; }
+.page-home .site-foot { margin-top: 0; }
+.site-foot__kicker { font-family: var(--serif); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; color: var(--ink-500); }
+.site-foot__line { margin-top: 3px; }
+.site-foot__line b { font-family: var(--serif); color: var(--ink-800); }
+.site-foot__col a { display: block; width: fit-content; margin-top: 6px; color: var(--ink-700); border-bottom: 1px solid rgba(93, 71, 50, 0.3); transition: color 0.2s, border-color 0.2s; }
+.site-foot__col a:hover, .site-foot__col a:focus-visible { color: var(--vermilion); border-bottom-color: var(--vermilion); }
+.site-foot__sign { margin-top: 6px; font-family: var(--serif); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-500); }
+@media (min-width: 760px) {
+  .site-foot__in { grid-template-columns: 1.5fr 0.9fr 1.2fr; gap: 28px; padding-top: 30px; }
+  .site-foot__sign { grid-column: 1 / -1; padding-top: 14px; border-top: 1px dashed var(--ink-line); }
+}
+/* 首页移动端：为右下角书签丝带留出落款位置 */
+@media (max-width: 759px) { .page-home .site-foot__in { padding-bottom: calc(var(--safe-b) + 168px); } }
+/* 夜读：页脚跟随纸面变量，链接保留朱砂反馈 */
+html[data-theme="night"] .site-foot { border-top-color: rgba(238, 227, 206, 0.16); }
+html[data-theme="night"] .site-foot__col a { border-bottom-color: rgba(238, 227, 206, 0.24); }
+html[data-theme="night"] .site-foot__col a:hover,
+html[data-theme="night"] .site-foot__col a:focus-visible { color: var(--vermilion); border-bottom-color: var(--vermilion); }
+
+/* ---------- 主 CTA 悬停：更亮、更浮、阴影更沉 ---------- */
+.btn--primary:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 16px 30px -12px rgba(166, 58, 43, 0.62), inset 0 1px 0 rgba(246, 236, 216, 0.32); }
+html[data-theme="night"] .btn--primary:hover { background: linear-gradient(140deg, #b9543c 0%, #a84a33 62%, #993d2a 100%); box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(246, 236, 216, 0.18); }
+
+/* ---------- 作者资料卡：≥1100px 与内容同宽（移动端与平板维持 760） ---------- */
+@media (min-width: 1100px) { .profile { max-width: 1280px; } }
+
+/* 「我的投稿」卡取消整卡跳转后，封面区不再显示指针 */
+.card__link--static { cursor: default; }

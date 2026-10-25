@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yykkxx.github.io/reading-month/sitemap.xml

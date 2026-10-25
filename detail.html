@@ -7,13 +7,28 @@
 <script>try{if(localStorage.getItem('rm-theme')==='night')document.documentElement.dataset.theme='night'}catch(e){}</script>
 <meta name="description" content="读书感受详情页 · 2026 校园读书月">
 <title>读书感受 · 2026 校园读书月</title>
+<!-- 详情页 canonical / og:url 由 js/detail.js 按 ?id= 运行时写入，静态 head 不放通用地址 -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="2026 校园读书月">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yykkxx.github.io/reading-month/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff" href="fonts/noto-serif-sc-Bold.woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20261026p">
+<link rel="stylesheet" href="css/style.css?v=20261026s">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23a63a2b'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%23f6ecd8' font-family='serif'%3E书%3C/text%3E%3C/svg%3E">
 </head>
 <body class="page-detail">
 
 <main id="detailRoot" aria-live="polite" aria-busy="true"></main>
+
+<footer class="site-foot">
+  <div class="shell site-foot__in">
+    <div class="site-foot__col"><p class="site-foot__kicker">主办 · 承办</p><p class="site-foot__line"><b>校图书馆</b> 主办 · <b>学生会学习部</b> 承办</p><p class="site-foot__line">活动周期 4 月 23 日 — 5 月 23 日</p></div>
+    <div class="site-foot__col"><p class="site-foot__kicker">入口</p><a href="index.html#submitForm">投稿方式</a><a href="index.html#feed">读书感受墙</a></div>
+    <div class="site-foot__col"><p class="site-foot__kicker">咨询</p><p class="site-foot__line">图书馆二层服务台</p><a href="mailto:readingmonth@campus.edu.cn">readingmonth@campus.edu.cn</a></div>
+    <p class="site-foot__sign">© 2026 校图书馆 · 读书月编辑部</p>
+  </div>
+</footer>
 
 <button class="theme-toggle" type="button" aria-label="切换到夜读模式" aria-pressed="false" title="夜读模式">
   <span class="theme-toggle__ico" aria-hidden="true">☾</span>
@@ -21,11 +36,11 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=20261026m"></script>
-<script src="js/api.js?v=20261026n"></script>
-<script src="js/ui.js?v=20261026p"></script>
-<script src="js/theme.js?v=20261025"></script>
-<script src="js/effects.js?v=20261026p"></script>
-<script src="js/detail.js?v=20261026p"></script>
+<script src="js/config.js?v=20261026s"></script>
+<script src="js/api.js?v=20261026s"></script>
+<script src="js/ui.js?v=20261026s"></script>
+<script src="js/theme.js?v=20261026s"></script>
+<script src="js/effects.js?v=20261026s"></script>
+<script src="js/detail.js?v=20261026s"></script>
 </body>
 </html>

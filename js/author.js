@@ -4,6 +4,7 @@
 (function () {
   'use strict'
 
+  const SITE_URL = 'https://yykkxx.github.io/reading-month/'
   const API = window.API
   const UI = window.UI
   const FX = window.FX || {}
@@ -68,6 +69,13 @@
   function render(user) {
     state.user = user
     document.title = `${user.name} · 2026 校园读书月`
+
+    /* 带 id 的规范化地址：模板页不放通用 canonical，作者页才不会被归并 */
+    const url = SITE_URL + 'author.html?id=' + encodeURIComponent(id)
+    if (!document.querySelector('link[rel="canonical"]')) document.head.insertAdjacentHTML('beforeend', '<link rel="canonical">')
+    document.querySelector('link[rel="canonical"]').setAttribute('href', url)
+    if (!document.querySelector('meta[property="og:url"]')) document.head.insertAdjacentHTML('beforeend', '<meta property="og:url">')
+    document.querySelector('meta[property="og:url"]').setAttribute('content', url)
 
     root.innerHTML = UI.profileHTML(user) + `
 <div class="shell author__body">

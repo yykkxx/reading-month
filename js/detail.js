@@ -5,7 +5,7 @@
 (function () {
   'use strict'
 
-  const CFG = window.READING_MONTH || {}
+  const SITE_URL = 'https://yykkxx.github.io/reading-month/'
   const API = window.API
   const UI = window.UI
   const FX = window.FX || {}
@@ -339,8 +339,16 @@
     ensure('og:title').setAttribute('content', d.title)
     ensure('og:description').setAttribute('content', desc)
 
+    /* 带 id 的规范化地址：模板页不放通用 canonical，深链才不会被归并 */
+    const url = SITE_URL + 'detail.html?id=' + encodeURIComponent(pid)
+    if (!document.querySelector('link[rel="canonical"]')) document.head.insertAdjacentHTML('beforeend', '<link rel="canonical">')
+    document.querySelector('link[rel="canonical"]').setAttribute('href', url)
+    ensure('og:url').setAttribute('content', url)
+
+    /* theme-color 跟随当前主题，夜读不再被日间色覆写 */
     const tc = document.querySelector('meta[name="theme-color"]')
-    if (tc) tc.setAttribute('content', CFG.THEME_COLOR || '#f6f1e6')
+    const night = document.documentElement.getAttribute('data-theme') === 'night'
+    if (tc) tc.setAttribute('content', night ? '#15120e' : '#f6f1e6')
   }
 
   boot()

@@ -60,9 +60,23 @@
       timestamp: sub.timestamp, likes: 0, commentCount: 0, views: 0, category: sub.category,
       tags: ['本机保存'], comments: [], liked: false,
     }
-    return UI.cardHTML(post, i, '').replace('<article class="card"', '<article class="card" data-mine="1"')
-      .replace(/detail\.html\?id=[^"]+/g, '#sfMineList').replace('aria-label="阅读全文：', 'aria-label="我的投稿：')
-      .replace('</article>', '<span class="card__mine">我的投稿</span></article>')
+    /* 本机投稿没有可打开的详情页：整卡不再包链接（去掉 data-id/data-href），
+       唯一出口是表单里的「用邮件发送」，不做指向自身的假跳转 */
+    const tpl = document.createElement('template')
+    tpl.innerHTML = UI.cardHTML(post, i, '')
+    const card = tpl.content.firstElementChild
+    card.setAttribute('data-mine', '1')
+    card.removeAttribute('data-id')
+    card.removeAttribute('data-href')
+    const link = card.querySelector('a.card__link')
+    if (link) {
+      const still = document.createElement('div')
+      still.className = 'card__link card__link--static'
+      still.innerHTML = link.innerHTML
+      link.replaceWith(still)
+    }
+    card.insertAdjacentHTML('beforeend', '<span class="card__mine">我的投稿</span>')
+    return card.outerHTML
   }
   /* 本机投稿独立成列，不进入 #feedList：筛选 / 空态 / 摘要都不再被它污染 */
   function paintCards() {

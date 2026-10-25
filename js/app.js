@@ -197,7 +197,9 @@
       const step = (t) => {
         const k = Math.min(1, (t - t0) / 1300)
         const eased = 1 - Math.pow(1 - k, 3)
-        el.textContent = Math.round(target * eased).toLocaleString('zh-CN')
+        const value = Math.round(target * eased)
+        /* 数据未就绪时模板里是「—」：不要先画一帧 0，直接滚到真实值 */
+        if (value > 0 || target === 0) el.textContent = value.toLocaleString('zh-CN')
         if (k < 1) requestAnimationFrame(step)
       }
       requestAnimationFrame(step)
