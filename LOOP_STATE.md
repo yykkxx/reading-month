@@ -56,18 +56,19 @@
 | 5 | 键盘可达性 + 悬停状态（顶栏/回顶 visibility、skip link、main、7 类 hover、夜读 related hover）→ 预期 perf_a11y/design 上升 | 79 | 80 | 77 | 75 | 65 | 68 | **75** | 保留（+1） | a11y +3，但 `.act:hover` 误伤了非交互的计数 span，下次补 hover 要区分交互与展示元素 |
 | 6 | SEO/分享/页脚收口（canonical/OG/og:image/robots/sitemap/footer/noscript）→ 预期 perf_a11y_seo 与 design 上升 | 78 | 79 | 77 | 74 | 70 | 68 | 75（加权 74.95） | **回滚** | perf +5 是真的，但总分只打平且新增 canonical 与 sitemap 深链矛盾；单轮只做 SEO 换不来分数，后续要跟深链/结构化数据一起做 |
 | 7 | 首屏不遮挡 + 活动届次/统计自洽 + 作者页栅格 + hover 收窄 + 评论卡分类 → 预期 design/anti_ai/function 上升 | 79 | 79 | 78 | 76 | 67 | 70 | **76** | 保留（+1，加权 +0.75） | 数字与布局自洽确实加分；但「首页滚到 2027、其余页仍 2026」的新回归说明活动口径要整站统一 |
+| 8 | 站内投稿表单闭环（表单/校验/编号/localStorage/置顶卡/刷新回显）+ 整站届次统一 → 预期 function/anti_ai 上升 | 79 | 79 | 77 | 79 | 68 | 75 | **77** | 保留（+1） | 表单真实可用；但「已贴上感受墙，编辑小组会一周内查看」把本机存储说成收稿，假闭环从入口变成了承诺 |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：`f19295c`（R7 保留版）
-- 当前最高分：**76**（design 79 / originality 79 / technical 78 / function 76 / perf 67 / anti_ai 70）
-- 连续无提升轮数：0（R6 回滚后 R7 提升）
-- 已用轮数：7 / 14
+- 当前保留版本：R8 保留版（`3a21024`）
+- 当前最高分：**77**（design 79 / originality 79 / technical 77 / function 79 / perf 68 / anti_ai 75）
+- 连续无提升轮数：0
+- 已用轮数：8 / 14
 - 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298
 - 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价在本轮引入 high 级新回归也回滚
-- 下一步（第 8 轮假设）：站内投稿表单闭环（书名/昵称/分类/≥300 字正文 + 编号 + localStorage + 信息流顶部「我的投稿」卡 + 刷新回显 + mailto 备选），并统一整站活动届次口径（首页不再滚到 2027 与其它页分裂）→ 预期 function/anti_ai 上升
+- 下一步（第 9 轮假设）：首屏性能预算——42 个 Google 字体请求/2.6MB、启动即拉 15 个分页（page-1 重复）→ 字体自托管子集 + 空闲预取/去重，预期 perf_a11y_seo 上升
 
 ## 6. 失败记录
 
