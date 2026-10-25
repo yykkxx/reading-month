@@ -139,14 +139,6 @@
     const ctaStart = $('#ctaStart')
     if (ctaStart) ctaStart.addEventListener('click', (e) => { e.preventDefault(); gotoFeed() })
 
-    const ctaRule = $('#ctaRule')
-    if (ctaRule) {
-      ctaRule.addEventListener('click', (e) => {
-        e.preventDefault()
-        toast('活动规则：读书月期间每读完一本书，即可投稿一篇读书感受；优秀作品会在感受墙首页推荐。', true)
-      })
-    }
-
     /* 导航高亮 */
     const links = $$('.topbar__link')
     if (links.length && 'IntersectionObserver' in window) {
@@ -352,14 +344,14 @@
       feed.ended = true
       setStatus('end')
       if (elApiHint) {
-        elApiHint.innerHTML = `⚠️ 已启用静态兜底数据（<code>${location.protocol}</code> 下读不到 mock JSON）。建议用本地服务器访问，或在 <code>config.js</code> 接入远程 API`
+        elApiHint.textContent = '当前为离线试读内容，仅展示部分读书感受'
       }
-      toast('已启用静态兜底数据 · 建议用本地服务器访问')
+      toast('当前为离线试读内容')
       return
     }
 
     if (!feed.shown) {
-      elList.innerHTML = UI.emptyHTML('内容加载失败', '请检查网络或数据接口后重试')
+      elList.innerHTML = UI.emptyHTML('内容加载失败', '请检查网络后重试')
       setStatus('idle')
     } else {
       feed.ended = true
@@ -484,9 +476,6 @@
     const fab = $('#fabSubmit')
     if (!fab) return
     if (CFG.SUBMIT_URL) fab.href = CFG.SUBMIT_URL
-    fab.addEventListener('click', () => {
-      if (CFG.SOURCE === 'mock') toast('正在前往投稿页（演示环境 → 百度）', true)
-    })
   }
 
   /* ========================================================================
@@ -504,11 +493,6 @@
     initScrollUI()
     initCounters()
     initHeroEffects()
-
-    if (elApiHint) {
-      const src = CFG.SOURCE === 'remote' ? '远程 API' : '本地 Mock API'
-      elApiHint.innerHTML = `数据来源：${src} · <code>mock/api/posts/page-N.json</code> · 纯静态，可在 <code>config.js</code> 切换远程接口`
-    }
 
     if (UI.bindLike) UI.bindLike(elList)
     initFilters()

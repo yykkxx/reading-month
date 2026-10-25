@@ -164,7 +164,7 @@
         const on = barStar.classList.toggle('is-star')
         if (on) starSet.add(pid); else starSet.delete(pid)
         writeSet(SSK, starSet)
-        toast(on ? '已收藏，可在「我的书架」查看' : '已取消收藏')
+        toast(on ? '已收藏到本机' : '已取消收藏')
       })
     }
 
@@ -192,7 +192,7 @@
       list.insertAdjacentHTML('afterbegin', UI.cmtHTML(c, 0))
       input.value = ''
       API.reportComment(pid, text)
-      toast('留言已贴上（当前为本地测试）')
+      toast('留言已贴上')
     }
 
     const sendBtn = $('#btnSend')
