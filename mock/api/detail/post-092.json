@@ -2,193 +2,104 @@
   "code": 0,
   "data": {
     "id": "post-092",
-    "title": "《白鹿原》：土地记得每一个离开的人",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230F3D5C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322C1C3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%B7%B1%E6%B5%B7%20%C2%B7%20POST-092%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。",
+    "title": "宏电子、量子玫瑰：理科生读科幻的快乐就在这里——读《球状闪电》",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cpath%20d%3D%22M70%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M125%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M180%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M235%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M290%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M345%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M400%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M455%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M510%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M565%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M620%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M675%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M730%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%2070h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20120h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20170h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20220h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20270h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20320h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20370h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20420h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2286%22%20y%3D%2264%22%20width%3D%22628%22%20height%3D%22372%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.52%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22322%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22216%22%20fill%3D%22%23463a30%22%20opacity%3D%22.9%22%3E%E7%90%83%3C%2Ftext%3E%3Crect%20x%3D%22624%22%20y%3D%22352%22%20width%3D%2298%22%20height%3D%2298%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cpath%20d%3D%22M648%20376h50M648%20401h50M648%20426h34%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.75%22%2F%3E%3Ccircle%20cx%3D%22128%22%20cy%3D%2292%22%20r%3D%226%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "球状闪电被解释成宏电子激发态，观测会让它坍缩。林云死后，陈博士在墓前看到一朵量子玫瑰。那些物理名词不只是设定，它们真的能长出一朵花。",
     "author": {
-      "id": "u12",
-      "name": "自习室 305",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23231557%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322D3EE%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E8%B5%9B%E5%8D%9A%20%C2%B7%20%E8%87%AA%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "数学学院"
+      "id": "u09",
+      "name": "折角爱好者",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%23b4452f%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E6%8A%98%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h22%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h14%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h15%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "计算机学院·软件工程"
     },
-    "time": "2026-04-14 15:24",
-    "timestamp": 1776151440000,
-    "likes": 569,
-    "commentCount": 8,
-    "views": 790,
+    "time": "2026-04-26 17:10",
+    "timestamp": 1777194600000,
+    "likes": 596,
+    "commentCount": 5,
+    "views": 5032,
     "liked": false,
-    "category": "小说",
+    "category": "科幻",
     "tags": [
-      "读完就写",
-      "一周一书"
+      "深夜读书",
+      "通勤阅读",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-092-c1",
-        "user": "半页纸",
+        "user": "凌晨四点的书页",
         "avatarText": "凌",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-16 11:10",
-        "timestamp": 1776309000000,
-        "likes": 52
+        "content": "量子玫瑰一碰就散，我鼻子酸了。",
+        "time": "2026-04-27 02:10",
+        "timestamp": 1777227000000,
+        "likes": 82
       },
       {
         "id": "post-092-c2",
-        "user": "理科生的文学梦",
-        "avatarText": "凌",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-15 10:09",
-        "timestamp": 1776218940000,
-        "likes": 23
+        "user": "读不完的卡尔维诺",
+        "avatarText": "读",
+        "content": "宏电子居然能写得这么浪漫。",
+        "time": "2026-04-27 00:10",
+        "timestamp": 1777219800000,
+        "likes": 15
       },
       {
         "id": "post-092-c3",
-        "user": "晚风翻书",
-        "avatarText": "青",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-14 17:47",
-        "timestamp": 1776160020000,
-        "likes": 9
-      },
-      {
-        "id": "post-092-c4",
-        "user": "耳机里的诗",
-        "avatarText": "一",
-        "content": "看完你的感受，我决定今晚就翻第一章。",
-        "time": "2026-04-16 07:28",
-        "timestamp": 1776295680000,
-        "likes": 33
-      },
-      {
-        "id": "post-092-c5",
-        "user": "折角爱好者",
-        "avatarText": "一",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-17 17:35",
-        "timestamp": 1776418500000,
-        "likes": 76
-      },
-      {
-        "id": "post-092-c6",
-        "user": "耳机里的诗",
-        "avatarText": "折",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-16 19:14",
-        "timestamp": 1776338040000,
-        "likes": 70
-      },
-      {
-        "id": "post-092-c7",
-        "user": "晚八点读书人",
-        "avatarText": "青",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-16 10:58",
-        "timestamp": 1776308280000,
-        "likes": 19
-      },
-      {
-        "id": "post-092-c8",
-        "user": "半页纸",
-        "avatarText": "自",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-18 00:56",
-        "timestamp": 1776444960000,
-        "likes": 73
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "物理名词长出情绪，这句总结得好。",
+        "time": "2026-04-27 06:10",
+        "timestamp": 1777241400000,
+        "likes": 71
       }
     ],
     "_fullComments": [
       {
         "id": "post-092-c1",
-        "user": "半页纸",
+        "user": "凌晨四点的书页",
         "avatarText": "凌",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-16 11:10",
-        "timestamp": 1776309000000,
-        "likes": 52
+        "content": "量子玫瑰一碰就散，我鼻子酸了。",
+        "time": "2026-04-27 02:10",
+        "timestamp": 1777227000000,
+        "likes": 82
       },
       {
         "id": "post-092-c2",
-        "user": "理科生的文学梦",
-        "avatarText": "凌",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-15 10:09",
-        "timestamp": 1776218940000,
-        "likes": 23
+        "user": "读不完的卡尔维诺",
+        "avatarText": "读",
+        "content": "宏电子居然能写得这么浪漫。",
+        "time": "2026-04-27 00:10",
+        "timestamp": 1777219800000,
+        "likes": 15
       },
       {
         "id": "post-092-c3",
-        "user": "晚风翻书",
-        "avatarText": "青",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-14 17:47",
-        "timestamp": 1776160020000,
-        "likes": 9
-      },
-      {
-        "id": "post-092-c4",
-        "user": "耳机里的诗",
-        "avatarText": "一",
-        "content": "看完你的感受，我决定今晚就翻第一章。",
-        "time": "2026-04-16 07:28",
-        "timestamp": 1776295680000,
-        "likes": 33
-      },
-      {
-        "id": "post-092-c5",
-        "user": "折角爱好者",
-        "avatarText": "一",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-17 17:35",
-        "timestamp": 1776418500000,
-        "likes": 76
-      },
-      {
-        "id": "post-092-c6",
-        "user": "耳机里的诗",
-        "avatarText": "折",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-16 19:14",
-        "timestamp": 1776338040000,
-        "likes": 70
-      },
-      {
-        "id": "post-092-c7",
-        "user": "晚八点读书人",
-        "avatarText": "青",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-16 10:58",
-        "timestamp": 1776308280000,
-        "likes": 19
-      },
-      {
-        "id": "post-092-c8",
-        "user": "半页纸",
-        "avatarText": "自",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-18 00:56",
-        "timestamp": 1776444960000,
-        "likes": 73
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "物理名词长出情绪，这句总结得好。",
+        "time": "2026-04-27 06:10",
+        "timestamp": 1777241400000,
+        "likes": 71
       }
     ],
     "book": {
-      "name": "三体",
+      "name": "球状闪电",
       "author": "刘慈欣",
-      "publisher": "重庆出版社",
-      "isbn": "978-4275106221"
+      "publisher": "四川科学技术出版社",
+      "isbn": "978-1000199757"
     },
-    "contentHtml": "<p>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</p><h2>为什么读它</h2><p>选这本书其实是偶然。以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</p><h2>我记住的三句话</h2><ul><li>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</li><li>通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</li><li>通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</li></ul><p>读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>书里最好看的部分，是刘慈欣把球状闪电一点点拆开。宏电子、激发态、坍缩，每个词都像真的。</p><p>最打动我的却是结尾那朵量子玫瑰。林云已经不在了，陈博士在墓前看见它，一碰就散。</p><p>我高中学物理时，老师讲过观察者效应。当时只觉得是考试重点，读完这本书才觉得，它也可以是一个关于告别的隐喻。</p><p>我后来查了很多关于球状闪电的资料，越查越觉得刘慈欣厉害。他把一个真假难辨的现象，写成了一个人一生的执念。量子玫瑰是不是真的不重要，重要的是有人愿意在墓前看见它。科学解释世界，小说解释人为什么还愿意活下去。这两件事，我都需要。我后来买了一支玫瑰。</p><p>好的科幻不是把名词堆给你，是让名词长出情绪。宏电子很硬，量子玫瑰很软，刘慈欣把两者写在了同一本书里。</p>",
     "related": [
       {
-        "id": "post-091",
-        "title": "《杀死一只知更鸟》：同理心是最贵的教养",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20POST-091%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-14 17:49"
+        "id": "post-028",
+        "title": "球状闪电穿过墙壁时，也带走了陈博士的父母",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cpath%20d%3D%22M0%200h332L0%20332z%22%20fill%3D%22%23463a30%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M800%20500H468l332-332z%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M332%200h136L332%20136z%22%20fill%3D%22%23b4452f%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M468%20500H332l136-136z%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.7%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22306%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22154%22%20fill%3D%22%23463a30%22%3E%E7%90%83%3C%2Ftext%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22250%22%20r%3D%22188%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.28%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M608%2084h120M668%2084v120%22%20stroke%3D%22%23f7f2e7%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%223%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-13 13:44"
       },
       {
-        "id": "post-090",
-        "title": "《解忧杂货店》：所有认真写下的信都会有人读",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20POST-090%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-14 19:10"
+        "id": "post-009",
+        "title": "《银河帝国：基地》笔记：哈里·谢顿把未来写成数学，却算漏了一个人",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M0%200h800v70H0zM0%20430h800v70H0z%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.9%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22232%22%20fill%3D%22%23f7f2e7%22%3E%E9%93%B6%3C%2Ftext%3E%3Ccircle%20cx%3D%22694%22%20cy%3D%22250%22%20r%3D%2244%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cpath%20d%3D%22M676%20250h36M694%20232v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.4%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22250%22%20r%3D%228%22%20fill%3D%22%23c98a2d%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22282%22%20r%3D%224%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.4%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-18 16:26"
       }
     ]
   }

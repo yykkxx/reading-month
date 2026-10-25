@@ -2,157 +2,104 @@
   "code": 0,
   "data": {
     "id": "post-013",
-    "title": "《边城》：所有等待，最后都成了风景",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237A4E2D%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E0A96D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E7%BA%B8%E5%A2%A8%20%C2%B7%20POST-013%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。",
+    "title": "关于《乌合之众》：勒庞说群体没有名字，我在食堂排队时信了",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22636%22%20cy%3D%22126%22%20r%3D%2262%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M0%20392l152-150%20118%20118%2092-92%20208%20184%20230-140v188H0z%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.24%22%2F%3E%3Cpath%20d%3D%22M0%20432l180-128%20120%2096%20110-74%20170%20112%20220-102v164H0z%22%20fill%3D%22%232d2520%22%20opacity%3D%22.78%22%2F%3E%3Cpath%20d%3D%22M70%20132h250M70%20160h180%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.4%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22470%22%20y%3D%22310%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22164%22%20fill%3D%22%232d2520%22%3E%E4%B9%8C%3C%2Ftext%3E%3Crect%20x%3D%22646%22%20y%3D%22352%22%20width%3D%2276%22%20height%3D%2276%22%20fill%3D%22%23b4452f%22%2F%3E%3Cpath%20d%3D%22M664%20376h40M664%20400h40%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.4%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22704%22%20cy%3D%22252%22%20r%3D%225%22%20fill%3D%22%232d2520%22%20opacity%3D%22.5%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "一个人排队时会看手机，一群人排队时容易起哄。勒庞说，群体里的人会失去个性，被情绪推着走。听起来很傲慢，可食堂插队那天的确没人讲道理。",
     "author": {
-      "id": "u13",
-      "name": "橘子汽水",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B1B3A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF6FB5%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%98%9F%E6%B2%B3%20%C2%B7%20%E6%A9%98%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "新闻传播学院"
+      "id": "u08",
+      "name": "一只热爱排版的猫",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E4%B8%80%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h21%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h22%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h14%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "法学院·法学"
     },
-    "time": "2026-04-22 15:17",
-    "timestamp": 1776842220000,
-    "likes": 361,
-    "commentCount": 6,
-    "views": 4546,
+    "time": "2026-05-17 12:52",
+    "timestamp": 1778993520000,
+    "likes": 84,
+    "commentCount": 4,
+    "views": 3616,
     "liked": false,
-    "category": "科幻",
+    "category": "社科",
     "tags": [
-      "深夜读书",
-      "读完就写"
+      "读书笔记",
+      "通勤阅读",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-013-c1",
-        "user": "橘子汽水",
-        "avatarText": "墨",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-24 10:35",
-        "timestamp": 1776998100000,
-        "likes": 46
+        "user": "理科生的文学梦",
+        "avatarText": "理",
+        "content": "食堂排队那段，我见过更乱的。",
+        "time": "2026-05-18 18:52",
+        "timestamp": 1779101520000,
+        "likes": 38
       },
       {
         "id": "post-013-c2",
-        "user": "三行批注",
-        "avatarText": "折",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-26 00:53",
-        "timestamp": 1777135980000,
-        "likes": 30
+        "user": "耳机里的诗",
+        "avatarText": "耳",
+        "content": "群体里智力会下降，这话真不好听。",
+        "time": "2026-05-18 06:52",
+        "timestamp": 1779058320000,
+        "likes": 72
       },
       {
         "id": "post-013-c3",
-        "user": "沉默的读者",
-        "avatarText": "折",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-25 18:33",
-        "timestamp": 1777113180000,
-        "likes": 25
-      },
-      {
-        "id": "post-013-c4",
-        "user": "折角爱好者",
-        "avatarText": "耳",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-24 11:58",
-        "timestamp": 1777003080000,
-        "likes": 95
-      },
-      {
-        "id": "post-013-c5",
-        "user": "借书卡收藏家",
-        "avatarText": "三",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-23 16:05",
-        "timestamp": 1776931500000,
-        "likes": 10
-      },
-      {
-        "id": "post-013-c6",
-        "user": "图书馆常驻居民",
-        "avatarText": "折",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-24 03:57",
-        "timestamp": 1776974220000,
-        "likes": 11
+        "user": "半页纸",
+        "avatarText": "半",
+        "content": "情绪传染比讲道理快多了。",
+        "time": "2026-05-18 11:52",
+        "timestamp": 1779076320000,
+        "likes": 47
       }
     ],
     "_fullComments": [
       {
         "id": "post-013-c1",
-        "user": "橘子汽水",
-        "avatarText": "墨",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-24 10:35",
-        "timestamp": 1776998100000,
-        "likes": 46
+        "user": "理科生的文学梦",
+        "avatarText": "理",
+        "content": "食堂排队那段，我见过更乱的。",
+        "time": "2026-05-18 18:52",
+        "timestamp": 1779101520000,
+        "likes": 38
       },
       {
         "id": "post-013-c2",
-        "user": "三行批注",
-        "avatarText": "折",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-26 00:53",
-        "timestamp": 1777135980000,
-        "likes": 30
+        "user": "耳机里的诗",
+        "avatarText": "耳",
+        "content": "群体里智力会下降，这话真不好听。",
+        "time": "2026-05-18 06:52",
+        "timestamp": 1779058320000,
+        "likes": 72
       },
       {
         "id": "post-013-c3",
-        "user": "沉默的读者",
-        "avatarText": "折",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-25 18:33",
-        "timestamp": 1777113180000,
-        "likes": 25
-      },
-      {
-        "id": "post-013-c4",
-        "user": "折角爱好者",
-        "avatarText": "耳",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-24 11:58",
-        "timestamp": 1777003080000,
-        "likes": 95
-      },
-      {
-        "id": "post-013-c5",
-        "user": "借书卡收藏家",
-        "avatarText": "三",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-23 16:05",
-        "timestamp": 1776931500000,
-        "likes": 10
-      },
-      {
-        "id": "post-013-c6",
-        "user": "图书馆常驻居民",
-        "avatarText": "折",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-24 03:57",
-        "timestamp": 1776974220000,
-        "likes": 11
+        "user": "半页纸",
+        "avatarText": "半",
+        "content": "情绪传染比讲道理快多了。",
+        "time": "2026-05-18 11:52",
+        "timestamp": 1779076320000,
+        "likes": 47
       }
     ],
     "book": {
-      "name": "边城",
-      "author": "沈从文",
-      "publisher": "北岳文艺出版社",
-      "isbn": "978-6203427553"
+      "name": "乌合之众",
+      "author": "古斯塔夫·勒庞",
+      "publisher": "中央编译出版社",
+      "isbn": "978-1000247271"
     },
-    "contentHtml": "<p>熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。</p><h2>为什么读它</h2><p>选这本书其实是偶然。有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。</p><h2>我记住的三句话</h2><ul><li>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</li><li>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</li><li>通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</li></ul><p>读完之后我绕着操场走了三圈。有些书就是这样，读完你不想说话，只想走一走。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>勒庞说，人一旦进入群体，智力会下降，情绪会传染。这话不好听，但你很难完全反驳。</p><p>他写群体容易被极端情绪打动，喜欢简单有力的口号，不喜欢复杂的论证。</p><p>食堂排队那次，前面有人插队，一开始只有一个人说，后来越来越多人喊，最后差点动手。其实没人知道最开始发生了什么。</p><p>食堂后来装了排队护栏，插队的人少了。可我还是会想起那天，想起那么多人一起喊，却没一个人知道起因。勒庞说得不完全对，但人群确实有自己的脾气。一个人不敢做的事，一群人做起来像在玩游戏。我后来尽量不站在人堆里。不是清高，是怕自己也跟着喊。护栏后来又被拆了，说影响通行。</p><p>我不喜欢勒庞那种精英口气，但他描述的现象确实存在。群体不是简单的加法，它会把每个人的情绪放大。</p>",
     "related": [
       {
-        "id": "post-012",
-        "title": "《红楼梦》里的春天，藏着所有人的少年时代",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230F3D5C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322C1C3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%B7%B1%E6%B5%B7%20%C2%B7%20POST-012%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-22 18:43"
+        "id": "post-045",
+        "title": "《乌合之众》里，「群体只会被极端情绪打动」——社团招新那天",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%2254%22%20y%3D%2254%22%20width%3D%22692%22%20height%3D%22392%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22168%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.16%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22150%22%20fill%3D%22none%22%20stroke%3D%22%23c98a2d%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22352%22%20y%3D%22336%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22248%22%20fill%3D%22%232d2520%22%3E%E4%B9%8C%3C%2Ftext%3E%3Cpath%20d%3D%22M604%2084v332M620%2084v332%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.2%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22676%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%23c98a2d%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%232d2520%22%20opacity%3D%22.45%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-08 18:44"
       },
       {
-        "id": "post-011",
-        "title": "《你当像鸟飞往你的山》：教育是一场自我救赎",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20POST-011%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-22 22:15"
+        "id": "post-058",
+        "title": "读《娱乐至死》：「我们终将毁于我们热爱的东西」，这句话在宿舍应验了",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cpath%20d%3D%22M0%200h332L0%20332z%22%20fill%3D%22%23463a30%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M800%20500H468l332-332z%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M332%200h136L332%20136z%22%20fill%3D%22%23b4452f%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M468%20500H332l136-136z%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.7%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22306%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22154%22%20fill%3D%22%23463a30%22%3E%E5%A8%B1%3C%2Ftext%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22250%22%20r%3D%22188%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.28%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M608%2084h120M668%2084v120%22%20stroke%3D%22%23f7f2e7%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%223%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-05 10:30"
       }
     ]
   }

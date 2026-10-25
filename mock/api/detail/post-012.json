@@ -2,175 +2,104 @@
   "code": 0,
   "data": {
     "id": "post-012",
-    "title": "《红楼梦》里的春天，藏着所有人的少年时代",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230F3D5C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322C1C3%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%B7%B1%E6%B5%B7%20%C2%B7%20POST-012%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。",
+    "title": "读《三体》：叶文洁按下发射键时，她恨的其实不是人类",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cpath%20d%3D%22M70%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M125%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M180%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M235%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M290%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M345%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M400%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M455%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M510%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M565%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M620%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M675%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M730%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%2070h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20120h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20170h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20220h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20270h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20320h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20370h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20420h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2286%22%20y%3D%2264%22%20width%3D%22628%22%20height%3D%22372%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.52%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22322%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22216%22%20fill%3D%22%23463a30%22%20opacity%3D%22.9%22%3E%E4%B8%89%3C%2Ftext%3E%3Crect%20x%3D%22624%22%20y%3D%22352%22%20width%3D%2298%22%20height%3D%2298%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cpath%20d%3D%22M648%20376h50M648%20401h50M648%20426h34%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.75%22%2F%3E%3Ccircle%20cx%3D%22128%22%20cy%3D%2292%22%20r%3D%226%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "叶文洁经历父亲之死、背叛和审讯，最后在红岸基地向宇宙发出信号。她说「到这里来吧，我将帮助你们获得这个世界」。那不是冷静的科学判断，是一个被伤透的人做出的选择。",
     "author": {
-      "id": "u12",
-      "name": "自习室 305",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23231557%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322D3EE%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E8%B5%9B%E5%8D%9A%20%C2%B7%20%E8%87%AA%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "数学学院"
+      "id": "u05",
+      "name": "南山有木",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%23b4452f%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E5%8D%97%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h18%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h19%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h20%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "数学学院·应用数学"
     },
-    "time": "2026-04-22 18:43",
-    "timestamp": 1776854580000,
-    "likes": 249,
-    "commentCount": 7,
-    "views": 1842,
+    "time": "2026-05-17 19:30",
+    "timestamp": 1779017400000,
+    "likes": 18,
+    "commentCount": 4,
+    "views": 3388,
     "liked": false,
-    "category": "小说",
+    "category": "科幻",
     "tags": [
-      "金句摘抄",
-      "我的书架"
+      "深夜读书",
+      "我的书架",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-012-c1",
-        "user": "借书卡收藏家",
-        "avatarText": "晚",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-26 01:59",
-        "timestamp": 1777139940000,
-        "likes": 25
+        "user": "青苔与旧书",
+        "avatarText": "青",
+        "content": "叶文洁按下去那一下，我竟然理解她。",
+        "time": "2026-05-17 22:30",
+        "timestamp": 1779028200000,
+        "likes": 49
       },
       {
         "id": "post-012-c2",
-        "user": "沉默的读者",
-        "avatarText": "青",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-23 16:20",
-        "timestamp": 1776932400000,
-        "likes": 85
+        "user": "借书卡收藏家",
+        "avatarText": "借",
+        "content": "被时代碾过的人，才会对同类失望。",
+        "time": "2026-05-18 09:30",
+        "timestamp": 1779067800000,
+        "likes": 42
       },
       {
         "id": "post-012-c3",
-        "user": "凌晨四点的书页",
-        "avatarText": "灯",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-24 05:37",
-        "timestamp": 1776980220000,
+        "user": "沉默的读者",
+        "avatarText": "沉",
+        "content": "她恨的不是人类，是人类让她经历的事。",
+        "time": "2026-05-18 13:30",
+        "timestamp": 1779082200000,
         "likes": 68
-      },
-      {
-        "id": "post-012-c4",
-        "user": "读不完的卡尔维诺",
-        "avatarText": "理",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-23 14:57",
-        "timestamp": 1776927420000,
-        "likes": 3
-      },
-      {
-        "id": "post-012-c5",
-        "user": "墨鱼丸子",
-        "avatarText": "理",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-23 21:09",
-        "timestamp": 1776949740000,
-        "likes": 75
-      },
-      {
-        "id": "post-012-c6",
-        "user": "三行批注",
-        "avatarText": "灯",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-23 16:15",
-        "timestamp": 1776932100000,
-        "likes": 82
-      },
-      {
-        "id": "post-012-c7",
-        "user": "凌晨四点的书页",
-        "avatarText": "晚",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-25 14:08",
-        "timestamp": 1777097280000,
-        "likes": 83
       }
     ],
     "_fullComments": [
       {
         "id": "post-012-c1",
-        "user": "借书卡收藏家",
-        "avatarText": "晚",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-26 01:59",
-        "timestamp": 1777139940000,
-        "likes": 25
+        "user": "青苔与旧书",
+        "avatarText": "青",
+        "content": "叶文洁按下去那一下，我竟然理解她。",
+        "time": "2026-05-17 22:30",
+        "timestamp": 1779028200000,
+        "likes": 49
       },
       {
         "id": "post-012-c2",
-        "user": "沉默的读者",
-        "avatarText": "青",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-23 16:20",
-        "timestamp": 1776932400000,
-        "likes": 85
+        "user": "借书卡收藏家",
+        "avatarText": "借",
+        "content": "被时代碾过的人，才会对同类失望。",
+        "time": "2026-05-18 09:30",
+        "timestamp": 1779067800000,
+        "likes": 42
       },
       {
         "id": "post-012-c3",
-        "user": "凌晨四点的书页",
-        "avatarText": "灯",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-24 05:37",
-        "timestamp": 1776980220000,
+        "user": "沉默的读者",
+        "avatarText": "沉",
+        "content": "她恨的不是人类，是人类让她经历的事。",
+        "time": "2026-05-18 13:30",
+        "timestamp": 1779082200000,
         "likes": 68
-      },
-      {
-        "id": "post-012-c4",
-        "user": "读不完的卡尔维诺",
-        "avatarText": "理",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-23 14:57",
-        "timestamp": 1776927420000,
-        "likes": 3
-      },
-      {
-        "id": "post-012-c5",
-        "user": "墨鱼丸子",
-        "avatarText": "理",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-23 21:09",
-        "timestamp": 1776949740000,
-        "likes": 75
-      },
-      {
-        "id": "post-012-c6",
-        "user": "三行批注",
-        "avatarText": "灯",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-23 16:15",
-        "timestamp": 1776932100000,
-        "likes": 82
-      },
-      {
-        "id": "post-012-c7",
-        "user": "凌晨四点的书页",
-        "avatarText": "晚",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-25 14:08",
-        "timestamp": 1777097280000,
-        "likes": 83
       }
     ],
     "book": {
-      "name": "红楼梦",
-      "author": "曹雪芹",
-      "publisher": "人民文学出版社",
-      "isbn": "978-3356106042"
+      "name": "三体",
+      "author": "刘慈欣",
+      "publisher": "重庆出版社",
+      "isbn": "978-1000191838"
     },
-    "contentHtml": "<p>读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。</p><h2>为什么读它</h2><p>选这本书其实是偶然。通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？书里那句话被我抄在了笔记本第一页：“人的一生，是自己一次次选择的总和。”</p><h2>我记住的三句话</h2><ul><li>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</li><li>书里那句话被我抄在了笔记本第一页：“人的一生，是自己一次次选择的总和。”</li><li>最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。</li></ul><p>最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>红岸基地那个夜晚，叶文洁坐在发射机前。屏幕上只有一串参数，外面是雪和风。</p><p>她按下发射键，说「到这里来吧，我将帮助你们获得这个世界」。刘慈欣没有把她写成疯子，他把她写成一个被时代碾过的人。</p><p>我爷爷年轻时被下放过。他很少提那段事，只有一次喝多了，说「当时真觉得人没救了」。第二天他照常去买菜。</p><p>我爷爷后来再没提过那段事。他每天早上去公园打太极，回来给我带豆浆。有次我看他坐在阳台上发呆，想问，又没问。叶文洁的选择我依然不认同，可我好像比以前多懂了一点那种冷。人不是突然对世界失望的，是一点点凉下去的。我庆幸爷爷最后还是愿意下楼买菜。</p><p>叶文洁的选择当然错了，可刘慈欣让你看见错是怎么长出来的。一个不再相信同类的人，才会把希望寄托给宇宙。</p>",
     "related": [
       {
-        "id": "post-011",
-        "title": "《你当像鸟飞往你的山》：教育是一场自我救赎",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20POST-011%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-22 22:15"
+        "id": "post-044",
+        "title": "《三体》笔记：黑暗森林法则让我在社团例会上走神了十分钟",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cg%20transform%3D%22rotate(-7%20400%20250)%22%3E%3Crect%20x%3D%22222%22%20y%3D%2286%22%20width%3D%22356%22%20height%3D%22330%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22250%22%20y%3D%22110%22%20width%3D%22356%22%20height%3D%22310%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.35%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22278%22%20y%3D%22134%22%20width%3D%22356%22%20height%3D%22286%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M318%20202h268M318%20236h196M318%20270h238M318%20304h164%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.22%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22574%22%20y%3D%22196%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22112%22%20fill%3D%22%234e6e5d%22%3E%E4%B8%89%3C%2Ftext%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22404%22%20r%3D%2244%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M682%20404h36M700%20386v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.8%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-09 00:20"
       },
       {
-        "id": "post-010",
-        "title": "《围城》里的比喻，值一整本摘抄本",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20POST-010%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-23 00:58"
+        "id": "post-050",
+        "title": "《你一生的故事》里，母亲提前看见了女儿的二十四岁",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%2258%22%20y%3D%2258%22%20width%3D%22684%22%20height%3D%22384%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.65%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%2274%22%20y%3D%2274%22%20width%3D%22652%22%20height%3D%22352%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.25%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M84%20118V84h34M682%2084h34v34M716%20382v34h-34M118%20416H84v-34%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%223%22%20fill%3D%22none%22%20opacity%3D%22.7%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22318%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22196%22%20fill%3D%22%234e6e5d%22%3E%E4%BD%A0%3C%2Ftext%3E%3Crect%20x%3D%22336%22%20y%3D%22356%22%20width%3D%22128%22%20height%3D%2234%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cpath%20d%3D%22M360%20373h80%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22638%22%20cy%3D%22398%22%20r%3D%226%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-07 12:48"
       }
     ]
   }

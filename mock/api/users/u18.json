@@ -3,35 +3,34 @@
   "data": {
     "id": "u18",
     "name": "三行批注",
-    "college": "计算机学院",
+    "college": "计算机学院·人工智能",
     "joined": "2023-09",
-    "bio": "每页最多写三行，克制是一种阅读方式。",
-    "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20%E4%B8%89%3C%2Ftext%3E%3C%2Fsvg%3E",
+    "bio": "每页最多写三行，克制是一种阅读方式；读科幻、哲学和一切关于时间的东西。",
+    "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E4%B8%89%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h22%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h14%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h15%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
     "stats": {
-      "posts": 4,
-      "comments": 2,
-      "likes": 2854,
-      "views": 15926
+      "posts": 5,
+      "comments": 0,
+      "likes": 1667,
+      "views": 15914
     },
     "tags": [
       "一周一书",
-      "我的书架",
       "深夜读书",
-      "读书笔记"
+      "我的书架",
+      "金句摘抄"
     ],
     "latest": [
       {
-        "id": "post-018",
-        "title": "《非暴力沟通》读后：我终于学会说“我需要”"
+        "id": "post-039",
+        "title": "《局外人》中的一个细节：海滩上那五下枪声，是被太阳逼出来的"
       },
       {
-        "id": "cf-006",
-        "type": "comment",
-        "title": "评论：《我们仨》"
+        "id": "post-041",
+        "title": "《银河帝国：基地》中的一个细节：心理史学听起来像社会学，其实是阿西莫夫的浪漫"
       },
       {
-        "id": "post-038",
-        "title": "《平凡的世界》里，最打动我的不是奋斗，是温柔"
+        "id": "post-060",
+        "title": "《球状闪电》笔记：林云把武器当信仰，刘慈欣把这种迷人写得很危险"
       }
     ]
   }

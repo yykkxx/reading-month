@@ -2,121 +2,104 @@
   "code": 0,
   "data": {
     "id": "post-067",
-    "title": "读《人类简史》：我们为什么相信故事",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20POST-067%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。",
+    "title": "《平凡的世界》中的一个细节：孙少安砖厂冒烟那天，我才懂「责任」不是一个词",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%22168%22%20width%3D%22800%22%20height%3D%22168%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M0%20210h800M0%20294h800%22%20stroke%3D%22%23f7f2e7%22%20stroke-opacity%3D%22.16%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22292%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22148%22%20fill%3D%22%23f7f2e7%22%3E%E5%B9%B3%3C%2Ftext%3E%3Ccircle%20cx%3D%22128%22%20cy%3D%22122%22%20r%3D%2230%22%20fill%3D%22%23b4452f%22%2F%3E%3Cpath%20d%3D%22M96%20420h608M96%20442h396%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.28%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22654%22%20y%3D%22406%22%20width%3D%2250%22%20height%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23a63a2b%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22122%22%20r%3D%226%22%20fill%3D%22%23a63a2b%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "少安办砖厂，第一次点火时紧张得不敢看。砖烧坏了，他蹲在窑边抽烟；后来砖厂冒烟赚钱，他先给村里人发工资。路遥写责任，写的是一个人把全家和全村扛在肩上。",
     "author": {
-      "id": "u07",
-      "name": "凌晨四点的书页",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237A4E2D%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E0A96D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E7%BA%B8%E5%A2%A8%20%C2%B7%20%E5%87%8C%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "医学院"
+      "id": "u19",
+      "name": "理科生的文学梦",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23efe6d5%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%23b4452f%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23efe6d5%22%3E%E7%90%86%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h14%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h15%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h16%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23efe6d5%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "数学学院·信息与计算科学"
     },
-    "time": "2026-04-17 09:43",
-    "timestamp": 1776390180000,
-    "likes": 45,
-    "commentCount": 4,
-    "views": 2679,
+    "time": "2026-05-03 04:41",
+    "timestamp": 1777754460000,
+    "likes": 474,
+    "commentCount": 5,
+    "views": 2523,
     "liked": false,
-    "category": "心理",
+    "category": "小说",
     "tags": [
       "一周一书",
-      "我的书架"
+      "通勤阅读",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-067-c1",
-        "user": "晚八点读书人",
-        "avatarText": "南",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-17 18:10",
-        "timestamp": 1776420600000,
+        "user": "一只热爱排版的猫",
+        "avatarText": "一",
+        "content": "砖厂点火，我爸开店时也这样。",
+        "time": "2026-05-03 21:41",
+        "timestamp": 1777815660000,
         "likes": 19
       },
       {
         "id": "post-067-c2",
-        "user": "晚风翻书",
-        "avatarText": "图",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-20 15:52",
-        "timestamp": 1776671520000,
-        "likes": 90
-      },
-      {
-        "id": "post-067-c3",
-        "user": "晚八点读书人",
-        "avatarText": "图",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-18 06:19",
-        "timestamp": 1776464340000,
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "责任就是先想到别人。",
+        "time": "2026-05-04 03:41",
+        "timestamp": 1777837260000,
         "likes": 68
       },
       {
-        "id": "post-067-c4",
-        "user": "晚八点读书人",
-        "avatarText": "灯",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-20 16:50",
-        "timestamp": 1776675000000,
-        "likes": 24
+        "id": "post-067-c3",
+        "user": "自习室 305",
+        "avatarText": "自",
+        "content": "少安和秀莲，才是过日子的样子。",
+        "time": "2026-05-04 12:41",
+        "timestamp": 1777869660000,
+        "likes": 76
       }
     ],
     "_fullComments": [
       {
         "id": "post-067-c1",
-        "user": "晚八点读书人",
-        "avatarText": "南",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-17 18:10",
-        "timestamp": 1776420600000,
+        "user": "一只热爱排版的猫",
+        "avatarText": "一",
+        "content": "砖厂点火，我爸开店时也这样。",
+        "time": "2026-05-03 21:41",
+        "timestamp": 1777815660000,
         "likes": 19
       },
       {
         "id": "post-067-c2",
-        "user": "晚风翻书",
-        "avatarText": "图",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-20 15:52",
-        "timestamp": 1776671520000,
-        "likes": 90
-      },
-      {
-        "id": "post-067-c3",
-        "user": "晚八点读书人",
-        "avatarText": "图",
-        "content": "请问这个版本是哪个译者的？",
-        "time": "2026-04-18 06:19",
-        "timestamp": 1776464340000,
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "责任就是先想到别人。",
+        "time": "2026-05-04 03:41",
+        "timestamp": 1777837260000,
         "likes": 68
       },
       {
-        "id": "post-067-c4",
-        "user": "晚八点读书人",
-        "avatarText": "灯",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-20 16:50",
-        "timestamp": 1776675000000,
-        "likes": 24
+        "id": "post-067-c3",
+        "user": "自习室 305",
+        "avatarText": "自",
+        "content": "少安和秀莲，才是过日子的样子。",
+        "time": "2026-05-04 12:41",
+        "timestamp": 1777869660000,
+        "likes": 76
       }
     ],
     "book": {
-      "name": "房思琪的初恋乐园",
-      "author": "林奕含",
-      "publisher": "北京联合出版公司",
-      "isbn": "978-7217112660"
+      "name": "平凡的世界",
+      "author": "路遥",
+      "publisher": "北京十月文艺出版社",
+      "isbn": "978-1000160162"
     },
-    "contentHtml": "<p>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</p><h2>为什么读它</h2><p>选这本书其实是偶然。最打动我的不是情节，而是作者写日常的那种耐心——原来平凡的生活也值得被认真描述。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</p><h2>我记住的三句话</h2><ul><li>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</li><li>熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。</li><li>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</li></ul><p>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>少安第一次点窑，手抖得火柴都划不着。他不是怕赔钱，是怕对不起跟着他干的乡亲。</p><p>第一窑砖烧坏了，他蹲在窑边，一晚上没回家。秀莲给他送饭，他把碗放在地上，说「让我坐会儿」。</p><p>我爸以前开过小卖部，进货被骗过一次。那天晚上他坐在店门口算账，计算器按得啪啪响。我妈让我去叫他吃饭，他说等会儿。</p><p>我爸后来把小卖部关了。他说不是不挣钱，是太累。关店那天，他把货架擦了一遍，计算器放进抽屉。我帮他搬最后一箱货，他忽然说，你以后别像我这样。我问哪样，他说，别什么都自己扛。少安要是听见，大概会笑。可他就是那样的人，改不了。</p><p>路遥写少安，不写他多有本事，只写他每次做决定前，先把别人的日子想一遍。责任不是口号，是砖厂冒烟时他先想到谁。</p>",
     "related": [
       {
-        "id": "post-066",
-        "title": "在《三体》里，我第一次对宇宙感到害怕",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20POST-066%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-17 10:20"
+        "id": "post-003",
+        "title": "读《平凡的世界》：孙少平在煤矿井下读《牛虻》，书页上全是煤灰",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22636%22%20cy%3D%22126%22%20r%3D%2262%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M0%20392l152-150%20118%20118%2092-92%20208%20184%20230-140v188H0z%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.24%22%2F%3E%3Cpath%20d%3D%22M0%20432l180-128%20120%2096%20110-74%20170%20112%20220-102v164H0z%22%20fill%3D%22%232d2520%22%20opacity%3D%22.78%22%2F%3E%3Cpath%20d%3D%22M70%20132h250M70%20160h180%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.4%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22470%22%20y%3D%22310%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22164%22%20fill%3D%22%232d2520%22%3E%E5%B9%B3%3C%2Ftext%3E%3Crect%20x%3D%22646%22%20y%3D%22352%22%20width%3D%2276%22%20height%3D%2276%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cpath%20d%3D%22M664%20376h40M664%20400h40%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.4%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22704%22%20cy%3D%22252%22%20r%3D%225%22%20fill%3D%22%232d2520%22%20opacity%3D%22.5%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-20 10:02"
       },
       {
-        "id": "post-065",
-        "title": "《活着》读后感：把日子过成一条河",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%236C5CE7%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300C2A8%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E4%B9%A6%E9%A1%B5%20%C2%B7%20POST-065%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-17 12:36"
+        "id": "post-084",
+        "title": "关于《追风筝的人》：喀布尔的石榴树下，埋着两个少年不敢承认的事",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cg%20transform%3D%22rotate(-7%20400%20250)%22%3E%3Crect%20x%3D%22222%22%20y%3D%2286%22%20width%3D%22356%22%20height%3D%22330%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22250%22%20y%3D%22110%22%20width%3D%22356%22%20height%3D%22310%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.35%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22278%22%20y%3D%22134%22%20width%3D%22356%22%20height%3D%22286%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M318%20202h268M318%20236h196M318%20270h238M318%20304h164%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.22%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22574%22%20y%3D%22196%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22112%22%20fill%3D%22%23c98a2d%22%3E%E8%BF%BD%3C%2Ftext%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22404%22%20r%3D%2244%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M682%20404h36M700%20386v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.8%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-04-28 11:26"
       }
     ]
   }

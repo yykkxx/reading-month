@@ -2,211 +2,105 @@
   "code": 0,
   "data": {
     "id": "post-042",
-    "title": "《围城》里的比喻，值一整本摘抄本",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20POST-042%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。",
+    "title": "《杀死一只知更鸟》里，「你永远不能真正了解一个人，除非你穿上他的鞋」",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cpath%20d%3D%22M70%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M125%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M180%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M235%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M290%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M345%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M400%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M455%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M510%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M565%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M620%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M675%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M730%2048v404%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%2070h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20120h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20170h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20220h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20270h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20320h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20370h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%20420h704%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2286%22%20y%3D%2264%22%20width%3D%22628%22%20height%3D%22372%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.52%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22322%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22216%22%20fill%3D%22%23463a30%22%20opacity%3D%22.9%22%3E%E6%9D%80%3C%2Ftext%3E%3Crect%20x%3D%22624%22%20y%3D%22352%22%20width%3D%2298%22%20height%3D%2298%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cpath%20d%3D%22M648%20376h50M648%20401h50M648%20426h34%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.75%22%2F%3E%3Ccircle%20cx%3D%22128%22%20cy%3D%2292%22%20r%3D%226%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "阿蒂克斯对斯库特说，除非你钻进他的皮肤里走一走，否则你永远不了解一个人。这句话被引用得太多，可放在种族隔离的梅科姆镇，它不是鸡汤，是唯一的出路。",
     "author": {
-      "id": "u02",
-      "name": "晚八点读书人",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2A4C%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238E7CFF%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E5%A4%9C%E8%AF%BB%20%C2%B7%20%E6%99%9A%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "新闻传播学院"
+      "id": "u16",
+      "name": "借书卡收藏家",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23efe6d5%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23efe6d5%22%3E%E5%80%9F%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h20%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h21%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h22%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23efe6d5%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "法学院·知识产权"
     },
-    "time": "2026-04-19 10:23",
-    "timestamp": 1776565380000,
-    "likes": 62,
-    "commentCount": 9,
-    "views": 6750,
+    "time": "2026-05-09 13:00",
+    "timestamp": 1778302800000,
+    "likes": 745,
+    "commentCount": 6,
+    "views": 2243,
     "liked": false,
-    "category": "小说",
+    "category": "教育",
     "tags": [
-      "经典重读",
-      "通勤阅读"
+      "金句摘抄",
+      "我的书架",
+      "读完就写",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-042-c1",
-        "user": "自习室 305",
-        "avatarText": "读",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-21 09:50",
-        "timestamp": 1776736200000,
-        "likes": 91
+        "user": "折角爱好者",
+        "avatarText": "折",
+        "content": "「穿上他的鞋」，说起来容易。",
+        "time": "2026-05-09 18:00",
+        "timestamp": 1778320800000,
+        "likes": 19
       },
       {
         "id": "post-042-c2",
-        "user": "借书卡收藏家",
-        "avatarText": "自",
-        "content": "第一次看到有人这样解读，学到了。",
-        "time": "2026-04-19 14:35",
-        "timestamp": 1776580500000,
-        "likes": 80
+        "user": "读不完的卡尔维诺",
+        "avatarText": "读",
+        "content": "空调温度，我们也吵过。",
+        "time": "2026-05-10 23:00",
+        "timestamp": 1778425200000,
+        "likes": 9
       },
       {
         "id": "post-042-c3",
-        "user": "橘子汽水",
-        "avatarText": "折",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-20 12:04",
-        "timestamp": 1776657840000,
-        "likes": 37
-      },
-      {
-        "id": "post-042-c4",
-        "user": "三行批注",
-        "avatarText": "三",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-19 18:04",
-        "timestamp": 1776593040000,
-        "likes": 50
-      },
-      {
-        "id": "post-042-c5",
-        "user": "理科生的文学梦",
-        "avatarText": "借",
-        "content": "刚读完这本，我们的感受几乎一模一样。",
-        "time": "2026-04-22 15:39",
-        "timestamp": 1776843540000,
-        "likes": 81
-      },
-      {
-        "id": "post-042-c6",
-        "user": "青苔与旧书",
-        "avatarText": "折",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-19 11:12",
-        "timestamp": 1776568320000,
-        "likes": 38
-      },
-      {
-        "id": "post-042-c7",
-        "user": "晚八点读书人",
-        "avatarText": "青",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-22 13:50",
-        "timestamp": 1776837000000,
-        "likes": 51
-      },
-      {
-        "id": "post-042-c8",
-        "user": "三行批注",
-        "avatarText": "青",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-20 13:53",
-        "timestamp": 1776664380000,
-        "likes": 25
-      },
-      {
-        "id": "post-042-c9",
-        "user": "一只热爱排版的猫",
-        "avatarText": "半",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-21 14:53",
-        "timestamp": 1776754380000,
-        "likes": 71
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "承认自己可能看错，太难了。",
+        "time": "2026-05-11 04:00",
+        "timestamp": 1778443200000,
+        "likes": 27
       }
     ],
     "_fullComments": [
       {
         "id": "post-042-c1",
-        "user": "自习室 305",
-        "avatarText": "读",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-21 09:50",
-        "timestamp": 1776736200000,
-        "likes": 91
+        "user": "折角爱好者",
+        "avatarText": "折",
+        "content": "「穿上他的鞋」，说起来容易。",
+        "time": "2026-05-09 18:00",
+        "timestamp": 1778320800000,
+        "likes": 19
       },
       {
         "id": "post-042-c2",
-        "user": "借书卡收藏家",
-        "avatarText": "自",
-        "content": "第一次看到有人这样解读，学到了。",
-        "time": "2026-04-19 14:35",
-        "timestamp": 1776580500000,
-        "likes": 80
+        "user": "读不完的卡尔维诺",
+        "avatarText": "读",
+        "content": "空调温度，我们也吵过。",
+        "time": "2026-05-10 23:00",
+        "timestamp": 1778425200000,
+        "likes": 9
       },
       {
         "id": "post-042-c3",
-        "user": "橘子汽水",
-        "avatarText": "折",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-20 12:04",
-        "timestamp": 1776657840000,
-        "likes": 37
-      },
-      {
-        "id": "post-042-c4",
-        "user": "三行批注",
-        "avatarText": "三",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-19 18:04",
-        "timestamp": 1776593040000,
-        "likes": 50
-      },
-      {
-        "id": "post-042-c5",
-        "user": "理科生的文学梦",
-        "avatarText": "借",
-        "content": "刚读完这本，我们的感受几乎一模一样。",
-        "time": "2026-04-22 15:39",
-        "timestamp": 1776843540000,
-        "likes": 81
-      },
-      {
-        "id": "post-042-c6",
-        "user": "青苔与旧书",
-        "avatarText": "折",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-19 11:12",
-        "timestamp": 1776568320000,
-        "likes": 38
-      },
-      {
-        "id": "post-042-c7",
-        "user": "晚八点读书人",
-        "avatarText": "青",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-22 13:50",
-        "timestamp": 1776837000000,
-        "likes": 51
-      },
-      {
-        "id": "post-042-c8",
-        "user": "三行批注",
-        "avatarText": "青",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-20 13:53",
-        "timestamp": 1776664380000,
-        "likes": 25
-      },
-      {
-        "id": "post-042-c9",
-        "user": "一只热爱排版的猫",
-        "avatarText": "半",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-21 14:53",
-        "timestamp": 1776754380000,
-        "likes": 71
+        "user": "灯塔与船",
+        "avatarText": "灯",
+        "content": "承认自己可能看错，太难了。",
+        "time": "2026-05-11 04:00",
+        "timestamp": 1778443200000,
+        "likes": 27
       }
     ],
     "book": {
-      "name": "红楼梦",
-      "author": "曹雪芹",
-      "publisher": "人民文学出版社",
-      "isbn": "978-6936192035"
+      "name": "杀死一只知更鸟",
+      "author": "哈珀·李",
+      "publisher": "译林出版社",
+      "isbn": "978-1000334380"
     },
-    "contentHtml": "<p>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。</p><h2>为什么读它</h2><p>选这本书其实是偶然。最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？这本书让我重新整理了书架，也重新整理了一点自己的生活。</p><h2>我记住的三句话</h2><ul><li>熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。</li><li>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</li><li>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</li></ul><p>本来是抱着完成任务的心态翻开的，结果一口气读到下午。合上书的时候，房间里安静得能听见自己的心跳。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>这句话在书里出现过两次。第一次是阿蒂克斯教斯库特，第二次是斯库特站在布·拉德利的门廊上。</p><p>梅科姆镇的人不是天生恶毒。他们只是从来没试过站到别人的位置上看一眼。</p><p>我大一和室友因为空调温度吵过架。我怕冷，她怕热。后来我搬去她床那边睡了一晚，才发现她那个位置正对着出风口。</p><p>我后来和那个室友成了朋友。她怕热，我怕冷，我们买了一个小风扇放在她床头。她也会在我冷的时候把外套递过来。穿上她的鞋走一走，说起来容易，做起来其实就是这么点小事。可就是这点小事，很多人一辈子不做。那双鞋后来被我穿旧了，她一次也没再提过。她笑了笑。</p><p>「穿上他的鞋」听起来很简单，做起来要你先承认自己可能看错了。哈珀·李把这句话写成了一个女孩的成长。</p>",
     "related": [
       {
-        "id": "post-041",
-        "title": "《瓦尔登湖》：一个人也可以活得很好",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%236C5CE7%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300C2A8%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E4%B9%A6%E9%A1%B5%20%C2%B7%20POST-041%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-19 14:35"
+        "id": "post-074",
+        "title": "布·拉德利最后站在门后，偏见比黑夜更黑——读《杀死一只知更鸟》",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Cg%20transform%3D%22rotate(-7%20400%20250)%22%3E%3Crect%20x%3D%22222%22%20y%3D%2286%22%20width%3D%22356%22%20height%3D%22330%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22250%22%20y%3D%22110%22%20width%3D%22356%22%20height%3D%22310%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.35%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22278%22%20y%3D%22134%22%20width%3D%22356%22%20height%3D%22286%22%20fill%3D%22%23efe6d5%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M318%20202h268M318%20236h196M318%20270h238M318%20304h164%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.22%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22574%22%20y%3D%22196%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22112%22%20fill%3D%22%234e6e5d%22%3E%E6%9D%80%3C%2Ftext%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22404%22%20r%3D%2244%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M682%20404h36M700%20386v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.5%22%20opacity%3D%22.8%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-01 02:20"
       },
       {
-        "id": "post-040",
-        "title": "《百年孤独》读了三遍，才懂开头那句话",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23231557%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322D3EE%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E8%B5%9B%E5%8D%9A%20%C2%B7%20POST-040%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-19 17:09"
+        "id": "post-005",
+        "title": "《如何阅读一本书》中的一个细节：艾德勒把阅读分成四层，我的划线还停在第一层",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%2254%22%20y%3D%2254%22%20width%3D%22692%22%20height%3D%22392%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22168%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.16%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22150%22%20fill%3D%22none%22%20stroke%3D%22%234e6e5d%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22352%22%20y%3D%22336%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22248%22%20fill%3D%22%232d2520%22%3E%E5%A6%82%3C%2Ftext%3E%3Cpath%20d%3D%22M604%2084v332M620%2084v332%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.2%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22676%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%232d2520%22%20opacity%3D%22.45%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-19 19:54"
       }
     ]
   }

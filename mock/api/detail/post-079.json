@@ -2,192 +2,104 @@
   "code": 0,
   "data": {
     "id": "post-079",
-    "title": "《尘埃落定》：傻子比聪明人看得更远",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B1B3A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF6FB5%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%98%9F%E6%B2%B3%20%C2%B7%20POST-079%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。",
+    "title": "《思考，快与慢》里，「眼见为实」是最省力也最危险的错觉",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M0%200h800v70H0zM0%20430h800v70H0z%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.9%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22232%22%20fill%3D%22%23f7f2e7%22%3E%E6%80%9D%3C%2Ftext%3E%3Ccircle%20cx%3D%22694%22%20cy%3D%22250%22%20r%3D%2244%22%20fill%3D%22%23b4452f%22%2F%3E%3Cpath%20d%3D%22M676%20250h36M694%20232v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.4%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22250%22%20r%3D%228%22%20fill%3D%22%23a63a2b%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22282%22%20r%3D%224%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.4%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "卡尼曼说，人容易高估自己看到的信息，忽略看不到的部分。飞机失事上新闻，我们就怕坐飞机；车祸天天有，反而不当回事。可见到的不等于全部。",
     "author": {
-      "id": "u19",
-      "name": "理科生的文学梦",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%236C5CE7%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300C2A8%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E4%B9%A6%E9%A1%B5%20%C2%B7%20%E7%90%86%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "数学学院"
+      "id": "u18",
+      "name": "三行批注",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E4%B8%89%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h22%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h14%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h15%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "计算机学院·人工智能"
     },
-    "time": "2026-04-16 00:56",
-    "timestamp": 1776272160000,
-    "likes": 175,
-    "commentCount": 8,
-    "views": 7272,
+    "time": "2026-04-29 20:36",
+    "timestamp": 1777466160000,
+    "likes": 627,
+    "commentCount": 7,
+    "views": 2437,
     "liked": false,
-    "category": "教育",
+    "category": "心理",
     "tags": [
-      "读完就写"
+      "深夜读书",
+      "读完就写",
+      "经典重读"
     ],
     "comments": [
       {
         "id": "post-079-c1",
-        "user": "半页纸",
-        "avatarText": "读",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-18 01:24",
-        "timestamp": 1776446640000,
-        "likes": 32
+        "user": "南山有木",
+        "avatarText": "南",
+        "content": "飞机和汽车的例子，我记了很多年。",
+        "time": "2026-04-30 11:36",
+        "timestamp": 1777520160000,
+        "likes": 17
       },
       {
         "id": "post-079-c2",
-        "user": "耳机里的诗",
-        "avatarText": "橘",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-19 11:21",
-        "timestamp": 1776568860000,
-        "likes": 52
+        "user": "墨鱼丸子",
+        "avatarText": "墨",
+        "content": "只看成功案例，我也犯过。",
+        "time": "2026-04-30 20:36",
+        "timestamp": 1777552560000,
+        "likes": 47
       },
       {
         "id": "post-079-c3",
-        "user": "图书馆常驻居民",
-        "avatarText": "青",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-16 03:45",
-        "timestamp": 1776282300000,
-        "likes": 75
-      },
-      {
-        "id": "post-079-c4",
-        "user": "凌晨四点的书页",
-        "avatarText": "半",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-17 02:59",
-        "timestamp": 1776365940000,
-        "likes": 70
-      },
-      {
-        "id": "post-079-c5",
-        "user": "耳机里的诗",
-        "avatarText": "灯",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-16 07:04",
-        "timestamp": 1776294240000,
-        "likes": 72
-      },
-      {
-        "id": "post-079-c6",
-        "user": "理科生的文学梦",
-        "avatarText": "南",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-17 21:52",
-        "timestamp": 1776433920000,
-        "likes": 30
-      },
-      {
-        "id": "post-079-c7",
-        "user": "晚八点读书人",
-        "avatarText": "凌",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-16 22:41",
-        "timestamp": 1776350460000,
-        "likes": 13
-      },
-      {
-        "id": "post-079-c8",
-        "user": "凌晨四点的书页",
-        "avatarText": "折",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-17 23:29",
-        "timestamp": 1776439740000,
-        "likes": 53
+        "user": "一只热爱排版的猫",
+        "avatarText": "一",
+        "content": "看见的只是样本，这句要划重点。",
+        "time": "2026-05-01 08:36",
+        "timestamp": 1777595760000,
+        "likes": 80
       }
     ],
     "_fullComments": [
       {
         "id": "post-079-c1",
-        "user": "半页纸",
-        "avatarText": "读",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-18 01:24",
-        "timestamp": 1776446640000,
-        "likes": 32
+        "user": "南山有木",
+        "avatarText": "南",
+        "content": "飞机和汽车的例子，我记了很多年。",
+        "time": "2026-04-30 11:36",
+        "timestamp": 1777520160000,
+        "likes": 17
       },
       {
         "id": "post-079-c2",
-        "user": "耳机里的诗",
-        "avatarText": "橘",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-19 11:21",
-        "timestamp": 1776568860000,
-        "likes": 52
+        "user": "墨鱼丸子",
+        "avatarText": "墨",
+        "content": "只看成功案例，我也犯过。",
+        "time": "2026-04-30 20:36",
+        "timestamp": 1777552560000,
+        "likes": 47
       },
       {
         "id": "post-079-c3",
-        "user": "图书馆常驻居民",
-        "avatarText": "青",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-16 03:45",
-        "timestamp": 1776282300000,
-        "likes": 75
-      },
-      {
-        "id": "post-079-c4",
-        "user": "凌晨四点的书页",
-        "avatarText": "半",
-        "content": "点赞，希望多写点读书笔记。",
-        "time": "2026-04-17 02:59",
-        "timestamp": 1776365940000,
-        "likes": 70
-      },
-      {
-        "id": "post-079-c5",
-        "user": "耳机里的诗",
-        "avatarText": "灯",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-16 07:04",
-        "timestamp": 1776294240000,
-        "likes": 72
-      },
-      {
-        "id": "post-079-c6",
-        "user": "理科生的文学梦",
-        "avatarText": "南",
-        "content": "同感，读到后面眼泪都下来了。",
-        "time": "2026-04-17 21:52",
-        "timestamp": 1776433920000,
-        "likes": 30
-      },
-      {
-        "id": "post-079-c7",
-        "user": "晚八点读书人",
-        "avatarText": "凌",
-        "content": "这本书我也读过，看到你这段又想重读一遍。",
-        "time": "2026-04-16 22:41",
-        "timestamp": 1776350460000,
-        "likes": 13
-      },
-      {
-        "id": "post-079-c8",
-        "user": "凌晨四点的书页",
-        "avatarText": "折",
-        "content": "“文字像灯”这个比喻太喜欢了。",
-        "time": "2026-04-17 23:29",
-        "timestamp": 1776439740000,
-        "likes": 53
+        "user": "一只热爱排版的猫",
+        "avatarText": "一",
+        "content": "看见的只是样本，这句要划重点。",
+        "time": "2026-05-01 08:36",
+        "timestamp": 1777595760000,
+        "likes": 80
       }
     ],
     "book": {
-      "name": "昆虫记",
-      "author": "法布尔",
-      "publisher": "商务印书馆",
-      "isbn": "978-4270158886"
+      "name": "思考，快与慢",
+      "author": "丹尼尔·卡尼曼",
+      "publisher": "中信出版社",
+      "isbn": "978-1000302704"
     },
-    "contentHtml": "<p>最喜欢书里那位配角，戏份不多，却每次出场都让人心里一暖。</p><h2>为什么读它</h2><p>选这本书其实是偶然。读完的第一个念头是：想把它借给最好的朋友，又有点舍不得。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？通勤路上读的，地铁到站了也舍不得放下，硬是坐过了两站。</p><h2>我记住的三句话</h2><ul><li>读完之后我绕着操场走了三圈。有些书就是这样，读完你不想说话，只想走一走。</li><li>书里那句话被我抄在了笔记本第一页：“人的一生，是自己一次次选择的总和。”</li><li>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</li></ul><p>以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>书里有个很有名的例子：飞机失事报道多，人们就觉得飞机危险；汽车事故更多，却没人天天害怕。</p><p>因为前者容易被想起，后者太日常。卡尼曼把这种偏差叫「可得性启发」。</p><p>我找实习时，只盯着学长学姐成功进大厂的例子，没看见更多投了几百份简历没回音的人。后来自己投了三十份，才补上这一课。</p><p>我后来找了份实习，投了四十多份简历。被拒的时候，我就想起那个「看不见的样本」。成功的人被看见，失败的人沉默，世界就显得比实际容易。知道这一点，不会让拒信少一封，但能让我第二天继续投。卡尼曼没教我成功，教了我别被样本骗。现在我看到「限时优惠」会先走开。</p><p>「眼见为实」在生活里很好用，在做判断时却常常骗人。看见的只是样本，没看见的那部分才决定结论。</p>",
     "related": [
       {
-        "id": "post-078",
-        "title": "《苏东坡传》：把苦难活成诗的人",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B7A4B%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%239BE15D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E9%9B%A8%E6%9E%97%20%C2%B7%20POST-078%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-16 03:23"
+        "id": "post-015",
+        "title": "卡尼曼说系统一永远在线，我的期末复习计划就是证据——读《思考，快与慢》",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%2254%22%20y%3D%2254%22%20width%3D%22692%22%20height%3D%22392%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22168%22%20fill%3D%22%23c98a2d%22%20opacity%3D%22.16%22%2F%3E%3Ccircle%20cx%3D%22352%22%20cy%3D%22250%22%20r%3D%22150%22%20fill%3D%22none%22%20stroke%3D%22%23c98a2d%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22352%22%20y%3D%22336%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22248%22%20fill%3D%22%232d2520%22%3E%E6%80%9D%3C%2Ftext%3E%3Cpath%20d%3D%22M604%2084v332M620%2084v332%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.2%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22676%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%23c98a2d%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22396%22%20r%3D%227%22%20fill%3D%22%232d2520%22%20opacity%3D%22.45%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-16 23:16"
       },
       {
-        "id": "post-077",
-        "title": "《边城》：所有等待，最后都成了风景",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237A4E2D%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E0A96D%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E7%BA%B8%E5%A2%A8%20%C2%B7%20POST-077%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-16 06:27"
+        "id": "post-017",
+        "title": "关于《被讨厌的勇气》：「你的不幸，是你自己选择的」——这句话差点让我合上书",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%22168%22%20width%3D%22800%22%20height%3D%22168%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M0%20210h800M0%20294h800%22%20stroke%3D%22%23f7f2e7%22%20stroke-opacity%3D%22.16%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22292%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22148%22%20fill%3D%22%23f7f2e7%22%3E%E8%A2%AB%3C%2Ftext%3E%3Ccircle%20cx%3D%22128%22%20cy%3D%22122%22%20r%3D%2230%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cpath%20d%3D%22M96%20420h608M96%20442h396%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.28%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22654%22%20y%3D%22406%22%20width%3D%2250%22%20height%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%234e6e5d%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22122%22%20r%3D%226%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-16 10:07"
       }
     ]
   }

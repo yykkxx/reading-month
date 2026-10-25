@@ -2,193 +2,105 @@
   "code": 0,
   "data": {
     "id": "post-081",
-    "title": "《深度工作》：我戒掉手机的第 21 天",
-    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%236C5CE7%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300C2A8%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E4%B9%A6%E9%A1%B5%20%C2%B7%20POST-081%3C%2Ftext%3E%3C%2Fsvg%3E",
-    "excerpt": "这本书让我重新整理了书架，也重新整理了一点自己的生活。",
+    "title": "岸见一郎把阿德勒讲成对话，我在地铁上读得像被人点名——读《被讨厌的勇气》",
+    "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23efe6d5%22%2F%3E%3Crect%20x%3D%2264%22%20y%3D%2238%22%20width%3D%22196%22%20height%3D%22424%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M98%2082h128M98%20116h88M98%20150h112%22%20stroke%3D%22%23efe6d5%22%20stroke-opacity%3D%22.4%22%20stroke-width%3D%222%22%2F%3E%3Ctext%20x%3D%22162%22%20y%3D%22306%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22148%22%20fill%3D%22%23efe6d5%22%3E%E8%A2%AB%3C%2Ftext%3E%3Cpath%20d%3D%22M320%2096h396M320%20132h260%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.34%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22320%22%20y%3D%22196%22%20width%3D%22330%22%20height%3D%22150%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M344%20236h282M344%20270h222M344%20304h250%22%20stroke%3D%22%232d2520%22%20stroke-opacity%3D%22.2%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22682%22%20cy%3D%22372%22%20r%3D%2256%22%20fill%3D%22%23c98a2d%22%2F%3E%3Cpath%20d%3D%22M658%20372h48M682%20348v48%22%20stroke%3D%22%23efe6d5%22%20stroke-width%3D%223%22%20opacity%3D%22.78%22%2F%3E%3Ccircle%20cx%3D%22682%22%20cy%3D%22372%22%20r%3D%2270%22%20fill%3D%22none%22%20stroke%3D%22%23c98a2d%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%222%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+    "excerpt": "整本书是一个青年和哲人的对话。青年替读者发问、反驳、不服气，哲人一步步拆。地铁上读到青年被说中时，我差点抬头看有没有人盯着我。",
     "author": {
-      "id": "u01",
-      "name": "青柠不加冰",
-      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FF7A59%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFC46B%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%99%A8%E5%85%89%20%C2%B7%20%E9%9D%92%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "college": "文学院"
+      "id": "u08",
+      "name": "一只热爱排版的猫",
+      "avatar": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23f7f2e7%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2290%22%20fill%3D%22%23f7f2e7%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2268%22%20fill%3D%22%234e6e5d%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221.5%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22130%22%20text-anchor%3D%22middle%22%20font-family%3D%22'Songti%20SC'%2C'STSong'%2C'Noto%20Serif%20CJK%20SC'%2Cserif%22%20font-size%3D%2272%22%20fill%3D%22%23f7f2e7%22%3E%E4%B8%80%3C%2Ftext%3E%3Cpath%20d%3D%22M36%20164h21%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M43%20155h22%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M50%20146h14%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cpath%20d%3D%22M32%20100a68%2068%200%200%200%206%2028%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222%22%20opacity%3D%22.6%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E",
+      "college": "法学院·法学"
     },
-    "time": "2026-04-15 19:37",
-    "timestamp": 1776253020000,
-    "likes": 410,
-    "commentCount": 8,
-    "views": 1512,
+    "time": "2026-04-29 05:46",
+    "timestamp": 1777412760000,
+    "likes": 436,
+    "commentCount": 6,
+    "views": 5111,
     "liked": false,
-    "category": "文学",
+    "category": "心理",
     "tags": [
-      "通勤阅读",
+      "深夜读书",
+      "一周一书",
+      "我的书架",
       "读完就写"
     ],
     "comments": [
       {
         "id": "post-081-c1",
-        "user": "借书卡收藏家",
-        "avatarText": "墨",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-16 16:36",
-        "timestamp": 1776328560000,
-        "likes": 21
+        "user": "晚风翻书",
+        "avatarText": "晚",
+        "content": "地铁上被点名，太真实了。",
+        "time": "2026-04-30 06:46",
+        "timestamp": 1777502760000,
+        "likes": 32
       },
       {
         "id": "post-081-c2",
-        "user": "晚八点读书人",
+        "user": "青苔与旧书",
         "avatarText": "青",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-19 06:03",
-        "timestamp": 1776549780000,
-        "likes": 21
+        "content": "青年替我问出了不服气的话。",
+        "time": "2026-04-30 00:46",
+        "timestamp": 1777481160000,
+        "likes": 4
       },
       {
         "id": "post-081-c3",
-        "user": "晚八点读书人",
-        "avatarText": "南",
-        "content": "已经在图书馆预约了，谢谢推荐📚",
-        "time": "2026-04-16 21:08",
-        "timestamp": 1776344880000,
-        "likes": 20
-      },
-      {
-        "id": "post-081-c4",
-        "user": "青苔与旧书",
-        "avatarText": "晚",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-17 00:36",
-        "timestamp": 1776357360000,
-        "likes": 80
-      },
-      {
-        "id": "post-081-c5",
         "user": "借书卡收藏家",
-        "avatarText": "南",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-18 19:11",
-        "timestamp": 1776510660000,
-        "likes": 45
-      },
-      {
-        "id": "post-081-c6",
-        "user": "折角爱好者",
-        "avatarText": "墨",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-16 03:27",
-        "timestamp": 1776281220000,
-        "likes": 9
-      },
-      {
-        "id": "post-081-c7",
-        "user": "灯塔与船",
-        "avatarText": "凌",
-        "content": "已经在图书馆预约了，谢谢推荐📚",
-        "time": "2026-04-18 03:13",
-        "timestamp": 1776453180000,
-        "likes": 16
-      },
-      {
-        "id": "post-081-c8",
-        "user": "青柠不加冰",
-        "avatarText": "墨",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-16 19:23",
-        "timestamp": 1776338580000,
-        "likes": 5
+        "avatarText": "借",
+        "content": "对话体比说教好读。",
+        "time": "2026-04-30 20:46",
+        "timestamp": 1777553160000,
+        "likes": 51
       }
     ],
     "_fullComments": [
       {
         "id": "post-081-c1",
-        "user": "借书卡收藏家",
-        "avatarText": "墨",
-        "content": "写得真好，收藏了！",
-        "time": "2026-04-16 16:36",
-        "timestamp": 1776328560000,
-        "likes": 21
+        "user": "晚风翻书",
+        "avatarText": "晚",
+        "content": "地铁上被点名，太真实了。",
+        "time": "2026-04-30 06:46",
+        "timestamp": 1777502760000,
+        "likes": 32
       },
       {
         "id": "post-081-c2",
-        "user": "晚八点读书人",
+        "user": "青苔与旧书",
         "avatarText": "青",
-        "content": "读书月我也要开始打卡了，一起加油！",
-        "time": "2026-04-19 06:03",
-        "timestamp": 1776549780000,
-        "likes": 21
+        "content": "青年替我问出了不服气的话。",
+        "time": "2026-04-30 00:46",
+        "timestamp": 1777481160000,
+        "likes": 4
       },
       {
         "id": "post-081-c3",
-        "user": "晚八点读书人",
-        "avatarText": "南",
-        "content": "已经在图书馆预约了，谢谢推荐📚",
-        "time": "2026-04-16 21:08",
-        "timestamp": 1776344880000,
-        "likes": 20
-      },
-      {
-        "id": "post-081-c4",
-        "user": "青苔与旧书",
-        "avatarText": "晚",
-        "content": "好文，转给室友了。",
-        "time": "2026-04-17 00:36",
-        "timestamp": 1776357360000,
-        "likes": 80
-      },
-      {
-        "id": "post-081-c5",
         "user": "借书卡收藏家",
-        "avatarText": "南",
-        "content": "被标题吸引进来，果然没让我失望。",
-        "time": "2026-04-18 19:11",
-        "timestamp": 1776510660000,
-        "likes": 45
-      },
-      {
-        "id": "post-081-c6",
-        "user": "折角爱好者",
-        "avatarText": "墨",
-        "content": "图书馆三楼有这本，借阅码 3-215。",
-        "time": "2026-04-16 03:27",
-        "timestamp": 1776281220000,
-        "likes": 9
-      },
-      {
-        "id": "post-081-c7",
-        "user": "灯塔与船",
-        "avatarText": "凌",
-        "content": "已经在图书馆预约了，谢谢推荐📚",
-        "time": "2026-04-18 03:13",
-        "timestamp": 1776453180000,
-        "likes": 16
-      },
-      {
-        "id": "post-081-c8",
-        "user": "青柠不加冰",
-        "avatarText": "墨",
-        "content": "这段话我抄在本子上了。",
-        "time": "2026-04-16 19:23",
-        "timestamp": 1776338580000,
-        "likes": 5
+        "avatarText": "借",
+        "content": "对话体比说教好读。",
+        "time": "2026-04-30 20:46",
+        "timestamp": 1777553160000,
+        "likes": 51
       }
     ],
     "book": {
-      "name": "我们仨",
-      "author": "杨绛",
-      "publisher": "三联书店",
-      "isbn": "978-8347997426"
+      "name": "被讨厌的勇气",
+      "author": "岸见一郎",
+      "publisher": "机械工业出版社",
+      "isbn": "978-1000286866"
     },
-    "contentHtml": "<p>这本书让我重新整理了书架，也重新整理了一点自己的生活。</p><h2>为什么读它</h2><p>选这本书其实是偶然。读到一半时忍不住在页边写满了字，后来发现同一段话，我前后两次的理解完全不同。图书馆的灯光偏暖，书脊上有一道旧折痕，像被很多人温柔地翻过。</p><blockquote>熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。</blockquote><p>读的过程中我一直在想一个问题：我们读书，到底是在读别人，还是在读自己？以为是本薄薄的小书，结果是本厚厚的镜子。照见了很多我一直回避的东西。</p><h2>我记住的三句话</h2><ul><li>读完之后我绕着操场走了三圈。有些书就是这样，读完你不想说话，只想走一走。</li><li>有些句子像老朋友，隔着几十年的纸张，依然准确地拍了拍我的肩膀。</li><li>熬夜读到第三章，窗外天都亮了。那一刻我觉得文字像灯，把心里看不见的地方照亮了一小块。</li></ul><p>读完之后我绕着操场走了三圈。有些书就是这样，读完你不想说话，只想走一走。如果你也在读书月里读到了这本书，欢迎在评论区和我交换感受。</p>",
+    "contentHtml": "<p>这本书的结构很简单：一个愤怒的青年去找哲人，两个人从头辩到尾。</p><p>青年不是摆设。他替读者问出那些不服气的话：难道过去不重要吗？难道人真的能改变吗？</p><p>我在地铁上读，读到「你之所以不改变，是因为你下了不改变的决心」，下意识把书合上了。旁边的人看了我一眼。</p><p>那本书我后来又翻了一次，还是在地铁上。读到青年说「可是」，我笑了。我们大概都当过那个青年，也都想遇到一个愿意慢慢解释的哲人。可惜生活里更多时候，没人给你解释，你得自己往下读。书能做的，也就是陪一段。那本书我后来借给了那个总说「可是」的室友。她看完说，这个青年跟我好像。我说，谁不是呢。</p><p>对话体让道理不那么像说教。你可以跟着青年一起反驳，也可以在某一句上突然安静。</p>",
     "related": [
       {
-        "id": "post-080",
-        "title": "《追风筝的人》：为你，千千万万遍",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23231557%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322D3EE%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E8%B5%9B%E5%8D%9A%20%C2%B7%20POST-080%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-15 22:34"
+        "id": "post-049",
+        "title": "《被讨厌的勇气》里，课题分离不是冷漠，是终于不替别人活",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%232d2520%22%2F%3E%3Cpath%20d%3D%22M0%200h800v70H0zM0%20430h800v70H0z%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.9%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22232%22%20fill%3D%22%23f7f2e7%22%3E%E8%A2%AB%3C%2Ftext%3E%3Ccircle%20cx%3D%22694%22%20cy%3D%22250%22%20r%3D%2244%22%20fill%3D%22%23b4452f%22%2F%3E%3Cpath%20d%3D%22M676%20250h36M694%20232v36%22%20stroke%3D%22%23f7f2e7%22%20stroke-width%3D%222.4%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22250%22%20r%3D%228%22%20fill%3D%22%23a63a2b%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22282%22%20r%3D%224%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.4%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%232d2520%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%232d2520%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-07 17:42"
       },
       {
-        "id": "post-079",
-        "title": "《尘埃落定》：傻子比聪明人看得更远",
-        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231B1B3A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF6FB5%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22v%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.75%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23g)%22%2F%3E%3Cg%20fill%3D%22%23fff%22%20opacity%3D%220.16%22%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2290%22%20r%3D%2270%22%2F%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22420%22%20r%3D%22110%22%2F%3E%3Ccircle%20cx%3D%22620%22%20cy%3D%22120%22%20r%3D%2234%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23fff%22%20stroke-opacity%3D%220.5%22%20fill%3D%22none%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22300%22%20y%3D%22140%22%20width%3D%22200%22%20height%3D%22250%22%20rx%3D%228%22%2F%3E%3Cpath%20d%3D%22M400%20140v250%22%2F%3E%3Cpath%20d%3D%22M330%20200h50M330%20240h50M330%20280h50M420%20200h50M420%20240h50M420%20280h50%22%2F%3E%3C%2Fg%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22url(%23v)%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%22460%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.85%22%20font-family%3D%22sans-serif%22%20font-size%3D%2226%22%3E%E6%98%9F%E6%B2%B3%20%C2%B7%20POST-079%3C%2Ftext%3E%3C%2Fsvg%3E",
-        "time": "2026-04-16 00:56"
+        "id": "post-056",
+        "title": "《蛤蟆先生去看心理医生》中的一个细节：苍鹭医生不给他答案，只问「你当时是什么感觉」",
+        "cover": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22500%22%20viewBox%3D%220%200%20800%20500%22%3E%3Crect%20width%3D%22800%22%20height%3D%22500%22%20fill%3D%22%23efe6d5%22%2F%3E%3Ccircle%20cx%3D%22286%22%20cy%3D%22250%22%20r%3D%22176%22%20fill%3D%22%234e6e5d%22%20opacity%3D%22.88%22%2F%3E%3Ccircle%20cx%3D%22286%22%20cy%3D%22250%22%20r%3D%22150%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.94%22%2F%3E%3Cpath%20d%3D%22M214%20362c-18-92%2016-166%2076-218M342%20366c22-96-8-170-58-224%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M238%20300c40-18%2064-44%2078-82M302%20316c26-14%2044-34%2054-62%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.35%22%2F%3E%3Ctext%20x%3D%22286%22%20y%3D%22310%22%20text-anchor%3D%22middle%22%20font-family%3D'%22Songti%20SC%22%2C%22STSong%22%2C%22Noto%20Serif%20CJK%20SC%22%2Cserif'%20font-size%3D%22132%22%20fill%3D%22%23463a30%22%3E%E8%9B%A4%3C%2Ftext%3E%3Cpath%20d%3D%22M540%20118h180M540%20150h110%22%20stroke%3D%22%23463a30%22%20stroke-opacity%3D%22.42%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%22540%22%20y%3D%22344%22%20width%3D%22108%22%20height%3D%22108%22%20fill%3D%22%234e6e5d%22%2F%3E%3Cpath%20d%3D%22M562%20368h64M562%20394h64M562%20420h42%22%20stroke%3D%22%23efe6d5%22%20stroke-width%3D%222.5%22%20opacity%3D%22.75%22%2F%3E%3Cg%20transform%3D%22translate(42%20464)%22%3E%3Crect%20x%3D%22-7%22%20y%3D%22-4%22%20width%3D%2294%22%20height%3D%2215%22%20fill%3D%22%23f7f2e7%22%20opacity%3D%22.88%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22%23463a30%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.85%22%2F%3E%3Crect%20x%3D%2266%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23463a30%22%20stroke-width%3D%221%22%20opacity%3D%22.35%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+        "time": "2026-05-06 01:53"
       }
     ]
   }
