@@ -54,21 +54,23 @@
 | 3 | 内容真实性：96 篇文案/封面/头像去模板化 + related 排除自身 → 预期 originality/anti_ai 上升 | 76 | 78 | 71 | 68 | 62 | 66 | **71** | 保留（+2） | 内容一真，原创性 +8；但功能分因「数字口径不一致」掉了 6 分，下一轮必须先修计数闭环 |
 | 4 | 互动计数由同一份 localStorage 状态驱动，并统一作者页篇数口径 → 预期 function/technical 上升 | 79 | 80 | 75 | 74 | 62 | 67 | **74** | 保留（+3） | 数字对上点击，function +6；下一轮攻键盘可达性与悬停反馈（a11y 长期 62） |
 | 5 | 键盘可达性 + 悬停状态（顶栏/回顶 visibility、skip link、main、7 类 hover、夜读 related hover）→ 预期 perf_a11y/design 上升 | 79 | 80 | 77 | 75 | 65 | 68 | **75** | 保留（+1） | a11y +3，但 `.act:hover` 误伤了非交互的计数 span，下次补 hover 要区分交互与展示元素 |
+| 6 | SEO/分享/页脚收口（canonical/OG/og:image/robots/sitemap/footer/noscript）→ 预期 perf_a11y_seo 与 design 上升 | 78 | 79 | 77 | 74 | 70 | 68 | 75（加权 74.95） | **回滚** | perf +5 是真的，但总分只打平且新增 canonical 与 sitemap 深链矛盾；单轮只做 SEO 换不来分数，后续要跟深链/结构化数据一起做 |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：`b5c3ca2`（R5 保留版）
+- 当前保留版本：`c2cb1ca`（= R5 保留版内容，R6 已回滚）
 - 当前最高分：**75**（design 79 / originality 80 / technical 77 / function 75 / perf 65 / anti_ai 68）
-- 连续无提升轮数：0
-- 已用轮数：5 / 14
-- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7
-- 下一步（第 6 轮假设）：SEO/分享/页脚收口——无 canonical/OG/og:image、无 robots/sitemap、三页无 footer、noscript 空白 → 预期 perf_a11y_seo 与 design 上升
+- 连续无提升轮数：1（R6 回滚）
+- 已用轮数：6 / 14
+- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298
+- 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价在本轮引入 high 级新回归也回滚
+- 下一步（第 7 轮假设）：移动端首屏碰撞 + 活动数字自洽 + 作者页版式——FAB 压 CTA（67%）、scrollHint 几乎不可见、2026 徽章 vs 2027 倒计时、128/12480/96 与 120 冲突、作者页 1440 仍 217px 三列、卡片 hover 抬升失效、`.act:hover` 误伤非交互数字、分类筛选混入评论卡 → 预期 design/anti_ai/function 上升
 
 ## 6. 失败记录
 
-（暂无回滚轮次；R1/R2/R3 均保留）
+- **R6（SEO/页脚）回滚**：加权 74.95 vs 当前 74.75，等于打平；新增「canonical 通用 URL 与 sitemap ?id= 深链矛盾」「详情夜间 theme-color 被覆写」两个问题。结论：SEO/页脚工作有效但不该单独成轮，后续与深链 canonical/结构化数据/性能一起做。
 
 数据层遗留（低优先）：mock 分页里存在 1 处时间戳非严格递减（post-096 后接 post-007），应用层 `api.js` 会按 timestamp 排序，用户无感知；待内容类轮次顺手修。
 
