@@ -833,7 +833,7 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
 /* 「我的投稿」卡：贴在封面上的朱砂小印 */
 .card[data-mine="1"] { border-color: rgba(180, 69, 47, 0.38); }
 .card[data-mine="1"] .card__acts { display: none; }
-.submit__mine-list { margin-top: 20px; } .submit__mine-list[hidden] { display: none; }
+.submit__mine-list { margin-top: 20px; }
 .card__mine { position: absolute; z-index: 3; top: 10px; left: 50%; transform: translateX(-50%) rotate(-4deg); padding: 4px 10px; border: 1px solid rgba(180, 69, 47, 0.55); border-radius: 4px; background: var(--paper-2); color: var(--vermilion); font-family: var(--serif); font-size: 11.5px; font-weight: 900; letter-spacing: 0.12em; text-indent: 0.12em; pointer-events: none; box-shadow: var(--sh-1); }
 
 @media (min-width: 760px) {

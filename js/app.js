@@ -222,19 +222,34 @@
     if (!nodes.length) return
     const uniqAuthors = (list) => new Set(list.map((x) =>
       (x.author && (x.author.id || x.author.name)) || '').filter(Boolean)).size
+    const paint = (counts) => {
+      nodes.forEach((el) => { el.dataset.count = String(counts[el.dataset.stat] || 0) })
+      /* 数字动画仍由 initCounters 负责：等真实值写进 data-count 后再观察，滚动到就滚数字 */
+      initCounters()
+    }
+    let totals = null
+    try {
+      /* 只读 3 个数字的汇总文件：不与信息流重复请求 page-1，也不等 15 页预取 */
+      const res = await fetch('mock/api/totals.json', { cache: 'no-cache' })
+      if (!res.ok) throw new Error('HTTP ' + res.status)
+      totals = ((await res.json()).data) || null
+    } catch (err) { /* 旧数据：退回 page-1 的 totals */ }
+    if (!totals) {
+      try {
+        const res = await fetch('mock/api/posts/page-1.json', { cache: 'no-cache' })
+        if (res.ok) totals = ((await res.json()).data || {}).totals || null
+      } catch (err) { /* file:// 或接口不可用 */ }
+    }
+    if (totals && totals.posts) { paint(totals); return }
+    /* 最后才退回全量统计，保证数字仍与真正渲染出来的内容一致 */
     let all = []
     try {
-      /* 复用 API 的全量缓存：等空闲预取完成后统计一次，不在首屏同步拉全量 */
       all = await API.getAll()
     } catch (err) {
-      /* file:// 或接口不可用：退回内置兜底数据量，保证数字与真正渲染出来的内容一致 */
       all = API.fallbackList || []
     }
     const posts = all.filter((x) => x.type !== 'comment')
-    const counts = { posts: posts.length, comments: all.length - posts.length, authors: uniqAuthors(posts) }
-    nodes.forEach((el) => { el.dataset.count = String(counts[el.dataset.stat] || 0) })
-    /* 数字动画仍由 initCounters 负责：等真实值写进 data-count 后再观察，滚动到就滚数字 */
-    initCounters()
+    paint({ posts: posts.length, comments: all.length - posts.length, authors: uniqAuthors(posts) })
   }
 
   function initHeroEffects() {
