@@ -59,18 +59,19 @@
 | 8 | 站内投稿表单闭环（表单/校验/编号/localStorage/置顶卡/刷新回显）+ 整站届次统一 → 预期 function/anti_ai 上升 | 79 | 79 | 77 | 79 | 68 | 75 | **77** | 保留（+1） | 表单真实可用；但「已贴上感受墙，编辑小组会一周内查看」把本机存储说成收稿，假闭环从入口变成了承诺 |
 | 9 | 字体自托管 + 空闲预取/去重 page-1 → 预期 perf_a11y_seo 上升 | 78 | 79 | 78 | 78 | 77 | 76 | **78** | 保留（+1，perf +9） | 首屏请求 89→26、字体 2.6MB→0.6MB 直接兑现 9 分；但只子集了 3 个字面，serif 400 变成假粗体 |
 | 10 | 一致性收口（我的投稿隔离、诚实文案、评论数同源、96/120、错误页、alt、净化）→ 预期 technical/function/anti_ai 上升 | 78 | 79 | 80 | 80 | 78 | 80 | **79** | 保留（+1） | 数字与文案终于同源，technical/function/anti_ai 齐到 80；剩下的是 SEO/页脚、serif 400 与细节 |
+| 11 | 站点收口（页脚、带 id 的 canonical/OG/JSON-LD、robots/sitemap、serif 400 真字面、CTA hover、资料卡宽度）→ 预期 perf_a11y_seo/design/anti_ai 上升 | 80 | 79 | 80 | 81 | 76 | 82 | **80** | 保留（+1） | 收口补齐后 design/anti_ai 到 80+；代价是字体 817KB 让 perf 掉 2 分，首屏统计仍要等全量预取 |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：R10 保留版（`3b67166`）
-- 当前最高分：**79**（design 78 / originality 79 / technical 80 / function 80 / perf 78 / anti_ai 80）
+- 当前保留版本：R11 保留版（`ba85b03`）
+- 当前最高分：**80**（design 80 / originality 79 / technical 80 / function 81 / perf 76 / anti_ai 82）
 - 连续无提升轮数：0
-- 已用轮数：10 / 14
+- 已用轮数：11 / 14
 - 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298
 - 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价在本轮引入 high 级新回归也回滚
-- 下一步（第 11 轮假设）：站点收口——页脚、canonical/OG/结构化数据（canonical 必须带 id，避免上一版回滚原因）、serif 400 真实字面、缓存键统一、主 CTA hover、作者资料卡宽度、投稿卡死链与统计占位 → 预期 perf_a11y_seo/design 上升
+- 下一步（第 12 轮假设）：结构验收 + 文档同步 + 首屏统计 totals 小修（不预取全量即可出数）+ serif 400 preload → 预期 technical/perf 回升，并完成结构验收
 
 ## 6. 失败记录
 
