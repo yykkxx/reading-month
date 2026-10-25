@@ -40,7 +40,7 @@ window.READING_MONTH = {
 
   /* 右下角「投稿方式」跳转地址：默认指向本页 #submit 区块；
    * 之后接入真实投稿表单页时，把它替换成表单地址即可。 */
-  SUBMIT_URL: '#submit',
+  SUBMIT_URL: '#submitForm',
 
   /* 活动周期：读书月 4/23 — 5/23，跨年后自动滚动到下一年 */
   ACTIVITY: { startMonth: 4, startDay: 23, endMonth: 5, endDay: 23 },

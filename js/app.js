@@ -47,8 +47,8 @@
   }
 
   /* ========================================================================
-   * 一、倒计时与届次：4/23 — 5/23，过闭幕滚到下一届；届次由年份推导（2026 = 第 12 届），
-   *   徽章、倒计时说明与页面标题共用同一届，避免年份与届次互相矛盾。
+   * 一、倒计时与届次：站点口径固定为本届 2026（第 12 届）。
+   *   闭幕以后倒计时滚到下一届，但徽章、标题与投稿区文案不再跟着年份漂移。
    * ====================================================================== */
   const EDITION_BASE = { year: 2026, edition: 12 }
   function initCountdown() {
@@ -64,13 +64,11 @@
       end: new Date(year, act.endMonth - 1, act.endDay, 23, 59, 59),
     })
 
-    /* 取「正在进行或即将开始」的那一届：过了 5/23 闭幕就滚到下一届 */
-    let year = new Date().getFullYear()
-    let range = rangeOf(year)
-    if (Date.now() > range.end.getTime()) {
-      year += 1
-      range = rangeOf(year)
-    }
+    /* 站点口径固定为本届 2026：不再按系统年份滚届次，闭幕只影响倒计时目标 */
+    const year = EDITION_BASE.year
+    const range = rangeOf(year)
+    const closed = Date.now() > range.end.getTime()
+    const nextStart = rangeOf(year + 1).start.getTime()
 
     const edition = EDITION_BASE.edition + (year - EDITION_BASE.year)
     const beforeStart = Date.now() < range.start.getTime()
@@ -80,9 +78,11 @@
     if (badgeText) badgeText.textContent = `${year} 校园读书月 · 第 ${edition} 届`
     const label = $('#cdLabel')
     if (label) {
-      label.textContent = beforeStart
-        ? `距离下一届读书月 · ${year} 年 ${act.startMonth} 月 ${act.startDay} 日开幕`
-        : `本届读书月还剩 · ${act.endMonth} 月 ${act.endDay} 日闭幕`
+      label.textContent = closed
+        ? `${year} 本届已闭幕 · 距离下一届（${year + 1}）读书月还有 ${Math.floor((nextStart - Date.now()) / 86400000)} 天`
+        : beforeStart
+          ? `距离下一届读书月 · ${year} 年 ${act.startMonth} 月 ${act.startDay} 日开幕`
+          : `本届读书月还剩 · ${act.endMonth} 月 ${act.endDay} 日闭幕`
       label.hidden = false
     }
     const yearRe = /\d{4}(?= 校园读书月)/
@@ -91,7 +91,7 @@
     if (desc && yearRe.test(desc.content)) desc.content = desc.content.replace(yearRe, year)
 
     function render() {
-      const target = beforeStart ? range.start.getTime() : range.end.getTime()
+      const target = closed ? nextStart : beforeStart ? range.start.getTime() : range.end.getTime()
       const ms = Math.max(0, target - Date.now())
       if (cd.d) cd.d.textContent = pad(Math.floor(ms / 86400000))
       if (cd.h) cd.h.textContent = pad(Math.floor((ms % 86400000) / 3600000))

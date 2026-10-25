@@ -798,6 +798,37 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
 }
 .submit__back svg { width: 16px; height: 16px; } .submit__back:hover { color: var(--vermilion); border-color: rgba(180, 69, 47, 0.4); }
 .submit__mail:focus-visible, .submit__back:focus-visible { outline: 2px dashed var(--vermilion); outline-offset: 3px; }
+
+/* ---------- 站内投稿表单：米纸输入 · 朱砂落印 ---------- */
+.submit-form { margin-top: 22px; padding-top: 20px; border-top: 1px dashed var(--ink-line); scroll-margin-top: 76px; }
+.submit-form__lede { margin-bottom: 14px; font-size: 12.5px; line-height: 1.85; color: var(--ink-600); }
+.submit-form__grid, .field { display: grid; gap: 10px; }
+.field > label { font-family: var(--serif); font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-800); }
+.field > label em { margin-left: 4px; font-style: normal; font-weight: 400; font-size: 11px; color: var(--ink-500); }
+.field input, .field select, .field textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--ink-line); background: var(--paper-2); color: var(--ink-900); font-family: var(--sans); font-size: 16px; line-height: 1.6; box-shadow: inset 0 1px 0 rgba(93, 71, 50, 0.05); transition: border-color 0.2s, background 0.2s; }
+.field textarea { min-height: 150px; resize: vertical; font-family: var(--serif); }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-500); opacity: 0.75; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px dashed var(--vermilion); outline-offset: 2px; border-color: rgba(180, 69, 47, 0.45); background: var(--paper); }
+.field [aria-invalid="true"] { border-color: var(--vermilion); }
+.field__count { justify-self: end; font-size: 11.5px; color: var(--ink-500); font-variant-numeric: tabular-nums; }
+.field__count.is-short, .field__count.is-over { color: var(--vermilion); font-weight: 700; }
+.submit-form__err { margin-top: 10px; padding: 8px 12px; border-left: 2px solid var(--vermilion); border-radius: 4px; background: rgba(180, 69, 47, 0.08); color: var(--vermilion); font-size: 12.5px; line-height: 1.7; }
+.submit-form__acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.submit-form__acts .btn { flex: 1 1 10em; }
+.submit-form__note { margin-top: 10px; font-size: 11.5px; line-height: 1.7; color: var(--ink-500); }
+.submit-form__done { position: relative; padding: 22px 18px 18px; text-align: center; border: 1px dashed rgba(180, 69, 47, 0.45); border-radius: 12px; background: var(--paper-2); }
+.submit-form__stamp { position: absolute; right: 12px; top: 10px; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid var(--vermilion); border-radius: 50%; color: var(--vermilion); font-family: var(--serif); font-size: 11px; font-weight: 900; letter-spacing: 0.1em; text-indent: 0.1em; transform: rotate(-8deg); opacity: 0.82; }
+.submit-form__no { font-family: var(--serif); font-size: 15px; color: var(--ink-900); }
+.submit-form__no b, .submit-form__mine b { color: var(--vermilion); letter-spacing: 0.04em; }
+.submit-form__ok { margin: 4px 0 14px; font-size: 12.5px; color: var(--ink-600); }
+.submit-form__mine { margin-top: 12px; font-size: 12px; color: var(--ink-600); }
+.linkbtn { padding: 0 2px; border: 0; background: none; color: var(--vermilion); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.linkbtn.is-arming { font-weight: 700; color: var(--vermilion-2); }
+@media (min-width: 760px) { .submit-form__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .submit-form__acts .btn { flex: 0 0 auto; min-width: 13em; } }
+/* 「我的投稿」卡：贴在封面上的朱砂小印 */
+.card[data-mine="1"] { border-color: rgba(180, 69, 47, 0.38); }
+.card__mine { position: absolute; z-index: 3; top: 10px; left: 50%; transform: translateX(-50%) rotate(-4deg); padding: 4px 10px; border: 1px solid rgba(180, 69, 47, 0.55); border-radius: 4px; background: var(--paper-2); color: var(--vermilion); font-family: var(--serif); font-size: 11.5px; font-weight: 900; letter-spacing: 0.12em; text-indent: 0.12em; pointer-events: none; box-shadow: var(--sh-1); }
+
 @media (min-width: 760px) {
   .submit { padding: 30px 30px 26px; max-width: 760px; margin-left: auto; margin-right: auto; } .submit__lede { text-align: center; max-width: 36em; margin: 0 auto; } .submit__steps { grid-template-columns: repeat(3, 1fr); gap: 14px; } .submit__ways { grid-template-columns: 1fr 1fr; }
 }
@@ -1462,6 +1493,10 @@ html[data-theme="night"] .feed__api code { background: rgba(238, 227, 206, 0.1);
 html[data-theme="night"] .submit { background: linear-gradient(180deg, #221c16, #1b1712); border-color: rgba(238, 227, 206, 0.16); }
 html[data-theme="night"] .submit__way { background: rgba(238, 227, 206, 0.05); }
 html[data-theme="night"] .submit__back { background: rgba(238, 227, 206, 0.06); }
+html[data-theme="night"] .field select { color-scheme: dark; }
+html[data-theme="night"] .submit-form__err { background: rgba(224, 122, 95, 0.14); }
+html[data-theme="night"] .submit-form__done { background: #241e17; border-color: rgba(224, 122, 95, 0.4); }
+html[data-theme="night"] .card__mine { background: #241e17; border-color: rgba(224, 122, 95, 0.55); }
 html[data-theme="night"] .sk {
   background: linear-gradient(90deg, rgba(238, 227, 206, 0.05) 25%, rgba(238, 227, 206, 0.12) 37%, rgba(238, 227, 206, 0.05) 63%);
   background-size: 400% 100%;
