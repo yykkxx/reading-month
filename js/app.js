@@ -21,6 +21,7 @@
   const elHint = $('#scrollHint')
   const elBackTop = $('#backTop')
   const elFeed = $('#feed')
+  const elSubmit = $('#submit')
   const elList = $('#feedList')
   const elStatus = $('#feedStatus')
   const elSentinel = $('#feedSentinel')
@@ -122,6 +123,12 @@
       if (elHint && elFeed) {
         elHint.classList.toggle('is-hidden', elFeed.getBoundingClientRect().top < vh * 0.35)
       }
+
+      /* 跳到投稿区块时先按住无限滚动，别让新卡片把目标顶走 */
+      if (feedHold && elSubmit) {
+        if (elSubmit.getBoundingClientRect().top < vh) feedHoldSeen = true
+        else if (feedHoldSeen) { feedHold = false; feedHoldSeen = false; autoFill() }
+      }
     }
 
     window.addEventListener('scroll', () => {
@@ -194,6 +201,9 @@
   /* ========================================================================
    * 四、信息流
    * ====================================================================== */
+  let feedHold = false
+  let feedHoldSeen = false
+
   const feed = {
     page: 0,
     loading: false,
@@ -273,7 +283,7 @@
   }
 
   async function loadMore() {
-    if (!elList || feed.loading || feed.ended) return
+    if (!elList || feed.loading || feed.ended || feedHold) return
 
     const token = ++feed.token
     feed.loading = true
@@ -476,6 +486,15 @@
     const fab = $('#fabSubmit')
     if (!fab) return
     if (CFG.SUBMIT_URL) fab.href = CFG.SUBMIT_URL
+    const holdSubmit = () => {
+      feedHold = true
+      feedHoldSeen = false
+      feed.token += 1
+      feed.loading = false
+      if (elList) elList.setAttribute('aria-busy', 'false')
+      setStatus('idle')
+    }
+    document.addEventListener('click', (e) => { if (e.target.closest('a[href="#submit"]')) holdSubmit() }, true)
   }
 
   /* ========================================================================
@@ -494,6 +513,7 @@
     initCounters()
     initHeroEffects()
 
+    feedHold = location.hash === '#submit'
     if (UI.bindLike) UI.bindLike(elList)
     initFilters()
     initSubmit()

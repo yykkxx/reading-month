@@ -124,7 +124,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .topbar.is-in { transform: none; }
 
 .topbar__brand {
-  display: flex; align-items: center; gap: 9px;
+  display: flex; align-items: center; gap: 9px; flex: 0 0 auto; white-space: nowrap;
   font-family: var(--serif); font-weight: 900; font-size: 16px;
 }
 .topbar__seal {
@@ -136,9 +136,9 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 }
 .topbar__name { letter-spacing: 0.16em; }
 
-.topbar__nav { display: flex; gap: 6px; }
+.topbar__nav { display: flex; gap: 4px; }
 .topbar__link {
-  padding: 6px 13px; border-radius: 99px;
+  padding: 6px 8px; border-radius: 99px; flex: 0 0 auto; white-space: nowrap;
   font-family: var(--serif); font-size: 13.5px; color: var(--ink-700);
   border: 1px solid transparent; transition: 0.25s;
 }
@@ -793,7 +793,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .submit__way { padding: 13px 14px; border-radius: 8px; background: var(--paper-2); border: 1px dashed var(--ink-line); }
 .submit__way-ico { width: 20px; height: 20px; vertical-align: -4px; color: var(--tea); } .submit__way b { margin-left: 6px; font-family: var(--serif); font-size: 13.5px; color: var(--ink-900); } .submit__way span { display: block; margin-top: 5px; }
 .submit__mail { display: inline-block; margin-top: 6px; font-family: var(--serif); font-size: 13px; color: var(--vermilion); word-break: break-all; border-bottom: 1px solid rgba(180, 69, 47, 0.4); transition: color 0.2s, border-color 0.2s; }
-.submit__mail:hover { color: var(--vermilion-2); border-bottom-color: var(--vermilion-2); }
+.submit__mail:hover { border-bottom-color: var(--vermilion); background: rgba(180, 69, 47, 0.08); }
 .submit__back {
   display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; padding: 9px 16px;
   border-radius: 99px; font-family: var(--serif); font-size: 13px; color: var(--ink-700);
@@ -802,10 +802,9 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .submit__back svg { width: 16px; height: 16px; } .submit__back:hover { color: var(--vermilion); border-color: rgba(180, 69, 47, 0.4); }
 .submit__mail:focus-visible, .submit__back:focus-visible { outline: 2px dashed var(--vermilion); outline-offset: 3px; }
 @media (min-width: 760px) {
-  .submit { padding: 30px 30px 26px; } .submit__lede { text-align: center; }
+  .submit { padding: 30px 30px 26px; max-width: 760px; margin-left: auto; margin-right: auto; } .submit__lede { text-align: center; max-width: 36em; margin: 0 auto; }
   .submit__steps { grid-template-columns: repeat(3, 1fr); gap: 14px; } .submit__ways { grid-template-columns: 1fr 1fr; }
 }
-
 /* 空态 */
 .empty {
   padding: 48px 16px; text-align: center;
