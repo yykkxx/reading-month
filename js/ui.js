@@ -84,7 +84,7 @@
     <path d="M98 14l2.4 4.6L105 21l-4.6 2.4L98 28l-2.4-4.6L91 21l4.6-2.4z" fill="currentColor" opacity=".3"/>
     <circle cx="32" cy="16" r="2" fill="currentColor" opacity=".25"/>
   </svg>
-  <h1>${esc(title || '这里还没有读书感受')}</h1>
+  ${act.primaryText ? '<h1>' + esc(title) + '</h1>' : '<b>' + esc(title || '这里还没有读书感受') + '</b>'}
   <small>${esc(hint || '换个关键词，或放宽筛选条件试试')}</small>
   ${actions}
 </div>`
