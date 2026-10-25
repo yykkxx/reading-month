@@ -101,7 +101,8 @@ f145726 feat: 评论进信息流 + 作者主页 + 桌面多列布局
    没有浏览器也能验证数据层与模板契约；jsdom 测试能覆盖真实交互（筛选、搜索、夜读、作者页），避免「看起来没坏其实坏了」。
 
 6. **推送走临时 remote / Git Data API**
-   `github.com:443` 在部分网络不通，但 `api.github.com` 可用。token 只放命令环境变量，推完即删，避免落盘。
+   `github.com:443` 在部分网络不通，但 `api.github.com` 可用。本地内置 `tools/push-api.mjs`：按 blob sha 与远端 tree 比对，只传变化文件，不依赖远端 commit 对象。
+   已知副作用：GitHub 会改写提交身份（noreply + UTC），远端 SHA 与本地不同但 tree 一致；`github.com` 恢复后需 `git fetch && git reset --hard origin/main` 再继续用 `git push`。token 只放环境变量。
 
 ---
 

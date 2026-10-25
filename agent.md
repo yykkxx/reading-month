@@ -194,9 +194,26 @@ git remote remove auth           # 推完立刻删
 grep -rn "ghp_" .git/config || echo "无残留"
 ```
 
-**方式 B：`github.com` 不通时走 Git Data API**
+**方式 B：`github.com` 不通时走 Git Data API（仓库已内置脚本）**
 
-用 API 创建 blob → tree → commit → 更新 `refs/heads/main`（单条 commit 快进）。脚本思路见 `plan.md` 的「关键决策」，核心是用 `api.github.com`，token 只放环境变量，不落盘。
+```bash
+TOKEN='<你的 token>' node tools/push-api.mjs yykkxx reading-month main
+```
+
+脚本会：读取远端 tree → 用 `git ls-files -s` 的 blob sha 与远端逐个比对 → 只上传变化的文件 → 建 commit → 更新 `refs/heads/main`。
+
+要点：
+
+- **不依赖本地存在远端 commit 对象**（`github.com` 不通时拿不到），所以按 blob 内容比对，而不是 `git diff`
+- GitHub 会把提交身份改写成 `noreply` 账号、时间转 UTC，**远端 commit SHA 与本地可能不同**，但 tree 内容完全一致
+- 因此如果之后 `github.com` 恢复，**不要直接 `git push`**（会被判为非快进）。先：
+
+```bash
+git fetch origin
+git reset --hard origin/main      # 内容与本地一致，只是提交号不同
+```
+
+- 推送后同样要检查线上内容（见 7.3）
 
 ### 7.3 发布验证（不能只看 200）
 
