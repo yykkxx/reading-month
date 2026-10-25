@@ -150,28 +150,81 @@
 
   /* ==========================================================
    *  Mock 来源（本地静态 JSON）
-   *  策略：首次访问时把全部分页拉下来缓存，之后在内存里做
-   *        分类过滤 + 分页，保证「切换分类后无限滚动依然有效」。
+   *  首屏只请求 page-1；其余 14 页在首屏稳定后空闲预取（并发 ≤3），
+   *  筛选/搜索/排序会立即启动或提前预取。page-1 全站共享同一次请求。
    * ========================================================== */
   let ALL_CACHE = null
   let ALL_LOADING = null
+  let PAGE1 = null
+  const PREFETCH = { start: null, timer: 0, running: false, boosted: false }
 
-  async function loadAllMock() {
+  /* 首屏与全量缓存复用同一个 page-1 响应：全站 page-1 只发 1 次 */
+  function fetchPage1() {
+    if (PAGE1) return PAGE1
+    PAGE1 = (async () => {
+      const res = await request(fill(CFG.MOCK.feed, { page: 1 }))
+      const d = res.data || res
+      const list = (d.list || d.posts || []).map(normalizeItem)
+      return {
+        list,
+        total: d.total ?? list.length,
+        hasMore: d.hasMore ?? list.length > 0,
+        totalPages: d.totalPages || Math.ceil((d.total || 0) / (d.pageSize || CFG.PAGE_SIZE)) || 1,
+      }
+    })()
+    PAGE1.catch(() => { PAGE1 = null })
+    return PAGE1
+  }
+
+  /* 其余分页：首屏稳定后 requestIdleCallback 预取（setTimeout 兜底，并发 ≤3） */
+  function fetchRest(pages, out, priority) {
+    return new Promise((resolve, reject) => {
+      const start = () => {
+        if (PREFETCH.running) return
+        PREFETCH.running = true
+        let i = 0
+        const worker = async () => {
+          while (i < pages.length) {
+            const k = i++
+            const r = await request(fill(CFG.MOCK.feed, { page: pages[k] }))
+            const dd = r.data || r
+            out[k] = (dd.list || dd.posts || []).map(normalizeItem)
+          }
+        }
+        Promise.all(Array.from({ length: Math.min(3, pages.length) }, worker)).then(resolve, (err) => {
+          /* 失败后允许下一次交互重试，而不是把预取永久停在 running */
+          PREFETCH.running = false
+          PREFETCH.start = null
+          reject(err)
+        })
+      }
+      PREFETCH.start = start
+      if (priority || PREFETCH.boosted) { start(); return }
+      PREFETCH.timer = setTimeout(() => {
+        if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(start, { timeout: 2500 })
+        else start()
+      }, 2000)
+    })
+  }
+
+  /* 交互触发：把还在排队的预取立即提前（已在跑则不变） */
+  function boostPrefetch() {
+    PREFETCH.boosted = true
+    clearTimeout(PREFETCH.timer)
+    if (PREFETCH.start) PREFETCH.start()
+  }
+
+  async function loadAllMock(priority) {
     if (ALL_CACHE) return ALL_CACHE
+    if (priority) boostPrefetch()
     if (ALL_LOADING) return ALL_LOADING
     ALL_LOADING = (async () => {
-      const first = await request(fill(CFG.MOCK.feed, { page: 1 }))
-      const d0 = first.data || first
-      const totalPages = d0.totalPages || Math.ceil((d0.total || 0) / (d0.pageSize || CFG.PAGE_SIZE)) || 1
-      const pages = [d0.list || d0.posts || []]
-      const rest = []
-      for (let p = 2; p <= totalPages; p++) rest.push(request(fill(CFG.MOCK.feed, { page: p })))
-      const settled = await Promise.all(rest)
-      settled.forEach((r) => {
-        const dd = r.data || r
-        pages.push(dd.list || dd.posts || [])
-      })
-      ALL_CACHE = pages.flat().map(normalizeItem)
+      const p1 = await fetchPage1()
+      const pages = []
+      for (let p = 2; p <= p1.totalPages; p++) pages.push(p)
+      const rest = new Array(pages.length)
+      if (pages.length) await fetchRest(pages, rest, priority)
+      ALL_CACHE = p1.list.concat(...rest.filter(Boolean))
       return ALL_CACHE
     })()
     try { return await ALL_LOADING } finally { ALL_LOADING = null }
@@ -207,18 +260,17 @@
 
   async function mockFeed(page, query) {
     const size = CFG.PAGE_SIZE
-    /* 首屏直读第 1 页（最快首屏），同时后台预热全量缓存 */
+    /* 首屏直读第 1 页（最快首屏），其余分页交给后台空闲预取 */
     const plain = !query || (!query.cat || query.cat === '全部') && !query.q && !query.tag && (!query.sort || query.sort === 'new')
     if (!ALL_CACHE && page === 1 && plain) {
       loadAllMock().catch(() => {}) // 后台预热，不阻塞首屏
-      const res = await request(fill(CFG.MOCK.feed, { page: 1 }))
-      const d = res.data || res
+      const p1 = await fetchPage1()
       /* 与全量缓存使用同一排序口径，避免首屏与后续分页边界错位 */
-      const list = (d.list || d.posts || []).map(normalizeItem)
-        .sort((a, b) => b.timestamp - a.timestamp)
-      return { list, hasMore: (d.hasMore ?? list.length > 0), total: d.total ?? list.length }
+      const list = p1.list.slice().sort((a, b) => b.timestamp - a.timestamp)
+      return { list, hasMore: p1.hasMore, total: p1.total }
     }
-    const filtered = applyQuery(await loadAllMock(), query)
+    /* 筛选/搜索/排序需要全量：触发（或加速）预取并等它完成 */
+    const filtered = applyQuery(await loadAllMock(!plain), query)
     const list = filtered.slice((page - 1) * size, page * size)
     return { list, hasMore: page * size < filtered.length, total: filtered.length }
   }
@@ -254,7 +306,8 @@
   }
 
   async function mockUserPosts(id, page) {
-    const all = await loadAllMock()
+    /* 作者页首屏就要完整作品列表，预取按高优先级立即开始 */
+    const all = await loadAllMock(true)
     const mine = all.filter((p) => p.author && p.author.id === id)
       .sort((a, b) => b.timestamp - a.timestamp)
     const size = CFG.PAGE_SIZE
@@ -402,6 +455,12 @@
     return true
   }
 
+  /* 首屏统计等只读消费方：复用全量缓存（等空闲预取完成后返回），不额外发请求 */
+  async function getAll() {
+    if (CFG.SOURCE === 'remote') return (await remoteFeed(1, {})).list
+    return loadAllMock()
+  }
+
   function categoriesOf(posts) {
     const set = new Set()
     posts.forEach((p) => p.category && set.add(p.category))
@@ -409,7 +468,7 @@
   }
 
   window.API = {
-    getFeed, getDetail, getUser, getUserPosts,
+    getFeed, getDetail, getUser, getUserPosts, getAll,
     facets, reportLike, reportComment, categoriesOf,
     fallbackList: FALLBACK, fmtTime,
   }

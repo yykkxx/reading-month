@@ -6,6 +6,11 @@
    视觉母题：翻开的书页 / 日历卡 / 便签纸条 / 邮戳 / 书签丝带
    ========================================================================== */
 
+/* ---------- 0. 自托管字体（按本站用字子集，移除第三方字体依赖） ---------- */
+@font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Black.woff") format("woff"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Noto Sans SC"; src: url("../fonts/noto-sans-sc-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+
 /* ---------- 1. 设计变量 ---------- */
 :root {
   /* 纸与墨 */

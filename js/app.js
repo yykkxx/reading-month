@@ -222,11 +222,8 @@
       (x.author && (x.author.id || x.author.name)) || '').filter(Boolean)).size
     let all = []
     try {
-      for (let page = 1; page <= 30; page++) {
-        const res = await API.getFeed(page, { cat: '全部', sort: 'new' })
-        all = all.concat(res.list || [])
-        if (!res.hasMore || !(res.list || []).length) break
-      }
+      /* 复用 API 的全量缓存：等空闲预取完成后统计一次，不在首屏同步拉全量 */
+      all = await API.getAll()
     } catch (err) {
       /* file:// 或接口不可用：退回内置兜底数据量，保证数字与真正渲染出来的内容一致 */
       all = API.fallbackList || []
