@@ -253,6 +253,7 @@
     token: 0,
     ids: new Set(),
     shown: 0,
+    comments: 0,
     query: { cat: '全部', q: '', tag: '', sort: 'new' },
   }
 
@@ -267,7 +268,9 @@
     } else if (mode === 'end') {
       elStatus.className = 'feed__status is-end'
       elStatus.hidden = false
-      elStatus.innerHTML = `<span>❦ 这一册翻完了 · 共 ${feed.shown} 篇感受</span>`
+      /* 96 篇书评与 24 条留言分开说清楚，避免「120 篇感受」与首页「96 篇」互相打架 */
+      const tail = feed.comments ? `共 ${feed.shown} 条（${feed.shown - feed.comments} 篇书评 · ${feed.comments} 条留言）` : `共 ${feed.shown} 篇书评`
+      elStatus.innerHTML = `<span>❦ 这一册翻完了 · ${tail}</span>`
     } else {
       /* 空闲：className 一并回到基础态，避免 is-end 的样式残留 */
       elStatus.className = 'feed__status'
@@ -293,8 +296,10 @@
     parts.push(`排序「<b>${SORT_LABEL[q.sort] || '刚出炉'}</b>」`)
 
     elSummary.hidden = false
+    /* 与 #feedList 里实际渲染的 .card 同源，避免摘要数字和看到的卡片对不上 */
+    const shownNow = elList ? elList.querySelectorAll('.card').length : feed.shown
     elSummary.innerHTML = parts.join(' · ') +
-      (feed.shown ? ` · 已显示 ${feed.shown} 篇` : '') +
+      (shownNow ? ` · 已显示 ${shownNow} 条` : '') +
       ' <button class="reset" id="resetAll" type="button">重置</button>'
   }
 
@@ -323,6 +328,7 @@
     feed.ended = false
     feed.ids.clear()
     feed.shown = 0
+    feed.comments = 0
     feed.token += 1
     feed.loading = false
     if (elList) elList.innerHTML = ''
@@ -350,7 +356,7 @@
       if (token !== feed.token) return
 
       const fresh = (res.list || []).filter((p) => !feed.ids.has(p.id))
-      fresh.forEach((p) => feed.ids.add(p.id))
+      fresh.forEach((p) => { feed.ids.add(p.id); if (p.type === 'comment') feed.comments += 1 })
 
       const html = fresh.map((p, i) => UI.feedItemHTML(p, i, feed.query.q)).join('')
       if (first) elList.innerHTML = html
@@ -556,6 +562,7 @@
     if (params.get('tag')) feed.query.tag = params.get('tag')
     if (params.get('cat')) feed.query.cat = params.get('cat')
     if (params.get('q')) feed.query.q = params.get('q')
+    if (['new', 'hot', 'comments'].includes(params.get('sort'))) feed.query.sort = params.get('sort')
     if (elSearchInput && feed.query.q) elSearchInput.value = feed.query.q
 
     initCountdown()

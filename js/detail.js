@@ -125,22 +125,20 @@
   }
 
   function renderError(err) {
-    const msg = err && err.message ? err.message : '未知错误'
+    console.warn('[detail]', err)
     root.innerHTML = `
 <header class="detail-top is-solid">
   <button class="icon-btn" id="btnBack" type="button" aria-label="返回">${UI.icons.back}</button>
-  <span class="detail-top__title">内容不存在</span>
+  <span class="detail-top__title">读书感受</span>
 </header>
 <div class="shell" style="padding-top:96px">
-  ${UI.emptyHTML('没有找到这篇读书感受', msg)}
+  ${UI.emptyHTML('这篇感受还没被贴上', '它可能已经被作者移出感受墙，也可能这个链接已经过期。',
+    { primaryText: '回到感受墙', primaryHref: 'index.html#feed', secondaryText: '看看热门', secondaryHref: 'index.html?sort=hot#feed' })}
 </div>`
     root.setAttribute('aria-busy', 'false')
 
     const back = $('#btnBack')
     if (back) back.addEventListener('click', goBack)
-
-    const reset = $('#chipReset')
-    if (reset) reset.addEventListener('click', () => { location.href = 'index.html#feed' })
   }
 
   /* ========================================================================
@@ -226,7 +224,8 @@
         user: '我',
         avatarText: '我',
         content: text,
-        time: API.fmtTime ? API.fmtTime(Date.now()) : new Date().toLocaleString(),
+        time: '刚刚',
+        timestamp: Date.now(),
         likes: 0,
         local: true,
       }

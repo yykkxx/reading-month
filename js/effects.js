@@ -139,8 +139,8 @@
    * ---------------------------------------------------------------- */
   function developImages(root) {
     if (!root) return
-    root.querySelectorAll('img.dev-pending').forEach((img) => {
-      const done = () => img.classList.remove('dev-pending')
+    root.querySelectorAll('img.is-loading').forEach((img) => {
+      const done = () => img.classList.remove('is-loading')
       if (img.src.startsWith('data:') || (img.complete && img.naturalWidth)) {
         requestAnimationFrame(done)
       } else {

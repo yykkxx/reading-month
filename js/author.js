@@ -48,20 +48,20 @@
   }
 
   /* ---------- 出错 ---------- */
-  function fail(message) {
+  function fail(err) {
     if (!root) return
+    console.warn('[author]', err)
     root.innerHTML = `
 <header class="author-top is-solid">
   <button class="icon-btn" id="backBtn" type="button" aria-label="返回">${UI.icons.back}</button>
   <span class="author-top__title">作者主页</span>
 </header>
 <div class="shell" style="padding-top:92px">
-  ${UI.emptyHTML('没有找到这位同学', message || '链接可能有误，回感受墙看看吧')}
+  ${UI.emptyHTML('没有找到这位同学', '这个主页链接可能已经过期，或者这位同学还没有公开的读书主页。',
+    { primaryText: '回到感受墙', primaryHref: 'index.html#feed' })}
 </div>`
     root.setAttribute('aria-busy', 'false')
     bindBack()
-    const reset = $('#chipReset')
-    if (reset) reset.addEventListener('click', () => { location.href = 'index.html#feed' })
   }
 
   /* ---------- 渲染 ---------- */
@@ -214,6 +214,6 @@
     root.innerHTML = skeletonHTML()
     API.getUser(id)
       .then(render)
-      .catch((err) => fail(err && err.message))
+      .catch(fail)
   }
 })()

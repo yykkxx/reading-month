@@ -9,6 +9,8 @@
 /* ---------- 0. 自托管字体（按本站用字子集，移除第三方字体依赖） ---------- */
 @font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: "Noto Serif SC"; src: url("../fonts/noto-serif-sc-Black.woff") format("woff"); font-weight: 900; font-style: normal; font-display: swap; }
+/* serif 只自带 700/900：400 不再借用粗体，直接回退本机中文衬线 */
+@font-face { font-family: "Noto Serif SC"; src: local("Noto Serif SC"), local("Songti SC"), local("STSong"), local("SimSun"), local("Source Han Serif SC"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Noto Sans SC"; src: url("../fonts/noto-sans-sc-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
 
 /* ---------- 1. 设计变量 ---------- */
@@ -830,6 +832,8 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
 @media (min-width: 760px) { .submit-form__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .submit-form__acts .btn { flex: 0 0 auto; min-width: 13em; } }
 /* 「我的投稿」卡：贴在封面上的朱砂小印 */
 .card[data-mine="1"] { border-color: rgba(180, 69, 47, 0.38); }
+.card[data-mine="1"] .card__acts { display: none; }
+.submit__mine-list { margin-top: 20px; } .submit__mine-list[hidden] { display: none; }
 .card__mine { position: absolute; z-index: 3; top: 10px; left: 50%; transform: translateX(-50%) rotate(-4deg); padding: 4px 10px; border: 1px solid rgba(180, 69, 47, 0.55); border-radius: 4px; background: var(--paper-2); color: var(--vermilion); font-family: var(--serif); font-size: 11.5px; font-weight: 900; letter-spacing: 0.12em; text-indent: 0.12em; pointer-events: none; box-shadow: var(--sh-1); }
 
 @media (min-width: 760px) {
@@ -844,6 +848,8 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
   width: 132px; height: 92px; margin: 0 auto 16px;
   color: rgba(125, 106, 80, 0.55);
 }
+.empty h1 { margin-bottom: 8px; font-family: var(--serif); font-size: clamp(20px, 5.6vw, 26px); font-weight: 900; color: var(--ink-900); }
+.empty__acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .empty b { display: block; font-size: 16px; font-weight: 700; color: var(--ink-800); }
 .empty small { display: block; margin: 6px 0 14px; font-size: 12.5px; color: var(--ink-500); }
 
@@ -1334,7 +1340,7 @@ body.is-ready .article { opacity: 1; transform: none; }
 }
 
 /* 封面显影：先模糊褪色，加载完成后清晰 */
-img.dev-pending {
+img.is-loading {
   opacity: 0;
   filter: blur(10px) saturate(0.6);
   transform: scale(1.03);
@@ -1386,7 +1392,7 @@ img.dev-pending {
   .hero__inner { transform: none !important; opacity: 1 !important; }
   .hero__book, .hero__hill--b { transform: none !important; }
   .hero__title .line { animation: none !important; clip-path: none !important; }
-  .dev-pending { opacity: 1 !important; filter: none !important; transform: none !important; }
+  .is-loading { opacity: 1 !important; filter: none !important; transform: none !important; }
   .js-reveal { opacity: 1 !important; transform: none !important; }
   .article { opacity: 1 !important; transform: none !important; }
 }

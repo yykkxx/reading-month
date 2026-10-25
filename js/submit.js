@@ -56,30 +56,26 @@
   function mineCardHTML(sub, i) {
     const post = {
       id: sub.id, title: sub.book, excerpt: Array.from(String(sub.body)).slice(0, 80).join(''), cover: COVER,
-      author: { name: sub.name, avatar: '', college: '' }, time: UI.timeAgo ? UI.timeAgo(sub.timestamp) : sub.time,
-      timestamp: sub.timestamp, likes: 0, commentCount: 0, views: 1, category: sub.category,
-      tags: ['我的投稿'], comments: [], liked: false,
+      author: { name: sub.name, avatar: '', college: '' }, time: '本机 · ' + (UI.timeAgo ? UI.timeAgo(sub.timestamp) : '刚刚'),
+      timestamp: sub.timestamp, likes: 0, commentCount: 0, views: 0, category: sub.category,
+      tags: ['本机保存'], comments: [], liked: false,
     }
     return UI.cardHTML(post, i, '').replace('<article class="card"', '<article class="card" data-mine="1"')
-      .replace(/detail\.html\?id=[^"]+/g, '#submitForm').replace('aria-label="阅读全文：', 'aria-label="我的投稿：')
+      .replace(/detail\.html\?id=[^"]+/g, '#sfMineList').replace('aria-label="阅读全文：', 'aria-label="我的投稿：')
       .replace('</article>', '<span class="card__mine">我的投稿</span></article>')
   }
+  /* 本机投稿独立成列，不进入 #feedList：筛选 / 空态 / 摘要都不再被它污染 */
   function paintCards() {
     syncRow()
-    const list = $('#feedList'); if (!list) return
-    list.querySelectorAll('[data-mine="1"]').forEach((n) => n.remove())
-    if (!mine.length) return
-    list.insertAdjacentHTML('afterbegin', mine.slice().sort(byTime).map(mineCardHTML).join(''))
-    if (window.FX && FX.developImages) FX.developImages(list); if (UI.bindLike) UI.bindLike(list)
+    const box = $('#sfMineList'); if (!box) return
+    box.innerHTML = mine.slice().sort(byTime).map(mineCardHTML).join('')
+    box.hidden = !mine.length
+    if (mine.length && window.FX && FX.developImages) FX.developImages(box)
   }
   function syncRow() {
     if (rowEl) { rowEl.hidden = !mine.length; if (mine.length) $('#sfMyCount').textContent = String(mine.length) }
   }
-  function ensureMine() {
-    syncRow()
-    const list = $('#feedList')
-    if (list && mine.length && !list.querySelector('[data-mine="1"]')) paintCards()
-  }
+  const ensureMine = () => paintCards()
   function showDone(no) {
     lastNo = no; noEl.textContent = no; fieldsEl.hidden = true; doneEl.hidden = false
     doneEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#sfAgain').focus({ preventScroll: true })
@@ -97,7 +93,7 @@
       name: nameEl.value.trim(), book: bookEl.value.trim(), category: catEl.value, body: bodyEl.value.trim(),
     })
     mine = mine.sort(byTime).slice(0, LIMIT)
-    save(); showDone(no); paintCards(); toast('投稿已贴上感受墙')
+    save(); showDone(no); paintCards(); toast('已保存在本机')
   }
   function sendMail() {
     if (!validate()) return
@@ -115,12 +111,13 @@
   form.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); submit() } })
   bodyEl.addEventListener('input', paintCount)
   $('#sfMail').addEventListener('click', sendMail)
+  const mail2 = $('#sfMail2'); if (mail2) mail2.addEventListener('click', sendMail)
   $('#sfAgain').addEventListener('click', resetForm)
   $('#sfView').addEventListener('click', () => {
     ensureMine()
-    const card = $('#feedList [data-mine="1"]')
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    else toast('你的投稿就在感受墙最上面')
+    const box = $('#sfMineList')
+    if (box && !box.hidden) box.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    else toast('还没有保存在本机的投稿')
   })
   const disarm = () => { clearTimeout(armTimer); delete clearEl.dataset.armed; clearEl.textContent = '清空'; clearEl.classList.remove('is-arming') }
   clearEl.addEventListener('click', () => {
@@ -133,9 +130,6 @@
     clearEl.dataset.armed = '1'; clearEl.textContent = '再点一次清空'; clearEl.classList.add('is-arming')
     armTimer = setTimeout(disarm, 3000)
   })
-  /* 启动：刷新回显；信息流重渲染后自动补回 */
+  /* 启动：刷新回显（投稿卡在表单下方独立显示） */
   paintCount(); ensureMine()
-  const list = $('#feedList')
-  if (list && 'MutationObserver' in window) new MutationObserver(ensureMine).observe(list, { childList: true })
-  window.addEventListener('load', ensureMine)
 })()

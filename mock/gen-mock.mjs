@@ -1579,6 +1579,8 @@ const hotSpecs = []
 const inlineAll = []
 let cursor = BASE
 let postSeq = 0
+/* 每本书的 10 条短评按 3 个角度分配（和恒为 10）：2–6 条都会出现，commentCount 直接取实际条数 */
+const COMMENT_SPLITS = [[3, 3, 4], [4, 4, 2], [3, 5, 2], [6, 2, 2], [4, 3, 3], [3, 4, 3], [4, 2, 4], [5, 3, 2], [3, 2, 5]]
 
 for (const item of ordered) {
   const { b, ri, review } = item
@@ -1590,15 +1592,16 @@ for (const item of ordered) {
   if (!author) throw new Error('未知作者：' + b.authorIds[ri])
 
   const likes = int(12, 986)
-  const commentCount = Math.min(9, 3 + Math.floor((likes / 986) * 4 + rng() * 3))
   const views = Math.min(8600, Math.max(120, Math.round(likes * 2.6 + 180 + rng() * 4300)))
 
-  const bank = b.comments.slice(ri * 3, ri * 3 + 3)
+  const split = COMMENT_SPLITS[BOOKS.indexOf(b) % COMMENT_SPLITS.length]
+  const bank = b.comments.slice(split.slice(0, ri).reduce((n, x) => n + x, 0), split.slice(0, ri + 1).reduce((n, x) => n + x, 0))
+  const commentCount = bank.length
   const catPool = Array.from(new Set([...COMMENTERS_BY_CAT[b.category], ...AUTHOR_POOL.map((a) => a.id)]))
     .filter((cid) => cid !== author.id)
   const start = (idx * 3 + ri) % catPool.length
   const picked = []
-  for (let n = 0; picked.length < 3 && n < catPool.length; n++) {
+  for (let n = 0; picked.length < bank.length && n < catPool.length; n++) {
     const cid = catPool[(start + n) % catPool.length]
     if (!picked.includes(cid)) picked.push(cid)
   }
@@ -1760,10 +1763,6 @@ const users = AUTHOR_POOL.map((a) => {
 for (const u of users) {
   await writeFile(join(ROOT, 'api/users', `${u.id}.json`), JSON.stringify({ code: 0, data: u }, null, 2))
 }
-await writeFile(join(ROOT, 'api/users.json'), JSON.stringify({
-  code: 0,
-  data: users.map((u) => ({ id: u.id, name: u.name, avatar: u.avatar, college: u.college })),
-}, null, 2))
 
 /* ---------- 信息流分页：120 条 / 每页 8 条 / 15 页 ---------- */
 const totalPages = Math.ceil(feedItems.length / PAGE_SIZE)
@@ -1775,17 +1774,7 @@ for (let p = 1; p <= totalPages; p++) {
   await writeFile(join(ROOT, 'api/posts', `page-${p}.json`), JSON.stringify(page, null, 2))
 }
 
-/* ---------- 索引与短评池 ---------- */
-await writeFile(join(ROOT, 'api/index.json'), JSON.stringify({
-  total: feedItems.length,
-  posts: posts.length,
-  comments: commentEntries.length,
-  pageSize: PAGE_SIZE,
-  totalPages,
-  ids: feedItems.map((p) => p.id),
-}, null, 2))
 const allInlineComments = BOOKS.flatMap((b) => b.comments)
-await writeFile(join(ROOT, 'api/comments.json'), JSON.stringify(allInlineComments, null, 2))
 
 /* ==========================================================
  * 自检：数据必须自己证明自己，不靠外部断言兜底
@@ -1824,8 +1813,8 @@ for (const d of details) {
   }
   if (text.includes(data.excerpt)) fail(`${data.id} 摘要原句直接出现在正文里`)
   if (data.excerpt.length < 60 || data.excerpt.length > 140) problems.push(`${data.id} 摘要 ${data.excerpt.length} 字（应为 60–140）`)
-  if (data.comments.length < 2 || data.comments.length > 4) fail(`${data.id} 内嵌评论 ${data.comments.length} 条（应为 2–4）`)
-  if (data.commentCount < data.comments.length) fail(`${data.id} commentCount 小于可见评论数`)
+  if (data.comments.length < 2 || data.comments.length > 6) fail(`${data.id} 内嵌评论 ${data.comments.length} 条（应为 2–6）`)
+  if (data.commentCount !== data.comments.length) fail(`${data.id} commentCount ${data.commentCount} ≠ 可见评论 ${data.comments.length}`)
   if (data.related.length !== 2) fail(`${data.id} related 不是 2 条`)
   if (data.related.some((r) => r.id === data.id)) fail(`${data.id} related 含自身`)
   if (data.related[0].id === data.related[1].id) fail(`${data.id} related 两项相同`)
@@ -1851,6 +1840,8 @@ if (posts.length !== POST_COUNT) fail(`书评 ${posts.length} 篇（应为 ${POS
 if (commentEntries.length !== FEED_COMMENT_COUNT) fail(`流内评论 ${commentEntries.length} 条（应为 ${FEED_COMMENT_COUNT}）`)
 if (uniq(feedItems.map((p) => p.id)).size !== TOTAL) fail('信息流 id 有重复')
 if (feedItems.some((p, i) => i > 0 && !(feedItems[i - 1].timestamp > p.timestamp))) fail('时间戳不是严格递减')
+const pagedItems = pages.slice().sort((a, b) => a.data.page - b.data.page).flatMap((p) => p.data.list)
+if (pagedItems.length !== TOTAL || pagedItems.some((p, i) => i > 0 && !(pagedItems[i - 1].timestamp > p.timestamp)) || uniq(feedItems.map((p) => p.timestamp)).size !== TOTAL) fail('分页拼接后不是 120 条严格递减且唯一')
 if (totalPages !== 15) fail(`分页 ${totalPages} 页（应为 15）`)
 if (pages.some((p) => p.data.list.length > PAGE_SIZE)) fail('分页超过每页条数')
 
@@ -1867,9 +1858,9 @@ if (categories.size !== 10) fail(`分类 ${categories.size} 个（应为 10）`)
 if (uniq(posts.flatMap((p) => p.tags)).size !== 8) fail('标签词表不是 8 个')
 if (posts.some((p) => p.likes < 12 || p.likes > 986)) fail('likes 超出范围')
 if (posts.some((p) => p.views < 120 || p.views > 8600)) fail('views 超出范围')
-if (posts.some((p) => p.commentCount < 3 || p.commentCount > 9)) fail('commentCount 超出范围')
+if (posts.some((p) => p.commentCount < 2 || p.commentCount > 6)) fail('commentCount 超出范围')
 if (uniq(posts.map((p) => p.likes)).size < 60) fail('likes 分布过于集中')
-if (uniq(posts.map((p) => p.commentCount)).size < 6) fail('commentCount 分布过于集中')
+if (uniq(posts.map((p) => p.commentCount)).size < 5) fail('commentCount 分布过于集中')
 if (posts.filter((p) => /活着/.test(p.title + p.excerpt)).length < 3) fail('「活着」相关文章不足 3 篇')
 if (posts.filter((p) => /三体/.test(p.title + p.excerpt)).length < 3) fail('「三体」相关文章不足 3 篇')
 

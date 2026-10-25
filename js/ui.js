@@ -38,6 +38,22 @@
     } catch (e) { return t }
   }
 
+  /* 正文最小白名单净化：只留排版标签与 http(s) 链接；script / on* / javascript: 一律丢弃 */
+  const SAFE_TAGS = new Set(['p', 'br', 'strong', 'em', 'blockquote', 'ul', 'ol', 'li', 'h2', 'h3', 'a']),
+    DROP_BLOCKS = /<(script|style|iframe|object|embed|template|noscript)\b[\s\S]*?<\/\1\s*>/gi,
+    TAG_RE = /<\/?([a-zA-Z][\w:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)\/?>/g
+  function sanitizeHTML(html) {
+    const clean = (raw, name, attrs) => {
+      const tag = name.toLowerCase()
+      if (!SAFE_TAGS.has(tag)) return ''
+      if (tag !== 'a') return tag === 'br' ? '<br>' : `<${raw.charAt(1) === '/' ? '/' : ''}${tag}>`
+      const m = /\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/i.exec(attrs)
+      const href = m ? (m[1] || m[2] || m[3] || '') : ''
+      return /^https?:\/\//i.test(href) ? `<a href="${esc(href)}" rel="noopener noreferrer">` : '<a>'
+    }
+    return String(html == null ? '' : html).replace(/<!--[\s\S]*?-->/g, '').replace(DROP_BLOCKS, '').replace(TAG_RE, clean)
+  }
+
   /* ---------- 图标 ---------- */
   const icons = {
     heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.7C7.2 17.4 3.5 14.2 3.5 10.2 3.5 7.4 5.7 5.3 8.3 5.3c1.5 0 3 .7 3.7 2 .8-1.3 2.2-2 3.7-2 2.6 0 4.8 2.1 4.8 4.9 0 4-3.7 7.2-8.5 10.5z"/></svg>',
@@ -51,8 +67,12 @@
     arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
   }
 
-  /* ---------- 空态插画：书架上摊开的一本书 ---------- */
-  function emptyHTML(title, hint) {
+  /* ---------- 空态 / 错误页插画：书架上摊开的一本书 ---------- */
+  function emptyHTML(title, hint, act) {
+    act = act || {}
+    const actions = act.primaryText
+      ? `<div class="empty__acts"><a class="btn btn--primary" href="${esc(act.primaryHref || 'index.html#feed')}">${esc(act.primaryText)}</a>${act.secondaryText ? `<a class="btn btn--ghost" href="${esc(act.secondaryHref || 'index.html#feed')}">${esc(act.secondaryText)}</a>` : ''}</div>`
+      : '<button class="chip" id="chipReset" type="button">重置全部筛选</button>'
     return `
 <div class="empty">
   <svg class="empty__art" viewBox="0 0 132 92" aria-hidden="true" fill="none">
@@ -64,16 +84,16 @@
     <path d="M98 14l2.4 4.6L105 21l-4.6 2.4L98 28l-2.4-4.6L91 21l4.6-2.4z" fill="currentColor" opacity=".3"/>
     <circle cx="32" cy="16" r="2" fill="currentColor" opacity=".25"/>
   </svg>
-  <b>${esc(title || '这里还没有读书感受')}</b>
+  <h1>${esc(title || '这里还没有读书感受')}</h1>
   <small>${esc(hint || '换个关键词，或放宽筛选条件试试')}</small>
-  <button class="chip" id="chipReset" type="button">重置全部筛选</button>
+  ${actions}
 </div>`
   }
 
   /* ---------- 信息流卡片 ---------- */
   function cardHTML(p, i, kw) {
     const avatar = p.author.avatar
-      ? `<img src="${esc(p.author.avatar)}" alt="" loading="lazy" onerror="this.remove()">`
+      ? `<img src="${esc(p.author.avatar)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">`
       : ''
 
     const hot = (p.comments || []).slice(0, 2).map((c) =>
@@ -88,7 +108,7 @@
   <a class="card__link" href="detail.html?id=${encodeURIComponent(p.id)}" aria-label="阅读全文：${esc(p.title)}">
     <span class="card__media">
       <span class="card__cat">${esc(p.category)}</span>
-      <img class="dev-pending" src="${esc(p.cover)}" alt="《${esc(p.title)}》配图" loading="lazy" decoding="async">
+      <img class="is-loading" src="${esc(p.cover)}" alt="${esc(p.title)} 配图" loading="lazy" decoding="async">
       <span class="card__time-on-img">${icons.clock}${esc(p.time)}</span>
     </span>
     <h3 class="card__title">${hl(p.title, kw)}</h3>
@@ -122,7 +142,7 @@
       : 'index.html#feed'
 
     const avatar = c.author.avatar
-      ? `<img src="${esc(c.author.avatar)}" alt="" loading="lazy" onerror="this.remove()">`
+      ? `<img src="${esc(c.author.avatar)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">`
       : `<span class="comment-card__avatar-text">${esc((c.author.name || '读')[0])}</span>`
 
     const name = `${esc(c.author.name)}${c.author.college ? ' · ' + esc(c.author.college) : ''}`
@@ -143,7 +163,7 @@
     </div>
 
     <a class="comment-card__target" href="${href}" aria-label="打开这篇书评：${esc(c.target ? c.target.title : '')}">
-      <img class="comment-card__thumb dev-pending" src="${esc(c.target ? c.target.cover : '')}" alt="" loading="lazy">
+      <img class="comment-card__thumb is-loading" src="${esc(c.target ? c.target.cover : '')}" alt="" aria-hidden="true" loading="lazy">
       <span class="comment-card__target-meta">
         <i>TA 评论了这篇书评</i>
         <b>${esc(c.target ? c.target.title : '')}</b>
@@ -243,14 +263,14 @@
   function cmtHTML(c, i) {
     const idx = Math.min(i || 0, 8)
     const av = c.avatar
-      ? `<img src="${esc(c.avatar)}" alt="" class="cmt__av" style="object-fit:cover">`
+      ? `<img src="${esc(c.avatar)}" alt="" aria-hidden="true" class="cmt__av" style="object-fit:cover">`
       : `<span class="cmt__av">${esc(c.avatarText || (c.user || '读')[0])}</span>`
 
     return `
 <div class="cmt" data-cid="${esc(c.id)}" style="--ci:${idx}">
   ${av}
   <div class="cmt__main">
-    <div class="cmt__top"><b>${esc(c.user)}</b><time>${esc(c.time)}</time></div>
+    <div class="cmt__top"><b>${esc(c.user)}</b><time>${esc(c.local ? '刚刚 · 本机' : c.time)}</time></div>
     <p class="cmt__text">${esc(c.content)}</p>
     <div class="cmt__acts">
       <button class="cmt-like" type="button" data-base="${Number(c.likes) || 0}">${icons.heart}赞<span class="n">${abbr(c.likes)}</span></button>
@@ -265,7 +285,7 @@
     const comments = d.comments || []
     const related = (d.related || []).map((r) => `
       <a class="related__item" href="detail.html?id=${encodeURIComponent(r.id)}">
-        <img class="dev-pending" src="${esc(r.cover || '')}" alt="" loading="lazy">
+        <img class="is-loading" src="${esc(r.cover || '')}" alt="${esc(r.title || '相关内容')} 封面" loading="lazy">
         <div><b>${esc(r.title || '')}</b><time>${esc((r.time || '').slice(0, 16))}</time></div>
       </a>`).join('')
 
@@ -283,7 +303,7 @@
 
 <article class="article">
   <div class="article__hero">
-    <img class="dev-pending" src="${esc(d.cover)}" alt="${esc(d.title)} 配图">
+    <img class="is-loading" src="${esc(d.cover)}" alt="${esc(d.title)} 封面">
   </div>
 
   <div class="shell">
@@ -298,18 +318,18 @@
       <div class="article__author">
         ${d.author.id
           ? `<a class="article__author-link" href="author.html?id=${encodeURIComponent(d.author.id)}" aria-label="查看 ${esc(d.author.name)} 的主页">
-               <img src="${esc(d.author.avatar || '')}" alt="" onerror="this.remove()">
+               <img src="${esc(d.author.avatar || '')}" alt="${esc(d.author.name)} 的头像" onerror="this.remove()">
                <div><b>${esc(d.author.name)}</b><i>${esc(d.author.college || '校园读者')}</i></div>
              </a>`
           : `<div class="article__author-link">
-               <img src="${esc(d.author.avatar || '')}" alt="" onerror="this.remove()">
+               <img src="${esc(d.author.avatar || '')}" alt="${esc(d.author.name)} 的头像" onerror="this.remove()">
                <div><b>${esc(d.author.name)}</b><i>${esc(d.author.college || '校园读者')}</i></div>
              </div>`}
         <button class="follow" id="btnFollow" type="button">+ 关注</button>
       </div>
     </div>
 
-    <div class="prose" id="prose">${d.contentHtml}</div>
+    <div class="prose" id="prose">${sanitizeHTML(d.contentHtml)}</div>
 
     ${d.book ? `
     <div class="bookcard">
@@ -322,7 +342,7 @@
 
     <div class="detail-stats">
       <div><b data-stat="like" data-base="${Number(d.likes) || 0}">${abbr(d.likes)}</b><i>点赞</i></div>
-      <div><b data-stat="comment" data-base="${Number(d.commentCount) || 0}">${abbr(d.commentCount)}</b><i>评论</i></div>
+      <div><b data-stat="comment" data-base="${comments.length}">${abbr(comments.length)}</b><i>评论</i></div>
       <div><b>${abbr(d.views)}</b><i>阅读</i></div>
     </div>
 

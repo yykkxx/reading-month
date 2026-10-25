@@ -9,7 +9,7 @@
 <script>try{if(localStorage.getItem('rm-theme')==='night')document.documentElement.dataset.theme='night'}catch(e){}</script>
 <title>2026 校园读书月 · 阅见世界</title>
 <link rel="preload" as="font" type="font/woff" href="fonts/noto-serif-sc-Bold.woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20261026n">
+<link rel="stylesheet" href="css/style.css?v=20261026p">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23a63a2b'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%23f6ecd8' font-family='serif'%3E书%3C/text%3E%3C/svg%3E">
 </head>
 <body class="page-home">
@@ -230,7 +230,7 @@
       </ul>
       <h3 class="submit__subtitle" id="sfTitle">站内投稿</h3>
       <form class="submit-form" id="submitForm" novalidate aria-labelledby="sfTitle">
-        <p class="submit-form__lede">填好四项，点「投稿到感受墙」就会拿到一个投稿编号，并立刻贴到上面的感受墙顶部——只保存在这台设备的浏览器里。</p>
+        <p class="submit-form__lede">填好四项，点「保存到本机」就会拿到一个投稿编号，并收在下方「我的投稿」里——只保存在这台设备，不会自动送达编辑部。</p>
         <div class="submit-form__fields" id="sfFields">
           <div class="submit-form__grid">
             <div class="field"><label for="sfName">昵称 <em>必填 · 20 字内</em></label><input id="sfName" name="name" type="text" maxlength="20" required autocomplete="nickname" placeholder="怎么称呼你" aria-describedby="sfErr"></div>
@@ -240,17 +240,18 @@
           <div class="field field--body"><label for="sfBody">读书感受 <em>必填 · 300–2000 字</em></label>
             <textarea id="sfBody" name="body" rows="7" maxlength="2000" required placeholder="记下触动你的段落、人物或一个问题，不必写成书评……" aria-describedby="sfCount sfErr"></textarea><span class="field__count" id="sfCount" aria-live="polite">已写 0 字 / 至少 300 字</span></div>
           <p class="submit-form__err" id="sfErr" role="alert" hidden></p>
-          <div class="submit-form__acts"><button class="btn btn--primary" id="sfSubmit" type="submit">投稿到感受墙</button><button class="btn btn--ghost" id="sfMail" type="button">用邮件发送</button></div>
+          <div class="submit-form__acts"><button class="btn btn--primary" id="sfSubmit" type="submit">保存到本机</button><button class="btn btn--ghost" id="sfMail" type="button">用邮件发送</button></div>
           <p class="submit-form__note">草稿与投稿只保存在本机浏览器；点「用邮件发送」会打开你的邮件客户端。</p>
         </div>
         <div class="submit-form__done" id="sfDone" hidden>
           <span class="submit-form__stamp" aria-hidden="true">已收</span>
           <p class="submit-form__no">投稿编号 <b id="sfNo">RM-</b></p>
-          <p class="submit-form__ok">已贴上感受墙，编辑小组会在一周内查看。</p>
-          <button class="btn btn--ghost" id="sfAgain" type="button">再写一篇</button>
+          <p class="submit-form__ok">已保存在本机 · 想发给编辑部，请点「用邮件发送」。</p>
+          <div class="submit-form__acts"><button class="btn btn--primary" id="sfMail2" type="button">用邮件发送</button><button class="btn btn--ghost" id="sfAgain" type="button">再写一篇</button></div>
         </div>
         <p class="submit-form__mine" id="sfMyRow" hidden>我的投稿 <b id="sfMyCount">0</b> 篇 · <button class="linkbtn" id="sfView" type="button">查看</button> / <button class="linkbtn" id="sfClear" type="button">清空</button></p>
       </form>
+      <div class="feed__list submit__mine-list" id="sfMineList" hidden></div>
 
       <h3 class="submit__subtitle">咨询 · 评选与展示</h3>
       <p class="submit__text">咨询可到图书馆二层服务台，或于周一至周五 12:30—13:30 到学生活动中心 204 找学习部值班同学。</p>
@@ -283,9 +284,9 @@
 <script src="js/theme.js?v=20261025"></script>
 <script src="js/config.js?v=20261026m"></script>
 <script src="js/api.js?v=20261026n"></script>
-<script src="js/ui.js?v=20261026g"></script>
-<script src="js/effects.js?v=20261025"></script>
-<script src="js/app.js?v=20261026n"></script>
-<script src="js/submit.js?v=20261026m"></script>
+<script src="js/ui.js?v=20261026p"></script>
+<script src="js/effects.js?v=20261026p"></script>
+<script src="js/app.js?v=20261026p"></script>
+<script src="js/submit.js?v=20261026p"></script>
 </body>
 </html>
