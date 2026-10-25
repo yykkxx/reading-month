@@ -236,12 +236,12 @@
         <p class="submit-form__lede">填好四项，点「投稿到感受墙」就会拿到一个投稿编号，并立刻贴到上面的感受墙顶部——只保存在这台设备的浏览器里。</p>
         <div class="submit-form__fields" id="sfFields">
           <div class="submit-form__grid">
-            <div class="field"><label for="sfName">昵称 <em>必填 · 20 字内</em></label><input id="sfName" name="name" type="text" maxlength="20" autocomplete="nickname" placeholder="怎么称呼你" aria-describedby="sfErr"></div>
-            <div class="field"><label for="sfBook">书名 <em>必填 · 40 字内</em></label><input id="sfBook" name="book" type="text" maxlength="40" placeholder="例如：活着" aria-describedby="sfErr"></div>
+            <div class="field"><label for="sfName">昵称 <em>必填 · 20 字内</em></label><input id="sfName" name="name" type="text" maxlength="20" required autocomplete="nickname" placeholder="怎么称呼你" aria-describedby="sfErr"></div>
+            <div class="field"><label for="sfBook">书名 <em>必填 · 40 字内</em></label><input id="sfBook" name="book" type="text" maxlength="40" required placeholder="例如：活着" aria-describedby="sfErr"></div>
             <div class="field"><label for="sfCat">分类 <em>必填</em></label><select id="sfCat" name="category" aria-describedby="sfErr"><option>文学</option><option>小说</option><option>科幻</option><option>历史</option><option>社科</option><option>成长</option><option>心理</option><option>自然</option><option>教育</option><option>传记</option></select></div>
           </div>
           <div class="field field--body"><label for="sfBody">读书感受 <em>必填 · 300–2000 字</em></label>
-            <textarea id="sfBody" name="body" rows="7" maxlength="2000" placeholder="记下触动你的段落、人物或一个问题，不必写成书评……" aria-describedby="sfCount sfErr"></textarea><span class="field__count" id="sfCount" aria-live="polite">已写 0 字 / 至少 300 字</span></div>
+            <textarea id="sfBody" name="body" rows="7" maxlength="2000" required placeholder="记下触动你的段落、人物或一个问题，不必写成书评……" aria-describedby="sfCount sfErr"></textarea><span class="field__count" id="sfCount" aria-live="polite">已写 0 字 / 至少 300 字</span></div>
           <p class="submit-form__err" id="sfErr" role="alert" hidden></p>
           <div class="submit-form__acts"><button class="btn btn--primary" id="sfSubmit" type="submit">投稿到感受墙</button><button class="btn btn--ghost" id="sfMail" type="button">用邮件发送</button></div>
           <p class="submit-form__note">草稿与投稿只保存在本机浏览器；点「用邮件发送」会打开你的邮件客户端。</p>

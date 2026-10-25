@@ -35,8 +35,7 @@
   }
   function clearErr() { errEl.textContent = ''; errEl.hidden = true; setInvalid(false) }
   function paintCount() {
-    const n = chars(bodyEl.value.trim())
-    countEl.textContent = `已写 ${n} 字 / 至少 ${MIN} 字` + (n < MIN ? ` · 还差 ${MIN - n} 字` : n > MAX ? ` · 超出 ${n - MAX} 字` : '')
+    const n = chars(bodyEl.value.trim()); countEl.textContent = `已写 ${n} 字 / 至少 ${MIN} 字` + (n < MIN ? ` · 还差 ${MIN - n} 字` : n > MAX ? ` · 超出 ${n - MAX} 字` : '')
     countEl.classList.toggle('is-short', n < MIN); countEl.classList.toggle('is-over', n > MAX)
   }
   function validate() {
@@ -49,14 +48,11 @@
     if (n > MAX) return fail(`正文超出 ${n - MAX} 字（最多 ${MAX} 字）。`, bodyEl)
     clearErr(); return true
   }
-
   /* 编号 / 顶部卡片 */
   function makeNo(ts, seq) {
-    const d = new Date(ts)
-    return `RM-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${String(seq).padStart(3, '0')}`
+    const d = new Date(ts); return `RM-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${String(seq).padStart(3, '0')}`
   }
   const nextSeq = () => mine.reduce((m, s) => Math.max(m, parseInt(String(s.no).slice(-3), 10) || 0), 0) + 1
-  const nextNo = () => lastNo || makeNo(Date.now(), nextSeq())
   function mineCardHTML(sub, i) {
     const post = {
       id: sub.id, title: sub.book, excerpt: Array.from(String(sub.body)).slice(0, 80).join(''), cover: COVER,
@@ -74,13 +70,10 @@
     list.querySelectorAll('[data-mine="1"]').forEach((n) => n.remove())
     if (!mine.length) return
     list.insertAdjacentHTML('afterbegin', mine.slice().sort(byTime).map(mineCardHTML).join(''))
-    if (window.FX && FX.developImages) FX.developImages(list)
-    if (UI.bindLike) UI.bindLike(list)
+    if (window.FX && FX.developImages) FX.developImages(list); if (UI.bindLike) UI.bindLike(list)
   }
   function syncRow() {
-    if (!rowEl) return
-    rowEl.hidden = !mine.length
-    if (mine.length) $('#sfMyCount').textContent = String(mine.length)
+    if (rowEl) { rowEl.hidden = !mine.length; if (mine.length) $('#sfMyCount').textContent = String(mine.length) }
   }
   function ensureMine() {
     syncRow()
@@ -88,8 +81,7 @@
     if (list && mine.length && !list.querySelector('[data-mine="1"]')) paintCards()
   }
   function showDone(no) {
-    lastNo = no; noEl.textContent = no
-    fieldsEl.hidden = true; doneEl.hidden = false
+    lastNo = no; noEl.textContent = no; fieldsEl.hidden = true; doneEl.hidden = false
     doneEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#sfAgain').focus({ preventScroll: true })
   }
   function resetForm() {
@@ -110,10 +102,15 @@
   function sendMail() {
     if (!validate()) return
     const name = nameEl.value.trim(), book = bookEl.value.trim()
-    const text = `投稿编号：${nextNo()}\n昵称：${name}\n书名：${book}\n分类：${catEl.value}\n\n${bodyEl.value.trim()}\n`
+    const text = `投稿编号：${lastNo || makeNo(Date.now(), nextSeq())}\n昵称：${name}\n书名：${book}\n分类：${catEl.value}\n\n${bodyEl.value.trim()}\n`
     toast('已打开邮件客户端，记得点发送')
     location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(`投稿 + 《${book}》 + ${name}`) + '&body=' + encodeURIComponent(text)
   }
+  /* 入口锚点较深：先关掉平滑滚动，避免信息流补页把目标顶走 */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href="#submitForm"]'); if (!a || e.button || e.ctrlKey || e.metaKey || e.shiftKey) return
+    e.preventDefault(); const h = document.documentElement; h.style.scrollBehavior = 'auto'; form.scrollIntoView({ block: 'start' }); h.style.scrollBehavior = ''; history.replaceState(null, '', '#submitForm')
+  }, true)
   form.addEventListener('submit', (e) => { e.preventDefault(); submit() })
   form.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); submit() } })
   bodyEl.addEventListener('input', paintCount)

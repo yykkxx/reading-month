@@ -67,8 +67,7 @@
     /* 站点口径固定为本届 2026：不再按系统年份滚届次，闭幕只影响倒计时目标 */
     const year = EDITION_BASE.year
     const range = rangeOf(year)
-    const closed = Date.now() > range.end.getTime()
-    const nextStart = rangeOf(year + 1).start.getTime()
+    const closed = Date.now() > range.end.getTime(); const nextStart = rangeOf(year + 1).start.getTime()
 
     const edition = EDITION_BASE.edition + (year - EDITION_BASE.year)
     const beforeStart = Date.now() < range.start.getTime()

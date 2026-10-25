@@ -38,7 +38,7 @@ window.READING_MONTH = {
     user: 'mock/api/users/{id}.json',
   },
 
-  /* 右下角「投稿方式」跳转地址：默认指向本页 #submit 区块；
+  /* 右下角「投稿方式」跳转地址：指向站内投稿表单（本机闭环）；
    * 之后接入真实投稿表单页时，把它替换成表单地址即可。 */
   SUBMIT_URL: '#submitForm',
 
