@@ -122,11 +122,14 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   -webkit-backdrop-filter: blur(10px) saturate(120%);
   border-bottom: 1px solid var(--ink-line);
   transform: translateY(-102%);
-  /* 未滚到阈值前不可见也不可聚焦；visibility 随滑出过渡收尾，避免闪一下 */
+  /* 未滚到阈值前不可见也不可聚焦；显示时立即可见，隐藏时等滑出结束再收 */
   visibility: hidden;
-  transition: transform 0.45s var(--ease), visibility 0.45s var(--ease);
+  transition: transform 0.45s var(--ease), visibility 0s linear 0.45s;
 }
-.topbar.is-in { transform: none; visibility: visible; }
+.topbar.is-in {
+  transform: none; visibility: visible;
+  transition: transform 0.45s var(--ease), visibility 0s linear 0s;
+}
 
 .topbar__brand {
   display: flex; align-items: center; gap: 9px; flex: 0 0 auto; white-space: nowrap;
@@ -821,10 +824,13 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   box-shadow: var(--sh-2);
   opacity: 0; transform: translateY(14px) scale(0.92); pointer-events: none;
   visibility: hidden;
-  transition: 0.35s var(--ease);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
 }
 .back-top svg { width: 19px; height: 19px; }
-.back-top.is-in { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+.back-top.is-in {
+  opacity: 1; transform: none; pointer-events: auto; visibility: visible;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0s;
+}
 .back-top:active { transform: scale(0.9); }
 
 /* ---------- 6. 右下角「提交投稿」：朱红书签丝带 ---------- */
@@ -1233,6 +1239,8 @@ body.is-ready .article { opacity: 1; transform: none; }
     transition-duration: 0.001ms !important;
   }
   html { scroll-behavior: auto; }
+  /* 顶栏/回顶的 visibility 延迟也归零，避免隐藏态在过渡窗口里仍可被聚焦 */
+  .topbar, .topbar.is-in, .back-top, .back-top.is-in { transition-delay: 0s !important; }
   .reveal, .js-reveal { opacity: 1 !important; transform: none !important; }
   .card { opacity: 1 !important; transform: none !important; }
   .cmt { opacity: 1 !important; transform: none !important; }
@@ -1303,7 +1311,7 @@ img.dev-pending {
   border-radius: 6px;
 }
 
-/* 跳过导航：键盘用户的第一站，平时收在屏幕外，聚焦时滑到左上角 */
+/* 跳过导航：键盘用户的第一站，平时收在屏幕外，聚焦时固定到左上角 */
 .skip-link {
   position: fixed; top: calc(var(--safe-t) + 8px); left: 8px; z-index: 90;
   padding: 9px 15px; border-radius: 8px;
@@ -1312,7 +1320,6 @@ img.dev-pending {
   border: 1px solid var(--ink-line);
   box-shadow: var(--sh-2);
   transform: translateY(calc(-100% - 16px));
-  transition: transform 0.24s var(--ease);
 }
 .skip-link:focus,
 .skip-link:focus-within { transform: none; }
@@ -1473,8 +1480,11 @@ html[data-theme="night"] .search__clear:hover { color: var(--vermilion); backgro
 html[data-theme="night"] .act:hover { background: rgba(238, 227, 206, 0.1); }
 html[data-theme="night"] .cmt-like:hover,
 html[data-theme="night"] .cmt-reply:hover { color: var(--vermilion); }
+html[data-theme="night"] .search__btn:hover,
+html[data-theme="night"] .detail-bar__send:hover,
+html[data-theme="night"] .follow:hover { box-shadow: 0 8px 16px -7px rgba(224, 122, 95, 0.45); }
 html[data-theme="night"] .related__item:hover {
-  background: rgba(238, 227, 206, 0.08);
+  background: var(--paper-3);
   border-color: rgba(238, 227, 206, 0.28);
 }
 html[data-theme="night"] .related__item:hover time { color: var(--ink-600); }
