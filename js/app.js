@@ -33,6 +33,7 @@
   const elSearchClear = $('#searchClear')
   const elSummary = $('#filterSummary')
   const elApiHint = $('#apiHint')
+  const elFab = $('#fabSubmit')
   const elToast = $('#toast')
 
   /* ---------- Toast ---------- */
@@ -46,8 +47,12 @@
   }
 
   /* ========================================================================
-   * 一、倒计时
+   * 一、倒计时与届次
+   *   活动周期每年 4/23 — 5/23。还没到本届闭幕就算本届，过了闭幕就滚到下一届；
+   *   届次由年份推导（2026 = 第 12 届），徽章、倒计时说明与页面标题共用这一届。
    * ====================================================================== */
+  const EDITION_BASE = { year: 2026, edition: 12 }
+
   function initCountdown() {
     const box = $('#countdown')
     if (!box) return
@@ -61,7 +66,7 @@
       end: new Date(year, act.endMonth - 1, act.endDay, 23, 59, 59),
     })
 
-    /* 本届已结束则滚到下一届，演示环境永远有倒计时 */
+    /* 取「正在进行或即将开始」的那一届：过了 5/23 闭幕就滚到下一届 */
     let year = new Date().getFullYear()
     let range = rangeOf(year)
     if (Date.now() > range.end.getTime()) {
@@ -69,7 +74,28 @@
       range = rangeOf(year)
     }
 
+    const edition = EDITION_BASE.edition + (year - EDITION_BASE.year)
     const beforeStart = Date.now() < range.start.getTime()
+
+    /* 徽章 / 倒计时说明 / 页面标题都指向同一届，年份与届次不再打架 */
+    const badgeText = $('.hero__badge .badge-text')
+    if (badgeText) badgeText.textContent = `${year} 校园读书月 · 第 ${edition} 届`
+
+    const label = $('#cdLabel')
+    if (label) {
+      label.textContent = beforeStart
+        ? `距离下一届读书月 · ${year} 年 ${act.startMonth} 月 ${act.startDay} 日开幕`
+        : `本届读书月还剩 · ${act.endMonth} 月 ${act.endDay} 日闭幕`
+      label.hidden = false
+    }
+
+    if (document.title.indexOf(' 校园读书月') > -1) {
+      document.title = document.title.replace(/\d{4}(?= 校园读书月)/, year)
+    }
+    const desc = $('meta[name="description"]')
+    if (desc && desc.content.indexOf(' 校园读书月') > -1) {
+      desc.content = desc.content.replace(/\d{4}(?= 校园读书月)/, year)
+    }
 
     function render() {
       const target = beforeStart ? range.start.getTime() : range.end.getTime()
@@ -99,6 +125,7 @@
     let ticking = false
     let barShown = null
     let topShown = null
+    let fabShown = null
 
     function apply() {
       ticking = false
@@ -118,6 +145,13 @@
       if (showTop !== topShown) {
         if (elBackTop) elBackTop.classList.toggle('is-in', showTop)
         topShown = showTop
+      }
+
+      /* 投稿书签首屏不出现：等信息流顶上来再淡入，避免压住首屏两个 CTA */
+      const showFab = elFeed ? elFeed.getBoundingClientRect().top < vh * 0.35 : false
+      if (showFab !== fabShown) {
+        if (elFab) elFab.classList.toggle('is-in', showFab)
+        fabShown = showFab
       }
 
       if (elHint && elFeed) {
@@ -162,33 +196,75 @@
   /* ========================================================================
    * 三、数字滚动 + 首屏视效
    * ====================================================================== */
+  function countUp(el) {
+    if (el.dataset.done) return
+    el.dataset.done = '1'
+    const target = Number(el.dataset.count) || 0
+    const t0 = performance.now()
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / 1300)
+      const eased = 1 - Math.pow(1 - k, 3)
+      el.textContent = Math.round(target * eased).toLocaleString('zh-CN')
+      if (k < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }
+
   function initCounters() {
-    const nodes = $$('[data-count]')
+    /* 首屏统计由 initStats() 拿到真实数据后再填，不在这里预跑 */
+    const nodes = $$('[data-count]').filter((el) => !el.dataset.stat)
     if (!nodes.length) return
 
-    const run = (el) => {
-      if (el.dataset.done) return
-      el.dataset.done = '1'
-      const target = Number(el.dataset.count) || 0
-      const t0 = performance.now()
-      const step = (t) => {
-        const k = Math.min(1, (t - t0) / 1300)
-        const eased = 1 - Math.pow(1 - k, 3)
-        el.textContent = Math.round(target * eased).toLocaleString('zh-CN')
-        if (k < 1) requestAnimationFrame(step)
-      }
-      requestAnimationFrame(step)
-    }
-
-    if (!('IntersectionObserver' in window)) { nodes.forEach(run); return }
+    if (!('IntersectionObserver' in window)) { nodes.forEach(countUp); return }
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
-        run(entry.target)
+        countUp(entry.target)
         io.unobserve(entry.target)
       })
     }, { threshold: 0.4 })
     nodes.forEach((el) => io.observe(el))
+  }
+
+  /* 首屏统计：和感受墙同源统计（书评 / 留言 / 分享者），不再写死宣传数字 */
+  function statAuthorKey(item) {
+    const a = item && item.author
+    return (a && (a.id || a.name)) || ''
+  }
+
+  async function initStats() {
+    const nodes = $$('.stats [data-stat]')
+    if (!nodes.length) return
+    const paint = (counts) => {
+      nodes.forEach((el) => {
+        el.dataset.count = String(Number(counts[el.dataset.stat]) || 0)
+        delete el.dataset.done
+        countUp(el)
+      })
+    }
+    try {
+      const all = []
+      for (let page = 1; page <= 30; page++) {
+        const res = await API.getFeed(page, { cat: '全部', sort: 'new' })
+        const list = res.list || []
+        all.push(...list)
+        if (!res.hasMore || !list.length) break
+      }
+      const posts = all.filter((item) => item.type !== 'comment')
+      paint({
+        posts: posts.length,
+        comments: all.length - posts.length,
+        authors: new Set(posts.map(statAuthorKey).filter(Boolean)).size,
+      })
+    } catch (err) {
+      /* file:// 或接口不可用：用内置兜底数据量，保证数字和真正渲染出来的内容一致 */
+      const fb = API.fallbackList || []
+      paint({
+        posts: fb.length,
+        comments: 0,
+        authors: new Set(fb.map(statAuthorKey).filter(Boolean)).size,
+      })
+    }
   }
 
   function initHeroEffects() {
@@ -529,6 +605,7 @@
 
     loadMore()
     initFacets()
+    initStats()
 
     if (FX.revealOnScroll) {
       FX.revealOnScroll(document)

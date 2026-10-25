@@ -128,7 +128,7 @@
     const name = `${esc(c.author.name)}${c.author.college ? ' · ' + esc(c.author.college) : ''}`
 
     return `
-<article class="card card--comment" data-id="${esc(c.id)}" data-href="${href}"
+<article class="card card--comment" data-id="${esc(c.id)}" data-cat="${esc((c.target && c.target.category) || c.category || '全部')}" data-href="${href}"
          style="animation-delay:${Math.min(i, 6) * 70}ms">
   <div class="comment-card">
     <div class="comment-card__main">

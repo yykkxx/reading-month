@@ -343,6 +343,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   font-variant-numeric: tabular-nums;
 }
 .countdown__item i { font-size: 11.5px; color: var(--ink-500); font-style: normal; }
+.countdown__note {
+  margin: -10px 0 18px;
+  font-family: var(--serif); font-size: 12px; line-height: 1.7;
+  letter-spacing: 0.04em; color: var(--ink-500);
+}
 
 /* 数据：三张小纸签，微微倾斜 */
 .stats {
@@ -589,15 +594,16 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   border: 1px solid var(--ink-line);
   box-shadow: var(--sh-2);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(16px) rotate(var(--tilt));
-  animation: cardIn 0.65s var(--ease) forwards;
+  transform: rotate(var(--tilt));
+  /* 只做 backwards 填充：动画结束后把手感交还给普通样式，
+     否则 forwards 的 transform 会压住 .card:hover 的抬升 */
+  animation: cardRise 0.65s var(--ease) backwards;
   transition: box-shadow 0.3s var(--ease);
 }
 .card:nth-child(odd) { --tilt: -0.3deg; }
 .card:nth-child(even) { --tilt: 0.3deg; }
-@keyframes cardIn {
-  to { opacity: 1; transform: translateY(0) rotate(var(--tilt)); }
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(16px) rotate(var(--tilt)); }
 }
 .card:active { box-shadow: 0 2px 4px rgba(93, 71, 50, 0.1); }
 
@@ -708,7 +714,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   transition: 0.22s var(--ease);
 }
 .act svg { width: 17px; height: 17px; }
-.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); }
+button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); }
 .act.is-liked { color: var(--like); }
 .act.is-liked svg { fill: var(--like); stroke: var(--like); animation: pop 0.42s var(--ease); }
 @keyframes pop {
@@ -849,7 +855,20 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   clip-path: polygon(0 0, 100% 0, 100% 93%, 50% 100%, 0 93%);
   animation: fabsway 4.4s ease-in-out infinite;
   transform-origin: 50% 0;
-  transition: filter 0.25s;
+  /* 首屏收起：opacity/visibility 只负责观感，translate 再把盒子整体移出屏幕，
+     保证它与首屏两个 CTA 的矩形交叠面积真的是 0 */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  translate: 0 calc(100% + 24px);
+  transition: filter 0.25s, opacity 0.26s var(--ease), translate 0.34s var(--ease), visibility 0s linear 0.34s;
+}
+.fab.is-in {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  translate: 0 0;
+  transition: filter 0.25s, opacity 0.3s var(--ease), translate 0.34s var(--ease), visibility 0s;
 }
 .fab__ico { width: 21px; height: 21px; stroke: #f6ecd8; stroke-width: 1.8; }
 .fab__txt {
@@ -1193,6 +1212,22 @@ body.is-ready .article { opacity: 1; transform: none; }
   .card__title { font-size: 19px; }
 }
 
+/* 小屏首屏：收紧竖向节奏，把下滑提示完整留在第一屏内 */
+@media (max-width: 480px) {
+  .hero { padding-bottom: calc(var(--safe-b) + 58px); }
+  .hero__badge { padding-top: 2px; padding-bottom: 2px; }
+  .seal-seal { min-height: 42px; }
+  .hero__title { margin: 10px 0 8px; }
+  .hero__intro { margin-top: 10px; line-height: 1.8; }
+  .countdown { margin: 14px 0 12px; }
+  .countdown__item { padding: 12px 4px 9px; }
+  .countdown__note { margin: -6px 0 12px; }
+  .stats { margin-bottom: 16px; }
+  .stat-note { padding: 10px 8px 9px; }
+  .btn { padding: 12px 18px; }
+  .scroll-hint { bottom: calc(var(--safe-b) + 14px); }
+}
+
 @media (min-width: 700px) {
   body { font-size: 16px; }
   .hero__title { font-size: 60px; }
@@ -1226,7 +1261,7 @@ body.is-ready .article { opacity: 1; transform: none; }
   .detail-bar__send:hover,
   .follow:hover { box-shadow: 0 6px 14px -6px rgba(166, 58, 43, 0.5); }
   .search__clear:hover { color: var(--vermilion-2); background: rgba(93, 71, 50, 0.18); }
-  .act:hover { background: rgba(93, 71, 50, 0.08); }
+  button.act:hover { background: rgba(93, 71, 50, 0.08); }
   .cmt-like:hover,
   .cmt-reply:hover { color: var(--vermilion-2); }
 }
@@ -1441,7 +1476,7 @@ html[data-theme="night"] .card__hot li,
 html[data-theme="night"] .card__excerpt { color: var(--ink-700); }
 html[data-theme="night"] .card__author img { border-color: rgba(238, 227, 206, 0.16); }
 html[data-theme="night"] .card__foot { border-top-color: rgba(238, 227, 206, 0.16); }
-html[data-theme="night"] .act:active { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] button.act:active { background: rgba(238, 227, 206, 0.1); }
 html[data-theme="night"] .feed__api code { background: rgba(238, 227, 206, 0.1); }
 html[data-theme="night"] .submit { background: linear-gradient(180deg, #221c16, #1b1712); border-color: rgba(238, 227, 206, 0.16); }
 html[data-theme="night"] .submit__way { background: rgba(238, 227, 206, 0.05); }
@@ -1477,7 +1512,7 @@ html[data-theme="night"] .article__hero img { filter: sepia(0.08) saturate(0.88)
 html[data-theme="night"] .skip-link { color: var(--vermilion); }
 html[data-theme="night"] .topbar__link:hover { color: var(--vermilion); background: rgba(238, 227, 206, 0.08); }
 html[data-theme="night"] .search__clear:hover { color: var(--vermilion); background: rgba(238, 227, 206, 0.2); }
-html[data-theme="night"] .act:hover { background: rgba(238, 227, 206, 0.1); }
+html[data-theme="night"] button.act:hover { background: rgba(238, 227, 206, 0.1); }
 html[data-theme="night"] .cmt-like:hover,
 html[data-theme="night"] .cmt-reply:hover { color: var(--vermilion); }
 html[data-theme="night"] .search__btn:hover,
@@ -1546,6 +1581,9 @@ body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }
 @media (min-width: 760px) {
   :root { --pad: 26px; }
 
+  /* 桌面首屏内容更高，收紧底部留白，让下滑提示仍在第一屏内 */
+  .hero { padding-bottom: calc(var(--safe-b) + 96px); }
+
   .shell { max-width: 900px; }
   .hero__inner { max-width: 900px; }
   .hero__lead { max-width: 640px; margin: 0 auto; }
@@ -1589,6 +1627,11 @@ body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }
     border-radius: 14px 14px 0 0;
   }
   body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 86px); }
+}
+
+/* 矮桌面（视口 < 840px 高）装不下整屏 hero：宁可收起下滑提示，也不让它被折线切成半截 */
+@media (min-width: 760px) and (max-height: 840px) {
+  .scroll-hint { display: none; }
 }
 
 /* ---------- 桌面：首屏左右分栏 + 卷轴题诗 ---------- */
@@ -1760,7 +1803,7 @@ body.page-author { padding: calc(var(--safe-t) + 66px) 0 calc(var(--safe-b) + 52
   border: 1px solid rgba(78, 110, 93, 0.24);
 }
 
-.author__body { padding-top: 24px; max-width: 760px; }
+.author__body { padding-top: 24px; }
 .author__sec {
   display: flex; align-items: baseline; gap: 10px;
   margin: 0 0 16px;
