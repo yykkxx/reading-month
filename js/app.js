@@ -125,10 +125,9 @@
       }
 
       /* 跳到投稿区块时先按住无限滚动，别让新卡片把目标顶走 */
-      if (feedHold && elSubmit) {
-        if (elSubmit.getBoundingClientRect().top < vh) feedHoldSeen = true
-        else if (feedHoldSeen) { feedHold = false; feedHoldSeen = false; autoFill() }
-      }
+      const subTop = feedHold && elSubmit ? elSubmit.getBoundingClientRect().top : 0
+      if (feedHold && subTop < vh) feedHoldSeen = true
+      else if (feedHold && feedHoldSeen) { feedHold = false; feedHoldSeen = false; autoFill() }
     }
 
     window.addEventListener('scroll', () => {
@@ -201,8 +200,7 @@
   /* ========================================================================
    * 四、信息流
    * ====================================================================== */
-  let feedHold = false
-  let feedHoldSeen = false
+  let feedHold = false, feedHoldSeen = false
 
   const feed = {
     page: 0,
@@ -227,6 +225,8 @@
       elStatus.hidden = false
       elStatus.innerHTML = `<span>❦ 这一册翻完了 · 共 ${feed.shown} 篇感受</span>`
     } else {
+      /* 空闲：className 一并回到基础态，避免 is-end 的样式残留 */
+      elStatus.className = 'feed__status'
       elStatus.hidden = true
     }
   }
@@ -246,7 +246,7 @@
     if (q.q) parts.push(`关键词「<b>${UI.esc(q.q)}</b>」`)
     if (q.cat && q.cat !== '全部') parts.push(`分类「<b>${UI.esc(q.cat)}</b>」`)
     if (q.tag) parts.push(`标签「<b>${UI.esc(q.tag)}</b>」`)
-    parts.push(`排序「<b>${SORT_LABEL[q.sort] || '刚出炉'}</b>`)
+    parts.push(`排序「<b>${SORT_LABEL[q.sort] || '刚出炉'}</b>」`)
 
     elSummary.hidden = false
     elSummary.innerHTML = parts.join(' · ') +
@@ -254,11 +254,16 @@
       ' <button class="reset" id="resetAll" type="button">重置</button>'
   }
 
+  /* 三组都是「可切换按钮」：视觉 is-on 与 aria-pressed 必须同时同步 */
   function syncChips() {
     const q = feed.query
-    $$('.chip', elChips).forEach((c) => c.classList.toggle('is-on', c.dataset.cat === q.cat))
-    $$('.chip', elTags).forEach((c) => c.classList.toggle('is-on', c.dataset.tag === q.tag))
-    $$('.chip', elSorts).forEach((c) => c.classList.toggle('is-on', c.dataset.sort === q.sort))
+    const mark = (chip, on) => {
+      chip.classList.toggle('is-on', on)
+      chip.setAttribute('aria-pressed', on ? 'true' : 'false')
+    }
+    $$('.chip', elChips).forEach((c) => mark(c, c.dataset.cat === q.cat))
+    $$('.chip', elTags).forEach((c) => mark(c, c.dataset.tag === q.tag))
+    $$('.chip', elSorts).forEach((c) => mark(c, c.dataset.sort === q.sort))
   }
 
   function syncSearchClear() {
@@ -268,6 +273,8 @@
   /* 任一条件变化：清空列表，回到第 1 页 */
   function resetFeed(patch) {
     Object.assign(feed.query, patch || {})
+    /* 重置（关键词被清空）时把搜索框一起清掉，空态里不该还留着旧词 */
+    if (elSearchInput && !feed.query.q) elSearchInput.value = ''
     feed.page = 0
     feed.ended = false
     feed.ids.clear()
@@ -290,10 +297,9 @@
     elList.setAttribute('aria-busy', 'true')
 
     const first = feed.page === 0
-    if (first) {
-      elList.innerHTML = Array.from({ length: 3 }, UI.skeletonHTML).join('')
-      setStatus('loading')
-    }
+    if (first) elList.innerHTML = Array.from({ length: 3 }, UI.skeletonHTML).join('')
+    /* 只有真正在请求时才显示「正在翻下一页…」 */
+    setStatus('loading')
 
     try {
       const res = await API.getFeed(feed.page + 1, feed.query)
@@ -317,7 +323,7 @@
         if (!feed.shown) elList.innerHTML = UI.emptyHTML()
         setStatus(feed.shown ? 'end' : 'idle')
       } else {
-        setStatus('loading')
+        setStatus('idle')
       }
 
       renderSummary()
@@ -396,12 +402,14 @@
       })
     }
 
+    /* 重置：摘要条在 #filterSummary、空态按钮在 #feedList，都不保证在同一个容器里 → 委托到 document */
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#resetAll, #chipReset')) return
+      resetFeed({ q: '', cat: '全部', tag: '', sort: 'new' })
+    })
+
     if (elList) {
       elList.addEventListener('click', (e) => {
-        if (e.target.closest('#chipReset') || e.target.closest('#resetAll')) {
-          resetFeed({ q: '', cat: '全部', tag: '', sort: 'new' })
-          return
-        }
         if (e.target.closest('.act--like')) return
         const card = e.target.closest('[data-id]')
         if (!card || e.target.closest('a')) return
@@ -462,14 +470,14 @@
 
       if (elChips && facets.categories && facets.categories.length) {
         elChips.innerHTML = facets.categories.map((c) =>
-          `<button class="chip" type="button" role="tab" aria-selected="${c === feed.query.cat}" data-cat="${UI.esc(c)}">${UI.esc(c)}</button>`
+          `<button class="chip" type="button" aria-pressed="${c === feed.query.cat}" data-cat="${UI.esc(c)}">${UI.esc(c)}</button>`
         ).join('')
       }
 
       if (elTags && facets.tags && facets.tags.length) {
         elTags.innerHTML = '<span class="chips__label" aria-hidden="true">#</span>' +
           facets.tags.slice(0, 10).map((t) =>
-            `<button class="chip" type="button" role="tab" aria-selected="false" data-tag="${UI.esc(t)}">${UI.esc(t)}</button>`
+            `<button class="chip" type="button" aria-pressed="false" data-tag="${UI.esc(t)}">${UI.esc(t)}</button>`
           ).join('')
       }
 
@@ -487,12 +495,8 @@
     if (!fab) return
     if (CFG.SUBMIT_URL) fab.href = CFG.SUBMIT_URL
     const holdSubmit = () => {
-      feedHold = true
-      feedHoldSeen = false
-      feed.token += 1
-      feed.loading = false
-      if (elList) elList.setAttribute('aria-busy', 'false')
-      setStatus('idle')
+      feedHold = true; feedHoldSeen = false; feed.token += 1; feed.loading = false
+      elList.setAttribute('aria-busy', 'false'); setStatus('idle')
     }
     document.addEventListener('click', (e) => { if (e.target.closest('a[href="#submit"]')) holdSubmit() }, true)
   }
