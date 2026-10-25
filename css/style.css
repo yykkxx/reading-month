@@ -1911,7 +1911,7 @@ html[data-theme="night"] .comment-card__target:hover { background: rgba(238, 227
 html[data-theme="night"] .comment-card__head img { border-color: rgba(238, 227, 206, 0.16); }
 
 /* ==========================================================================
-   15. 页脚：读书月的落款 + 无脚本兜底
+   16. 页脚：读书月的落款 + 无脚本兜底
    ========================================================================== */
 .site-foot {
   margin-top: 32px; padding: 22px 0 calc(var(--safe-b) + 30px);
@@ -1950,6 +1950,10 @@ html[data-theme="night"] .comment-card__head img { border-color: rgba(238, 227, 
   margin-top: 20px; padding-top: 12px;
   border-top: 1px dashed var(--ink-line);
   font-size: 11.5px; letter-spacing: 0.08em; color: var(--ink-600); text-align: center;
+}
+/* 首页右下角有书签丝带：给页脚底部留出丝带漂浮的纸面，避免压住落款 */
+@media (max-width: 759px) {
+  body.page-home .site-foot { padding-bottom: calc(var(--safe-b) + 162px); }
 }
 @media (min-width: 760px) {
   .site-foot { margin-top: 40px; padding-top: 26px; }
