@@ -195,7 +195,7 @@
       const target = Number(el.dataset.count) || 0
       const t0 = performance.now()
       const step = (t) => {
-        const k = Math.min(1, (t - t0) / 600)
+        const k = Math.min(1, (t - t0) / 1300)
         const eased = 1 - Math.pow(1 - k, 3)
         const value = Math.round(target * eased)
         /* 数据未就绪时模板里是「—」：不要先画一帧 0，直接滚到真实值 */
@@ -214,9 +214,6 @@
       })
     }, { threshold: 0.4 })
     nodes.forEach((el) => io.observe(el))
-    /* 首屏已在视口内的计数器立即启动，不再等 IntersectionObserver 回调 */
-    const vh = window.innerHeight || 1
-    nodes.forEach((el) => { if (el.getBoundingClientRect().top < vh) run(el) })
   }
 
   /* 首屏统计：和感受墙同源统计（书评 / 留言 / 分享者），不再写死宣传数字 */
@@ -225,36 +222,19 @@
     if (!nodes.length) return
     const uniqAuthors = (list) => new Set(list.map((x) =>
       (x.author && (x.author.id || x.author.name)) || '').filter(Boolean)).size
-    const paint = (counts) => {
-      nodes.forEach((el) => { el.dataset.count = String(counts[el.dataset.stat] || 0) })
-      /* 数字动画仍由 initCounters 负责：等真实值写进 data-count 后再观察，滚动到就滚数字 */
-      initCounters()
-    }
-    let totals = null
-    if (CFG.SOURCE === 'mock') {
-      try {
-        /* 只读 3 个数字的汇总文件：不与信息流重复请求 page-1，也不等 15 页预取 */
-        const res = await fetch('mock/api/totals.json', { cache: 'no-cache' })
-        if (!res.ok) throw new Error('HTTP ' + res.status)
-        totals = ((await res.json()).data) || null
-      } catch (err) { /* 旧数据：退回 page-1 的 totals */ }
-      if (!totals) {
-        try {
-          const res = await fetch('mock/api/posts/page-1.json', { cache: 'no-cache' })
-          if (res.ok) totals = ((await res.json()).data || {}).totals || null
-        } catch (err) { /* file:// 或接口不可用 */ }
-      }
-    }
-    if (totals && totals.posts) { paint(totals); return }
-    /* 最后才退回全量统计，保证数字仍与真正渲染出来的内容一致 */
     let all = []
     try {
+      /* 复用 API 的全量缓存：等空闲预取完成后统计一次，不在首屏同步拉全量 */
       all = await API.getAll()
     } catch (err) {
+      /* file:// 或接口不可用：退回内置兜底数据量，保证数字与真正渲染出来的内容一致 */
       all = API.fallbackList || []
     }
     const posts = all.filter((x) => x.type !== 'comment')
-    paint({ posts: posts.length, comments: all.length - posts.length, authors: uniqAuthors(posts) })
+    const counts = { posts: posts.length, comments: all.length - posts.length, authors: uniqAuthors(posts) }
+    nodes.forEach((el) => { el.dataset.count = String(counts[el.dataset.stat] || 0) })
+    /* 数字动画仍由 initCounters 负责：等真实值写进 data-count 后再观察，滚动到就滚数字 */
+    initCounters()
   }
 
   function initHeroEffects() {
@@ -587,9 +567,6 @@
     if (['new', 'hot', 'comments'].includes(params.get('sort'))) feed.query.sort = params.get('sort')
     if (elSearchInput && feed.query.q) elSearchInput.value = feed.query.q
 
-    /* 统计先发：汇总文件只有 3 个数字，越早请求越能在首屏 800ms 内出数 */
-    initStats()
-
     initCountdown()
     initScrollUI()
     initHeroEffects()
@@ -604,6 +581,7 @@
 
     loadMore()
     initFacets()
+    initStats()
 
     if (FX.revealOnScroll) {
       FX.revealOnScroll(document)

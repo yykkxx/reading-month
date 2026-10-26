@@ -5,11 +5,6 @@
     "pageSize": 8,
     "total": 120,
     "hasMore": true,
-    "totals": {
-      "posts": 96,
-      "comments": 24,
-      "authors": 20
-    },
     "list": [
       {
         "id": "post-001",

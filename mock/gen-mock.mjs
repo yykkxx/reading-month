@@ -1766,21 +1766,13 @@ for (const u of users) {
 
 /* ---------- 信息流分页：120 条 / 每页 8 条 / 15 页 ---------- */
 const totalPages = Math.ceil(feedItems.length / PAGE_SIZE)
-/* 首屏统计汇总：从真实数据算，随 page-1 一起下发，避免首页为 3 个数字等 15 页预取 */
-const totals = {
-  posts: posts.length,
-  comments: commentEntries.length,
-  authors: new Set(posts.map((p) => p.author.id)).size,
-}
 const pages = []
 for (let p = 1; p <= totalPages; p++) {
   const list = feedItems.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE)
-  const page = { code: 0, data: { page: p, pageSize: PAGE_SIZE, total: feedItems.length, hasMore: p < totalPages, ...(p === 1 ? { totals } : {}), list } }
+  const page = { code: 0, data: { page: p, pageSize: PAGE_SIZE, total: feedItems.length, hasMore: p < totalPages, list } }
   pages.push(page)
   await writeFile(join(ROOT, 'api/posts', `page-${p}.json`), JSON.stringify(page, null, 2))
 }
-/* 首屏统计专用汇总：只有 3 个数字，避免为了它们重复请求 page-1 或预取 15 页 */
-await writeFile(join(ROOT, 'api/totals.json'), JSON.stringify({ code: 0, data: totals }, null, 2))
 
 const allInlineComments = BOOKS.flatMap((b) => b.comments)
 
@@ -1852,8 +1844,6 @@ const pagedItems = pages.slice().sort((a, b) => a.data.page - b.data.page).flatM
 if (pagedItems.length !== TOTAL || pagedItems.some((p, i) => i > 0 && !(pagedItems[i - 1].timestamp > p.timestamp)) || uniq(feedItems.map((p) => p.timestamp)).size !== TOTAL) fail('分页拼接后不是 120 条严格递减且唯一')
 if (totalPages !== 15) fail(`分页 ${totalPages} 页（应为 15）`)
 if (pages.some((p) => p.data.list.length > PAGE_SIZE)) fail('分页超过每页条数')
-const p1Totals = pages[0].data.totals
-if (!p1Totals || p1Totals.posts !== posts.length || p1Totals.comments !== commentEntries.length || p1Totals.authors !== totals.authors) fail('page-1 totals 与真实数据不一致')
 
 const maxVariant = Math.max(...coverVariantUses)
 if (maxVariant > 14) fail(`封面版式最多复用 ${maxVariant} 次（应 ≤14）`)
