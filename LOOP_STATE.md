@@ -15,7 +15,7 @@
 5. **独立评价子代理**：只给它「评价当前站点实际呈现给用户的效果」的任务 + 评分标准；**不给**生成者代码、解释、我的思考。它自行选择截图/浏览器快照/可访问性树/DOM/HTML 语义等可靠方式；截图不可用时降级并标注。
 6. 决策：`overall` 高于当前分 → 保留（更新状态）；不高于 → 回滚到本轮检查点（`git revert` + 推送），假设记为失败。
 7. 连续 3 轮无提升 → 停下做一次**结构验收**：技术债、文件结构腐烂、是否存在为讨好评价者的作弊/隐藏内容。
-8. 每轮结束更新本文件第 4 节表格。停止条件：`overall ≥ 88` 且结构验收无大问题，或达到最大轮数 14。
+8. 每轮结束更新本文件第 4 节表格。停止条件：`overall ≥ 88` 且结构验收无大问题，或达到最大轮数 18（R13 起按用户新要求顺延，见第 5 节）。
 
 ## 2. 评分标准（评价子代理使用，0–100 加权）
 
@@ -30,24 +30,25 @@
 
 `overall = 0.20*design + 0.15*originality + 0.20*technical + 0.20*function + 0.15*perf + 0.10*anti_ai`
 
+**用户追加要求（从 R13 起再次强调）**：主要精力放在**视觉效果、动画与动效设计**上。
+
 **用户追加要求（从 R12 起生效）**：评价重点放在**视觉效果、动画与动效设计、能否吸引读者产生阅读兴趣**。六维加权仍用于跨轮比较；评价子代理另须给出三个焦点子分 `visual_impact / motion_craft / reading_appeal`（不进入 overall），`next_instruction` 必须针对这三项中最弱的一环。
 
 ---
 
 ## 3. 环境与工具（客观事实采集）
 
-- 本地服务：`cd reading-month && python3 -m http.server 4173`（已在跑）
-- 无头浏览器：`/data/data/com.termux/files/usr/lib/chromium/chromium-launcher.sh`（Chromium 156，可 `--headless=new`）
-- 客观事实采集器：`node /data/dsh/cosmo/tooling/audit.mjs http://127.0.0.1:4173 /data/dsh/cosmo/tooling/reports/<name>.json`（多视口布局溢出、focus/hover、对比度、夜读白块、无障碍树、网络体积、控制台错误、信息流/搜索实测）
-- 单点探针：`node /data/dsh/cosmo/tooling/probe.mjs <url> <宽> <高> --file=<js文件>`（返回页面内 JS 的 JSON 结果）
-- 截图取证（R12 新增）：`node /data/dsh/cosmo/tooling/shots.mjs http://127.0.0.1:4173 <outDir>`（15 张，覆盖 360/390/768/1440 × 日/夜 × 首页/信息流/投稿/详情/作者）
-- 截图像素分析（R12 新增）：`python3 /data/dsh/cosmo/tooling/png-stats.py <outDir>`（主色、近白/近黑/纯黑、饱和度、紫色色相、渐变行、硬边界）
-- 视觉/动效/吸引力事实（R12 新增）：`node /data/dsh/cosmo/tooling/visual-probe.mjs <url> <out.json>`（首屏占屏与首条内容位置、字号/字族/字重、计算色与变量、@keyframes 与动效元素清单、reduced-motion 覆盖、装饰层、卡片信息量、间距节奏）
-- 测试：`node tools/smoke.mjs`（51） / `node tools/dom-test.mjs`（46）
-- 推送：`TOKEN=$(python3 -c ...) node tools/push-api.mjs yykkxx reading-month main`
-- 模型无视觉能力 → 截图不可读；评价走截图像素统计 + DOM/计算样式/几何/可访问性/HTML 语义的文本证据，属**降级评价**，需标注。
+> 环境已于 R13 迁移：workspace 在 `/root/workspaces/cosmo`，旧 `/data/dsh/cosmo` 路径作废；本机可跑真实无头 Chromium。
 
----
+- 本地服务：`cd /root/workspaces/cosmo/reading-month && python3 -m http.server 4173`（已常驻）
+- 真实浏览器：Chrome for Testing 156 arm64（`/root/ws-tools/chrome/chrome-headless-shell-linux-arm64/chrome-headless-shell`），经 `playwright-core` 驱动
+- **渲染事实采集（主力）**：`node /root/ws-tools/render.mjs http://127.0.0.1:4173 <outDir>`
+  16 场景（360/390/768/1440 × 日/夜 × 首页/信息流/详情/作者）截图 + `facts.json`（首屏可见文字、hero/卡片/首条书评矩形、横向溢出、计算样式、CSS 变量、标题大纲、图片 alt、小触点、纯黑文字、夜读白块、控制台错误、失败请求、reduced-motion）+ `summary.txt`
+- 截图像素分析：`python3 /root/workspaces/cosmo/tooling/png-stats.py <outDir>`（配色占比、亮度、近白/近黑/纯黑、饱和度、紫色色相、硬边界、渐变行）
+- 自写探针：在 `/root/ws-tools` 可直接 `import { chromium } from 'playwright-core'`，`executablePath` 指向上面的 chrome，参数 `--no-sandbox`
+- 测试：`node tools/smoke.mjs`（51） / `node tools/dom-test.mjs`（46）
+- 推送：`TOKEN=$(python3 -c "print(open('/root/workspaces/cosmo/githubtokens.txt').read().split('：',1)[1].strip())") node tools/push-api.mjs yykkxx reading-month main`（github.com 不通，只能走 API）
+- 模型无视觉能力 → 评价走真实渲染的几何/计算样式/DOM/可访问性 + PNG 像素统计，属**降级评价**，必须标注。
 
 ## 4. 轮次记录
 
@@ -66,19 +67,34 @@
 | 10 | 一致性收口（我的投稿隔离、诚实文案、评论数同源、96/120、错误页、alt、净化）→ 预期 technical/function/anti_ai 上升 | 78 | 79 | 80 | 80 | 78 | 80 | **79** | 保留（+1） | 数字与文案终于同源，technical/function/anti_ai 齐到 80；剩下的是 SEO/页脚、serif 400 与细节 |
 | 11 | 站点收口（页脚、带 id 的 canonical/OG/JSON-LD、robots/sitemap、serif 400 真字面、CTA hover、资料卡宽度）→ 预期 perf_a11y_seo/design/anti_ai 上升 | 80 | 79 | 80 | 81 | 76 | 82 | **80** | 保留（+1） | 收口补齐后 design/anti_ai 到 80+；代价是字体 817KB 让 perf 掉 2 分，首屏统计仍要等全量预取 |
 | 12 | 文档事实对齐 + 首屏统计改读 `totals.json` + serif 400 preload + 视口内计数器立即启动 → 预期 technical/perf 上升 | 81 | 81 | 79 | 82 | 75 | 81 | **80**（加权 79.9） | **回滚** | 定向修补换不来分：统计反而出现 18→96 跳变的新回归；真正的瓶颈是**首屏 100vh 海报里没有任何可读内容**（首条书评在 1437px），且 16 个 mock JSON/720KB 预取仍在 |
+| 13 | 首屏从纯海报变成「海报 + 一条真实书评」：hero 收到 70/78svh，首屏加「今日一页」卡（数据走 API.getFeed(1)，取不到整块隐藏）→ 预期 reading_appeal/visual_impact 上升 | 84 | 86 | 82 | 83 | 74 | 87 | **83** | 保留（+3） | 首屏有钩子就能涨 3 分；但今日一页=信息流第一卡，下滑即重复；动效 49 个 running / 18 个无限循环成了新的最弱项（motion_craft 74） |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：R11 保留版（`ba85b03`，回滚后内容与 `loop-r12-before` 一致）
-- 当前最高分：**80**（design 80 / originality 79 / technical 80 / function 81 / perf 76 / anti_ai 82）
-- 最新评价的焦点子分（R12 评价）：visual_impact 82 / motion_craft 76 / **reading_appeal 72（最弱）**
-- 连续无提升轮数：1（R12 回滚）
-- 已用轮数：12 / 14（若 R13/R14 仍在稳定提升，可把上限顺延到 16 并在第 7 节记录理由）
-- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298、`loop-r12-before`=1509d34、`loop-r13-before`=2d8ee06
-- 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价在本轮引入 high 级新回归也回滚
-- 下一步（第 13 轮假设）：**首屏从纯海报变成「海报 + 一条真实书评」**——`.hero` 从 100svh 收到约 78svh（移动约 70svh），并在首屏内加入由 `API.getFeed(1)` 第一条真实数据渲染的「今日一页」卡（书名 / ≤60 字摘录 / 作者·分类 / 共鸣数 / 「读这一页」→ 详情页），预期 `reading_appeal`（72）与 `visual_impact` 上升，overall 提高
+- 当前保留版本：R13（`b899fcb`，远端 `c10600c`；线上已部署）
+- 当前最高分：**83**（design 84 / originality 86 / technical 82 / function 83 / perf_a11y_seo 74 / anti_ai 87）
+- 最新评价的焦点子分（R13 评价）：visual_impact 86 / reading_appeal 82 / **motion_craft 74（最弱）**
+- 连续无提升轮数：0（R13 +3 保留）
+- 已用轮数：13 / 16（用户已追加「主要完善视觉效果、增加动画」，上限顺延到 18 并在第 7 节记录）
+- 检查点：`loop-v0`…`loop-r13-before`；R13 起以 `git revert` 回滚本轮提交（不再依赖 tag）
+- 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价引入 high 级新回归也回滚
+- R13 评价遗留的主要问题（供后续轮次挑选，按严重度）：
+  1. [high] 「收藏」只写 localStorage，全站没有收藏列表/入口 → 假闭环
+  2. [medium] 「今日一页」= 信息流第一卡（同一篇 post-001），下滑立刻重复
+  3. [medium] 字体 4 个整字库 817KB 占首页 1.73MB 的 47%，preload 的 700 与 h1 的 900 不符
+  4. [medium] 详情/作者页 OG/canonical 依赖 JS 运行时写入，静态 head 只有通用文案
+  5. [medium] 「关注」不持久化，却 toast 承诺「新感受会出现在你的信息流」
+  6. [medium] 活动已闭幕仍以「投稿方式/站内投稿」为主 CTA，语义矛盾
+  7. [low] 封面 11.5px 时间角标压在插画上，对比度 1.09（靠 text-shadow）
+  8. [low] `config.retry:2` 未实现；资源 `?v=` 不统一
+- **下一步（第 14 轮假设，按评价 next_instruction，针对最弱的 motion_craft 74）**：不新增模块，只做动效「收敛 + 有意图的入场」
+  - `.fab` 的 `fabsway`、`#ctaStart` 的 `sheen`、`.scroll-hint` 的 `hint` 三个无限循环改为首次进入/hover 各播放一次（≤0.6s）
+  - hero 里 7 只飞鸟、4 条 `inkflow` 墨线各减到 2 个，周期拉到 ≥12s、幅度减半
+  - `#feedList` 首批 8 张卡加 40ms 递增入场延迟（第 2 页起不加）
+  - 验收：加载后 1s `document.getAnimations().filter(a=>a.playState==='running').length ≤ 12`（当前 49）、无限循环 ≤ 6（当前 18）、reduce 下为 0；360/1440 首屏无持续位移元素压住 h1 / CTA / 今日一页标题
+  - 预期：motion_craft 上升，perf_a11y_seo 略升（少一些长期合成层），overall +1~2
 
 ## 6. 失败记录
 
