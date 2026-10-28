@@ -68,37 +68,36 @@
 | 11 | 站点收口（页脚、带 id 的 canonical/OG/JSON-LD、robots/sitemap、serif 400 真字面、CTA hover、资料卡宽度）→ 预期 perf_a11y_seo/design/anti_ai 上升 | 80 | 79 | 80 | 81 | 76 | 82 | **80** | 保留（+1） | 收口补齐后 design/anti_ai 到 80+；代价是字体 817KB 让 perf 掉 2 分，首屏统计仍要等全量预取 |
 | 12 | 文档事实对齐 + 首屏统计改读 `totals.json` + serif 400 preload + 视口内计数器立即启动 → 预期 technical/perf 上升 | 81 | 81 | 79 | 82 | 75 | 81 | **80**（加权 79.9） | **回滚** | 定向修补换不来分：统计反而出现 18→96 跳变的新回归；真正的瓶颈是**首屏 100vh 海报里没有任何可读内容**（首条书评在 1437px），且 16 个 mock JSON/720KB 预取仍在 |
 | 13 | 首屏从纯海报变成「海报 + 一条真实书评」：hero 收到 70/78svh，首屏加「今日一页」卡（数据走 API.getFeed(1)，取不到整块隐藏）→ 预期 reading_appeal/visual_impact 上升 | 84 | 86 | 82 | 83 | 74 | 87 | **83** | 保留（+3） | 首屏有钩子就能涨 3 分；但今日一页=信息流第一卡，下滑即重复；动效 49 个 running / 18 个无限循环成了新的最弱项（motion_craft 74） |
+| 14 | 动效收敛：三处无限循环（CTA 扫光/下滑提示/FAB 摇摆）改为一次性或 hover，飞鸟 7→2、墨线 4→2、周期 7.5→14s，首批 8 卡 40ms 错峰入场 + 今日卡一次性进场 → 预期 motion_craft/perf 上升 | 82 | 78 | 82 | 84 | 76 | 80 | **81** | **回滚** | 「少动」不等于「更好」：动效数量降了（running 20→8、infinite 18→6），但 originality 86→78、anti_ai 87→80 反跌 —— 删掉飞鸟让右侧空了、视觉记忆点变少；同时暴露 heroPan 空转、关注假闭环、?v 不一致三个真问题 |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：R13（`b899fcb`，远端 `c10600c`；线上已部署）
+- 当前保留版本：R13（`b899fcb`，远端 `c10600c`；R14 已 revert，线上回到 R13 内容）
 - 当前最高分：**83**（design 84 / originality 86 / technical 82 / function 83 / perf_a11y_seo 74 / anti_ai 87）
-- 最新评价的焦点子分（R13 评价）：visual_impact 86 / reading_appeal 82 / **motion_craft 74（最弱）**
-- 连续无提升轮数：0（R13 +3 保留）
-- 已用轮数：13 / 16（用户已追加「主要完善视觉效果、增加动画」，上限顺延到 18 并在第 7 节记录）
-- 检查点：`loop-v0`…`loop-r13-before`；R13 起以 `git revert` 回滚本轮提交（不再依赖 tag）
+- 最新评价的焦点子分（R14 评价）：visual_impact 84 / reading_appeal 83 / **motion_craft 72（最弱）**
+- 连续无提升轮数：1（R14 回滚）
+- 已用轮数：14 / 18
 - 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价引入 high 级新回归也回滚
-- R13 评价遗留的主要问题（供后续轮次挑选，按严重度）：
-  1. [high] 「收藏」只写 localStorage，全站没有收藏列表/入口 → 假闭环
-  2. [medium] 「今日一页」= 信息流第一卡（同一篇 post-001），下滑立刻重复
-  3. [medium] 字体 4 个整字库 817KB 占首页 1.73MB 的 47%，preload 的 700 与 h1 的 900 不符
-  4. [medium] 详情/作者页 OG/canonical 依赖 JS 运行时写入，静态 head 只有通用文案
-  5. [medium] 「关注」不持久化，却 toast 承诺「新感受会出现在你的信息流」
-  6. [medium] 活动已闭幕仍以「投稿方式/站内投稿」为主 CTA，语义矛盾
-  7. [low] 封面 11.5px 时间角标压在插画上，对比度 1.09（靠 text-shadow）
-  8. [low] `config.retry:2` 未实现；资源 `?v=` 不统一
-- **下一步（第 14 轮假设，按评价 next_instruction，针对最弱的 motion_craft 74）**：不新增模块，只做动效「收敛 + 有意图的入场」
-  - `.fab` 的 `fabsway`、`#ctaStart` 的 `sheen`、`.scroll-hint` 的 `hint` 三个无限循环改为首次进入/hover 各播放一次（≤0.6s）
-  - hero 里 7 只飞鸟、4 条 `inkflow` 墨线各减到 2 个，周期拉到 ≥12s、幅度减半
-  - `#feedList` 首批 8 张卡加 40ms 递增入场延迟（第 2 页起不加）
-  - 验收：加载后 1s `document.getAnimations().filter(a=>a.playState==='running').length ≤ 12`（当前 49）、无限循环 ≤ 6（当前 18）、reduce 下为 0；360/1440 首屏无持续位移元素压住 h1 / CTA / 今日一页标题
-  - 预期：motion_craft 上升，perf_a11y_seo 略升（少一些长期合成层），overall +1~2
+- R14 评价确认的遗留问题（按严重度，供 R15+ 挑选）：
+  1. [medium] 「关注」假闭环：toast 承诺「进你的信息流」，不落库、刷新回退（js/detail.js:173-181）
+  2. [medium] 详情页 `.article__hero img` 的 heroPan 滚动驱动实测无效（0/150/300/500/800 五个位置 transform 恒 1.00636）
+  3. [medium] 移动端小触点：评论赞/回复 23px、关注 36px、导航 38px、今日作者 23px（建议 ≥44px）
+  4. [medium] detail/author 的 OG/description 靠 JS 写入，静态 head 是通用文案
+  5. [low] 6 个 14s 无限 SVG 动画离屏后仍 running（canvas 有 IO 暂停，两套策略不一致）
+  6. [low] `?v=` 跨页不一致（同 88KB CSS 两个缓存键）
+  7. [low] 「今日一页」= 信息流第一卡 post-001，下滑即重复
+  8. [low] 四款 CJK woff 835KB 占 1.08MB 的 77%
+- **下一步（第 15 轮假设，针对最弱的 motion_craft 72，但方向是「让动效真实生效」而不是「减少动效」）**：
+  - 修详情页 `heroPan`：`@supports (animation-timeline: view())` 里的 `.article__hero img` 用 `animation-range` 让封面随滚动真实推进（0/300/600 三个位置的 `transform` 必须互不相等，例如 scale 1.07→1.035→1.0），reduce 下恒 1.0
+  - 6 个无限 SVG 动画（pageflip-l/r、inkflow×2、flywave×2）在 hero 不可见时暂停（复用已有的 IntersectionObserver 思路，或用 `animation-play-state` 由 JS 切），可见时恢复
+  - 不改视觉语言、不删装饰、不动信息流与数据层；预期 motion_craft 与 perf_a11y_seo 上升，overall ≥83.5
 
 ## 6. 失败记录
 
 - **R6（SEO/页脚）回滚**：加权 74.95 vs 当前 74.75，等于打平；新增「canonical 通用 URL 与 sitemap ?id= 深链矛盾」「详情夜间 theme-color 被覆写」两个问题。结论：SEO/页脚工作有效但不该单独成轮，后续与深链 canonical/结构化数据/性能一起做。
+- **R14（动效收敛）回滚**：加权 80.55 vs 82.5，`overall` 83→81。动效数量确实降了（1s running 20→8、infinite 18→6、reduce 仍 0），但 originality 86→78、anti_ai 87→80、design 84→82 反跌：删掉固定飞鸟后桌面右侧空了一档、视觉记忆点变少，被评价者读成「为收敛而收敛」。教训：阅读站的动效要**减少噪音、增加意图**，不能只做减法；下一轮改成「修好本该生效的滚动驱动 + 离屏暂停」，保留装饰但让它们只在可见时跑。
 - **R12（文档同步 + totals + preload + 计数器）回滚**：加权 79.9 vs 79.65，+0.25 未达 +0.5 门槛；并引入「首屏统计 18/5/4 → 96/24/20 跳变」的新回归。结论：在首屏结构性问题（海报占满一屏、读者看不到内容）没解决前，做统计口径 / 预加载这类局部优化无法转化为分数；下一轮必须先解决阅读吸引力。
 
 数据层遗留（低优先）：mock 分页里存在 1 处时间戳非严格递减（post-096 后接 post-007），应用层 `api.js` 会按 timestamp 排序，用户无感知；待内容类轮次顺手修。
