@@ -282,7 +282,8 @@
       const post = ((res && res.list) || []).find((p) => p && p.type !== 'comment' && p.title && p.cover)
       if (!post) { box.hidden = true; return }
       box.innerHTML = todayCardHTML(post)
-      /* 首屏这块不加 reveal 动画：内容后到，淡入会造成 CLS */
+      /* 进场动效在 CSS 的 .today__card 上（todayIn：0.46s 淡入 + 上移 7px，只动 opacity/translate），
+         这里只负责在内容就位后去掉 hidden——不额外加 class，也不用定时器 */
       box.hidden = false
     } catch (err) {
       /* file:// 或接口不可用：整块不出现，绝不用占位内容假装有东西 */

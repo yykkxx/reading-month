@@ -164,24 +164,6 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   border-color: rgba(180, 69, 47, 0.24);
 }
 
-/* 飞书：手绘小装饰，仅较大屏幕显示 */
-.page-flock {
-  position: fixed; right: -12px; top: 16vh; z-index: 0;
-  width: 320px; opacity: 0.5; pointer-events: none;
-  color: var(--ink-500);
-  display: none;
-}
-.flock { width: 100%; height: auto; }
-.flock path { animation: flywave 9s ease-in-out infinite; }
-.flock path:nth-child(2) { animation-delay: -2s; }
-.flock path:nth-child(3) { animation-delay: -4s; }
-.flock path:nth-child(4) { animation-delay: -6s; }
-.flock path:nth-child(5) { animation-delay: -7.5s; }
-@keyframes flywave {
-  0%, 100% { transform: translate(0, 0); opacity: 0.72; }
-  50%      { transform: translate(-9px, -7px); opacity: 1; }
-}
-
 /* ---------- 4. Hero（读书月介绍页） ---------- */
 .hero {
   position: relative;
@@ -205,27 +187,32 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   will-change: transform;
 }
 .book-page { transform-origin: 150px 158px; }
-.book-page--l { animation: pageflip-l 7.5s ease-in-out infinite; }
-.book-page--r { animation: pageflip-r 7.5s ease-in-out infinite; }
+/* 书页：14s 一次极轻的呼吸，摆幅从 ±2.6° 收到 ±1.3° */
+.book-page--l { animation: pageflip-l 14s ease-in-out infinite; }
+.book-page--r { animation: pageflip-r 14s ease-in-out infinite; }
 @keyframes pageflip-l {
   0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(-2.6deg); }
+  50%      { transform: rotate(-1.3deg); }
 }
 @keyframes pageflip-r {
   0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(2.6deg); }
+  50%      { transform: rotate(1.3deg); }
 }
-.book-line { stroke-dasharray: 90; stroke-dashoffset: 90; animation: inkflow 7.5s ease-in-out infinite; }
-.book-line:nth-of-type(2) { animation-delay: 0.35s; }
-.book-line:nth-of-type(3) { animation-delay: 0.7s; }
-.book-line:nth-of-type(4) { animation-delay: 1.05s; }
+/* 墨线只留两条（左右各一）：14s 写一次收一次，偏移量减半（90 → 0 → 90，原来是 ±90） */
+.book-line { stroke-dasharray: 90; stroke-dashoffset: 90; animation: inkflow 14s ease-in-out infinite; }
+.book-line:nth-of-type(5) { animation-delay: -7s; }
 @keyframes inkflow {
   0%       { stroke-dashoffset: 90; }
-  40%, 76% { stroke-dashoffset: 0; }
-  100%     { stroke-dashoffset: -90; }
+  45%, 55% { stroke-dashoffset: 0; }
+  100%     { stroke-dashoffset: 90; }
 }
-.book-bird { animation: flywave 8s ease-in-out infinite; }
-.book-bird:nth-of-type(1) { animation-delay: -3.5s; }
+/* 飞鸟只留两只：14s 一个来回，位移减半（-9,-7 → -4.5,-3.5） */
+.book-bird { animation: flywave 14s ease-in-out infinite; }
+.book-bird + .book-bird { animation-delay: -7s; }
+@keyframes flywave {
+  0%, 100% { transform: translate(0, 0); opacity: 0.72; }
+  50%      { transform: translate(-4.5px, -3.5px); opacity: 1; }
+}
 
 /* 日轮 */
 .hero__sun {
@@ -233,11 +220,12 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   width: 52px; height: 52px; border-radius: 50%;
   background: rgba(201, 138, 45, 0.36);
   box-shadow: 0 0 0 14px rgba(201, 138, 45, 0.11), 0 0 0 30px rgba(201, 138, 45, 0.05);
-  animation: sunrise 11s ease-in-out infinite;
+  /* 日轮只在进场时「升」一次：1.2s 后停在稳定亮度，不再循环呼吸 */
+  animation: sunrise 1.2s var(--ease) both;
 }
 @keyframes sunrise {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50%      { transform: translateY(-7px) scale(1.05); opacity: 0.8; }
+  from { transform: translateY(9px) scale(0.95); opacity: 0.28; }
+  to   { transform: translateY(0) scale(1); opacity: 0.62; }
 }
 
 /* 远山 */
@@ -403,11 +391,13 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(100deg, transparent 32%, rgba(246, 236, 216, 0.32), transparent 68%);
   transform: translateX(-130%);
-  animation: sheen 4.6s ease-in-out infinite;
 }
+/* 扫光只在指针停上来（或键盘聚焦）时扫一次 0.6s，播完回到静止 */
+.btn--primary:hover::after,
+.btn--primary:focus-visible::after { animation: sheen 0.6s ease-out; }
 @keyframes sheen {
-  0%, 58%   { transform: translateX(-130%); }
-  88%, 100% { transform: translateX(130%); }
+  from { transform: translateX(-130%); }
+  to   { transform: translateX(130%); }
 }
 .btn__seal {
   display: grid; place-items: center;
@@ -430,13 +420,14 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   display: flex; flex-direction: column; align-items: center; gap: 4px;
   color: var(--ink-500);
   font-family: var(--serif); font-size: 11.5px; letter-spacing: 0.22em;
-  animation: hint 2.6s ease-in-out infinite;
+  /* 只弹一次（0.4s 后 0.55s）：提示到位就停，不再无限吸引注意力 */
+  animation: hint 0.55s var(--ease) 0.4s 1;
 }
 .scroll-hint svg { width: 18px; height: 18px; color: var(--vermilion); }
 .scroll-hint.is-hidden { opacity: 0; pointer-events: none; transition: opacity 0.4s; }
 @keyframes hint {
-  0%, 100% { transform: translate(-50%, 0); opacity: 0.78; }
-  50%      { transform: translate(-50%, 5px); opacity: 1; }
+  0%, 100% { transform: translate(-50%, 0); }
+  45%      { transform: translate(-50%, 4px); }
 }
 
 /* 入场动画 */
@@ -464,6 +455,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   border: 1px solid var(--paper-edge);
   box-shadow: var(--sh-1);
   transform: rotate(-0.5deg);
+  /* 本轮唯一的新增动效：一次性进场（0.46s / 上移 7px，只动 opacity + translate，不改盒子尺寸） */
+  animation: todayIn 0.46s var(--ease) 0.12s backwards;
+}
+@keyframes todayIn {
+  from { opacity: 0; translate: 0 7px; }
 }
 
 /* 封面是 <span>：必须块级，否则桌面端会塌陷（同 .card__media 的坑） */
@@ -562,7 +558,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .today__card { transform: none; }
+  .today__card { transform: none; animation: none; }
   .today__link, .today__author, .today__go { transition: none !important; }
 }
 
@@ -724,13 +720,32 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   overflow: hidden;
   transform: rotate(var(--tilt));
   /* 只做 backwards 填充：动画结束后把样式交还给普通规则，否则 forwards 的 transform 会压住 hover 抬升 */
-  animation: cardRise 0.65s var(--ease) backwards;
+  animation: cardRise 0.5s var(--ease) backwards;
   transition: box-shadow 0.3s var(--ease);
 }
 .card:nth-child(odd) { --tilt: -0.3deg; }
 .card:nth-child(even) { --tilt: 0.3deg; }
 @keyframes cardRise {
   from { opacity: 0; transform: translateY(16px) rotate(var(--tilt)); }
+}
+/* 首批 8 张（第 1 页）40ms 递增入场：只按位置作用于 #feedList 的前 8 个子节点，
+   第 2 页起追加的卡片不在这条规则里，沿用上面的 cardRise、不加延迟。
+   两点取舍：
+   1) 用 translate 而不是 transform 做位移：fill-mode: both 常驻时会压住桌面端 hover 的 transform 抬升；
+   2) ui.js 的卡片模板自带内联 `animation-delay: min(i,6)*70ms`，只有 !important 能覆盖，
+      所以这里显式声明 40ms 一档，并把第 9 张起（第 2 页及以后）的延迟清零。 */
+#feedList > :nth-child(-n+8) { animation: cardIn 0.46s var(--ease) both; }
+#feedList > :nth-child(1) { animation-delay: 0s !important; }
+#feedList > :nth-child(2) { animation-delay: 40ms !important; }
+#feedList > :nth-child(3) { animation-delay: 80ms !important; }
+#feedList > :nth-child(4) { animation-delay: 120ms !important; }
+#feedList > :nth-child(5) { animation-delay: 160ms !important; }
+#feedList > :nth-child(6) { animation-delay: 200ms !important; }
+#feedList > :nth-child(7) { animation-delay: 240ms !important; }
+#feedList > :nth-child(8) { animation-delay: 280ms !important; }
+#feedList > :nth-child(n+9) { animation-delay: 0s !important; }
+@keyframes cardIn {
+  from { opacity: 0; translate: 0 10px; }
 }
 .card:active { box-shadow: 0 2px 4px rgba(93, 71, 50, 0.1); }
 
@@ -1013,7 +1028,6 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
   box-shadow: inset 0 1px 0 rgba(246, 236, 216, 0.28), 0 14px 24px -12px rgba(122, 42, 29, 0.6);
   text-align: center;
   clip-path: polygon(0 0, 100% 0, 100% 93%, 50% 100%, 0 93%);
-  animation: fabsway 4.4s ease-in-out infinite;
   transform-origin: 50% 0;
   /* 首屏收起：opacity/visibility 管观感，translate 再把盒子整体移出屏幕，矩形交叠才是真的 0 */
   opacity: 0; visibility: hidden; pointer-events: none; translate: 0 calc(100% + 24px);
@@ -1035,9 +1049,11 @@ button.act:active { transform: scale(0.88); background: rgba(93, 71, 50, 0.08); 
   background: rgba(246, 236, 216, 0.38); border-radius: 2px;
 }
 .fab:active { filter: brightness(1.06); }
+/* 不再自己晃：指针停在书签上时轻轻摆一次（0.55s），移开即停 */
+.fab:hover { animation: fabsway 0.55s ease-in-out; }
 @keyframes fabsway {
   0%, 100% { transform: rotate(0deg) translateY(0); }
-  50%      { transform: rotate(2.2deg) translateY(3px); }
+  45%      { transform: rotate(1.6deg) translateY(2px); }
 }
 
 /* ---------- 7. Toast ---------- */
@@ -1380,7 +1396,6 @@ body.is-ready .article { opacity: 1; transform: none; }
   .fab { right: max(24px, calc(50vw - 320px + 16px)); }
   .back-top { right: max(26px, calc(50vw - 320px + 18px)); }
   .feed__list { gap: 22px; }
-  .page-flock { display: block; }
   .hero__book { right: -8vw; top: 6vh; opacity: 0.32; }
 }
 
@@ -1425,6 +1440,11 @@ body.is-ready .article { opacity: 1; transform: none; }
   .reveal, .js-reveal { opacity: 1 !important; transform: none !important; }
   .card { opacity: 1 !important; transform: none !important; }
   .cmt { opacity: 1 !important; transform: none !important; }
+  /* 本轮收敛的三个循环（fab 摇摆 / CTA 扫光 / 下滑提示）直接关掉，不入场也不 hover */
+  .fab, .fab:hover, .scroll-hint,
+  .btn--primary::after, .btn--primary:hover::after, .btn--primary:focus-visible::after { animation: none !important; }
+  /* 首批卡片 40ms 递增延迟归零：reduce 下不该为装饰动画空等一瞬 */
+  #feedList > * { animation: none !important; }
 }
 
 
