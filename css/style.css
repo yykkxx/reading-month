@@ -188,7 +188,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   /* 首屏收在 70svh（桌面 78svh）：给「今日一页」让出第一屏的下半部分 */
   min-height: 70svh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: calc(var(--safe-t) + 52px) 0 calc(var(--safe-b) + 76px);
+  padding: calc(var(--safe-t) + 34px) 0 calc(var(--safe-b) + 70px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -281,8 +281,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   width: 46px; min-height: 46px; padding: 6px 0; border-radius: 9px;
   background: var(--vermilion-2); color: #f6ecd8;
   writing-mode: vertical-rl; text-orientation: upright;
-  font-family: var(--serif); font-weight: 900; font-size: 12px;
-  letter-spacing: 0.2em; text-indent: 0.2em;
+  font-family: var(--serif); font-weight: 900; font-size: 11px;
+  letter-spacing: 0.14em; text-indent: 0.14em;
   box-shadow: inset 0 0 0 2px rgba(246, 236, 216, 0.38);
 }
 .badge-text { font-weight: 500; }
@@ -290,10 +290,10 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 /* 主标题：粗宋 + 朱砂字 + 毛笔弧 */
 .hero__title {
   position: relative;
-  margin: 20px 0 18px;
+  margin: 13px 0 11px;
   font-family: var(--serif);
   font-size: clamp(35px, 11.2vw, 54px);
-  line-height: 1.24;
+  line-height: 1.15;
   font-weight: 900;
   letter-spacing: 0.02em;
   color: var(--ink-900);
@@ -329,11 +329,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 /* 倒计时：四张日历卡 */
 .countdown {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-  margin: 24px 0 22px;
+  margin: 14px 0 12px;
 }
 .countdown__item {
   position: relative;
-  padding: 15px 4px 11px; text-align: center;
+  padding: 11px 4px 9px; text-align: center;
   border-radius: var(--radius-sm);
   background: var(--paper-2);
   border: 1px solid var(--ink-line);
@@ -351,16 +351,16 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   font-variant-numeric: tabular-nums;
 }
 .countdown__item i { font-size: 11.5px; color: var(--ink-500); font-style: normal; }
-.countdown__note { margin: -10px 0 18px; font-family: var(--serif); font-size: 12px; line-height: 1.7; letter-spacing: 0.04em; color: var(--ink-500); }
+.countdown__note { margin: -8px 0 10px; font-family: var(--serif); font-size: 11.5px; line-height: 1.55; letter-spacing: 0.04em; color: var(--ink-500); }
 
 /* 数据：三张小纸签，微微倾斜 */
 .stats {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 10px; margin-bottom: 28px;
+  gap: 10px; margin-bottom: 16px;
 }
 .stat-note {
   position: relative;
-  padding: 13px 8px 11px; text-align: center; border-radius: 4px;
+  padding: 9px 8px 8px; text-align: center; border-radius: 4px;
   background: linear-gradient(180deg, #fffdf6, #f7f0df);
   border: 1px solid var(--paper-edge);
   box-shadow: var(--sh-1);
@@ -382,6 +382,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 
 /* 按钮 */
 .hero__actions { display: flex; flex-wrap: wrap; gap: 11px; }
+.hero__actions .btn { padding: 11px 20px; }
 .btn {
   position: relative; overflow: hidden;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -424,18 +425,18 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 
 /* 下滑提示 */
 .scroll-hint {
-  position: absolute; left: 50%; bottom: calc(var(--safe-b) + 26px);
+  position: absolute; left: 50%; bottom: calc(var(--safe-b) + 22px);
   transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
   color: var(--ink-500);
-  font-family: var(--serif); font-size: 12.5px; letter-spacing: 0.22em;
+  font-family: var(--serif); font-size: 11.5px; letter-spacing: 0.22em;
   animation: hint 2.6s ease-in-out infinite;
 }
-.scroll-hint svg { width: 21px; height: 21px; color: var(--vermilion); }
+.scroll-hint svg { width: 18px; height: 18px; color: var(--vermilion); }
 .scroll-hint.is-hidden { opacity: 0; pointer-events: none; transition: opacity 0.4s; }
 @keyframes hint {
   0%, 100% { transform: translate(-50%, 0); opacity: 0.78; }
-  50%      { transform: translate(-50%, 9px); opacity: 1; }
+  50%      { transform: translate(-50%, 5px); opacity: 1; }
 }
 
 /* 入场动画 */
@@ -457,7 +458,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
   gap: 13px;
   max-width: 520px;
   margin: 0 auto;
-  padding: 12px;
+  padding: 11px;
   border-radius: 12px;
   background: var(--paper-2);
   border: 1px solid var(--paper-edge);
@@ -477,7 +478,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 }
 .today__cover img { width: 100%; height: 100%; object-fit: cover; }
 
-.today__body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.today__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
 .today__eyebrow {
   display: flex; align-items: center; gap: 6px;
@@ -500,7 +501,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .today__link { color: inherit; transition: color 0.2s var(--ease); }
 
 .today__excerpt {
-  font-family: var(--serif); font-size: 12.5px; line-height: 1.7;
+  font-family: var(--serif); font-size: 12.5px; line-height: 1.6;
   color: var(--ink-700);
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   overflow: hidden;
@@ -544,9 +545,10 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 
 /* 桌面：首屏更高，卡片居中加宽，摘录多给一行 */
 @media (min-width: 760px) {
-  .hero { min-height: 78svh; }
+  /* 78svh 之外再留一档：矮桌面优先保证「今日一页」整卡落在第一屏 */
+  .hero { min-height: min(78svh, calc(100svh - 220px)); }
   .today { padding-bottom: 56px; }
-  .today__card { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; padding: 15px; max-width: 560px; }
+  .today__card { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; padding: 13px; max-width: 560px; }
   .today__title { font-size: 18px; }
   .today__excerpt { font-size: 13.5px; -webkit-line-clamp: 3; }
 }
@@ -1366,10 +1368,10 @@ body.is-ready .article { opacity: 1; transform: none; }
 /* 小屏首屏：收紧竖向节奏，把下滑提示完整留在第一屏内 */
 @media (max-width: 480px) {
   .hero { padding-bottom: calc(var(--safe-b) + 58px); }
-  .hero__badge { padding-top: 2px; padding-bottom: 2px; } .seal-seal { min-height: 42px; } .hero__title { margin: 10px 0 8px; }
-  .hero__intro { margin-top: 10px; line-height: 1.8; } .countdown { margin: 14px 0 12px; } .countdown__item { padding: 12px 4px 9px; }
-  .countdown__note { margin: -6px 0 12px; } .stats { margin-bottom: 16px; } .stat-note { padding: 10px 8px 9px; }
-  .btn { padding: 12px 18px; } .scroll-hint { bottom: calc(var(--safe-b) + 14px); }
+  .hero__badge { padding-top: 2px; padding-bottom: 2px; } .seal-seal { min-height: 42px; } .hero__title { margin: 8px 0 6px; }
+  .hero__intro { margin-top: 10px; line-height: 1.8; } .countdown { margin: 10px 0 8px; } .countdown__item { padding: 9px 4px 7px; }
+  .countdown__note { margin: -6px 0 8px; } .stats { margin-bottom: 10px; } .stat-note { padding: 8px 8px 7px; }
+  .hero__actions .btn { padding: 10px 16px; } .btn { padding: 12px 18px; } .scroll-hint { bottom: calc(var(--safe-b) + 18px); font-size: 10.5px; gap: 2px; } .scroll-hint svg { width: 14px; height: 14px; }
 }
 
 @media (min-width: 700px) {
@@ -1439,10 +1441,10 @@ body.is-ready .article { opacity: 1; transform: none; }
 
 /* 首屏活动介绍 */
 .hero__intro {
-  margin: 20px 0 -4px;
-  max-width: 34em;
+  margin: 12px 0 -4px;
+  max-width: 46em;
   font-family: var(--serif);
-  font-size: 14px; line-height: 1.95;
+  font-size: 14px; line-height: 1.8;
   color: var(--ink-700);
   text-wrap: pretty;
 }
@@ -1736,12 +1738,10 @@ body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }
 @media (min-width: 760px) {
   :root { --pad: 26px; }
 
-  .hero { padding-bottom: calc(var(--safe-b) + 96px); } /* 桌面首屏更高，收紧底部留白让提示仍在第一屏 */
-
   .shell { max-width: 900px; }
   .hero__inner { max-width: 900px; }
   .hero__lead { max-width: 640px; margin: 0 auto; }
-  .hero__title { font-size: clamp(46px, 6.2vw, 62px); }
+  .hero__title { font-size: clamp(42px, 5.4vw, 56px); }
   .countdown, .stats { max-width: 560px; }
 
   .feed { padding-top: 78px; }
@@ -1792,7 +1792,7 @@ body.page-detail .theme-toggle { bottom: calc(var(--safe-b) + 84px); }
 
   .hero__inner { max-width: 940px; }
   .hero__lead { max-width: 700px; margin: 0 auto; }
-  .hero__title { font-size: clamp(54px, 4.6vw, 68px); }
+  .hero__title { font-size: clamp(48px, 4vw, 58px); }
 
 
   .hero__book { right: -6vw; top: 5vh; width: 44vw; opacity: 0.28; }
