@@ -85,6 +85,8 @@
 
     if (FX.developImages) FX.developImages(root)
     if (FX.initReadingProgress) FX.initReadingProgress($('#readProgress'))
+    /* 封面滚动推近：渲染完成后才有 .article__hero img，所以在这里接 */
+    if (FX.initHeroPan) FX.initHeroPan(root)
 
     restoreLocalCmts() // 先回填本机留言，bind 里的点赞态恢复才能覆盖到它们
     bind(d)

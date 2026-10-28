@@ -6,8 +6,10 @@
  *   3. developImages      封面「显影」：模糊 + 褪色 → 清晰
  *   4. initReadingProgress详情页顶部阅读进度
  *   5. revealOnScroll     通用滚动入场（.js-reveal → .is-visible）
+ *   6. initHeroPan        详情页封面：随滚动把推近收回到 1.0
+ *   7. initHeroPause      首屏无限循环装饰离屏暂停（.hero--paused）
  *
- * 全部尊重 prefers-reduced-motion；画布在不可见时自动暂停。
+ * 全部尊重 prefers-reduced-motion；画布与滚动动效在不可见时自动暂停。
  * ========================================================================== */
 (function () {
   'use strict'
@@ -196,5 +198,86 @@
     targets.forEach((el) => io.observe(el))
   }
 
-  window.FX = { initInkCanvas, initHeroParallax, developImages, initReadingProgress, revealOnScroll, reduceMotion }
+  /* ------------------------------------------------------------------
+   * 6. 详情页封面推近
+   *    view() 时间线在本页解析到的滚动容器是 body（它并不真的滚动），
+   *    进度恒定在 1% 左右，等于空转；这里改为按封面自身的视口位置
+   *    直接算进度并逐帧写 transform（只写 scale/translate，不动布局）。
+   * ---------------------------------------------------------------- */
+  function initHeroPan(root) {
+    const img = (root || document).querySelector('.article__hero img')
+    if (!img) return
+    /* 降低动效：不绑监听、不写 transform，保持 1.0 */
+    if (reduceMotion) return
+
+    /* 量参数用未被 transform 放大的外层相框，否则 rect 会随 scale 反馈 */
+    const box = img.closest('.article__hero') || img.parentElement || img
+    const FROM = 1.07    // 封面还在视口里时的推近量
+    const SPAN = 0.07    // 滚到封面整体越过顶边时收回 1.0
+    let raf = 0
+    let shown = -1
+    let idle = 0
+    let inView = true
+
+    function apply() {
+      raf = 0
+      if (document.hidden || !inView) return
+      const rect = box.getBoundingClientRect()
+      const h = rect.height || 1
+      /* 结束点：封面完全滚出顶部后，再多走 10% 视口高收尾，
+         否则最后几像素会先收满，看起来像一次跳变而不是推近 */
+      const end = h + (window.innerHeight || 0) * 0.1
+      /* 0 = 封面完整可见（含刚进入视口）；1 = 推近已收回到 1.0 */
+      const p = Math.min(1, Math.max(0, -rect.top / end))
+      const s = FROM - SPAN * p
+      const ty = (p - 1) * 1.5           // 1.07 时 -1.5%，落回时 0
+      const key = Math.round(s * 10000)
+      if (key === shown) return
+      shown = key
+      img.style.transform = 'scale(' + s.toFixed(4) + ') translateY(' + ty.toFixed(2) + '%)'
+      /* 只在推近进行中提合成层；滚完 / 停手 / 离屏都撤掉，不留常驻层 */
+      img.style.willChange = p > 0 && p < 1 ? 'transform' : ''
+      clearTimeout(idle)
+      if (p > 0 && p < 1) idle = setTimeout(() => { img.style.willChange = '' }, 200)
+    }
+    function onScroll() {
+      if (!raf) raf = requestAnimationFrame(apply)
+    }
+    function halt() {
+      if (raf) { cancelAnimationFrame(raf); raf = 0 }
+      clearTimeout(idle)
+      img.style.willChange = ''
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) halt()
+      else onScroll()
+    })
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting
+        if (inView) onScroll()
+        else halt()
+      }, { rootMargin: '80px' }).observe(img)
+    }
+
+    apply()
+  }
+
+  /* ------------------------------------------------------------------
+   * 7. 首屏装饰离屏暂停
+   *    无限循环的翻页 / 墨线 / 飞鸟 / 日轮只在 hero 可见时跑；
+   *    与墨点画布同一套 visible 策略，不用定时器轮询。
+   * ---------------------------------------------------------------- */
+  function initHeroPause(hero) {
+    if (!hero || reduceMotion || !('IntersectionObserver' in window)) return
+    new IntersectionObserver(([entry]) => {
+      hero.classList.toggle('hero--paused', !entry.isIntersecting)
+    }, { threshold: 0 }).observe(hero)
+  }
+
+  window.FX = { initInkCanvas, initHeroParallax, developImages, initReadingProgress, revealOnScroll, initHeroPan, initHeroPause, reduceMotion }
 })()

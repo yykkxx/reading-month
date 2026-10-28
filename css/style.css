@@ -227,6 +227,14 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .book-bird { animation: flywave 8s ease-in-out infinite; }
 .book-bird:nth-of-type(1) { animation-delay: -3.5s; }
 
+/* hero 滚出视口后暂停这些无限循环装饰（effects.js 的 initHeroPause 切类）：
+   保留全部动效与画风，只是不在看不见的地方继续耗合成/绘制 */
+.hero--paused .book-page--l,
+.hero--paused .book-page--r,
+.hero--paused .book-line,
+.hero--paused .book-bird,
+.hero--paused .hero__sun { animation-play-state: paused; }
+
 /* 日轮 */
 .hero__sun {
   position: absolute; right: 7vw; top: 22vh;
@@ -1475,6 +1483,10 @@ img.is-cover-loading {
 .related__item img {
   transition: opacity 0.8s var(--ease), filter 0.9s var(--ease), transform 0.9s var(--ease);
 }
+/* 详情封面由 effects.js 逐帧写 transform，挂 transition 会把推近平滑成粘滞 */
+.article__hero img {
+  transition: opacity 0.8s var(--ease), filter 0.9s var(--ease);
+}
 
 /* 详情页阅读进度 */
 .detail-progress {
@@ -1522,18 +1534,10 @@ img.is-cover-loading {
   .article { opacity: 1 !important; transform: none !important; }
 }
 
-/* 详情封面：滚动时轻微推近（仅支持滚动驱动动画的浏览器） */
-@supports (animation-timeline: view()) {
-  .article__hero img {
-    animation: heroPan linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 55%;
-  }
-  @keyframes heroPan {
-    from { transform: scale(1.07) translateY(-1.5%); }
-    to   { transform: scale(1) translateY(0); }
-  }
-}
+/* 详情封面：滚动推近（由 effects.js 的 initHeroPan 逐帧驱动 transform）
+   原先这里用 @supports (animation-timeline: view())，但本页真正的滚动容器
+   是 html，view() 解析到 body 后进度恒定在 1%，实测三档滚动 transform 不变，
+   属于「有动画没生效」。统一交给 JS 后，行为在任何浏览器都一致。 */
 
 /* ==========================================================================
    12. 夜读模式 + 主题开关 + 书卷细节

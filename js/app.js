@@ -293,6 +293,8 @@
   function initHeroEffects() {
     if (FX.initInkCanvas) FX.initInkCanvas($('#inkCanvas'))
     if (FX.initHeroParallax) FX.initHeroParallax($('#intro'))
+    /* 首屏无限循环装饰离屏即暂停，进入视口再恢复 */
+    if (FX.initHeroPause) FX.initHeroPause($('#intro'))
     if (FX.developImages) FX.developImages(document)
   }
 
