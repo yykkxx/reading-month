@@ -185,9 +185,10 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 /* ---------- 4. Hero（读书月介绍页） ---------- */
 .hero {
   position: relative;
-  min-height: 100svh;
+  /* 首屏收在 70svh（桌面 78svh）：给「今日一页」让出第一屏的下半部分 */
+  min-height: 70svh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: calc(var(--safe-t) + 58px) 0 124px;
+  padding: calc(var(--safe-t) + 52px) 0 calc(var(--safe-b) + 76px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -440,6 +441,128 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 /* 入场动画 */
 .reveal { opacity: 0; transform: translateY(20px); animation: rise 0.9s var(--ease) forwards; animation-delay: var(--d, 0s); }
 @keyframes rise { to { opacity: 1; transform: none; } }
+
+/* ---------- 4.1 首屏「今日一页」：第一屏就给出真实书评 ---------- */
+.hero-wrap { position: relative; }
+
+/* 卡片整体上提一点，压在 hero 底部的装饰带上；下方留白吸收 .feed 的 -26px */
+.today {
+  margin-top: -12px;
+  padding: 0 var(--pad) 46px;
+}
+
+.today__card {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 13px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--paper-2);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--sh-1);
+  transform: rotate(-0.5deg);
+}
+
+/* 封面是 <span>：必须块级，否则桌面端会塌陷（同 .card__media 的坑） */
+.today__cover {
+  display: block;
+  align-self: start;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--paper-3);
+  border: 1px solid var(--ink-line);
+}
+.today__cover img { width: 100%; height: 100%; object-fit: cover; }
+
+.today__body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+
+.today__eyebrow {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--serif); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--vermilion);
+}
+.today__seal {
+  display: grid; place-items: center;
+  width: 18px; height: 18px; border-radius: 4px;
+  background: var(--vermilion-2); color: var(--paper-2);
+  font-size: 11px; font-weight: 900; letter-spacing: 0;
+}
+
+.today__title {
+  font-family: var(--serif); font-size: 16px; font-weight: 900;
+  line-height: 1.45; color: var(--ink-900);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.today__link { color: inherit; transition: color 0.2s var(--ease); }
+
+.today__excerpt {
+  font-family: var(--serif); font-size: 12.5px; line-height: 1.7;
+  color: var(--ink-700);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.today__meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 3px 10px;
+  font-size: 11.5px; color: var(--ink-500);
+}
+.today__author {
+  font-family: var(--serif); font-size: 12px; color: var(--ink-700);
+  border-bottom: 1px solid var(--ink-line);
+}
+.today__cat {
+  padding: 0 7px; border-radius: 99px;
+  font-family: var(--serif); font-size: 11px; color: var(--tea);
+  background: var(--paper-3); border: 1px solid var(--ink-line);
+}
+.today__stat b {
+  font-family: var(--serif); font-weight: 700; color: var(--ink-700);
+  font-variant-numeric: tabular-nums;
+}
+
+.today__go {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: auto;
+  font-family: var(--serif); font-size: 12.5px; font-weight: 700;
+  color: var(--vermilion);
+}
+.today__go svg { width: 15px; height: 15px; }
+
+/* 键盘焦点：全局 :focus-visible 已有虚线框，这里把偏移收近卡片 */
+.today__link:focus-visible,
+.today__author:focus-visible,
+.today__go:focus-visible { outline: 2px dashed var(--vermilion); outline-offset: 2px; }
+
+/* 小屏：首屏长介绍收起（下方投稿区保留完整文案），保证卡片落在第一屏内 */
+@media (max-width: 759px) {
+  .hero .hero__intro { display: none; }
+}
+
+/* 桌面：首屏更高，卡片居中加宽，摘录多给一行 */
+@media (min-width: 760px) {
+  .hero { min-height: 78svh; }
+  .today { padding-bottom: 56px; }
+  .today__card { grid-template-columns: 116px minmax(0, 1fr); gap: 16px; padding: 15px; max-width: 560px; }
+  .today__title { font-size: 18px; }
+  .today__excerpt { font-size: 13.5px; -webkit-line-clamp: 3; }
+}
+
+/* 悬停只在有指针的桌面端：抬一层纸，不做位移动画 */
+@media (hover: hover) and (pointer: fine) {
+  .today__card:hover { box-shadow: var(--sh-2); }
+  .today__link:hover,
+  .today__author:hover,
+  .today__go:hover { color: var(--vermilion); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .today__card { transform: none; }
+  .today__link, .today__author, .today__go { transition: none !important; }
+}
 
 /* ---------- 5. 信息流 ---------- */
 .feed {
@@ -1492,6 +1615,13 @@ html[data-theme="night"] .chip { background: rgba(238, 227, 206, 0.06); }
 html[data-theme="night"] .filter-summary { background: #221c16; }
 html[data-theme="night"] .search__clear { background: rgba(238, 227, 206, 0.12); }
 html[data-theme="night"] .card__media { border-color: rgba(238, 227, 206, 0.12); }
+html[data-theme="night"] .today__card {
+  background: linear-gradient(180deg, #241e17, #1e1913);
+  border-color: rgba(238, 227, 206, 0.18);
+}
+html[data-theme="night"] .today__seal { background: var(--vermilion); color: var(--paper-2); }
+html[data-theme="night"] .today__cover { border-color: rgba(238, 227, 206, 0.14); }
+html[data-theme="night"] .today__cat { background: rgba(238, 227, 206, 0.06); }
 html[data-theme="night"] .card__hot { background: rgba(238, 227, 206, 0.06); }
 html[data-theme="night"] .card__hot li,
 html[data-theme="night"] .card__excerpt { color: var(--ink-700); }

@@ -26,7 +26,7 @@
 <script>try{if(localStorage.getItem('rm-theme')==='night')document.documentElement.dataset.theme='night'}catch(e){}</script>
 <title>2026 校园读书月 · 阅见世界</title>
 <link rel="preload" as="font" type="font/woff" href="fonts/noto-serif-sc-Bold.woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20261026s">
+<link rel="stylesheet" href="css/style.css?v=20261028a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23a63a2b'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%23f6ecd8' font-family='serif'%3E书%3C/text%3E%3C/svg%3E">
 </head>
 <body class="page-home">
@@ -60,7 +60,8 @@
   </nav>
 </header>
 
-<!-- ========== 一、读书月介绍页 ========== -->
+<!-- ========== 一、读书月介绍页 + 首屏「今日一页」 ========== -->
+<div class="hero-wrap">
 <section class="hero" id="intro">
   <div class="hero__bg" aria-hidden="true">
     <svg class="hero__book" viewBox="0 0 300 190" fill="none">
@@ -141,6 +142,10 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6"/></svg>
   </button>
 </section>
+
+<!-- 首屏「今日一页」：信息流第一页的第一篇真实书评，内容全部由 JS 渲染；取不到就整块隐藏 -->
+<section class="today" id="todayPage" aria-labelledby="todayTitle" hidden></section>
+</div>
 
 <!-- ========== 二、主界面：读书感受墙 ========== -->
 <main class="feed" id="feed">
@@ -313,7 +318,7 @@
 <script src="js/api.js?v=20261026s"></script>
 <script src="js/ui.js?v=20261026s"></script>
 <script src="js/effects.js?v=20261026s"></script>
-<script src="js/app.js?v=20261026s"></script>
+<script src="js/app.js?v=20261028a"></script>
 <script src="js/submit.js?v=20261026s"></script>
 </body>
 </html>

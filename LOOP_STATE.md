@@ -30,6 +30,8 @@
 
 `overall = 0.20*design + 0.15*originality + 0.20*technical + 0.20*function + 0.15*perf + 0.10*anti_ai`
 
+**用户追加要求（从 R12 起生效）**：评价重点放在**视觉效果、动画与动效设计、能否吸引读者产生阅读兴趣**。六维加权仍用于跨轮比较；评价子代理另须给出三个焦点子分 `visual_impact / motion_craft / reading_appeal`（不进入 overall），`next_instruction` 必须针对这三项中最弱的一环。
+
 ---
 
 ## 3. 环境与工具（客观事实采集）
@@ -38,9 +40,12 @@
 - 无头浏览器：`/data/data/com.termux/files/usr/lib/chromium/chromium-launcher.sh`（Chromium 156，可 `--headless=new`）
 - 客观事实采集器：`node /data/dsh/cosmo/tooling/audit.mjs http://127.0.0.1:4173 /data/dsh/cosmo/tooling/reports/<name>.json`（多视口布局溢出、focus/hover、对比度、夜读白块、无障碍树、网络体积、控制台错误、信息流/搜索实测）
 - 单点探针：`node /data/dsh/cosmo/tooling/probe.mjs <url> <宽> <高> --file=<js文件>`（返回页面内 JS 的 JSON 结果）
+- 截图取证（R12 新增）：`node /data/dsh/cosmo/tooling/shots.mjs http://127.0.0.1:4173 <outDir>`（15 张，覆盖 360/390/768/1440 × 日/夜 × 首页/信息流/投稿/详情/作者）
+- 截图像素分析（R12 新增）：`python3 /data/dsh/cosmo/tooling/png-stats.py <outDir>`（主色、近白/近黑/纯黑、饱和度、紫色色相、渐变行、硬边界）
+- 视觉/动效/吸引力事实（R12 新增）：`node /data/dsh/cosmo/tooling/visual-probe.mjs <url> <out.json>`（首屏占屏与首条内容位置、字号/字族/字重、计算色与变量、@keyframes 与动效元素清单、reduced-motion 覆盖、装饰层、卡片信息量、间距节奏）
 - 测试：`node tools/smoke.mjs`（51） / `node tools/dom-test.mjs`（46）
 - 推送：`TOKEN=$(python3 -c ...) node tools/push-api.mjs yykkxx reading-month main`
-- 模型无视觉能力 → 截图不可读；评价走 DOM/计算样式/可访问性/HTML 语义的文本证据，属**降级评价**，需标注。
+- 模型无视觉能力 → 截图不可读；评价走截图像素统计 + DOM/计算样式/几何/可访问性/HTML 语义的文本证据，属**降级评价**，需标注。
 
 ---
 
@@ -60,22 +65,25 @@
 | 9 | 字体自托管 + 空闲预取/去重 page-1 → 预期 perf_a11y_seo 上升 | 78 | 79 | 78 | 78 | 77 | 76 | **78** | 保留（+1，perf +9） | 首屏请求 89→26、字体 2.6MB→0.6MB 直接兑现 9 分；但只子集了 3 个字面，serif 400 变成假粗体 |
 | 10 | 一致性收口（我的投稿隔离、诚实文案、评论数同源、96/120、错误页、alt、净化）→ 预期 technical/function/anti_ai 上升 | 78 | 79 | 80 | 80 | 78 | 80 | **79** | 保留（+1） | 数字与文案终于同源，technical/function/anti_ai 齐到 80；剩下的是 SEO/页脚、serif 400 与细节 |
 | 11 | 站点收口（页脚、带 id 的 canonical/OG/JSON-LD、robots/sitemap、serif 400 真字面、CTA hover、资料卡宽度）→ 预期 perf_a11y_seo/design/anti_ai 上升 | 80 | 79 | 80 | 81 | 76 | 82 | **80** | 保留（+1） | 收口补齐后 design/anti_ai 到 80+；代价是字体 817KB 让 perf 掉 2 分，首屏统计仍要等全量预取 |
+| 12 | 文档事实对齐 + 首屏统计改读 `totals.json` + serif 400 preload + 视口内计数器立即启动 → 预期 technical/perf 上升 | 81 | 81 | 79 | 82 | 75 | 81 | **80**（加权 79.9） | **回滚** | 定向修补换不来分：统计反而出现 18→96 跳变的新回归；真正的瓶颈是**首屏 100vh 海报里没有任何可读内容**（首条书评在 1437px），且 16 个 mock JSON/720KB 预取仍在 |
 
 ---
 
 ## 5. 当前状态
 
-- 当前保留版本：R11 保留版（`ba85b03`）
+- 当前保留版本：R11 保留版（`ba85b03`，回滚后内容与 `loop-r12-before` 一致）
 - 当前最高分：**80**（design 80 / originality 79 / technical 80 / function 81 / perf 76 / anti_ai 82）
-- 连续无提升轮数：0
-- 已用轮数：11 / 14
-- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298
+- 最新评价的焦点子分（R12 评价）：visual_impact 82 / motion_craft 76 / **reading_appeal 72（最弱）**
+- 连续无提升轮数：1（R12 回滚）
+- 已用轮数：12 / 14（若 R13/R14 仍在稳定提升，可把上限顺延到 16 并在第 7 节记录理由）
+- 检查点：`loop-v0`=1d46397、`loop-r1-before`=6a39acb、`loop-r2-before`=3aae555、`loop-r3-before`=b9d53ac、`loop-r4-before`=d8e5526、`loop-r5-before`=47debb7、`loop-r6-before`=6227298、`loop-r12-before`=1509d34、`loop-r13-before`=2d8ee06
 - 决策口径：以加权总分（保留一位小数）为准；**提高 ≥0.5 才保留**，持平或更低即回滚；若评价在本轮引入 high 级新回归也回滚
-- 下一步（第 12 轮假设）：结构验收 + 文档同步 + 首屏统计 totals 小修（不预取全量即可出数）+ serif 400 preload → 预期 technical/perf 回升，并完成结构验收
+- 下一步（第 13 轮假设）：**首屏从纯海报变成「海报 + 一条真实书评」**——`.hero` 从 100svh 收到约 78svh（移动约 70svh），并在首屏内加入由 `API.getFeed(1)` 第一条真实数据渲染的「今日一页」卡（书名 / ≤60 字摘录 / 作者·分类 / 共鸣数 / 「读这一页」→ 详情页），预期 `reading_appeal`（72）与 `visual_impact` 上升，overall 提高
 
 ## 6. 失败记录
 
 - **R6（SEO/页脚）回滚**：加权 74.95 vs 当前 74.75，等于打平；新增「canonical 通用 URL 与 sitemap ?id= 深链矛盾」「详情夜间 theme-color 被覆写」两个问题。结论：SEO/页脚工作有效但不该单独成轮，后续与深链 canonical/结构化数据/性能一起做。
+- **R12（文档同步 + totals + preload + 计数器）回滚**：加权 79.9 vs 79.65，+0.25 未达 +0.5 门槛；并引入「首屏统计 18/5/4 → 96/24/20 跳变」的新回归。结论：在首屏结构性问题（海报占满一屏、读者看不到内容）没解决前，做统计口径 / 预加载这类局部优化无法转化为分数；下一轮必须先解决阅读吸引力。
 
 数据层遗留（低优先）：mock 分页里存在 1 处时间戳非严格递减（post-096 后接 post-007），应用层 `api.js` 会按 timestamp 排序，用户无感知；待内容类轮次顺手修。
 

@@ -237,6 +237,59 @@
     initCounters()
   }
 
+  /* 首屏「今日一页」：信息流第一页的第一篇真实书评，让第一屏就有可读内容。
+     数据只走 API.getFeed(1, {})——复用 api.js 的 page-1 promise 缓存，不额外发请求；
+     取不到就整块 hidden，不编内容、不留空壳。 */
+  function todayCardHTML(p) {
+    const href = 'detail.html?id=' + encodeURIComponent(p.id)
+    /* alt 用书名号里的书名：标题里的《…》取不到时退回整条标题 */
+    const book = (/《([^》]{1,40})》/.exec(p.title) || [])[1] || ''
+    const coverAlt = book ? `《${book}》封面` : p.title + ' 封面'
+    const plain = String(p.excerpt || '').replace(/\s+/g, ' ').trim()
+    /* 摘录上限 56 字（含结尾省略号），避免首屏卡片被长摘要撑高 */
+    const excerpt = plain.length > 56 ? plain.slice(0, 55) + '…' : plain
+    const author = p.author || {}
+    const name = UI.esc(author.name || '匿名读者')
+    const byline = author.id
+      ? `<a class="today__author" href="author.html?id=${encodeURIComponent(author.id)}">${name}</a>`
+      : `<span class="today__author">${name}</span>`
+    const cat = p.category && p.category !== '全部'
+      ? `<span class="today__cat">${UI.esc(p.category)}</span>`
+      : ''
+
+    return `<article class="today__card">
+  <span class="today__cover"><img src="${UI.esc(p.cover)}" alt="${UI.esc(coverAlt)}" decoding="async"></span>
+  <div class="today__body">
+    <p class="today__eyebrow"><span class="today__seal" aria-hidden="true">今</span>今日一页</p>
+    <h2 class="today__title" id="todayTitle"><a class="today__link" href="${href}">${UI.esc(p.title)}</a></h2>
+    ${excerpt ? `<p class="today__excerpt">${UI.esc(excerpt)}</p>` : ''}
+    <div class="today__meta">
+      ${byline}
+      ${cat}
+      <span class="today__stat">共鸣 <b>${UI.esc(UI.abbr(p.likes))}</b></span>
+      <span class="today__stat">评论 <b>${UI.esc(UI.abbr(p.commentCount))}</b></span>
+    </div>
+    <a class="today__go" href="${href}">读这一页${UI.icons.arrow}</a>
+  </div>
+</article>`
+  }
+
+  async function initToday() {
+    const box = $('#todayPage')
+    if (!box) return
+    try {
+      const res = await API.getFeed(1, {})
+      const post = ((res && res.list) || []).find((p) => p && p.type !== 'comment' && p.title && p.cover)
+      if (!post) { box.hidden = true; return }
+      box.innerHTML = todayCardHTML(post)
+      /* 首屏这块不加 reveal 动画：内容后到，淡入会造成 CLS */
+      box.hidden = false
+    } catch (err) {
+      /* file:// 或接口不可用：整块不出现，绝不用占位内容假装有东西 */
+      box.hidden = true
+    }
+  }
+
   function initHeroEffects() {
     if (FX.initInkCanvas) FX.initInkCanvas($('#inkCanvas'))
     if (FX.initHeroParallax) FX.initHeroParallax($('#intro'))
@@ -582,6 +635,7 @@
     loadMore()
     initFacets()
     initStats()
+    initToday()
 
     if (FX.revealOnScroll) {
       FX.revealOnScroll(document)
