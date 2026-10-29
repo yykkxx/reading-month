@@ -10,7 +10,7 @@
  * 每本书另配 10 条只属于它的短评（共 320 条）与 1 条可能的流内热评。
  * 封面/头像全部为内联 SVG，纸墨书房色系，不出现编号、霓虹紫青。
  */
-import { mkdir, writeFile, rm } from 'node:fs/promises'
+import { mkdir, writeFile, readdir, readFile, rm } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -20,6 +20,58 @@ const POST_COUNT = 96
 const FEED_COMMENT_COUNT = 24
 const TOTAL = POST_COUNT + FEED_COMMENT_COUNT
 const PAGE_COUNT = Math.ceil(TOTAL / PAGE_SIZE) // 15
+
+/* ---------- 汇总文件：首屏统计 + 筛选项，避免为 3 个数字下载全站分页 ---------- */
+function buildSummary(items) {
+  const posts = items.filter((x) => x.type !== 'comment')
+  const authors = new Set(posts.map((x) => (x.author && (x.author.id || x.author.name)) || '').filter(Boolean))
+  const cats = new Map()
+  const tags = new Map()
+  const tagOrder = new Map()
+  items.forEach((p) => {
+    if (p.category && p.category !== '全部') cats.set(p.category, (cats.get(p.category) || 0) + 1)
+    ;(p.tags || []).forEach((t) => {
+      if (!tags.has(t)) tagOrder.set(t, tags.size)
+      tags.set(t, (tags.get(t) || 0) + 1)
+    })
+  })
+  return {
+    code: 0,
+    data: {
+      total: items.length,
+      posts: posts.length,
+      comments: items.length - posts.length,
+      authors: authors.size,
+      categories: [...cats].map(([name, count]) => ({ name, count })),
+      tags: [...tags.keys()].sort((a, b) => tags.get(b) - tags.get(a) || tagOrder.get(a) - tagOrder.get(b)),
+    },
+  }
+}
+
+async function writeSummary(items) {
+  const summary = buildSummary(items)
+  /* 汇总只给程序读，压成单行：文件更小，也不占 diff 行数 */
+  await writeFile(join(ROOT, 'api/summary.json'), JSON.stringify(summary))
+  return summary
+}
+
+/* --summary-only：只从现有分页重算 summary.json，不重新生成内容、不动任何时间戳 */
+if (process.argv.includes('--summary-only')) {
+  const dir = join(ROOT, 'api/posts')
+  const nums = (await readdir(dir))
+    .map((f) => (/^page-(\d+)\.json$/.exec(f) || [])[1])
+    .filter(Boolean)
+    .map(Number)
+    .sort((a, b) => a - b)
+  const items = []
+  for (const n of nums) {
+    const j = JSON.parse(await readFile(join(dir, `page-${n}.json`), 'utf8'))
+    items.push(...((j.data || j).list || []))
+  }
+  const s = await writeSummary(items)
+  console.log(`✅ summary.json 已重算：${s.data.posts} 篇书评 / ${s.data.comments} 条评论 / ${s.data.authors} 位分享者（共 ${s.data.total} 条）`)
+  process.exit(0)
+}
 
 const BASE = new Date('2026-05-20T21:00:00+08:00').getTime() // 读书月内，给评论留出时间
 const pad = (n) => String(n).padStart(2, '0')
@@ -1869,5 +1921,9 @@ for (const bad of ['POST-0', '6C5CE7', '00C2A8', '8E7CFF', '#6C5CE7', '#00C2A8']
   if (output.includes(bad)) fail(`输出中出现禁用痕迹 ${bad}`)
 }
 
+/* 自检通过后再落 summary.json：数字与刚生成的分页内容严格同源 */
+const summary = await writeSummary(feedItems)
+
 console.log(`✅ 生成完成：${feedItems.length} 条信息流（${posts.length} 篇书评 + ${commentEntries.length} 条评论）/ ${totalPages} 页 / ${posts.length} 份详情`)
+console.log(`📦 summary.json：${summary.data.posts} 篇书评 / ${summary.data.comments} 条评论 / ${summary.data.authors} 位分享者`)
 console.log(`   标题/摘要各 ${uniq(titles).size}/${uniq(excerpts).size} 种；内嵌短评 ${inlineAll.length} 条（池 ${allInlineComments.length}）；作者 ${users.length} 位；封面版式 ${COVER_VARIANTS} 套（最多复用 ${maxVariant} 次）`)

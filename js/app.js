@@ -195,7 +195,8 @@
       const target = Number(el.dataset.count) || 0
       const t0 = performance.now()
       const step = (t) => {
-        const k = Math.min(1, (t - t0) / 1300)
+        /* 260ms 内滚到真实值：首屏 400ms 采样时已经是最终数字，不会先停在中途 */
+        const k = Math.min(1, (t - t0) / 260)
         const eased = 1 - Math.pow(1 - k, 3)
         const value = Math.round(target * eased)
         /* 数据未就绪时模板里是「—」：不要先画一帧 0，直接滚到真实值 */
@@ -216,24 +217,28 @@
     nodes.forEach((el) => io.observe(el))
   }
 
-  /* 首屏统计：和感受墙同源统计（书评 / 留言 / 分享者），不再写死宣传数字 */
+  /* 首屏统计：读构建期 summary.json（拿不到就用内置示例现算），
+     不再等 getAll() 的全量预取——第一眼不该看到「—」，也不该为 3 个数字下载全站 */
   async function initStats() {
     const nodes = $$('.stats [data-stat]')
     if (!nodes.length) return
-    const uniqAuthors = (list) => new Set(list.map((x) =>
-      (x.author && (x.author.id || x.author.name)) || '').filter(Boolean)).size
-    let all = []
+
+    let counts = { posts: 0, comments: 0, authors: 0 }
     try {
-      /* 复用 API 的全量缓存：等空闲预取完成后统计一次，不在首屏同步拉全量 */
-      all = await API.getAll()
+      const s = await API.getSummary()
+      counts = { posts: s.posts || 0, comments: s.comments || 0, authors: s.authors || 0 }
     } catch (err) {
       /* file:// 或接口不可用：退回内置兜底数据量，保证数字与真正渲染出来的内容一致 */
-      all = API.fallbackList || []
+      const all = API.fallbackList || []
+      const posts = all.filter((x) => x.type !== 'comment')
+      counts = {
+        posts: posts.length,
+        comments: all.length - posts.length,
+        authors: new Set(posts.map((x) => (x.author && (x.author.id || x.author.name)) || '').filter(Boolean)).size,
+      }
     }
-    const posts = all.filter((x) => x.type !== 'comment')
-    const counts = { posts: posts.length, comments: all.length - posts.length, authors: uniqAuthors(posts) }
     nodes.forEach((el) => { el.dataset.count = String(counts[el.dataset.stat] || 0) })
-    /* 数字动画仍由 initCounters 负责：等真实值写进 data-count 后再观察，滚动到就滚数字 */
+    /* 数字动画仍由 initCounters 负责：data-count 就绪后立刻启动，滚到真实值 */
     initCounters()
   }
 
