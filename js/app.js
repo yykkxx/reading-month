@@ -237,9 +237,19 @@
     initCounters()
   }
 
-  /* 首屏「今日一页」：信息流第一页的第一篇真实书评，让第一屏就有可读内容。
+  /* 首屏「今日一页」：编辑从第一页里挑一篇共鸣最多的书评单独推荐。
+     r17 起它和信息流首卡同屏可见，所以必须避开首卡那一条，避免同一本书在首屏重复出现两次；
      数据只走 API.getFeed(1, {})——复用 api.js 的 page-1 promise 缓存，不额外发请求；
      取不到就整块 hidden，不编内容、不留空壳。 */
+  function pickTodayPost(list) {
+    const posts = (list || []).filter((p) => p && p.type !== 'comment' && p.title && p.cover)
+    if (!posts.length) return null
+    const firstId = posts[0].id
+    /* 共鸣最多的那篇优先；万一它就是首卡，顺延到下一篇 */
+    const ranked = posts.slice().sort((a, b) => (Number(b.likes) || 0) - (Number(a.likes) || 0))
+    return ranked.find((p) => p.id !== firstId) || posts[0]
+  }
+
   function todayCardHTML(p) {
     const href = 'detail.html?id=' + encodeURIComponent(p.id)
     /* alt 用书名号里的书名：标题里的《…》取不到时退回整条标题 */
@@ -279,7 +289,7 @@
     if (!box) return
     try {
       const res = await API.getFeed(1, {})
-      const post = ((res && res.list) || []).find((p) => p && p.type !== 'comment' && p.title && p.cover)
+      const post = pickTodayPost(res && res.list)
       if (!post) { box.hidden = true; return }
       box.innerHTML = todayCardHTML(post)
       /* 首屏这块不加 reveal 动画：内容后到，淡入会造成 CLS */

@@ -26,7 +26,7 @@
 <script>try{if(localStorage.getItem('rm-theme')==='night')document.documentElement.dataset.theme='night'}catch(e){}</script>
 <title>2026 校园读书月 · 阅见世界</title>
 <link rel="preload" as="font" type="font/woff" href="fonts/noto-serif-sc-Bold.woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20261028a">
+<link rel="stylesheet" href="css/style.css?v=20261030a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23a63a2b'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='%23f6ecd8' font-family='serif'%3E书%3C/text%3E%3C/svg%3E">
 </head>
 <body class="page-home">
@@ -111,21 +111,23 @@
         选一本书读完，把心里的话贴到这面墙上——你写下的那一页，也会被另一个人读到。
       </p>
 
-      <div class="countdown reveal" style="--d:.35s" id="countdown" aria-label="活动倒计时">
-        <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
-        <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
-        <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
-        <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
+      <!-- 倒计时与统计合成一条「活动速览」：一行放下，不再各占一块 -->
+      <div class="hero__meta reveal" style="--d:.35s">
+        <div class="countdown" id="countdown" aria-label="活动倒计时">
+          <div class="countdown__item"><b id="cdDay">--</b><i>天</i></div>
+          <div class="countdown__item"><b id="cdHour">--</b><i>时</i></div>
+          <div class="countdown__item"><b id="cdMin">--</b><i>分</i></div>
+          <div class="countdown__item"><b id="cdSec">--</b><i>秒</i></div>
+        </div>
+        <p class="countdown__note" id="cdLabel" hidden></p>
+        <ul class="stats">
+          <li class="stat-note"><b data-count="0" data-stat="posts">—</b><i>篇读书感受</i><span class="fold"></span></li>
+          <li class="stat-note stat-note--r"><b data-count="0" data-stat="comments">—</b><i>条留言</i><span class="fold"></span></li>
+          <li class="stat-note"><b data-count="0" data-stat="authors">—</b><i>位分享者</i><span class="fold"></span></li>
+        </ul>
       </div>
-      <p class="countdown__note" id="cdLabel" hidden></p>
 
-      <ul class="stats reveal" style="--d:.45s">
-        <li class="stat-note"><b data-count="0" data-stat="posts">—</b><i>篇读书感受</i><span class="fold"></span></li>
-        <li class="stat-note stat-note--r"><b data-count="0" data-stat="comments">—</b><i>条留言</i><span class="fold"></span></li>
-        <li class="stat-note"><b data-count="0" data-stat="authors">—</b><i>位分享者</i><span class="fold"></span></li>
-      </ul>
-
-      <div class="hero__actions reveal" style="--d:.55s">
+      <div class="hero__actions reveal" style="--d:.45s">
         <a class="btn btn--primary" href="#feed" id="ctaStart">
           <span class="btn__seal" aria-hidden="true">阅</span>
           进入感受墙
@@ -135,6 +137,8 @@
       </div>
     </div>
 
+    <!-- 首屏「今日一页」：信息流里的真实书评，第一屏就给出可读的一页；内容全部由 JS 渲染，取不到就整块隐藏 -->
+    <section class="today" id="todayPage" aria-labelledby="todayTitle" hidden></section>
   </div>
 
   <button class="scroll-hint" id="scrollHint" type="button" aria-label="下滑进入主界面">
@@ -142,27 +146,25 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6"/></svg>
   </button>
 </section>
-
-<!-- 首屏「今日一页」：信息流第一页的第一篇真实书评，内容全部由 JS 渲染；取不到就整块隐藏 -->
-<section class="today" id="todayPage" aria-labelledby="todayTitle" hidden></section>
 </div>
 
 <!-- ========== 二、主界面：读书感受墙 ========== -->
 <main class="feed" id="feed">
   <div class="shell">
 
-    <div class="page-divider" aria-hidden="true">
-      <span class="page-divider__rule"></span>
-      <svg class="page-divider__mark" viewBox="0 0 44 26" fill="none">
+    <div class="page-divider">
+      <span class="page-divider__rule" aria-hidden="true"></span>
+      <p class="feed__quote">「读书，是在别人的思想里，搭一间自己的屋子。」</p>
+      <svg class="page-divider__mark" viewBox="0 0 44 26" fill="none" aria-hidden="true">
         <path d="M22 6c-5-3-11-3-16-1v14c5-2 11-2 16 1M22 6c5-3 11-3 16-1v14c-5-2-11-2-16 1M22 6v14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
       </svg>
-      <span class="page-divider__rule"></span>
+      <span class="page-divider__rule" aria-hidden="true"></span>
     </div>
 
     <header class="feed__head js-reveal">
       <p class="feed__eyebrow">
         <svg class="eyebrow-rule" viewBox="0 0 48 2" aria-hidden="true"><path d="M0 1h48" stroke="currentColor" stroke-width="2"/></svg>
-        读书感受墙 · 共读笔记
+        共读笔记 · 每日整理
         <svg class="eyebrow-rule eyebrow-rule--r" viewBox="0 0 48 2" aria-hidden="true"><path d="M0 1h48" stroke="currentColor" stroke-width="2"/></svg>
       </p>
       <h2 class="feed__title">读书感受墙
@@ -171,8 +173,6 @@
         </svg>
       </h2>
       <p class="feed__desc">来自全校同学的阅读笔记 · 学习部编辑小组每日整理</p>
-
-      <p class="feed__quote">「读书，是在别人的思想里，搭一间自己的屋子。」</p>
 
       <!-- 搜索 -->
       <form class="search" id="searchForm" role="search" autocomplete="off">
@@ -192,14 +192,15 @@
         <button class="chip" data-sort="comments" aria-pressed="false" type="button">聊得热闹</button>
       </div>
 
-      <!-- 分类 -->
-      <div class="chips" id="chips" role="group" aria-label="按分类筛选">
-        <!-- 由 JS 渲染 -->
-      </div>
-
-      <!-- 标签 -->
-      <div class="chips chips--tag" id="tags" role="group" aria-label="按标签筛选">
-        <!-- 由 JS 渲染 -->
+      <!-- 分类 + 标签：合并成一条可横滑的书签带，省掉一整行留白 -->
+      <div class="chips-row">
+        <span class="chips__label" aria-hidden="true">分类</span>
+        <div class="chips" id="chips" role="group" aria-label="按分类筛选">
+          <!-- 由 JS 渲染 -->
+        </div>
+        <div class="chips chips--tag" id="tags" role="group" aria-label="按标签筛选">
+          <!-- 由 JS 渲染 -->
+        </div>
       </div>
 
       <!-- 筛选摘要 -->
@@ -318,7 +319,7 @@
 <script src="js/api.js?v=20261026s"></script>
 <script src="js/ui.js?v=20261026s"></script>
 <script src="js/effects.js?v=20261026s"></script>
-<script src="js/app.js?v=20261028a"></script>
+<script src="js/app.js?v=20261030a"></script>
 <script src="js/submit.js?v=20261026s"></script>
 </body>
 </html>
